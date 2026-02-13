@@ -1,0 +1,228 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    // fallback por si no existe --z-sticky
+    z-index: var(--z-sticky, 1000);
+
+    padding: 1rem 0;
+    transition: all var(--transition-normal, 0.25s ease);
+
+    &.scrolled {
+        @include glass-panel(0.03);
+        backdrop-filter: blur(20px);
+        padding: 0.75rem 0;
+
+        .brand {
+            transform: scale(0.9);
+        }
+    }
+}
+
+.nav {
+    .container {
+        @include flex-between;
+
+        // fallback por si no existe --container-xl
+        max-width: var(--container-xl, 1200px);
+
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        @include mobile {
+            padding: 0 1rem;
+        }
+    }
+}
+
+.brand {
+    @include smooth-animation;
+
+    a {
+        text-decoration: none;
+
+        &:focus-visible {
+            outline: none;
+
+            .brandText {
+                @include neon-glow(var(--accent-cyan));
+            }
+        }
+    }
+
+    .brandText {
+        font-family: var(--font-sora);
+        font-size: 1.75rem;
+        font-weight: 700;
+        @include gradient-text;
+        transition: all var(--transition-normal, 0.25s ease);
+
+        &:hover {
+            @include neon-glow(var(--accent-cyan), 0.5);
+        }
+    }
+}
+
+.navLinks {
+    @include flex-center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mobile {
+        display: none;
+    }
+
+    li {
+        position: relative;
+    }
+
+    a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: all var(--transition-normal, 0.25s ease);
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            transition: width var(--transition-normal, 0.25s ease);
+        }
+
+        &:hover,
+        &.active {
+            color: var(--text-primary);
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &.active {
+            color: var(--accent-cyan);
+        }
+    }
+}
+
+.menuButton {
+    display: none;
+
+    @include mobile {
+        @include flex-center;
+    }
+
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal, 0.25s ease);
+
+    &:hover {
+        background: var(--glass-hover);
+        color: var(--accent-cyan);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--accent-cyan);
+        outline-offset: 2px;
+    }
+}
+
+.mobileNav {
+    position: absolute;
+    top: 100%;
+    left: 2rem;
+    right: 2rem;
+    @include glass-panel(0.05);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    backdrop-filter: blur(20px);
+
+    // arriba del overlay
+    z-index: 2;
+
+    @include mobile {
+        left: 1rem;
+        right: 1rem;
+    }
+
+    .mobileNavLinks {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin-bottom: 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal, 0.25s ease);
+            border: 1px solid transparent;
+
+            &:hover,
+            &.active {
+                color: var(--text-primary);
+                background: var(--glass-hover);
+                border-color: var(--glass-border);
+            }
+
+            &.active {
+                color: var(--accent-cyan);
+                background: rgba(100, 255, 218, 0.1);
+                border-color: var(--accent-cyan);
+            }
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+
+    // IMPORTANTE: no puede ser -1 si querés click para cerrar
+    z-index: 1;
+}
+
+/* Animation for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .navbar,
+    .brand,
+    .navLinks a,
+    .menuButton,
+    .mobileNav {
+        transition: none;
+    }
+}

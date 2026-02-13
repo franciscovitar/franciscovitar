@@ -1,0 +1,310 @@
+.process {
+    padding: 6rem 0;
+    position: relative;
+
+    @include mobile {
+        padding: 4rem 0;
+    }
+}
+
+.container {
+    max-width: var(--container-lg, 1000px);
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @include mobile {
+        padding: 0 1rem;
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    @include mobile {
+        margin-bottom: 3rem;
+    }
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    @include gradient-text;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+
+    @include mobile {
+        font-size: 1.1rem;
+    }
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    margin-bottom: 4rem;
+
+    @include mobile {
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.timelineItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stepCard {
+    @include card-base;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    transition: all var(--transition-normal, 0.25s ease);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+
+    @include mobile {
+        padding: 2rem 1rem;
+    }
+
+    &:hover {
+        @include glass-hover;
+        @include neon-glow(var(--accent-cyan), 0.2);
+    }
+}
+
+.stepNumber {
+    position: absolute;
+    top: -1rem;
+    left: 2rem;
+    @include glass-panel(0.1);
+    width: 3rem;
+    height: 2rem;
+    border-radius: var(--radius-lg);
+    @include flex-center;
+    border: 1px solid var(--accent-cyan);
+
+    @include mobile {
+        left: 1rem;
+        width: 2.5rem;
+        height: 1.75rem;
+    }
+
+    span {
+        font-family: var(--font-sora);
+        font-weight: 700;
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+
+        @include mobile {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.stepIcon {
+    @include flex-center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    transition: all var(--transition-normal, 0.25s ease);
+
+    @include mobile {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    svg {
+        font-size: 2rem;
+
+        @include mobile {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.stepContent {
+    width: 100%;
+}
+
+.stepTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+
+    @include mobile {
+        font-size: 1.3rem;
+    }
+}
+
+.stepDescription {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+
+    @include mobile {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.stepDetails {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    li {
+        @include glass-panel(0.03);
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-lg);
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        border: 1px solid var(--glass-border);
+        transition: all var(--transition-normal, 0.25s ease);
+        position: relative;
+
+        @include mobile {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        &::before {
+            content: "\2022";
+            color: var(--accent-cyan);
+            font-weight: 900;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            @include glass-hover;
+            color: var(--text-secondary);
+            border-color: var(--accent-cyan);
+        }
+    }
+}
+
+.timelineLine {
+    width: 2px;
+    height: 2rem;
+    background: linear-gradient(to bottom,
+            var(--accent-cyan),
+            var(--accent-purple));
+    margin: 1rem 0;
+    border-radius: 1px;
+    opacity: 0.6;
+    transform-origin: top;
+
+    @include mobile {
+        height: 1.5rem;
+        margin: 0.75rem 0;
+    }
+}
+
+.processFooter {
+    @include glass-panel(0.03);
+    border-radius: var(--radius-2xl, 1.5rem);
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+
+    @include mobile {
+        padding: 2rem 1rem;
+    }
+}
+
+.footerText {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+
+    @include mobile {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.processButton {
+    @include button-primary;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+
+    @include mobile {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Desktop-specific timeline layout */
+@include desktop-up {
+    .timeline {
+        gap: 4rem;
+    }
+
+    .timelineItem {
+        &:nth-child(even) {
+            .stepCard {
+                margin-left: auto;
+            }
+        }
+
+        &:nth-child(odd) {
+            .stepCard {
+                margin-right: auto;
+            }
+        }
+    }
+
+    .stepCard {
+        max-width: 500px;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* ✅ minimal UX fix: keep icon aligned with left layout */
+    .stepIcon {
+        align-self: flex-start;
+    }
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .stepCard,
+    .stepIcon,
+    .processButton,
+    .stepDetails li {
+        transition: none;
+    }
+
+    .timelineLine {
+        transform: none;
+    }
+}

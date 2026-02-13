@@ -1,0 +1,47 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="background" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="50%" style="stop-color:#151520"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#64ffda"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#background)"/>
+  
+  <!-- Decorative gradient circles -->
+  <circle cx="200" cy="150" r="80" fill="#64ffda" opacity="0.1"/>
+  <circle cx="1000" cy="480" r="100" fill="#a855f7" opacity="0.1"/>
+  <circle cx="800" cy="100" r="60" fill="#ec4899" opacity="0.1"/>
+  
+  <!-- Main content -->
+  <text x="600" y="200" text-anchor="middle" fill="url(#accent)" font-family="Arial, sans-serif" font-size="54" font-weight="bold" filter="url(#glow)">Francisco Vitar</text>
+  <text x="600" y="260" text-anchor="middle" fill="#b8bcc8" font-family="Arial, sans-serif" font-size="24" font-weight="500">Full-Stack Web Developer</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="320" text-anchor="middle" fill="#8892b0" font-family="Arial, sans-serif" font-size="18">Building premium service websites and landing pages</text>
+  <text x="600" y="350" text-anchor="middle" fill="#8892b0" font-family="Arial, sans-serif" font-size="18">with mobile-first UX and conversion-driven structure</text>
+  
+  <!-- Location -->
+  <text x="600" y="420" text-anchor="middle" fill="#64ffda" font-family="Arial, sans-serif" font-size="16">📍 Córdoba, Argentina (Remote)</text>
+  
+  <!-- Website -->
+  <text x="600" y="480" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="16">franciscovitar.com</text>
+  
+  <!-- Decorative lines -->
+  <line x1="300" y1="500" x2="900" y2="500" stroke="url(#accent)" stroke-width="2" opacity="0.3"/>
+  <line x1="350" y1="520" x2="850" y2="520" stroke="#64ffda" stroke-width="1" opacity="0.2"/>
+</svg>

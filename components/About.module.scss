@@ -1,0 +1,264 @@
+.about {
+    padding: 6rem 0;
+    position: relative;
+
+    @include mobile {
+        padding: 4rem 0;
+    }
+}
+
+.container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @include mobile {
+        padding: 0 1rem;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    @include mobile {
+        gap: 3rem;
+    }
+}
+
+.header {
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    @include gradient-text;
+}
+
+.location {
+    @include flex-center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+
+    svg {
+        color: var(--accent-cyan);
+        font-size: 1.2rem;
+    }
+}
+
+.mainContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.leadText {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.5;
+
+    @include mobile {
+        font-size: 1.2rem;
+    }
+}
+
+.description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.1rem;
+
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+.education {
+    @include glass-panel(0.03);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+
+    @include mobile {
+        padding: 1.5rem;
+    }
+}
+
+.sectionSubtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+
+    @include mobile {
+        font-size: 1.2rem;
+    }
+}
+
+.educationItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.educationIcon {
+    @include flex-center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+    color: var(--background-primary);
+    flex-shrink: 0;
+
+    svg {
+        font-size: 1.5rem;
+    }
+}
+
+.educationInfo {
+    h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+    }
+
+    p {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+}
+
+.year {
+    @include glass-panel(0.05);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    display: inline-block;
+}
+
+.highlights {}
+
+.highlightGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlightCard {
+    @include card-base;
+    transition: all var(--transition-normal);
+
+    &:hover {
+        @include glass-hover;
+        @include neon-glow(var(--accent-cyan), 0.15);
+    }
+}
+
+.highlightIcon {
+    @include flex-center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+
+    svg {
+        font-size: 1.5rem;
+    }
+}
+
+.highlightTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.highlightDescription {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.callToAction {
+    @include glass-panel(0.05);
+    border-radius: var(--radius-2xl);
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+
+    @include mobile {
+        padding: 2rem 1rem;
+    }
+}
+
+.ctaContent {
+    margin-bottom: 2rem;
+}
+
+.ctaTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+
+    @include mobile {
+        font-size: 1.3rem;
+    }
+}
+
+.ctaDescription {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+.ctaButton {
+    @include button-primary;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+
+    @include mobile {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .highlightCard,
+    .ctaButton {
+        transition: none;
+    }
+}

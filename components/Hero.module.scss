@@ -1,0 +1,376 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    @include flex-center;
+    padding: 0 0 4rem;
+    overflow: hidden;
+
+    @include mobile {
+        padding: 6rem 0 2rem;
+        min-height: calc(100vh - 2rem);
+    }
+}
+
+.container {
+    max-width: var(--container-xl, 1200px);
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    @include mobile {
+        padding: 0 1rem;
+    }
+}
+
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-block;
+    margin-bottom: 2rem;
+
+    .badgeText {
+        @include glass-panel(0.08);
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--accent-cyan);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(100, 255, 218, 0.1),
+                    transparent);
+            animation: shimmer 3s infinite;
+        }
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.headline {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.gradient {
+    @include gradient-text;
+    display: inline-block;
+    text-decoration: none; // <-- necesario para el link de Genova
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+    }
+}
+
+
+.subheadline {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    @include tablet {
+        gap: 2rem;
+    }
+}
+
+.statItem {
+    @include glass-panel(0.05);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 140px;
+    transition: all var(--transition-normal, 0.25s ease);
+
+    @include mobile {
+        padding: 1rem 1.5rem;
+        min-width: auto;
+    }
+
+    &:hover {
+        @include glass-hover;
+        @include neon-glow(var(--accent-cyan), 0.2);
+    }
+}
+
+.statNumber {
+    font-family: var(--font-sora);
+    font-size: 2rem;
+    font-weight: 700;
+    @include gradient-text;
+
+    @include mobile {
+        font-size: 1.75rem;
+    }
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+
+    @include mobile {
+        font-size: 0.85rem;
+    }
+}
+
+.actions {
+    @include flex-center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/* ✅ unifico altura visual de los 3 botones en desktop */
+.primaryButton,
+.secondaryButton {
+    height: 3.5rem;
+    padding: 0 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    @include mobile {
+        height: auto;
+        padding: 1rem 2rem;
+    }
+}
+
+.primaryButton {
+    @include button-primary;
+    font-size: 1rem;
+    min-width: 160px;
+
+    @include mobile {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+.secondaryButton {
+    @include button-secondary;
+    font-size: 1rem;
+    min-width: 160px;
+
+    @include mobile {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* ✅ CV centrado perfecto: icon-only */
+.cvButton {
+    @include button-secondary;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    min-width: auto;
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+
+    @include mobile {
+        width: 100%;
+        max-width: 120px;
+        border-radius: var(--radius-lg);
+        padding: 1rem 2rem;
+    }
+}
+
+/* ✅ flecha: colgada del HERO (no del content) */
+.scrollIndicator {
+    position: absolute;
+    bottom: 9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+
+    @include mobile {
+        bottom: 1rem;
+    }
+
+    a {
+        @include flex-center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        @include glass-panel(0.05);
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all var(--transition-normal, 0.25s ease);
+
+        &:hover {
+            @include glass-hover;
+            color: var(--accent-cyan);
+            @include neon-glow(var(--accent-cyan), 0.3);
+        }
+
+        svg {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.floatingElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
+}
+
+.floatingElement {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.element1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+
+    @include mobile {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.element2 {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+
+    @include mobile {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.element3 {
+    width: 60px;
+    height: 60px;
+    bottom: 30%;
+    left: 20%;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+
+    @include mobile {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Responsive adjustments */
+@include tablet {
+    .stats {
+        gap: 2rem;
+    }
+
+    .actions {
+        gap: 0.75rem;
+    }
+}
+
+/* ✅ utilidad accesible */
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .scrollIndicator a,
+    .statItem,
+    .primaryButton,
+    .secondaryButton,
+    .cvButton {
+        transition: none;
+    }
+
+    .badge .badgeText::before {
+        animation: none;
+    }
+}

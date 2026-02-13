@@ -1,0 +1,238 @@
+/* Breakpoint Mixins */
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin mobile-up {
+    @media (min-width: 640px) {
+        @content;
+    }
+}
+
+@mixin tablet-up {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+/* Glass Effect Mixin */
+@mixin glass-panel($opacity: 0.05) {
+    background: rgba(255, 255, 255, $opacity);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+}
+
+@mixin glass-hover {
+    background: var(--glass-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Button Base Mixin */
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-family: var(--font-sora);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+
+    &:focus-visible {
+        outline: 2px solid var(--accent-cyan);
+        outline-offset: 2px;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+/* Primary Button */
+@mixin button-primary {
+    @include button-base;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+    color: var(--background-primary);
+    box-shadow: var(--shadow-glow);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left var(--transition-normal);
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-glow), var(--shadow-xl);
+
+        &::before {
+            left: 100%;
+        }
+    }
+}
+
+/* Secondary Button */
+@mixin button-secondary {
+    @include button-base;
+    @include glass-panel(0.05);
+    color: var(--text-primary);
+
+    &:hover {
+        @include glass-hover;
+    }
+}
+
+/* Gradient Text Mixin */
+@mixin gradient-text($from: var(--accent-cyan), $to: var(--accent-purple)) {
+    background: linear-gradient(135deg, $from, $to);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Neon Glow Mixin */
+@mixin neon-glow($color: var(--accent-cyan), $intensity: 0.3) {
+    box-shadow: 0 0 5px color-mix(in srgb, #{$color} calc(#{$intensity} * 50%), transparent),
+    0 0 10px color-mix(in srgb, #{$color} calc(#{$intensity} * 35%), transparent),
+    0 0 20px color-mix(in srgb, #{$color} calc(#{$intensity} * 25%), transparent),
+    0 0 40px color-mix(in srgb, #{$color} calc(#{$intensity} * 15%), transparent);
+}
+
+/* Card Base Mixin */
+@mixin card-base {
+    @include glass-panel;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+
+    @include mobile {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Card Hover Effect */
+@mixin card-hover {
+    &:hover {
+        @include glass-hover;
+        @include neon-glow(var(--accent-cyan), 0.2);
+    }
+}
+
+/* Flex Center Mixin */
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Flex Between Mixin */
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Grid Auto Fit Mixin */
+@mixin grid-auto-fit($min-width: 300px, $gap: 2rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    gap: $gap;
+}
+
+/* Smooth Animations Mixin */
+@mixin smooth-animation($duration: var(--transition-normal)) {
+    transition: all $duration;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+/* Skeleton Loading Mixin */
+@mixin skeleton-loading {
+    background: linear-gradient(90deg,
+            var(--glass-bg) 25%,
+            var(--glass-hover) 50%,
+            var(--glass-bg) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s infinite;
+}
+
+@keyframes skeleton-pulse {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Text Truncate Mixins */
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin text-truncate-lines($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
