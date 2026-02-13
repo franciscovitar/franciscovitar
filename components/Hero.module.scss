@@ -3,12 +3,12 @@
     min-height: 100svh;
     /* mejor en mobile que 100vh */
     @include flex-center;
-    padding: 0 0 4rem;
+    padding: 0 0 2rem;
     overflow: hidden;
 
     @include mobile {
         min-height: 100svh;
-        padding: 5.5rem 0 3rem;
+        padding: 2rem 0 3rem;
         /* más balanceado */
     }
 }
@@ -145,38 +145,45 @@
 }
 
 .stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
     margin-bottom: 3rem;
 
-    @include tablet {
-        gap: 2rem;
-    }
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
 
     @include mobile {
-        /* ✅ en celu quedan prolijos y compactos */
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.9rem;
-        margin-bottom: 1.75rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* ✅ lado a lado */
+        max-width: 100%;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
     }
 }
 
+
 .statItem {
     @include glass-panel(0.05);
-    padding: 1.5rem 2rem;
+    width: 100%;
+    min-height: 120px;
+    /* ✅ MISMA ALTURA */
+    padding: 1.5rem 1.75rem;
     border-radius: var(--radius-xl);
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    /* ✅ centra el contenido vertical */
     gap: 0.5rem;
-    min-width: 140px;
+
     transition: all var(--transition-normal, 0.25s ease);
 
     @include mobile {
-        padding: 0.95rem 0.9rem;
-        min-width: auto;
+        min-height: 110px;
+        padding: 1rem 1.25rem;
     }
 
     &:hover {
@@ -189,23 +196,34 @@
     font-family: var(--font-sora);
     font-size: 2rem;
     font-weight: 700;
+    line-height: 1;
     @include gradient-text;
 
+    /* ✅ reserva espacio para que no “salte” */
+    min-height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     @include mobile {
-        font-size: 1.55rem;
+        font-size: 1.75rem;
+        min-height: 2rem;
     }
 }
 
 .statLabel {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     font-weight: 500;
-    white-space: nowrap;
+    text-align: center;
+
+    /* ✅ permite wrap si hace falta (sin romper el layout) */
+    white-space: normal;
+    max-width: 100%;
+    line-height: 1.25;
 
     @include mobile {
-        font-size: 0.82rem;
-        white-space: normal;
-        line-height: 1.2;
+        font-size: 0.9rem;
     }
 }
 
@@ -294,11 +312,12 @@
     z-index: 3;
 
     @include mobile {
+
         position: static;
         /* ✅ en celu queda abajo del todo, no molesta */
         transform: none;
         margin-top: 1rem;
-        display: flex;
+        display: none;
         justify-content: center;
     }
 

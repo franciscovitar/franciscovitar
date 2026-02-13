@@ -130,21 +130,14 @@ export const testimonials = [
 
 export const stats = [
   {
-    number: "Advanced",
+    number: "4th Year",
     label: "Systems Engineering (UTN)",
-    description:
-      "Strong fundamentals: systems thinking, math, and problem-solving",
+    description: "Advanced student focused on strong engineering fundamentals",
   },
   {
     number: "Founder",
     label: "Genova (0→1)",
     description:
-      "Built and shipped real projects from scratch with full ownership",
-  },
-  {
-    number: "30+",
-    label: "Projects Shipped",
-    description:
-      "Web products delivered end-to-end (UX, performance, and maintainability)",
+      "Built and shipped real projects end-to-end with full ownership",
   },
 ];

@@ -139,7 +139,7 @@ export default function About() {
             </motion.div>
           </div>
 
-          <motion.div className={styles.callToAction} variants={itemVariants}>
+          {/* <motion.div className={styles.callToAction} variants={itemVariants}>
             <div className={styles.ctaContent}>
               <h3 className={styles.ctaTitle}>Open to Full-Time Roles</h3>
               <p className={styles.ctaDescription}>
@@ -155,7 +155,7 @@ export default function About() {
               <HiMail />
               Email Me
             </motion.a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
