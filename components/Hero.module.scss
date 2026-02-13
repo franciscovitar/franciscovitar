@@ -1,13 +1,15 @@
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
+    /* mejor en mobile que 100vh */
     @include flex-center;
     padding: 0 0 4rem;
     overflow: hidden;
 
     @include mobile {
-        padding: 6rem 0 2rem;
-        min-height: calc(100vh - 2rem);
+        min-height: 100svh;
+        padding: 5.5rem 0 3rem;
+        /* más balanceado */
     }
 }
 
@@ -27,11 +29,20 @@
 .content {
     max-width: 900px;
     margin: 0 auto;
+
+    @include mobile {
+        max-width: 560px;
+        /* evita líneas larguísimas en celu */
+    }
 }
 
 .badge {
     display: inline-block;
     margin-bottom: 2rem;
+
+    @include mobile {
+        margin-bottom: 1.25rem;
+    }
 
     .badgeText {
         @include glass-panel(0.08);
@@ -45,6 +56,17 @@
         gap: 0.5rem;
         position: relative;
         overflow: hidden;
+        max-width: 92vw;
+        /* ✅ no desborda */
+        white-space: normal;
+        /* ✅ permite cortar línea */
+        text-align: center;
+
+        @include mobile {
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            line-height: 1.25;
+        }
 
         &::before {
             content: "";
@@ -73,17 +95,28 @@
 }
 
 .headline {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    /* ✅ un toque menos */
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    text-wrap: balance;
+
+    @include mobile {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+        /* ✅ entra perfecto */
+        line-height: 1.12;
+        margin-bottom: 1.1rem;
+    }
 }
 
 .gradient {
     @include gradient-text;
     display: inline-block;
-    text-decoration: none; // <-- necesario para el link de Genova
+    text-decoration: none;
 
     &:hover {
         text-decoration: underline;
@@ -92,15 +125,23 @@
     }
 }
 
-
 .subheadline {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
     color: var(--text-secondary);
     margin-bottom: 3rem;
-    max-width: 600px;
+    max-width: 620px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
+
+    @include mobile {
+        font-size: 1.02rem;
+        line-height: 1.55;
+        margin-bottom: 1.75rem;
+        /* ✅ menos aire */
+        max-width: 34ch;
+        /* ✅ texto más “tight” */
+    }
 }
 
 .stats {
@@ -109,14 +150,16 @@
     gap: 3rem;
     margin-bottom: 3rem;
 
-    @include mobile {
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
     @include tablet {
         gap: 2rem;
+    }
+
+    @include mobile {
+        /* ✅ en celu quedan prolijos y compactos */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
+        margin-bottom: 1.75rem;
     }
 }
 
@@ -132,7 +175,7 @@
     transition: all var(--transition-normal, 0.25s ease);
 
     @include mobile {
-        padding: 1rem 1.5rem;
+        padding: 0.95rem 0.9rem;
         min-width: auto;
     }
 
@@ -149,7 +192,7 @@
     @include gradient-text;
 
     @include mobile {
-        font-size: 1.75rem;
+        font-size: 1.55rem;
     }
 }
 
@@ -160,7 +203,9 @@
     white-space: nowrap;
 
     @include mobile {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        white-space: normal;
+        line-height: 1.2;
     }
 }
 
@@ -170,10 +215,15 @@
     margin-bottom: 4rem;
     flex-wrap: wrap;
 
+    @include tablet {
+        gap: 0.75rem;
+    }
+
     @include mobile {
         flex-direction: column;
         gap: 0.75rem;
-        margin-bottom: 3rem;
+        margin-bottom: 1.25rem;
+        /* ✅ así no se pisa con la flecha */
     }
 }
 
@@ -189,7 +239,10 @@
 
     @include mobile {
         height: auto;
-        padding: 1rem 2rem;
+        padding: 1rem 1.2rem;
+        width: 100%;
+        max-width: 320px;
+        /* ✅ más ancho para que no quede enano */
     }
 }
 
@@ -197,28 +250,17 @@
     @include button-primary;
     font-size: 1rem;
     min-width: 160px;
-
-    @include mobile {
-        width: 100%;
-        max-width: 280px;
-    }
 }
 
 .secondaryButton {
     @include button-secondary;
     font-size: 1rem;
     min-width: 160px;
-
-    @include mobile {
-        width: 100%;
-        max-width: 280px;
-    }
 }
 
 /* ✅ CV centrado perfecto: icon-only */
 .cvButton {
     @include button-secondary;
-
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
@@ -236,13 +278,14 @@
 
     @include mobile {
         width: 100%;
-        max-width: 120px;
+        max-width: 320px;
         border-radius: var(--radius-lg);
-        padding: 1rem 2rem;
+        padding: 1rem 1.2rem;
+        height: auto;
     }
 }
 
-/* ✅ flecha: colgada del HERO (no del content) */
+/* ✅ flecha: colgada del HERO */
 .scrollIndicator {
     position: absolute;
     bottom: 9rem;
@@ -251,7 +294,12 @@
     z-index: 3;
 
     @include mobile {
-        bottom: 1rem;
+        position: static;
+        /* ✅ en celu queda abajo del todo, no molesta */
+        transform: none;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
     }
 
     a {
@@ -304,8 +352,12 @@
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
 
     @include mobile {
-        width: 60px;
-        height: 60px;
+        width: 54px;
+        height: 54px;
+        top: 10%;
+        left: 6%;
+        opacity: 0.35;
+        /* ✅ menos “ruido” */
     }
 }
 
@@ -317,8 +369,11 @@
     background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
 
     @include mobile {
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
+        top: 70%;
+        right: 6%;
+        opacity: 0.35;
     }
 }
 
@@ -330,19 +385,11 @@
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
 
     @include mobile {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* Responsive adjustments */
-@include tablet {
-    .stats {
-        gap: 2rem;
-    }
-
-    .actions {
-        gap: 0.75rem;
+        width: 36px;
+        height: 36px;
+        bottom: 18%;
+        left: 12%;
+        opacity: 0.3;
     }
 }
 
