@@ -101,8 +101,9 @@ export default function Hero() {
               Email Me
             </motion.a>
 
-            <MotionLink
-              href="/cv"
+            <motion.a
+              href="/CV_FV.pdf"
+              download="Francisco_Vitar_CV.pdf"
               className={styles.cvButton}
               whileHover={reduceMotion ? undefined : { scale: 1.05, y: -2 }}
               whileTap={reduceMotion ? undefined : { scale: 0.95 }}
@@ -110,7 +111,7 @@ export default function Hero() {
               aria-label="Download CV"
             >
               CV
-            </MotionLink>
+            </motion.a>
           </motion.div>
         </motion.div>
 
