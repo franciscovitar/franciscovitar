@@ -92,7 +92,7 @@ export default function Hero() {
             </motion.a>
 
             <motion.a
-              href="mailto:franvitar15@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=franvitar15@gmail.com"
               className={styles.secondaryButton}
               whileHover={reduceMotion ? undefined : { scale: 1.05, y: -2 }}
               whileTap={reduceMotion ? undefined : { scale: 0.95 }}

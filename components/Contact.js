@@ -19,31 +19,26 @@ export default function Contact() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const subject = encodeURIComponent(`Project inquiry from ${formData.name}`);
-    const bodyLines = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      formData.company ? `Company: ${formData.company}` : null,
-      "",
-      "Message:",
-      formData.message,
-    ].filter(Boolean);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const body = encodeURIComponent(bodyLines.join("\n"));
-    const mailtoLink = `mailto:franvitar15@gmail.com?subject=${subject}&body=${body}`;
+      if (!res.ok) throw new Error("Failed");
 
-    window.location.href = mailtoLink;
+      setIsSubmitted(true);
 
-    setIsSubmitted(true);
-
-    setTimeout(() => {
       setFormData({ name: "", email: "", company: "", message: "" });
-      setIsSubmitted(false);
-    }, 3000);
+
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      alert("Could not send message. Please try again or email me directly.");
+    }
   };
 
   const socialLinks = [
@@ -52,21 +47,21 @@ export default function Contact() {
       icon: SiGooglechrome,
       href: "https://genovasite.com",
       label: "genovasite.com",
-      color: "cyan",
+      color: "purple",
     },
     {
       name: "Email",
       icon: HiMail,
-      href: "mailto:franvitar15@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=franvitar15@gmail.com",
       label: "franvitar15@gmail.com",
-      color: "blue",
+      color: "purple",
     },
     {
       name: "LinkedIn",
       icon: SiLinkedin,
       href: "https://www.linkedin.com/in/franciscovitar/",
       label: "LinkedIn Profile",
-      color: "blue",
+      color: "purple",
     },
     {
       name: "GitHub",

@@ -14,13 +14,6 @@ export default function Footer() {
     { label: "Contact", href: "#contact" },
   ];
 
-  const socialLinks = [
-    { label: "Email", href: "mailto:franvitar15@gmail.com" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/franciscovitar/" },
-    { label: "GitHub", href: "https://github.com/franciscovitar" },
-  ];
-
-  // ✅ NUEVO
   const serviceLinks = [
     { label: "Landing Pages", href: "#contact" },
     { label: "Service Websites", href: "#contact" },
@@ -39,10 +32,23 @@ export default function Footer() {
     },
   ];
 
+  // ✅ Un solo “source of truth” para enviar mail (Gmail web compose)
   const email = "franvitar15@gmail.com";
   const subject = "Project inquiry - Portfolio";
-  const body = `Hi Francisco,\n\nI'd like to discuss a new project. Can we talk?\n\nThanks!`;
-  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const body =
+    "Hi Francisco,\n\nI'd like to discuss a new project. Can we talk?\n\nThanks!";
+
+  const gmailComposeHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    email,
+  )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  const socialLinks = [
+    { label: "Email", href: gmailComposeHref },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/franciscovitar/" },
+    { label: "GitHub", href: "https://github.com/franciscovitar" },
+  ];
+
+  const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
@@ -65,7 +71,6 @@ export default function Footer() {
               Córdoba, Argentina.
             </p>
 
-            {/* ✅ NUEVO: meta corta */}
             <div className={styles.brandMeta}>
               <span className={styles.metaItem}>
                 <HiLocationMarker /> Remote (GMT-3)
@@ -75,9 +80,11 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* ✅ NUEVO: mini CTA */}
+            {/* ✅ CTA consistente con el email del footer */}
             <motion.a
-              href={mailtoHref}
+              href={gmailComposeHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.footerCta}
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -111,7 +118,6 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* ✅ NUEVO: Services */}
             <div className={styles.linkGroup}>
               <h4 className={styles.linkTitle}>Services</h4>
               <nav className={styles.linkList}>
@@ -132,22 +138,19 @@ export default function Footer() {
             <div className={styles.linkGroup}>
               <h4 className={styles.linkTitle}>Connect</h4>
               <nav className={styles.linkList}>
-                {socialLinks.map((link) => {
-                  const isMail = link.href.startsWith("mailto:");
-                  return (
-                    <motion.a
-                      key={link.href}
-                      href={link.href}
-                      target={isMail ? "_self" : "_blank"}
-                      rel={isMail ? undefined : "noopener noreferrer"}
-                      className={styles.link}
-                      whileHover={{ x: 5, scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {link.label}
-                    </motion.a>
-                  );
-                })}
+                {socialLinks.map((link) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                    whileHover={{ x: 5, scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
               </nav>
             </div>
           </motion.div>
@@ -162,7 +165,7 @@ export default function Footer() {
         >
           <div className={styles.copyright}>
             <span>
-              &copy; {new Date().getFullYear()} Francisco Vitar. Made with{" "}
+              &copy; {year} Francisco Vitar. Made with{" "}
               <motion.span
                 className={styles.heart}
                 animate={{ scale: [1, 1.2, 1] }}
