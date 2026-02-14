@@ -10,7 +10,7 @@ const navLinks = [
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
-  // { href: "#process", label: "Process" }, // <- si querés que aparezca, descomentá
+  { href: "#process", label: "Process" }, // <- si querés que aparezca, descomentá
   { href: "#contact", label: "Contact" },
 ];
 

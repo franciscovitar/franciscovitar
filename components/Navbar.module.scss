@@ -1,5 +1,5 @@
 .navbar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -130,6 +130,7 @@
     padding: 0.5rem;
     border-radius: var(--radius-md);
     transition: all var(--transition-normal, 0.25s ease);
+    z-index: 1001;
 
     &:hover {
         background: var(--glass-hover);
@@ -151,7 +152,7 @@
     border-radius: var(--radius-xl);
     padding: 1.5rem;
     margin-top: 1rem;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(50px);
 
     // arriba del overlay
     z-index: 2;
