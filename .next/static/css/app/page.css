@@ -38,7 +38,7 @@
 }
 /* Text Truncate Mixins */
 .Navbar_navbar__3CvTR {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -172,7 +172,7 @@
   padding: 0.5rem;
   border-radius: var(--radius-md);
   transition: all var(--transition-normal, 0.25s ease);
-  z-index: 1001;
+  z-index: 3;
 }
 .Navbar_menuButton___dCVC:hover {
   background: var(--glass-hover);
