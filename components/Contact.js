@@ -158,7 +158,7 @@ export default function Contact() {
                       aria-live="polite"
                     >
                       <HiCheck />
-                      <span>Email draft opened!</span>
+                      <span>Email sent successfully!</span>
                     </motion.div>
                   )}
                 </div>
