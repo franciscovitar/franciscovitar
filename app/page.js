@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SystemVisual from "../components/SystemVisual";
+import { Reveal, StaggerGroup, StaggerItem } from "../components/MotionPrimitives";
 import {
   clientWork,
   engineeringPrinciples,
@@ -98,12 +99,23 @@ export default function Home({ searchParams }) {
 
       <div className={styles.shell}>
         <section id="top" className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>{copy.eyebrow}</p>
-            <h1>{copy.heroTitle}</h1>
-            <p className={styles.heroLead}>{copy.heroLead}</p>
+          <StaggerGroup
+            className={styles.heroCopy}
+            load
+            delay={0.14}
+            stagger={0.115}
+          >
+            <StaggerItem as="p" className={styles.eyebrow}>
+              {copy.eyebrow}
+            </StaggerItem>
+            <StaggerItem as="h1" distance={18} duration={0.9}>
+              {copy.heroTitle}
+            </StaggerItem>
+            <StaggerItem as="p" className={styles.heroLead}>
+              {copy.heroLead}
+            </StaggerItem>
 
-            <div className={styles.heroActions}>
+            <StaggerItem className={styles.heroActions} distance={12}>
               <a
                 className={styles.primaryButton}
                 href={languageHref(lang, "work")}
@@ -118,41 +130,60 @@ export default function Home({ searchParams }) {
               >
                 {copy.github}
               </a>
-            </div>
+            </StaggerItem>
 
-            <dl className={styles.proofStrip}>
+            <StaggerItem as="dl" className={styles.proofStrip} distance={10}>
               {copy.proof.map(([value, label]) => (
                 <div key={value + label}>
                   <dt>{value}</dt>
                   <dd>{label}</dd>
                 </div>
               ))}
-            </dl>
-          </div>
+            </StaggerItem>
+          </StaggerGroup>
 
-          <div className={styles.heroVisual}>
+          <Reveal
+            className={styles.heroVisual}
+            load
+            direction="right"
+            distance={24}
+            delay={0.28}
+            duration={0.92}
+            scale={0.985}
+          >
             <div className={styles.visualLabel}>
               <span>{copy.visualLabel}</span>
             </div>
             <SystemVisual kind="overview" compact lang={lang} />
-          </div>
+          </Reveal>
         </section>
 
         <section id="work" className={styles.section}>
-          <header className={styles.sectionHeader}>
+          <Reveal as="header" className={styles.sectionHeader}>
             <div>
               <p className={styles.eyebrow}>{copy.selectedWorkEyebrow}</p>
               <h2>{copy.selectedWorkTitle}</h2>
             </div>
             <p>{copy.selectedWorkIntro}</p>
-          </header>
+          </Reveal>
 
           <article className={styles.featuredProject}>
-            <div className={styles.featuredVisual}>
+            <Reveal
+              className={styles.featuredVisual}
+              direction="left"
+              distance={20}
+              amount={0.2}
+            >
               <SystemVisual kind={featured.visual} lang={lang} />
-            </div>
+            </Reveal>
 
-            <div className={styles.featuredCopy}>
+            <Reveal
+              className={styles.featuredCopy}
+              direction="right"
+              distance={20}
+              delay={0.12}
+              amount={0.2}
+            >
               <div className={styles.projectMeta}>
                 <span>{featured.label}</span>
                 <span className={styles.status}>{featured.status}</span>
@@ -180,12 +211,19 @@ export default function Home({ searchParams }) {
                   {copy.repository}
                 </a>
               </div>
-            </div>
+            </Reveal>
           </article>
 
-          <div className={styles.secondaryGrid}>
+          <StaggerGroup className={styles.secondaryGrid} stagger={0.12}>
             {secondary.map((project, index) => (
-              <article className={styles.projectCard} key={project.title}>
+              <StaggerItem
+                as="article"
+                className={styles.projectCard}
+                key={project.title}
+                distance={18}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <SystemVisual kind={project.visual} compact lang={lang} />
 
                 <div className={styles.cardBody}>
@@ -215,21 +253,21 @@ export default function Home({ searchParams }) {
                     )}
                   </div>
                 </div>
-              </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </section>
 
         <section id="background" className={styles.backgroundSection}>
-          <header className={styles.sectionHeader}>
+          <Reveal as="header" className={styles.sectionHeader}>
             <div>
               <p className={styles.eyebrow}>{copy.backgroundEyebrow}</p>
               <h2>{copy.backgroundTitle}</h2>
             </div>
-          </header>
+          </Reveal>
 
-          <div className={styles.backgroundGrid}>
-            <article className={styles.backgroundCard}>
+          <StaggerGroup className={styles.backgroundGrid} stagger={0.13}>
+            <StaggerItem as="article" className={styles.backgroundCard}>
               <div className={styles.cardKicker}>{copy.experienceKicker}</div>
               <h3>{copy.experienceTitle}</h3>
               <p>{copy.experienceBody}</p>
@@ -238,9 +276,9 @@ export default function Home({ searchParams }) {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
+            </StaggerItem>
 
-            <article className={styles.backgroundCard}>
+            <StaggerItem as="article" className={styles.backgroundCard}>
               <div className={styles.cardKicker}>{copy.educationKicker}</div>
               <h3>{copy.educationTitle}</h3>
               <p>{copy.educationBody}</p>
@@ -249,19 +287,24 @@ export default function Home({ searchParams }) {
                   <span key={grade}>{grade}</span>
                 ))}
               </div>
-            </article>
-          </div>
+            </StaggerItem>
+          </StaggerGroup>
         </section>
 
         <section className={styles.clientSection}>
-          <div className={styles.clientHeading}>
+          <Reveal className={styles.clientHeading}>
             <p className={styles.eyebrow}>{copy.clientEyebrow}</p>
             <h2>{copy.clientTitle}</h2>
-          </div>
+          </Reveal>
 
-          <div className={styles.clientGrid}>
+          <StaggerGroup className={styles.clientGrid} stagger={0.11}>
             {clients.map((item) => (
-              <article className={styles.clientCard} key={item.title}>
+              <StaggerItem
+                as="article"
+                className={styles.clientCard}
+                key={item.title}
+                distance={16}
+              >
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
                 <div className={styles.clientActions}>
@@ -276,19 +319,19 @@ export default function Home({ searchParams }) {
                     </a>
                   )}
                 </div>
-              </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </section>
 
         <section id="approach" className={styles.approachSection}>
-          <div className={styles.approachIntro}>
+          <Reveal className={styles.approachIntro}>
             <p className={styles.eyebrow}>{copy.approachEyebrow}</p>
             <h2>{copy.approachTitle}</h2>
             <p>{copy.approachBody}</p>
-          </div>
+          </Reveal>
 
-          <div className={styles.principleList}>
+          <Reveal className={styles.principleList} delay={0.08}>
             {principles.map((principle) => (
               <article key={principle.number}>
                 <span>{principle.number}</span>
@@ -298,9 +341,9 @@ export default function Home({ searchParams }) {
                 </div>
               </article>
             ))}
-          </div>
+          </Reveal>
 
-          <div className={styles.stackBlock}>
+          <Reveal className={styles.stackBlock} delay={0.14}>
             <p className={styles.stackLabel}>{copy.stackLabel}</p>
             <div className={styles.stackList}>
               {stacks.map((group) => (
@@ -310,10 +353,16 @@ export default function Home({ searchParams }) {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </section>
 
-        <section id="contact" className={styles.contact}>
+        <Reveal
+          as="section"
+          id="contact"
+          className={styles.contact}
+          distance={20}
+          amount={0.2}
+        >
           <div>
             <p className={styles.eyebrow}>{copy.contactEyebrow}</p>
             <h2>{copy.contactTitle}</h2>
@@ -339,7 +388,7 @@ export default function Home({ searchParams }) {
               <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{copy.resume}</a>
             </div>
           </div>
-        </section>
+        </Reveal>
 
         <footer className={styles.footer}>
           <span>Francisco Vitar</span>

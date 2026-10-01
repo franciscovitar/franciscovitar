@@ -1,4 +1,5 @@
 import "./globals.scss";
+import MotionProvider from "../components/MotionProvider";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
@@ -98,7 +99,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body><MotionProvider>{children}</MotionProvider></body>
     </html>
   );
 }
