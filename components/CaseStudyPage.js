@@ -120,7 +120,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           >
             <SystemVisual kind={visual} lang={lang} />
           </Reveal>
-        </Reveal>
+        </section>
 
         <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>

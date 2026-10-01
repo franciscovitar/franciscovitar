@@ -221,6 +221,8 @@ export default function Home({ searchParams }) {
                 className={styles.projectCard}
                 key={project.title}
                 distance={18}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SystemVisual kind={project.visual} compact lang={lang} />
 
