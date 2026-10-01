@@ -112,7 +112,6 @@ export const engineeringPrinciples = [
 
 export const clientWork = [
   {
-    mark: "PI",
     title: "Pimp",
     type: "Client product",
     detail:
@@ -121,7 +120,6 @@ export const clientWork = [
     live: "https://www.pimpestetica.com/",
   },
   {
-    mark: "CP",
     title: "Contexto.Psi",
     type: "Client product",
     detail:
@@ -130,21 +128,19 @@ export const clientWork = [
     live: "https://www.contextopsi.com.ar/",
   },
   {
-    mark: "VL",
     title: "Value Latam",
     type: "Maintained frontend",
     detail:
       "Next.js/React frontend with Playwright E2E, motion systems and explicit visual-parity and maintainability constraints.",
     repo: "https://github.com/franciscovitar/valuelatamnuevo3",
+    live: "https://www.valuelatam.com/",
   },
   {
-    mark: "KL",
-    title: "Kinesiología Laprida",
-    type: "Client delivery",
+    title: "Baterías Sur",
+    type: "Client product",
     detail:
-      "Responsive healthcare website delivered for a real clinic with service, facility and direct-contact flows.",
-    repo: "https://github.com/franciscovitar/kinesiologialaprida",
-    live: "https://www.kinesiologialaprida.com/",
+      "Next.js service site for an automotive battery center with diagnosis, service flows, home assistance and direct contact.",
+    live: "https://www.bateriasur.com.ar/",
   },
 ];
 

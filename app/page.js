@@ -264,15 +264,16 @@ export default function Home({ searchParams }) {
             {clients.map((item) => (
               <article className={styles.clientCard} key={item.title}>
                 <div className={styles.clientTop}>
-                  <span className={styles.clientMark}>{item.mark}</span>
                   <span>{item.type}</span>
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
                 <div className={styles.clientActions}>
-                  <a href={item.repo} target="_blank" rel="noreferrer">
-                    GitHub ↗
-                  </a>
+                  {item.repo && (
+                    <a href={item.repo} target="_blank" rel="noreferrer">
+                      GitHub ↗
+                    </a>
+                  )}
                   {item.live && (
                     <a href={item.live} target="_blank" rel="noreferrer">
                       {copy.live}

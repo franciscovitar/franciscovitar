@@ -272,7 +272,7 @@
   margin-bottom: 2.8rem;
 
   h2 {
-    max-width: 13ch;
+    max-width: 22ch;
     margin: 0.55rem 0 0;
     font-size: clamp(2rem, 3.2vw, 3.05rem);
     line-height: 1.02;
@@ -549,25 +549,13 @@
 .clientTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.8rem;
   color: var(--muted-2);
   font-size: 0.62rem;
   font-weight: 760;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.clientMark {
-  display: inline-grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-  background: var(--surface-elevated);
-  color: var(--ink);
-  font-size: 0.63rem;
 }
 
 .clientActions {
@@ -941,4 +929,8 @@
   .proofStrip {
     margin-top: 1rem;
   }
+}
+
+.backgroundSection .sectionHeader h2 {
+  max-width: 26ch;
 }

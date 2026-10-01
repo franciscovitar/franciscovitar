@@ -159,10 +159,10 @@ const clientEs = {
     detail:
       "Frontend Next.js/React con Playwright E2E, motion y controles de paridad visual y mantenibilidad.",
   },
-  "Kinesiología Laprida": {
-    type: "Entrega a cliente",
+  "Baterías Sur": {
+    type: "Producto para cliente",
     detail:
-      "Sitio responsive para una clínica real, con servicios, instalaciones y contacto directo.",
+      "Sitio Next.js para un centro de baterías, con diagnóstico, servicios, asistencia a domicilio y contacto directo.",
   },
 };
 
