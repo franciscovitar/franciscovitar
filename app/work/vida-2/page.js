@@ -7,6 +7,7 @@ export const metadata = {
     "Case study: a private-data personal operating system with explicit source authority, fail-closed behavior and safe-write boundaries.",
 };
 
-export default function VidaCaseStudy() {
-  return <CaseStudyPage study={getCaseStudy("vida")} />;
+export default function VidaCaseStudy({ searchParams }) {
+  const lang = searchParams?.lang === "es" ? "es" : "en";
+  return <CaseStudyPage study={getCaseStudy("vida")} lang={lang} />;
 }

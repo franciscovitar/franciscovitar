@@ -1,80 +1,139 @@
 import Link from "next/link";
+import SystemVisual from "./SystemVisual";
+import { caseStudyUi, localizeCaseStudy } from "../data/caseStudyTranslations";
 import styles from "./CaseStudyPage.module.scss";
 
-export default function CaseStudyPage({ study }) {
+const visualBySlug = {
+  "vida-2": "vida",
+  "football-intelligence": "football",
+  "personal-ai-system": "pas",
+  "la-mediterranea-store": "mediterranea",
+};
+
+function localizedHomeHref(lang) {
+  return lang === "es" ? "/?lang=es#work" : "/#work";
+}
+
+export default function CaseStudyPage({ study, lang = "en" }) {
+  const localized = localizeCaseStudy(study, lang);
+  const ui = caseStudyUi[lang] || caseStudyUi.en;
+  const visual = visualBySlug[localized.slug] || "overview";
+  const languageSuffix = lang === "es" ? "?lang=es" : "";
+
   return (
     <main className={styles.page}>
-      <header className={styles.topbar}>
-        <Link href="/" className={styles.brand}>
-          FV
-        </Link>
-        <nav className={styles.nav} aria-label="Case study navigation">
-          <Link href="/#work">Work</Link>
-          <a href="/Francisco_Vitar_CV_ATS_V1.pdf">Resume</a>
-          <a
-            href="https://github.com/franciscovitar"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-        </nav>
+      <header className={styles.topbarShell}>
+        <div className={styles.topbar}>
+          <Link href={lang === "es" ? "/?lang=es" : "/"} className={styles.wordmark}>
+            Francisco Vitar
+          </Link>
+
+          <nav className={styles.nav} aria-label="Case study navigation">
+            <Link href={localizedHomeHref(lang)}>{ui.selectedWork}</Link>
+
+            <div className={styles.languageSwitch} aria-label="Language">
+              <a
+                href={`/work/${localized.slug}`}
+                className={lang === "en" ? styles.languageActive : undefined}
+              >
+                EN
+              </a>
+              <span>/</span>
+              <a
+                href={`/work/${localized.slug}?lang=es`}
+                className={lang === "es" ? styles.languageActive : undefined}
+              >
+                ES
+              </a>
+            </div>
+
+            <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{ui.resume}</a>
+            <a
+              href="https://github.com/franciscovitar"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {ui.github}
+            </a>
+          </nav>
+        </div>
       </header>
 
       <article className={styles.article}>
-        <div className={styles.hero}>
-          <p className={styles.eyebrow}>{study.eyebrow}</p>
-          <h1>{study.title}</h1>
-          <p className={styles.lead}>{study.summary}</p>
+        <section className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <Link href={localizedHomeHref(lang)} className={styles.backLink}>
+              {ui.back}
+            </Link>
+            <p className={styles.eyebrow}>{localized.eyebrow}</p>
+            <h1>{localized.title}</h1>
+            <p className={styles.lead}>{localized.summary}</p>
 
-          <div className={styles.stack} aria-label="Technology stack">
-            {study.stack.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-
-          {study.links.length > 0 && (
-            <div className={styles.links}>
-              {study.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {link.label} ↗
-                </a>
+            <div className={styles.stack} aria-label={ui.technologyStack}>
+              {localized.stack.map((item) => (
+                <span key={item}>{item}</span>
               ))}
             </div>
-          )}
-        </div>
 
-        <section className={styles.section}>
-          <div className={styles.sectionLabel}>Problem</div>
-          <div>
-            <h2>What the system needed to solve</h2>
-            <p>{study.problem}</p>
+            {localized.links.length > 0 && (
+              <div className={styles.links}>
+                {localized.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className={styles.heroVisual}>
+            <SystemVisual kind={visual} lang={lang} />
           </div>
         </section>
 
         <section className={styles.section}>
-          <div className={styles.sectionLabel}>Constraints</div>
-          <div>
-            <h2>Boundaries that shape the design</h2>
-            <ul className={styles.list}>
-              {study.constraints.map((item) => (
-                <li key={item}>{item}</li>
+          <div className={styles.sectionLabel}>
+            <span>01</span>
+            {ui.problem}
+          </div>
+          <div className={styles.sectionBody}>
+            <h2>{ui.problemTitle}</h2>
+            <p className={styles.largeCopy}>{localized.problem}</p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.sectionLabel}>
+            <span>02</span>
+            {ui.constraints}
+          </div>
+          <div className={styles.sectionBody}>
+            <h2>{ui.constraintsTitle}</h2>
+            <div className={styles.constraintGrid}>
+              {localized.constraints.map((item, index) => (
+                <div key={item}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{item}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
         <section className={styles.section}>
-          <div className={styles.sectionLabel}>Architecture</div>
-          <div>
-            <h2>System path</h2>
-            <div className={styles.architecture}>
-              {study.architecture.map((item, index) => (
+          <div className={styles.sectionLabel}>
+            <span>03</span>
+            {ui.architecture}
+          </div>
+          <div className={styles.sectionBody}>
+            <h2>{ui.architectureTitle}</h2>
+            <div className={styles.architectureTrack}>
+              {localized.architecture.map((item, index) => (
                 <div className={styles.archStep} key={item}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{item}</strong>
@@ -85,68 +144,82 @@ export default function CaseStudyPage({ study }) {
         </section>
 
         <section className={styles.section}>
-          <div className={styles.sectionLabel}>Decisions</div>
-          <div>
-            <h2>Key engineering decisions</h2>
+          <div className={styles.sectionLabel}>
+            <span>04</span>
+            {ui.decisions}
+          </div>
+          <div className={styles.sectionBody}>
+            <h2>{ui.decisionsTitle}</h2>
             <div className={styles.decisionGrid}>
-              {study.decisions.map((decision) => (
-                <div className={styles.decision} key={decision.title}>
+              {localized.decisions.map((decision) => (
+                <article className={styles.decision} key={decision.title}>
                   <h3>{decision.title}</h3>
                   <p>{decision.body}</p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         <section className={styles.section}>
-          <div className={styles.sectionLabel}>Verification</div>
-          <div className={styles.twoColumns}>
-            <div>
-              <h2>How quality is checked</h2>
-              <ul className={styles.list}>
-                {study.verification.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2>Safety / failure handling</h2>
-              <ul className={styles.list}>
-                {study.safety.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+          <div className={styles.sectionLabel}>
+            <span>05</span>
+            {ui.verification}
+          </div>
+          <div className={styles.sectionBody}>
+            <div className={styles.verificationGrid}>
+              <div>
+                <p className={styles.miniLabel}>{ui.quality}</p>
+                <h2>{ui.qualityTitle}</h2>
+                <ul className={styles.list}>
+                  {localized.verification.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className={styles.miniLabel}>{ui.failure}</p>
+                <h2>{ui.failureTitle}</h2>
+                <ul className={styles.list}>
+                  {localized.safety.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
         <section className={styles.statusSection}>
-          <p className={styles.eyebrow}>Current status</p>
-          <h2>What is true today</h2>
-          <p>{study.status}</p>
-          {study.limitations.length > 0 && (
-            <>
-              <h3>Explicit limitations</h3>
-              <ul className={styles.list}>
-                {study.limitations.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </>
-          )}
+          <div>
+            <p className={styles.eyebrow}>{ui.currentStatus}</p>
+            <h2>{ui.currentStatusTitle}</h2>
+          </div>
+          <div>
+            <p>{localized.status}</p>
+            {localized.limitations.length > 0 && (
+              <div className={styles.limitations}>
+                <p className={styles.miniLabel}>{ui.limitations}</p>
+                <ul className={styles.list}>
+                  {localized.limitations.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </section>
 
         <footer className={styles.footer}>
-          <Link href="/#work">← Back to selected work</Link>
+          <Link href={localizedHomeHref(lang)}>{ui.back}</Link>
           <div>
-            <a href="mailto:franvitar15@gmail.com">Email</a>
+            <a href="mailto:franvitar15@gmail.com">{ui.email}</a>
             <a
               href="https://www.linkedin.com/in/franciscovitar/"
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn
+              {ui.linkedin}
             </a>
           </div>
         </footer>

@@ -1,47 +1,83 @@
 export const featuredProjects = [
   {
+    slug: "vida-2",
+    visual: "vida",
     title: "Vida 2.0",
     label: "Public flagship",
     status: "Active",
+    hook:
+      "One product layer over multiple real data authorities — without pretending the web app is the source of truth.",
     summary:
-      "Personal operating system integrating multiple real data authorities without turning the web app into a second source of truth.",
+      "Authenticated personal operating system spanning health, finance, planning and other private domains.",
     stack: ["Next.js", "React", "TypeScript", "Notion", "Google Sheets"],
     evidence:
-      "Source boundaries, authenticated surfaces, fail-closed behavior, safe-write/idempotency rules and automated preflight checks.",
+      "Source boundaries, fail-closed behavior, safe-write/idempotency rules and automated preflight checks.",
+    highlights: [
+      "Real-source failure stays visible",
+      "Private data stays outside the public portfolio",
+      "Reads and writes have different safety boundaries",
+    ],
     href: "/work/vida-2",
     repo: "https://github.com/franciscovitar/vida-2.0",
   },
   {
-    title: "Football Intelligence App",
+    slug: "football-intelligence",
+    visual: "football",
+    title: "Football Intelligence",
     label: "Private flagship",
     status: "In progress",
+    hook:
+      "Research becomes product data only after QA, transactional publication and explicit provenance.",
     summary:
-      "Football intelligence product that separates research, QA publication, PostgreSQL history and read-only public product surfaces.",
+      "PostgreSQL-backed football intelligence product with historical publication state and read-only public surfaces.",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "QA", "Read models"],
     evidence:
-      "Transactional publication, provenance, explicit missingness and a separate read-only database role for the web path.",
+      "Transactional publication, explicit missingness and a separate read-only database role for the web path.",
+    highlights: [
+      "Research and public truth are separated",
+      "The normal web path cannot write publication state",
+      "Missing data is not silently converted to zero",
+    ],
     href: "/work/football-intelligence",
   },
   {
+    slug: "personal-ai-system",
+    visual: "pas",
     title: "Personal AI System",
     label: "Private flagship",
     status: "Active",
+    hook:
+      "A control layer for long-running AI work: canonical truth, bounded permissions, evidence and verification.",
     summary:
-      "Modular system for AI-assisted research, software work, learning and project execution with explicit authority and permission boundaries.",
+      "Modular system coordinating AI-assisted research, software work, learning and project execution over time.",
     stack: ["Python", "GitHub", "Agents", "Evals", "Governance"],
     evidence:
-      "Capability-based routing, canonical-source rules, evidence/provenance, least privilege and continuous-improvement workflows.",
+      "Capability-based routing, canonical-source rules, provenance, least privilege and continuous-improvement workflows.",
+    highlights: [
+      "Current canonical state beats stale chat context",
+      "Tool access follows least privilege",
+      "AI output remains separate from verification",
+    ],
     href: "/work/personal-ai-system",
   },
   {
+    slug: "la-mediterranea-store",
+    visual: "mediterranea",
     title: "La Mediterránea Store",
     label: "Supporting full-stack",
     status: "Integration-ready",
+    hook:
+      "A real storefront with persistent catalog/order data, RLS-backed admin access and server-authoritative checkout.",
     summary:
-      "Full-stack merchandise storefront with persistent catalog/order data, authenticated admin workflows and explicit payment boundaries.",
+      "Next.js/TypeScript merchandise storefront backed by Supabase with explicit payment-integration boundaries.",
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Testing"],
     evidence:
-      "Server-authoritative checkout quotes, RLS-backed admin access, idempotency and backup/export/validated restore.",
+      "Idempotency, backup/export/validated restore and a prepared — not falsely live — payment boundary.",
+    highlights: [
+      "Admin access backed by database authorization",
+      "Checkout totals validated server-side",
+      "Payment integration is labeled honestly as prepared",
+    ],
     href: "/work/la-mediterranea-store",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
   },
@@ -52,32 +88,31 @@ export const engineeringPrinciples = [
     number: "01",
     title: "Source boundaries",
     body:
-      "Make authority explicit: what is canonical, what is derived and what happens when a real source is unavailable.",
+      "Make authority explicit: what is canonical, what is derived and what happens when the real source is unavailable.",
   },
   {
     number: "02",
     title: "Verification",
     body:
-      "Prefer tests, read-back and observable failure states over assuming that a successful build means the behavior is correct.",
+      "Use tests, read-back and observable failure states instead of treating a successful build as proof.",
   },
   {
     number: "03",
     title: "Safe change",
     body:
-      "Use bounded changes, explicit permissions, idempotency and reversible paths where a mistake would be expensive.",
+      "Prefer bounded changes, explicit permissions, idempotency and reversible paths when mistakes are expensive.",
   },
   {
     number: "04",
     title: "AI with accountability",
     body:
-      "Use AI heavily for implementation and orchestration while keeping requirements, evidence, tests and final verification explicit.",
+      "Use AI heavily for implementation and orchestration while keeping requirements, evidence and final verification explicit.",
   },
 ];
 
 export const clientWork = [
   {
     title: "Pimp",
-    type: "Client product",
     detail:
       "Next.js service website with controlled form behavior, data-driven sections and Vitest/Testing Library coverage.",
     repo: "https://github.com/franciscovitar/pimp",
@@ -85,7 +120,6 @@ export const clientWork = [
   },
   {
     title: "Contexto.Psi",
-    type: "Client product",
     detail:
       "Mental-health service platform delivered and maintained around real content, team and onboarding constraints.",
     repo: "https://github.com/franciscovitar/contextopsi",
@@ -93,18 +127,16 @@ export const clientWork = [
   },
   {
     title: "Value Latam",
-    type: "Maintained frontend",
     detail:
-      "Next.js/React frontend with Playwright E2E, motion systems and explicit visual-parity and maintainability constraints.",
+      "Client website built with Next.js/React, Playwright E2E, Resend and a documented motion/maintainability system.",
     repo: "https://github.com/franciscovitar/valuelatamnuevo3",
+    live: "https://www.valuelatam.com/",
   },
   {
-    title: "Kinesiología Laprida",
-    type: "Client delivery",
+    title: "Baterías Sur",
     detail:
-      "Responsive healthcare website delivered for a real clinic with service, facility and direct-contact flows.",
-    repo: "https://github.com/franciscovitar/kinesiologialaprida",
-    live: "https://www.kinesiologialaprida.com/",
+      "Next.js client site with service and diagnostic flows, validated WhatsApp lead handoff and explicit SEO metadata.",
+    live: "https://www.bateriasur.com.ar/",
   },
 ];
 
