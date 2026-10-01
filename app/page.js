@@ -135,7 +135,7 @@ export default function Home({ searchParams }) {
               <span>{copy.visualLabel}</span>
               <span>01 / 04</span>
             </div>
-            <SystemVisual kind="overview" lang={lang} />
+            <SystemVisual kind="overview" compact lang={lang} />
           </div>
         </section>
 
