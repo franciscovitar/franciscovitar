@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SystemVisual from "./SystemVisual";
+import { Reveal, StaggerGroup, StaggerItem } from "./MotionPrimitives";
 import { caseStudyUi, localizeCaseStudy } from "../data/caseStudyTranslations";
 import styles from "./CaseStudyPage.module.scss";
 
@@ -61,22 +62,39 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
       <article className={styles.article}>
         <section className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <Link href={localizedHomeHref(lang)} className={styles.backLink}>
-              {ui.back}
-            </Link>
-            <p className={styles.eyebrow}>{localized.eyebrow}</p>
-            <h1>{localized.title}</h1>
-            <p className={styles.lead}>{localized.summary}</p>
+          <StaggerGroup
+            className={styles.heroCopy}
+            load
+            delay={0.05}
+            stagger={0.07}
+          >
+            <StaggerItem>
+              <Link href={localizedHomeHref(lang)} className={styles.backLink}>
+                {ui.back}
+              </Link>
+            </StaggerItem>
+            <StaggerItem as="p" className={styles.eyebrow}>
+              {localized.eyebrow}
+            </StaggerItem>
+            <StaggerItem as="h1" duration={0.64} distance={18}>
+              {localized.title}
+            </StaggerItem>
+            <StaggerItem as="p" className={styles.lead}>
+              {localized.summary}
+            </StaggerItem>
 
-            <div className={styles.stack} aria-label={ui.technologyStack}>
+            <StaggerItem
+              className={styles.stack}
+              aria-label={ui.technologyStack}
+              distance={10}
+            >
               {localized.stack.map((item) => (
                 <span key={item}>{item}</span>
               ))}
-            </div>
+            </StaggerItem>
 
             {localized.links.length > 0 && (
-              <div className={styles.links}>
+              <StaggerItem className={styles.links} distance={10}>
                 {localized.links.map((link) => (
                   <a
                     key={link.href}
@@ -87,16 +105,24 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                     {link.label} ↗
                   </a>
                 ))}
-              </div>
+              </StaggerItem>
             )}
-          </div>
+          </StaggerGroup>
 
-          <div className={styles.heroVisual}>
+          <Reveal
+            className={styles.heroVisual}
+            load
+            direction="right"
+            distance={24}
+            delay={0.14}
+            duration={0.68}
+            scale={0.985}
+          >
             <SystemVisual kind={visual} lang={lang} />
-          </div>
-        </section>
+          </Reveal>
+        </Reveal>
 
-        <section className={styles.section}>
+        <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>
             <span>01</span>
             {ui.problem}
@@ -105,9 +131,9 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             <h2>{ui.problemTitle}</h2>
             <p className={styles.largeCopy}>{localized.problem}</p>
           </div>
-        </section>
+        </Reveal>
 
-        <section className={styles.section}>
+        <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>
             <span>02</span>
             {ui.constraints}
@@ -123,9 +149,9 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               ))}
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        <section className={styles.section}>
+        <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>
             <span>03</span>
             {ui.architecture}
@@ -141,9 +167,9 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               ))}
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        <section className={styles.section}>
+        <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>
             <span>04</span>
             {ui.decisions}
@@ -159,9 +185,9 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               ))}
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        <section className={styles.section}>
+        <Reveal as="section" className={styles.section} distance={18} amount={0.12}>
           <div className={styles.sectionLabel}>
             <span>05</span>
             {ui.verification}
@@ -188,9 +214,14 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               </div>
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        <section className={styles.statusSection}>
+        <Reveal
+          as="section"
+          className={styles.statusSection}
+          distance={18}
+          amount={0.18}
+        >
           <div>
             <p className={styles.eyebrow}>{ui.currentStatus}</p>
             <h2>{ui.currentStatusTitle}</h2>
@@ -208,7 +239,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               </div>
             )}
           </div>
-        </section>
+        </Reveal>
 
         <footer className={styles.footer}>
           <Link href={localizedHomeHref(lang)}>{ui.back}</Link>
