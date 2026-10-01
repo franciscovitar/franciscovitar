@@ -1,0 +1,225 @@
+.frame {
+  --visual-accent: #7c9cff;
+  position: relative;
+  overflow: hidden;
+  min-height: 410px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--visual-accent) 20%, transparent), transparent 28%),
+    #101217;
+  color: #f4f6fb;
+  box-shadow:
+    0 28px 70px rgba(21, 24, 31, 0.15),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.windowBar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.67rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dots {
+  display: flex;
+  gap: 0.35rem;
+
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+
+    &:first-child {
+      background: var(--visual-accent);
+    }
+  }
+}
+
+.canvas {
+  min-height: 310px;
+  padding: 1.45rem;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.flow {
+  display: grid;
+  gap: 0;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.flowItem {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.node {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 58px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(23, 26, 33, 0.9);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+
+  strong {
+    font-size: 0.9rem;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+}
+
+.nodeKey {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 30px;
+  border: 1px solid color-mix(in srgb, var(--visual-accent) 48%, transparent);
+  border-radius: 999px;
+  color: var(--visual-accent);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.connector {
+  display: grid;
+  place-items: center;
+  height: 18px;
+
+  span {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 18px;
+    background: linear-gradient(var(--visual-accent), rgba(255, 255, 255, 0.14));
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      border-right: 1px solid var(--visual-accent);
+      border-bottom: 1px solid var(--visual-accent);
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--visual-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--visual-accent) 12%, transparent);
+}
+
+.compact {
+  min-height: 340px;
+
+  .canvas {
+    min-height: 240px;
+    padding: 1rem;
+  }
+
+  .node {
+    min-height: 48px;
+    padding: 0.6rem 0.7rem;
+
+    strong {
+      font-size: 0.78rem;
+    }
+  }
+
+  .connector,
+  .connector span {
+    height: 12px;
+  }
+}
+
+.overview {
+  --visual-accent: #84a0ff;
+
+  .nodeKey {
+    width: 44px;
+  }
+}
+
+.vida {
+  --visual-accent: #77e6bd;
+}
+
+.football {
+  --visual-accent: #ffcc68;
+}
+
+.pas {
+  --visual-accent: #b69cff;
+}
+
+.mediterranea {
+  --visual-accent: #7ac9ff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--visual-accent) 8%, transparent);
+  }
+}
+
+@media (max-width: 680px) {
+  .frame {
+    min-height: 340px;
+  }
+
+  .canvas {
+    min-height: 240px;
+    padding: 1rem;
+  }
+
+  .node {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+}

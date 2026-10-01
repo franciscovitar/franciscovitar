@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SystemVisual from "../components/SystemVisual";
 import {
   clientWork,
   engineeringPrinciples,
@@ -8,25 +9,42 @@ import {
 } from "../data/portfolio";
 import styles from "./page.module.scss";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
+  const featured = featuredProjects[0];
+  const secondary = featuredProjects.slice(1);
+
   return (
     <main>
-      <header className={styles.header}>
-        <a href="#top" className={styles.brand} aria-label="Francisco Vitar home">
-          FV
-        </a>
-        <nav className={styles.nav} aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <a
-          href="/Francisco_Vitar_CV_ATS_V1.pdf"
-          className={styles.resumeLink}
-        >
-          Resume
-        </a>
+      <header className={styles.headerShell}>
+        <div className={styles.header}>
+          <a href="#top" className={styles.wordmark}>
+            Francisco Vitar
+          </a>
+
+          <nav className={styles.nav} aria-label="Primary navigation">
+            <a href="#work">Work</a>
+            <a href="#background">Background</a>
+            <a href="#approach">Approach</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div className={styles.headerRight}>
+            <span className={styles.availability}>
+              <span />
+              Open to software roles
+            </span>
+            <a
+              href="/Francisco_Vitar_CV_ATS_V1.pdf"
+              className={styles.resumeLink}
+            >
+              Resume ↗
+            </a>
+          </div>
+        </div>
       </header>
 
       <div className={styles.shell}>
@@ -36,18 +54,18 @@ export default function Home() {
               Software Engineer · Full-Stack Product Engineer
             </p>
             <h1>
-              Building reliable product systems across web, data and AI-assisted
-              workflows.
+              I build product systems across web, data and AI — with verification
+              built in.
             </h1>
             <p className={styles.heroLead}>
-              Fourth-year Systems Engineering student at UTN. I build with
-              TypeScript/Next.js, PostgreSQL/SQL, Python and automated
-              verification, and I use AI as an engineering accelerator with
-              explicit evidence and review boundaries.
+              Fourth-year Systems Engineering student at UTN and founder of
+              Genova. My strongest work spans TypeScript/Next.js, PostgreSQL,
+              product delivery and AI-assisted engineering.
             </p>
+
             <div className={styles.heroActions}>
               <a className={styles.primaryButton} href="#work">
-                View case studies
+                Explore selected work
               </a>
               <a
                 className={styles.secondaryButton}
@@ -57,132 +75,168 @@ export default function Home() {
               >
                 GitHub ↗
               </a>
-              <a
-                className={styles.secondaryButton}
-                href="/Francisco_Vitar_CV_ATS_V1.pdf"
-              >
-                Resume
-              </a>
             </div>
-          </div>
 
-          <aside className={styles.heroPanel} aria-label="Current focus">
-            <p className={styles.panelLabel}>Current focus</p>
-            <dl>
+            <dl className={styles.proofStrip}>
               <div>
-                <dt>Roles</dt>
-                <dd>Software Engineer · Full-Stack / Product Engineer</dd>
+                <dt>2022—Now</dt>
+                <dd>Founder & Software Engineer · Genova</dd>
               </div>
               <div>
-                <dt>Core stack</dt>
-                <dd>TypeScript · Next.js · PostgreSQL · Python · Testing</dd>
+                <dt>4th year</dt>
+                <dd>Systems Engineering · UTN</dd>
               </div>
               <div>
-                <dt>Current systems</dt>
-                <dd>Vida 2.0 · Football Intelligence · Personal AI System</dd>
-              </div>
-              <div>
-                <dt>Based in</dt>
-                <dd>Córdoba, Argentina</dd>
+                <dt>5+</dt>
+                <dd>Client websites / products delivered</dd>
               </div>
             </dl>
-          </aside>
+          </div>
+
+          <div className={styles.heroVisual}>
+            <div className={styles.visualLabel}>
+              <span>What my work connects</span>
+              <span>01 / 04</span>
+            </div>
+            <SystemVisual kind="overview" />
+          </div>
         </section>
 
         <section id="work" className={styles.section}>
-          <div className={styles.sectionHeader}>
+          <header className={styles.sectionHeader}>
             <div>
-              <p className={styles.eyebrow}>Selected engineering work</p>
-              <h2>Systems I can walk through end to end.</h2>
+              <p className={styles.eyebrow}>Selected work</p>
+              <h2>A few systems worth opening.</h2>
             </div>
             <p>
-              The focus is not repository count. These projects show product,
-              data, verification and safety decisions under real constraints.
+              The homepage stays concise. Each case study goes deeper into the
+              problem, architecture, trade-offs, verification and current limits.
             </p>
-          </div>
+          </header>
 
-          <div className={styles.projectGrid}>
-            {featuredProjects.map((project, index) => (
+          <article className={styles.featuredProject}>
+            <div className={styles.featuredVisual}>
+              <SystemVisual kind={featured.visual} />
+            </div>
+
+            <div className={styles.featuredCopy}>
+              <div className={styles.projectMeta}>
+                <span>{featured.label}</span>
+                <span className={styles.status}>{featured.status}</span>
+              </div>
+              <h3>{featured.title}</h3>
+              <p className={styles.projectHook}>{featured.hook}</p>
+
+              <ul className={styles.highlightList}>
+                {featured.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className={styles.techLine}>
+                {featured.stack.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+
+              <div className={styles.projectActions}>
+                <Link href={featured.href}>Open case study →</Link>
+                <a href={featured.repo} target="_blank" rel="noreferrer">
+                  Repository ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <div className={styles.secondaryGrid}>
+            {secondary.map((project, index) => (
               <article className={styles.projectCard} key={project.title}>
-                <div className={styles.cardTopline}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{project.label}</span>
-                  <span>{project.status}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p className={styles.projectSummary}>{project.summary}</p>
-                <div className={styles.chips}>
-                  {project.stack.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-                <p className={styles.evidence}>{project.evidence}</p>
-                <div className={styles.cardActions}>
-                  <Link href={project.href}>Read case study →</Link>
-                  {project.repo && (
-                    <a href={project.repo} target="_blank" rel="noreferrer">
-                      Repository ↗
-                    </a>
-                  )}
+                <SystemVisual kind={project.visual} compact />
+
+                <div className={styles.cardBody}>
+                  <div className={styles.projectMeta}>
+                    <span>{String(index + 2).padStart(2, "0")} · {project.label}</span>
+                    <span className={styles.status}>{project.status}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.hook}</p>
+
+                  <div className={styles.techLine}>
+                    {project.stack.slice(0, 4).map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+
+                  <div className={styles.projectActions}>
+                    <Link href={project.href}>Case study →</Link>
+                    {project.repo && (
+                      <a href={project.repo} target="_blank" rel="noreferrer">
+                        Repo ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
+        <section id="background" className={styles.backgroundSection}>
+          <header className={styles.sectionHeader}>
             <div>
-              <p className={styles.eyebrow}>Engineering approach</p>
-              <h2>How I try to make change safer and more legible.</h2>
+              <p className={styles.eyebrow}>Background</p>
+              <h2>Real delivery plus strong systems fundamentals.</h2>
             </div>
-          </div>
-          <div className={styles.principleGrid}>
-            {engineeringPrinciples.map((principle) => (
-              <div className={styles.principle} key={principle.number}>
-                <span>{principle.number}</span>
-                <h3>{principle.title}</h3>
-                <p>{principle.body}</p>
+          </header>
+
+          <div className={styles.backgroundGrid}>
+            <article className={styles.backgroundCard}>
+              <div className={styles.cardKicker}>Experience · 2022—Present</div>
+              <h3>Founder & Software Engineer — Genova</h3>
+              <p>
+                I founded a bootstrapped software/web product studio and delivered
+                products for real third-party clients across healthcare,
+                wellness, legal and local-service businesses.
+              </p>
+              <ul>
+                <li>Requirements and information architecture</li>
+                <li>Implementation, integrations and deployment</li>
+                <li>Maintenance and regression-oriented iteration</li>
+              </ul>
+            </article>
+
+            <article className={styles.backgroundCard}>
+              <div className={styles.cardKicker}>Education · 2023—Present</div>
+              <h3>Systems Engineering — UTN</h3>
+              <p>
+                Fourth academic year in 2026, with strong results in core
+                software and systems coursework.
+              </p>
+              <div className={styles.gradeCloud}>
+                {selectedGrades.map((grade) => (
+                  <span key={grade}>{grade}</span>
+                ))}
               </div>
-            ))}
+            </article>
           </div>
         </section>
 
-        <section id="experience" className={styles.splitSection}>
-          <div>
-            <p className={styles.eyebrow}>Experience</p>
-            <h2>Founder & Software Engineer — Genova</h2>
-            <p className={styles.largeMuted}>2022–Present · Córdoba, Argentina</p>
+        <section className={styles.clientSection}>
+          <div className={styles.clientHeading}>
+            <p className={styles.eyebrow}>Selected client delivery</p>
+            <h2>Software shipped for real organizations.</h2>
           </div>
-          <div className={styles.bodyCopy}>
-            <p>
-              I founded a bootstrapped software/web product studio and delivered
-              5+ websites/products for real third-party clients across healthcare,
-              wellness, legal and local-service businesses.
-            </p>
-            <p>
-              My role covers requirements, information architecture,
-              implementation, integrations, deployment and iteration. The work
-              also includes maintaining products after launch and adding stronger
-              regression/verification practices where they reduce change risk.
-            </p>
-          </div>
-        </section>
 
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <div>
-              <p className={styles.eyebrow}>Selected client delivery</p>
-              <h2>Commercial work, kept secondary to the engineering story.</h2>
-            </div>
-          </div>
           <div className={styles.clientGrid}>
             {clientWork.map((item) => (
               <article className={styles.clientCard} key={item.title}>
-                <span>{item.type}</span>
+                <div className={styles.clientTop}>
+                  <span className={styles.clientMark}>{item.mark}</span>
+                  <span>{item.type}</span>
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
-                <div>
+                <div className={styles.clientActions}>
                   <a href={item.repo} target="_blank" rel="noreferrer">
                     GitHub ↗
                   </a>
@@ -197,65 +251,69 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="education" className={styles.educationSection}>
-          <div className={styles.educationIntro}>
-            <p className={styles.eyebrow}>Education</p>
-            <h2>Systems Engineering — UTN</h2>
-            <p>2023–Present · fourth academic year in 2026</p>
-          </div>
-          <div>
-            <p className={styles.educationLead}>
-              Strong academic performance in core software and systems
-              coursework adds a second signal alongside project artifacts.
+        <section id="approach" className={styles.approachSection}>
+          <div className={styles.approachIntro}>
+            <p className={styles.eyebrow}>How I work</p>
+            <h2>Build fast. Keep the boundaries explicit.</h2>
+            <p>
+              AI helps me move faster, but the standard is still a system I can
+              explain, inspect and verify.
             </p>
-            <div className={styles.gradeGrid}>
-              {selectedGrades.map((grade) => (
-                <span key={grade}>{grade}</span>
+          </div>
+
+          <div className={styles.principleList}>
+            {engineeringPrinciples.map((principle) => (
+              <article key={principle.number}>
+                <span>{principle.number}</span>
+                <div>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.stackBlock}>
+            <p className={styles.stackLabel}>Core stack in substantive work</p>
+            <div className={styles.stackList}>
+              {stackGroups.map((group) => (
+                <div key={group.label}>
+                  <span>{group.label}</span>
+                  <p>{group.value}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <div>
-              <p className={styles.eyebrow}>Stack</p>
-              <h2>Tools I use in substantive project work.</h2>
-            </div>
-          </div>
-          <div className={styles.stackList}>
-            {stackGroups.map((group) => (
-              <div key={group.label}>
-                <span>{group.label}</span>
-                <p>{group.value}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="contact" className={styles.contact}>
-          <p className={styles.eyebrow}>Contact</p>
-          <h2>
-            Interested in Software Engineer and Full-Stack / Product Engineer
-            roles where I can own real product problems end to end.
-          </h2>
-          <div className={styles.contactLinks}>
-            <a href="mailto:franvitar15@gmail.com">Email</a>
-            <a
-              href="https://www.linkedin.com/in/franciscovitar/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn ↗
-            </a>
-            <a
-              href="https://github.com/franciscovitar"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub ↗
-            </a>
-            <a href="/Francisco_Vitar_CV_ATS_V1.pdf">Resume</a>
+          <div>
+            <p className={styles.eyebrow}>Contact</p>
+            <h2>Looking for a software engineer who can own product problems end to end?</h2>
+          </div>
+          <div className={styles.contactRight}>
+            <p>
+              I&apos;m interested in Software Engineer and Full-Stack / Product
+              Engineer roles where product, data and engineering quality matter.
+            </p>
+            <div className={styles.contactLinks}>
+              <a href="mailto:franvitar15@gmail.com">Email</a>
+              <a
+                href="https://www.linkedin.com/in/franciscovitar/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn ↗
+              </a>
+              <a
+                href="https://github.com/franciscovitar"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub ↗
+              </a>
+              <a href="/Francisco_Vitar_CV_ATS_V1.pdf">Resume ↗</a>
+            </div>
           </div>
         </section>
 
