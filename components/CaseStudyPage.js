@@ -65,8 +65,8 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           <StaggerGroup
             className={styles.heroCopy}
             load
-            delay={0.05}
-            stagger={0.07}
+            delay={0.14}
+            stagger={0.11}
           >
             <StaggerItem>
               <Link href={localizedHomeHref(lang)} className={styles.backLink}>
@@ -76,7 +76,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             <StaggerItem as="p" className={styles.eyebrow}>
               {localized.eyebrow}
             </StaggerItem>
-            <StaggerItem as="h1" duration={0.64} distance={18}>
+            <StaggerItem as="h1" duration={0.9} distance={18}>
               {localized.title}
             </StaggerItem>
             <StaggerItem as="p" className={styles.lead}>
@@ -114,8 +114,8 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             load
             direction="right"
             distance={24}
-            delay={0.14}
-            duration={0.68}
+            delay={0.28}
+            duration={0.92}
             scale={0.985}
           >
             <SystemVisual kind={visual} lang={lang} />

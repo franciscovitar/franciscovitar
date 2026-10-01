@@ -214,7 +214,7 @@ export default function Home({ searchParams }) {
             </Reveal>
           </article>
 
-          <StaggerGroup className={styles.secondaryGrid} stagger={0.08}>
+          <StaggerGroup className={styles.secondaryGrid} stagger={0.12}>
             {secondary.map((project, index) => (
               <StaggerItem
                 as="article"
@@ -266,7 +266,7 @@ export default function Home({ searchParams }) {
             </div>
           </Reveal>
 
-          <StaggerGroup className={styles.backgroundGrid} stagger={0.09}>
+          <StaggerGroup className={styles.backgroundGrid} stagger={0.13}>
             <StaggerItem as="article" className={styles.backgroundCard}>
               <div className={styles.cardKicker}>{copy.experienceKicker}</div>
               <h3>{copy.experienceTitle}</h3>
@@ -297,7 +297,7 @@ export default function Home({ searchParams }) {
             <h2>{copy.clientTitle}</h2>
           </Reveal>
 
-          <StaggerGroup className={styles.clientGrid} stagger={0.07}>
+          <StaggerGroup className={styles.clientGrid} stagger={0.11}>
             {clients.map((item) => (
               <StaggerItem
                 as="article"
@@ -331,7 +331,7 @@ export default function Home({ searchParams }) {
             <p>{copy.approachBody}</p>
           </Reveal>
 
-          <Reveal className={styles.principleList} delay={0.14}>
+          <Reveal className={styles.principleList} delay={0.08}>
             {principles.map((principle) => (
               <article key={principle.number}>
                 <span>{principle.number}</span>
@@ -343,7 +343,7 @@ export default function Home({ searchParams }) {
             ))}
           </Reveal>
 
-          <Reveal className={styles.stackBlock} delay={0.08}>
+          <Reveal className={styles.stackBlock} delay={0.14}>
             <p className={styles.stackLabel}>{copy.stackLabel}</p>
             <div className={styles.stackList}>
               {stacks.map((group) => (
