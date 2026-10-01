@@ -55,56 +55,56 @@ export const homepageCopy = {
     footerRole: "Software Engineer · Córdoba, Argentina",
   },
   es: {
-    nav: { work: "Proyectos", background: "Trayectoria", approach: "Enfoque", contact: "Contacto" },
-    availability: "Abierto a roles de software",
+    nav: { work: "Proyectos", background: "Perfil", approach: "Cómo trabajo", contact: "Contacto" },
+    availability: "Disponible para roles de software",
     resume: "CV ↗",
     eyebrow: "Software Engineer · Full-Stack Product Engineer",
-    heroTitle: "Construyo sistemas de producto entre web, datos e IA — con verificación integrada.",
+    heroTitle: "Construyo productos web, de datos e IA — con verificación desde el diseño.",
     heroLead:
-      "Estudiante de cuarto año de Ingeniería en Sistemas en UTN y fundador de Genova. Mi trabajo más fuerte combina TypeScript/Next.js, PostgreSQL, entrega de producto e ingeniería asistida por IA.",
-    primaryCta: "Ver proyectos seleccionados",
+      "Estoy en 4.º año de Ingeniería en Sistemas en UTN y fundé Genova. Trabajo principalmente con TypeScript/Next.js, PostgreSQL, producto e ingeniería asistida por IA.",
+    primaryCta: "Ver proyectos",
     github: "GitHub ↗",
     proof: [
       ["2022—Hoy", "Founder & Software Engineer · Genova"],
       ["4.º año", "Ingeniería en Sistemas · UTN"],
-      ["40+", "Webs / productos para clientes construidos y entregados"],
+      ["40+", "Webs / productos entregados a clientes"],
     ],
-    visualLabel: "Qué conecta mi trabajo",
-    selectedWorkEyebrow: "Trabajo seleccionado",
-    selectedWorkTitle: "Algunos sistemas que vale la pena abrir.",
+    visualLabel: "Cómo se conecta mi trabajo",
+    selectedWorkEyebrow: "Proyectos seleccionados",
+    selectedWorkTitle: "Sistemas que muestran cómo trabajo.",
     selectedWorkIntro:
-      "La portada va al punto. Cada caso de estudio profundiza en el problema, arquitectura, decisiones, verificación y límites actuales.",
-    openCaseStudy: "Abrir caso de estudio →",
+      "La home va al punto. En cada caso de estudio explico el problema, la arquitectura, las decisiones, cómo lo verifico y qué falta.",
+    openCaseStudy: "Ver caso de estudio →",
     caseStudy: "Caso de estudio →",
     repository: "Repositorio ↗",
     repo: "Repo ↗",
-    backgroundEyebrow: "Trayectoria",
-    backgroundTitle: "Entrega real más fundamentos sólidos de sistemas.",
-    experienceKicker: "Experiencia · 2022—Presente",
+    backgroundEyebrow: "Perfil",
+    backgroundTitle: "Experiencia real y base sólida en sistemas.",
+    experienceKicker: "Experiencia · 2022—Hoy",
     experienceTitle: "Founder & Software Engineer — Genova",
     experienceBody:
-      "Fundé un estudio bootstrapped de software/web y construí y entregué más de 40 webs/productos para clientes reales de salud, bienestar, legal y servicios locales.",
+      "Fundé Genova en 2022 y desde entonces construí y entregué 40+ webs y productos para clientes reales de salud, bienestar, legal y servicios.",
     experienceBullets: [
-      "Relevamiento e arquitectura de información",
-      "Implementación, integraciones y despliegue",
-      "Mantenimiento e iteración con foco en regresiones",
+      "Relevamiento y arquitectura de información",
+      "Desarrollo, integraciones y deploy",
+      "Mantenimiento y cambios con control de regresiones",
     ],
-    educationKicker: "Educación · 2023—Presente",
+    educationKicker: "Educación · 2023—Hoy",
     educationTitle: "Ingeniería en Sistemas — UTN",
     educationBody:
-      "Cuarto año académico en 2026, con resultados fuertes en materias centrales de software y sistemas.",
-    clientEyebrow: "Entrega a clientes seleccionada",
-    clientTitle: "Software entregado a organizaciones reales.",
+      "En 2026 curso 4.º año, con buen desempeño en materias centrales de software y sistemas.",
+    clientEyebrow: "Trabajo con clientes",
+    clientTitle: "Software que ya usan organizaciones reales.",
     live: "Sitio ↗",
     approachEyebrow: "Cómo trabajo",
-    approachTitle: "Construir rápido. Mantener los límites explícitos.",
+    approachTitle: "Avanzar rápido, sin perder control.",
     approachBody:
-      "La IA me ayuda a avanzar más rápido, pero el estándar sigue siendo un sistema que puedo explicar, inspeccionar y verificar.",
-    stackLabel: "Stack principal en trabajo sustantivo",
+      "Uso IA para acelerar el trabajo, pero no doy nada por válido sin poder explicarlo, inspeccionarlo y verificarlo.",
+    stackLabel: "Stack principal",
     contactEyebrow: "Contacto",
-    contactTitle: "¿Buscás un software engineer que pueda hacerse cargo de problemas de producto de punta a punta?",
+    contactTitle: "¿Buscás a alguien que pueda llevar un problema de producto de punta a punta?",
     contactBody:
-      "Me interesan roles de Software Engineer y Full-Stack / Product Engineer donde importen el producto, los datos y la calidad de ingeniería.",
+      "Busco roles de Software Engineer o Full-Stack / Product Engineer donde importen el producto, los datos y la calidad técnica.",
     email: "Email",
     linkedin: "LinkedIn ↗",
     footerRole: "Software Engineer · Córdoba, Argentina",
@@ -113,33 +113,33 @@ export const homepageCopy = {
 
 const projectEs = {
   "vida-2": {
-    label: "Proyecto principal público",
+    label: "Principal · Público",
     status: "Activo",
     hook:
-      "Una capa de producto sobre múltiples fuentes reales de datos — sin fingir que la web es la fuente de verdad.",
+      "Una capa de producto sobre varias fuentes reales, sin convertir la web en otra fuente de verdad.",
     highlights: [
-      "Las fallas de fuentes reales se muestran",
-      "Los datos privados quedan fuera del portfolio público",
-      "Lecturas y escrituras tienen límites de seguridad distintos",
+      "Las fallas de fuentes reales quedan visibles",
+      "Los datos privados no salen al portfolio público",
+      "Lecturas y escrituras tienen límites distintos",
     ],
   },
   "football-intelligence": {
-    label: "Proyecto principal privado",
+    label: "Principal · Privado",
     status: "En progreso",
     hook:
-      "La investigación se convierte en datos de producto sólo después de QA, publicación transaccional y procedencia explícita.",
+      "La investigación llega al producto sólo después de QA, publicación transaccional y trazabilidad.",
   },
   "personal-ai-system": {
-    label: "Proyecto principal privado",
+    label: "Principal · Privado",
     status: "Activo",
     hook:
-      "Una capa de control para trabajo con IA de largo plazo: verdad canónica, permisos acotados, evidencia y verificación.",
+      "Una capa de control para trabajo con IA de largo plazo: estado canónico, permisos, evidencia y verificación.",
   },
   "la-mediterranea-store": {
-    label: "Full-stack de soporte",
+    label: "Full-stack · Soporte",
     status: "Listo para integrar",
     hook:
-      "Una tienda real con catálogo/pedidos persistentes, acceso admin respaldado por RLS y checkout autoritativo del lado servidor.",
+      "Storefront real con catálogo y pedidos persistentes, admin con RLS y checkout validado por servidor.",
   },
 };
 
@@ -147,45 +147,45 @@ const clientEs = {
   Pimp: {
     type: "Producto para cliente",
     detail:
-      "Sitio de servicios en Next.js con comportamiento de formulario controlado, secciones data-driven y cobertura con Vitest/Testing Library.",
+      "Sitio en Next.js con formularios controlados, secciones data-driven y tests con Vitest/Testing Library.",
   },
   "Contexto.Psi": {
     type: "Producto para cliente",
     detail:
-      "Plataforma de salud mental entregada y mantenida alrededor de contenido, equipo y restricciones reales de onboarding.",
+      "Plataforma de salud mental entregada y mantenida con contenido, equipo y flujos reales.",
   },
   "Value Latam": {
     type: "Frontend mantenido",
     detail:
-      "Frontend Next.js/React con E2E en Playwright, sistema de motion y restricciones explícitas de paridad visual y mantenibilidad.",
+      "Frontend Next.js/React con Playwright E2E, motion y controles de paridad visual y mantenibilidad.",
   },
   "Kinesiología Laprida": {
     type: "Entrega a cliente",
     detail:
-      "Sitio responsive para una clínica real con servicios, instalaciones y flujos de contacto directo.",
+      "Sitio responsive para una clínica real, con servicios, instalaciones y contacto directo.",
   },
 };
 
 const principleEs = {
   "Source boundaries": {
-    title: "Límites de fuente",
+    title: "Fuentes claras",
     body:
-      "Hacer explícita la autoridad: qué es canónico, qué es derivado y qué ocurre cuando la fuente real no está disponible.",
+      "Dejar claro qué es canónico, qué es derivado y qué pasa cuando una fuente real no está disponible.",
   },
   Verification: {
     title: "Verificación",
     body:
-      "Usar tests, read-back y estados de falla observables en lugar de tratar un build exitoso como prueba.",
+      "Usar tests, read-back y fallas observables en lugar de tomar un build exitoso como prueba.",
   },
   "Safe change": {
-    title: "Cambio seguro",
+    title: "Cambios seguros",
     body:
-      "Preferir cambios acotados, permisos explícitos, idempotencia y caminos reversibles cuando los errores son costosos.",
+      "Preferir cambios acotados, permisos explícitos, idempotencia y caminos reversibles.",
   },
   "AI with accountability": {
-    title: "IA con responsabilidad",
+    title: "IA con control",
     body:
-      "Usar IA intensamente para implementación y orquestación manteniendo explícitos requisitos, evidencia y verificación final.",
+      "Usar IA intensamente sin perder requisitos, evidencia ni verificación final.",
   },
 };
 
@@ -200,12 +200,12 @@ const stackEs = {
 const gradeEs = {
   "Software Development": "Desarrollo de Software",
   Databases: "Bases de Datos",
-  "Backend Applications": "Aplicaciones Backend",
+  "Backend Applications": "Backend de Aplicaciones",
   "Programming Paradigms": "Paradigmas de Programación",
   "Operating Systems": "Sistemas Operativos",
   "Algorithms & Data Structures": "Algoritmos y Estructuras de Datos",
   "Computer Architecture": "Arquitectura de Computadoras",
-  "Data Communications": "Comunicaciones de Datos",
+  "Data Communications": "Comunicación de Datos",
 };
 
 export function localizeProject(project, lang) {
