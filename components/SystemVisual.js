@@ -114,8 +114,8 @@ const flowVariants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.08,
-      staggerChildren: 0.1,
+      delayChildren: 0.16,
+      staggerChildren: 0.14,
     },
   },
 };
@@ -126,8 +126,8 @@ const flowItemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.46,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.68,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -138,9 +138,9 @@ const connectorVariants = {
     opacity: 1,
     scaleY: 1,
     transition: {
-      delay: 0.12,
-      duration: 0.28,
-      ease: [0.22, 1, 0.36, 1],
+      delay: 0.16,
+      duration: 0.42,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -151,9 +151,9 @@ const footerVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.42,
-      duration: 0.38,
-      ease: [0.22, 1, 0.36, 1],
+      delay: 0.62,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };

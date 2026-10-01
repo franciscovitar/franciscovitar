@@ -4,7 +4,7 @@ export const homepageCopy = {
     availability: "Open to software roles",
     resume: "Resume ↗",
     eyebrow: "Software Engineer · Full-Stack Product Engineer",
-    heroTitle: "I build product systems across web, data and AI — with verification built in.",
+    heroTitle: "I build reliable software across web, data and AI.",
     heroLead:
       "Fourth-year Systems Engineering student at UTN and founder of Genova. My strongest work spans TypeScript/Next.js, PostgreSQL, product delivery and AI-assisted engineering.",
     primaryCta: "Explore selected work",
@@ -59,7 +59,7 @@ export const homepageCopy = {
     availability: "Disponible para roles de software",
     resume: "CV ↗",
     eyebrow: "Software Engineer · Full-Stack Product Engineer",
-    heroTitle: "Construyo productos web, de datos e IA — con verificación desde el diseño.",
+    heroTitle: "Construyo software confiable con web, datos e IA.",
     heroLead:
       "Estoy en 4.º año de Ingeniería en Sistemas en UTN y fundé Genova. Trabajo principalmente con TypeScript/Next.js, PostgreSQL, producto e ingeniería asistida por IA.",
     primaryCta: "Ver proyectos",

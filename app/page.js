@@ -102,13 +102,13 @@ export default function Home({ searchParams }) {
           <StaggerGroup
             className={styles.heroCopy}
             load
-            delay={0.06}
-            stagger={0.075}
+            delay={0.14}
+            stagger={0.115}
           >
             <StaggerItem as="p" className={styles.eyebrow}>
               {copy.eyebrow}
             </StaggerItem>
-            <StaggerItem as="h1" distance={18} duration={0.64}>
+            <StaggerItem as="h1" distance={18} duration={0.9}>
               {copy.heroTitle}
             </StaggerItem>
             <StaggerItem as="p" className={styles.heroLead}>
@@ -147,8 +147,8 @@ export default function Home({ searchParams }) {
             load
             direction="right"
             distance={24}
-            delay={0.14}
-            duration={0.68}
+            delay={0.28}
+            duration={0.92}
             scale={0.985}
           >
             <div className={styles.visualLabel}>
@@ -181,7 +181,7 @@ export default function Home({ searchParams }) {
               className={styles.featuredCopy}
               direction="right"
               distance={20}
-              delay={0.06}
+              delay={0.12}
               amount={0.2}
             >
               <div className={styles.projectMeta}>
@@ -222,7 +222,7 @@ export default function Home({ searchParams }) {
                 key={project.title}
                 distance={18}
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               >
                 <SystemVisual kind={project.visual} compact lang={lang} />
 
@@ -331,7 +331,7 @@ export default function Home({ searchParams }) {
             <p>{copy.approachBody}</p>
           </Reveal>
 
-          <Reveal className={styles.principleList} delay={0.04}>
+          <Reveal className={styles.principleList} delay={0.14}>
             {principles.map((principle) => (
               <article key={principle.number}>
                 <span>{principle.number}</span>

@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 
 export const MOTION = {
   ease: {
-    enter: [0.22, 1, 0.36, 1],
+    enter: [0.16, 1, 0.3, 1],
   },
   duration: {
-    micro: 0.2,
-    reveal: 0.52,
-    hero: 0.64,
+    micro: 0.28,
+    reveal: 0.72,
+    hero: 0.9,
   },
   distance: {
     subtle: 14,
     reveal: 22,
   },
   stagger: {
-    tight: 0.06,
-    group: 0.08,
+    tight: 0.09,
+    group: 0.11,
   },
 };
 
