@@ -1,134 +1,75 @@
-# Francisco Vitar Portfolio
+# Francisco Vitar
 
-A premium, ultra-modern portfolio landing page built with Next.js, featuring glassmorphism design, smooth animations, and modern web technologies.
+**Software Engineer · Full-Stack Product Engineer**  
+TypeScript · React/Next.js · PostgreSQL/SQL · Python · Testing · AI-native engineering
 
-## 🚀 Features
+I’m a fourth-year Systems Engineering student at UTN building product systems across web, data and AI-assisted workflows.
 
-- **Modern Design**: Dark theme with neon gradients, glassmorphism panels, and elegant typography
-- **Performance Optimized**: Lighthouse 90+ score with Next.js optimization
-- **Responsive Design**: Mobile-first approach ensuring perfect display across all devices
-- **Smooth Animations**: Framer Motion animations with prefers-reduced-motion support
-- **SEO Optimized**: Complete SEO setup with metadata, OpenGraph, and structured data
-- **Accessibility**: WCAG compliant with proper focus management and keyboard navigation
+I care about explicit source boundaries, testable behavior, privacy, safe/reversible change and using AI with verification rather than treating generated output as automatically correct.
 
-## 🛠️ Tech Stack
+## Selected engineering work
 
-- **Framework**: Next.js 14+ (App Router)
-- **Language**: JavaScript (JSX)
-- **Styling**: SCSS Modules
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Fonts**: Google Fonts (Inter + Sora)
+### [Vida 2.0](https://github.com/franciscovitar/vida-2.0)
+Personal operating system built with **Next.js, React and TypeScript**.
 
-## 📦 Installation
+- Integrates Notion, Google Sheets and Google Calendar with explicit source-of-truth boundaries.
+- Uses authenticated/private surfaces, fail-closed behavior, feature flags and safe-write/idempotency rules.
+- Includes product areas for health, nutrition, gym, finance, projects, tasks, learning and automations.
+- Uses automated checks and environment/preflight validation.
 
-1. Clone the repository:
+### [La Mediterránea Store](https://github.com/franciscovitar/la-mediterranea-store)
+Full-stack storefront built with **Next.js, TypeScript and Supabase**.
 
-```bash
-git clone https://github.com/franciscovitar/portfolio.git
-cd portfolio
-```
+- Relational product/variant/stock/order persistence.
+- Magic Link authentication and RLS-backed admin authorization.
+- Server-authoritative checkout quoting and idempotency.
+- Backup/export/validated restore and automated verification.
+- Mercado Pago integration boundary is prepared, not represented as live.
 
-2. Install dependencies:
+### [Value Latam](https://github.com/franciscovitar/valuelatamnuevo3)
+Production-oriented frontend work with **Next.js, React, Playwright, Sass and GSAP**.
 
-```bash
-npm install
-```
+- End-to-end regression coverage for navigation, forms, internal pages and reduced-motion behavior.
+- Explicit visual-parity and maintainability constraints.
+- Deliberate technical-debt decisions when refactoring risk is higher than expected value.
 
-3. Start the development server:
+### [Pimp](https://github.com/franciscovitar/pimp)
+Client delivery example built with **Next.js, React, Sass and Vitest/Testing Library**.
 
-```bash
-npm run dev
-```
+- Controlled form validation/submission and truthful success/error states.
+- Data-driven services and reusable components.
+- Tests around form behavior, service data and navigation.
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Current private systems
 
-## 🏗️ Project Structure
+### Football Intelligence App — active / in progress
+Current football-intelligence product built with **Next.js, TypeScript and PostgreSQL**.
 
-```
-portfolio/
-├── app/                  # Next.js App Router
-│   ├── cv/              # CV download page
-│   ├── layout.js        # Root layout
-│   ├── page.js          # Home page
-│   └── globals.scss     # Global styles
-├── components/          # React components
-│   ├── Navbar.js
-│   ├── Hero.js
-│   ├── Projects.js
-│   ├── About.js
-│   ├── Skills.js
-│   ├── Process.js
-│   ├── Contact.js
-│   └── Footer.js
-├── data/               # Project data
-│   └── projects.js
-├── styles/             # SCSS modules and variables
-│   ├── variables.scss
-│   └── mixins.scss
-└── public/            # Static assets
-```
+The active implementation uses transactional publication, QA-gated research packages, deterministic public read models and a separate read-only web database role. The active repository is private while the product is still being built; a public case study is planned.
 
-## 🎨 Design System
+### Personal AI System
+Private modular system for AI-assisted research, software work, learning and execution.
 
-- **Colors**: Dark theme with cyan, purple, and pink accents
-- **Typography**: Inter (body) + Sora (headings)
-- **Spacing**: Consistent spacing scale using CSS custom properties
-- **Effects**: Glassmorphism, neon glows, and smooth transitions
+It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. A sanitized public case study is planned rather than exposing the private repository.
 
-## 📄 Content
+## Engineering stack
 
-The portfolio showcases Francisco Vitar's work as a Full-Stack Web Developer, including:
+**Languages:** TypeScript, JavaScript, Python, SQL, HTML, CSS/SCSS  
+**Frontend / product:** React, Next.js  
+**Data / backend:** PostgreSQL, Supabase, API integrations  
+**Quality:** automated testing, Playwright, Vitest, Git/GitHub, CI/check workflows  
+**AI-assisted engineering:** agent/tool orchestration, evidence and verification workflows
 
-- **Professional Experience**: Founder @ Genova
-- **Education**: 4th-year Systems Engineering student at UTN
-- **Client Projects**: 5+ premium websites delivered
-- **Technical Skills**: React, Next.js, JavaScript, SCSS, Python, and more
+## Education
 
-## 🔧 Customization
+**Universidad Tecnológica Nacional (UTN)** — Systems Engineering  
+2023–Present · fourth academic year in 2026
 
-To customize the portfolio for your own use:
+Selected technical results include **9/10 in Software Development, Databases, Backend Applications and Programming Paradigms**, plus **8/10 in Operating Systems, Algorithms & Data Structures, Computer Architecture and Data Communications**.
 
-1. Update personal information in `/data/projects.js`
-2. Modify content in all components
-3. Adjust colors and styling in `/styles/variables.scss`
-4. Replace placeholder assets in `/public/`
-5. Update metadata in `/app/layout.js`
+## Contact
 
-## 📱 Responsive Breakpoints
+- [LinkedIn](https://www.linkedin.com/in/franciscovitar/)
+- [Email](mailto:franvitar15@gmail.com)
 
-- Mobile: < 768px
-- Tablet: 768px - 1023px
-- Desktop: 1024px+
-- Large Desktop: 1280px+
-
-## ⚡ Performance
-
-- Lighthouse Performance: 90+
-- First Contentful Paint: < 1.5s
-- Largest Contentful Paint: < 2.5s
-- Cumulative Layout Shift: < 0.1
-
-## 🌐 SEO Features
-
-- Complete metadata setup
-- OpenGraph and Twitter cards
-- Structured data (JSON-LD)
-- Automatic sitemap generation
-- Proper robots.txt
-
-## 📞 Contact
-
-Francisco Vitar
-
-- Email: franvitar15@gmail.com
-- LinkedIn: [https://www.linkedin.com/in/franciscovitar/](https://www.linkedin.com/in/franciscovitar/)
-- GitHub: [https://github.com/franciscovitar](https://github.com/franciscovitar)
-
-## 📄 License
-
-This project is for portfolio purposes. Feel free to use it as inspiration, but please update it with your own content and information.
-
----
-
-Built with ❤️ in Argentina using Next.js, React, and modern web technologies.
+Interested in **Software Engineer** and **Full-Stack / Product Engineer** roles.

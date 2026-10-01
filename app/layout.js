@@ -1,63 +1,49 @@
-import { Inter, Sora } from "next/font/google";
 import "./globals.scss";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
 
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  display: "swap",
-});
-
-const siteUrl = "https://franciscovitar.com";
-const ogImagePath = "/og-image.png"; // asegurate de tenerlo en /public
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata = {
-  title: "Francisco Vitar | Full-Stack Web Developer & Founder @ Genova",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Francisco Vitar | Software Engineer",
+    template: "%s | Francisco Vitar",
+  },
   description:
-    "Full-Stack Web Developer specializing in service websites and landing pages with mobile-first UX and conversion-driven structure. Based in Córdoba, Argentina.",
-  keywords:
-    "Francisco Vitar, Full-Stack Developer, Web Developer, React, Next.js, Frontend, Backend, Córdoba Argentina, Genova, Landing Pages",
-  authors: [
-    {
-      name: "Francisco Vitar",
-      url: "https://www.linkedin.com/in/franciscovitar/",
-    },
+    "Software Engineer and Full-Stack Product Engineer building reliable product systems across web, data and AI-assisted workflows.",
+  keywords: [
+    "Francisco Vitar",
+    "Software Engineer",
+    "Full-Stack Product Engineer",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "PostgreSQL",
+    "Python",
+    "Software Testing",
+    "AI-native engineering",
+    "Córdoba Argentina",
   ],
+  authors: [{ name: "Francisco Vitar" }],
   creator: "Francisco Vitar",
   publisher: "Francisco Vitar",
-  metadataBase: new URL(siteUrl),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Francisco Vitar | Full-Stack Web Developer",
-    description:
-      "Full-Stack Web Developer building premium service websites and landing pages with focus on conversion and mobile-first UX.",
-    url: siteUrl,
-    siteName: "Francisco Vitar Portfolio",
-    images: [
-      {
-        url: ogImagePath,
-        width: 1200,
-        height: 630,
-        alt: "Francisco Vitar - Full-Stack Web Developer",
-      },
-    ],
-    locale: "en_US",
     type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Francisco Vitar",
+    title: "Francisco Vitar | Software Engineer",
+    description:
+      "Software Engineer building reliable product systems across web, data and AI-assisted workflows.",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Francisco Vitar | Full-Stack Web Developer",
+    card: "summary",
+    title: "Francisco Vitar | Software Engineer",
     description:
-      "Full-Stack Web Developer building premium service websites and landing pages.",
-    images: [ogImagePath],
+      "Software Engineer building reliable product systems across web, data and AI-assisted workflows.",
   },
   robots: {
     index: true,
@@ -71,11 +57,7 @@ export const metadata = {
     },
   },
   ...(googleVerification
-    ? {
-        verification: {
-          google: googleVerification,
-        },
-      }
+    ? { verification: { google: googleVerification } }
     : {}),
 };
 
@@ -84,35 +66,36 @@ const personJsonLd = {
   "@type": "Person",
   name: "Francisco Vitar",
   url: siteUrl,
-  image: `${siteUrl}${ogImagePath}`,
   sameAs: [
     "https://www.linkedin.com/in/franciscovitar/",
     "https://github.com/franciscovitar",
   ],
-  jobTitle: "Full-Stack Web Developer",
+  jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",
     name: "Genova",
   },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Universidad Tecnológica Nacional",
+  },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Córdoba",
-    addressCountry: "Argentina",
+    addressCountry: "AR",
   },
   email: "mailto:franvitar15@gmail.com",
   description:
-    "4th-year Systems Engineering student building service websites and landing pages end-to-end with focus on mobile-first UX and conversion-driven structure.",
+    "Fourth-year Systems Engineering student and Software Engineer building full-stack products, data-backed applications and AI-assisted engineering workflows.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
       <body>{children}</body>

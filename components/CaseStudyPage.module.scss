@@ -1,0 +1,275 @@
+.page {
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 0 auto;
+  padding: 1.15rem 0;
+  background: rgba(11, 13, 16, 0.9);
+  border-bottom: 1px solid rgba(40, 49, 59, 0.7);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
+.article {
+  width: min(calc(100% - 2rem), 980px);
+  margin: 0 auto;
+  padding: 5.5rem 0 3rem;
+}
+
+.hero {
+  padding-bottom: 4.5rem;
+  border-bottom: 1px solid var(--line);
+
+  h1 {
+    max-width: 12ch;
+    margin: 0.45rem 0 1.25rem;
+    font-size: clamp(3.1rem, 9vw, 6.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+}
+
+.eyebrow,
+.sectionLabel {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 0;
+  color: #c8d0d8;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+  line-height: 1.55;
+}
+
+.stack,
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 2rem;
+}
+
+.stack span {
+  padding: 0.48rem 0.72rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.links a {
+  color: var(--accent);
+  font-weight: 750;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 4.2rem 0;
+  border-bottom: 1px solid var(--line);
+
+  h2 {
+    margin: 0 0 1.1rem;
+    font-size: clamp(1.65rem, 4vw, 2.55rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    color: var(--muted);
+    line-height: 1.65;
+
+    &::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+  }
+}
+
+.architecture {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.archStep {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--surface);
+
+  span {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  strong {
+    font-size: 0.98rem;
+  }
+}
+
+.decisionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.decision {
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface);
+
+  h3 {
+    margin: 0 0 0.65rem;
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.94rem;
+  }
+}
+
+.twoColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.statusSection {
+  margin-top: 4.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(155, 245, 198, 0.3);
+  border-radius: 1rem;
+  background: var(--accent-soft);
+
+  h2 {
+    margin: 0.45rem 0 1rem;
+    font-size: clamp(1.7rem, 4vw, 2.45rem);
+  }
+
+  h3 {
+    margin: 1.8rem 0 0;
+  }
+
+  > p:not(.eyebrow) {
+    color: #ced8d2;
+    line-height: 1.7;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 3.3rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    gap: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .article {
+    padding-top: 3.5rem;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 3.2rem 0;
+  }
+
+  .decisionGrid,
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}
