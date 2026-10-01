@@ -1,18 +1,19 @@
 :root {
-  color-scheme: light;
-  --bg: #f3f0e8;
-  --surface: #fffdf8;
-  --surface-soft: #ebe7dc;
-  --ink: #121418;
-  --muted: #656b73;
-  --muted-2: #878c92;
-  --line: rgba(18, 20, 24, 0.14);
-  --line-strong: rgba(18, 20, 24, 0.24);
-  --accent: #2457ff;
-  --accent-soft: rgba(36, 87, 255, 0.08);
-  --accent-ink: #ffffff;
-  --dark: #101217;
-  --dark-soft: #171a21;
+  color-scheme: dark;
+  --bg: #0b0e13;
+  --surface: #11151d;
+  --surface-soft: #151a24;
+  --surface-elevated: #191f2b;
+  --ink: #f5f7fb;
+  --muted: #a5acb8;
+  --muted-2: #737c8d;
+  --line: rgba(255, 255, 255, 0.085);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --accent: #a78bfa;
+  --accent-strong: #c4b5fd;
+  --accent-soft: rgba(167, 139, 250, 0.11);
+  --accent-ink: #0a0d12;
+  --success: #56d6a9;
   --max-width: 1180px;
   --radius: 22px;
 }
@@ -34,7 +35,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 88% 2%, rgba(36, 87, 255, 0.08), transparent 27rem),
+    radial-gradient(circle at 85% -5%, rgba(130, 99, 230, 0.14), transparent 34rem),
+    radial-gradient(circle at -8% 45%, rgba(71, 139, 125, 0.07), transparent 30rem),
     var(--bg);
   color: var(--ink);
   font-family:
@@ -56,7 +58,7 @@ textarea {
 
 ::selection {
   background: var(--accent);
-  color: white;
+  color: var(--accent-ink);
 }
 
 :focus-visible {

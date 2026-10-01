@@ -1,55 +1,109 @@
 import styles from "./SystemVisual.module.scss";
 
 const visuals = {
-  overview: {
-    label: "Engineering loop",
-    footer: "Build → verify → ship → learn",
-    nodes: [
-      ["Product", "Interfaces people can actually use"],
-      ["Data", "Sources, persistence and authority"],
-      ["Quality", "Tests, QA and failure visibility"],
-      ["AI", "Tool orchestration with review boundaries"],
-    ],
+  en: {
+    overview: {
+      label: "Engineering loop",
+      footer: "Build → verify → ship → learn",
+      nodes: [
+        ["Product", "Interfaces people can actually use"],
+        ["Data", "Sources, persistence and authority"],
+        ["Quality", "Tests, QA and failure visibility"],
+        ["AI", "Tool orchestration with review boundaries"],
+      ],
+    },
+    vida: {
+      label: "Vida 2.0 · system map",
+      footer: "Private sources stay private",
+      nodes: [
+        ["01", "Notion · Sheets · Calendar"],
+        ["02", "Typed adapters"],
+        ["03", "Authenticated product surfaces"],
+        ["04", "Safe-write policy boundaries"],
+      ],
+    },
+    football: {
+      label: "Football Intelligence · data path",
+      footer: "Public web path remains read-only",
+      nodes: [
+        ["01", "Source research"],
+        ["02", "QA-approved package"],
+        ["03", "PostgreSQL publication"],
+        ["04", "Current / public read models"],
+      ],
+    },
+    pas: {
+      label: "Personal AI System · control path",
+      footer: "AI output is not treated as proof",
+      nodes: [
+        ["01", "User goal"],
+        ["02", "Routing + permissions"],
+        ["03", "Canonical evidence"],
+        ["04", "Verified state update"],
+      ],
+    },
+    mediterranea: {
+      label: "La Mediterránea · commerce path",
+      footer: "Prepared payment boundary ≠ live payment",
+      nodes: [
+        ["01", "Storefront"],
+        ["02", "Server checkout quote"],
+        ["03", "Supabase + RLS"],
+        ["04", "Admin / payment boundaries"],
+      ],
+    },
   },
-  vida: {
-    label: "Vida 2.0 · system map",
-    footer: "Private sources stay private",
-    nodes: [
-      ["01", "Notion · Sheets · Calendar"],
-      ["02", "Typed adapters"],
-      ["03", "Authenticated product surfaces"],
-      ["04", "Safe-write policy boundaries"],
-    ],
-  },
-  football: {
-    label: "Football Intelligence · data path",
-    footer: "Public web path remains read-only",
-    nodes: [
-      ["01", "Source research"],
-      ["02", "QA-approved package"],
-      ["03", "PostgreSQL publication"],
-      ["04", "Current / public read models"],
-    ],
-  },
-  pas: {
-    label: "Personal AI System · control path",
-    footer: "AI output is not treated as proof",
-    nodes: [
-      ["01", "User goal"],
-      ["02", "Routing + permissions"],
-      ["03", "Canonical evidence"],
-      ["04", "Verified state update"],
-    ],
-  },
-  mediterranea: {
-    label: "La Mediterránea · commerce path",
-    footer: "Prepared payment boundary ≠ live payment",
-    nodes: [
-      ["01", "Storefront"],
-      ["02", "Server checkout quote"],
-      ["03", "Supabase + RLS"],
-      ["04", "Admin / payment boundaries"],
-    ],
+  es: {
+    overview: {
+      label: "Loop de ingeniería",
+      footer: "Construir → verificar → entregar → aprender",
+      nodes: [
+        ["Producto", "Interfaces que la gente puede usar de verdad"],
+        ["Datos", "Fuentes, persistencia y autoridad"],
+        ["Calidad", "Tests, QA y fallas visibles"],
+        ["IA", "Orquestación de herramientas con límites de revisión"],
+      ],
+    },
+    vida: {
+      label: "Vida 2.0 · mapa del sistema",
+      footer: "Las fuentes privadas siguen siendo privadas",
+      nodes: [
+        ["01", "Notion · Sheets · Calendar"],
+        ["02", "Adaptadores tipados"],
+        ["03", "Superficies autenticadas de producto"],
+        ["04", "Límites de políticas de safe-write"],
+      ],
+    },
+    football: {
+      label: "Football Intelligence · camino de datos",
+      footer: "La web pública sigue siendo read-only",
+      nodes: [
+        ["01", "Investigación de fuentes"],
+        ["02", "Paquete aprobado por QA"],
+        ["03", "Publicación en PostgreSQL"],
+        ["04", "Read models current / public"],
+      ],
+    },
+    pas: {
+      label: "Personal AI System · camino de control",
+      footer: "La salida de IA no se trata como prueba",
+      nodes: [
+        ["01", "Objetivo del usuario"],
+        ["02", "Routing + permisos"],
+        ["03", "Evidencia canónica"],
+        ["04", "Actualización de estado verificada"],
+      ],
+    },
+    mediterranea: {
+      label: "La Mediterránea · camino comercial",
+      footer: "Límite de pago preparado ≠ pago live",
+      nodes: [
+        ["01", "Storefront"],
+        ["02", "Quote de checkout del servidor"],
+        ["03", "Supabase + RLS"],
+        ["04", "Límites admin / pagos"],
+      ],
+    },
   },
 };
 
@@ -57,8 +111,10 @@ export default function SystemVisual({
   kind = "overview",
   compact = false,
   className = "",
+  lang = "en",
 }) {
-  const visual = visuals[kind] || visuals.overview;
+  const language = visuals[lang] ? lang : "en";
+  const visual = visuals[language][kind] || visuals[language].overview;
 
   return (
     <div

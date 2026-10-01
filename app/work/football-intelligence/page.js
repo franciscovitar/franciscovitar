@@ -7,6 +7,7 @@ export const metadata = {
     "Case study: an in-progress PostgreSQL-backed football intelligence product with transactional publication, provenance and read-only public access.",
 };
 
-export default function FootballCaseStudy() {
-  return <CaseStudyPage study={getCaseStudy("football")} />;
+export default function FootballCaseStudy({ searchParams }) {
+  const lang = searchParams?.lang === "es" ? "es" : "en";
+  return <CaseStudyPage study={getCaseStudy("football")} lang={lang} />;
 }
