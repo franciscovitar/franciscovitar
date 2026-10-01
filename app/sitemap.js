@@ -1,18 +1,20 @@
 export default function sitemap() {
-  const baseUrl = "https://franciscovitar.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/cv`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+  const paths = [
+    "",
+    "/cv",
+    "/work/vida-2",
+    "/work/football-intelligence",
+    "/work/personal-ai-system",
+    "/work/la-mediterranea-store",
   ];
+
+  return paths.map((path, index) => ({
+    url: baseUrl + path,
+    lastModified: new Date(),
+    changeFrequency: path === "" ? "monthly" : "quarterly",
+    priority: index === 0 ? 1 : 0.8,
+  }));
 }

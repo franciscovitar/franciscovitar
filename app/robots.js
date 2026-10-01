@@ -1,9 +1,12 @@
 export default function robots() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://franciscovitar.com/sitemap.xml",
+    sitemap: baseUrl + "/sitemap.xml",
   };
 }

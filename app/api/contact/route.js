@@ -1,12 +1,18 @@
 import { Resend } from "resend";
 
-const resend = new Resend("re_5MvA5P9w_AV77NaxungrK67U4YBmuDLhW");
-
 export async function POST(req) {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    return Response.json(
+      { ok: false, error: "Contact form is not configured." },
+      { status: 503 },
+    );
+  }
+
   try {
     const { name, email, company, message } = await req.json();
 
-    // Validación mínima
     if (!name || !email || !message) {
       return Response.json(
         { ok: false, error: "Missing fields" },
@@ -14,15 +20,17 @@ export async function POST(req) {
       );
     }
 
+    const resend = new Resend(apiKey);
+
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: ["franvitar15@gmail.com"],
       replyTo: email,
-      subject: `Project inquiry from ${name}`,
+      subject: "Portfolio inquiry from " + name,
       text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        company ? `Company: ${company}` : null,
+        "Name: " + name,
+        "Email: " + email,
+        company ? "Company: " + company : null,
         "",
         "Message:",
         message,
@@ -32,7 +40,10 @@ export async function POST(req) {
     });
 
     return Response.json({ ok: true });
-  } catch (err) {
-    return Response.json({ ok: false, error: "Server error" }, { status: 500 });
+  } catch {
+    return Response.json(
+      { ok: false, error: "Server error" },
+      { status: 500 },
+    );
   }
 }
