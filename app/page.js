@@ -133,7 +133,6 @@ export default function Home({ searchParams }) {
           <div className={styles.heroVisual}>
             <div className={styles.visualLabel}>
               <span>{copy.visualLabel}</span>
-              <span>01 / 04</span>
             </div>
             <SystemVisual kind="overview" compact lang={lang} />
           </div>
@@ -263,9 +262,6 @@ export default function Home({ searchParams }) {
           <div className={styles.clientGrid}>
             {clients.map((item) => (
               <article className={styles.clientCard} key={item.title}>
-                <div className={styles.clientTop}>
-                  <span>{item.type}</span>
-                </div>
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
                 <div className={styles.clientActions}>

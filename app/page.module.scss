@@ -526,7 +526,7 @@
 
 .clientCard {
   display: flex;
-  min-height: 285px;
+  min-height: 238px;
   flex-direction: column;
   padding: 1.15rem;
   border: 1px solid var(--line);
@@ -534,7 +534,7 @@
   background: var(--surface);
 
   h3 {
-    margin: 1.4rem 0 0.6rem;
+    margin: 0 0 0.6rem;
     font-size: 1.12rem;
   }
 
@@ -544,18 +544,6 @@
     font-size: 0.81rem;
     line-height: 1.62;
   }
-}
-
-.clientTop {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.8rem;
-  color: var(--muted-2);
-  font-size: 0.62rem;
-  font-weight: 760;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .clientActions {
@@ -773,6 +761,12 @@
   .hero,
   .featuredProject {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
   }
 
   .heroCopy h1 {

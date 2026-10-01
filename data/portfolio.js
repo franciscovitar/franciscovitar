@@ -113,7 +113,6 @@ export const engineeringPrinciples = [
 export const clientWork = [
   {
     title: "Pimp",
-    type: "Client product",
     detail:
       "Next.js service website with controlled form behavior, data-driven sections and Vitest/Testing Library coverage.",
     repo: "https://github.com/franciscovitar/pimp",
@@ -121,7 +120,6 @@ export const clientWork = [
   },
   {
     title: "Contexto.Psi",
-    type: "Client product",
     detail:
       "Mental-health service platform delivered and maintained around real content, team and onboarding constraints.",
     repo: "https://github.com/franciscovitar/contextopsi",
@@ -129,17 +127,15 @@ export const clientWork = [
   },
   {
     title: "Value Latam",
-    type: "Maintained frontend",
     detail:
-      "Next.js/React frontend with Playwright E2E, motion systems and explicit visual-parity and maintainability constraints.",
+      "Client website built with Next.js/React, Playwright E2E, Resend and a documented motion/maintainability system.",
     repo: "https://github.com/franciscovitar/valuelatamnuevo3",
     live: "https://www.valuelatam.com/",
   },
   {
     title: "Baterías Sur",
-    type: "Client product",
     detail:
-      "Next.js service site for an automotive battery center with diagnosis, service flows, home assistance and direct contact.",
+      "Next.js client site with service and diagnostic flows, validated WhatsApp lead handoff and explicit SEO metadata.",
     live: "https://www.bateriasur.com.ar/",
   },
 ];

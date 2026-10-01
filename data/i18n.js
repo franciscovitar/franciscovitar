@@ -18,7 +18,7 @@ export const homepageCopy = {
     selectedWorkEyebrow: "Selected work",
     selectedWorkTitle: "A few systems worth opening.",
     selectedWorkIntro:
-      "The homepage stays concise. Each case study goes deeper into the problem, architecture, trade-offs, verification and current limits.",
+      "Each case study shows the problem, engineering decisions, verification and the system’s current state.",
     openCaseStudy: "Open case study →",
     caseStudy: "Case study →",
     repository: "Repository ↗",
@@ -47,7 +47,7 @@ export const homepageCopy = {
       "AI helps me move faster, but the standard is still a system I can explain, inspect and verify.",
     stackLabel: "Core stack in substantive work",
     contactEyebrow: "Contact",
-    contactTitle: "Looking for a software engineer who can own product problems end to end?",
+    contactTitle: "Looking for an engineer who can own a product end to end?",
     contactBody:
       "I’m interested in Software Engineer and Full-Stack / Product Engineer roles where product, data and engineering quality matter.",
     email: "Email",
@@ -73,7 +73,7 @@ export const homepageCopy = {
     selectedWorkEyebrow: "Proyectos seleccionados",
     selectedWorkTitle: "Sistemas que muestran cómo trabajo.",
     selectedWorkIntro:
-      "La home va al punto. En cada caso de estudio explico el problema, la arquitectura, las decisiones, cómo lo verifico y qué falta.",
+      "Cada caso muestra el problema, las decisiones técnicas, cómo lo verifiqué y el estado real del sistema.",
     openCaseStudy: "Ver caso de estudio →",
     caseStudy: "Caso de estudio →",
     repository: "Repositorio ↗",
@@ -102,7 +102,7 @@ export const homepageCopy = {
       "Uso IA para acelerar el trabajo, pero no doy nada por válido sin poder explicarlo, inspeccionarlo y verificarlo.",
     stackLabel: "Stack principal",
     contactEyebrow: "Contacto",
-    contactTitle: "¿Buscás a alguien que pueda llevar un problema de producto de punta a punta?",
+    contactTitle: "¿Buscás un Software Engineer para llevar un producto de punta a punta?",
     contactBody:
       "Busco roles de Software Engineer o Full-Stack / Product Engineer donde importen el producto, los datos y la calidad técnica.",
     email: "Email",
@@ -145,24 +145,20 @@ const projectEs = {
 
 const clientEs = {
   Pimp: {
-    type: "Producto para cliente",
     detail:
       "Sitio en Next.js con formularios controlados, secciones data-driven y tests con Vitest/Testing Library.",
   },
   "Contexto.Psi": {
-    type: "Producto para cliente",
     detail:
       "Plataforma de salud mental entregada y mantenida con contenido, equipo y flujos reales.",
   },
   "Value Latam": {
-    type: "Frontend mantenido",
     detail:
-      "Frontend Next.js/React con Playwright E2E, motion y controles de paridad visual y mantenibilidad.",
+      "Web de cliente en Next.js/React con Playwright E2E, Resend y un sistema documentado de motion y mantenibilidad.",
   },
   "Baterías Sur": {
-    type: "Producto para cliente",
     detail:
-      "Sitio Next.js para un centro de baterías, con diagnóstico, servicios, asistencia a domicilio y contacto directo.",
+      "Web de cliente en Next.js con flujos de diagnóstico y servicios, formulario validado hacia WhatsApp y metadata SEO explícita.",
   },
 };
 
@@ -190,11 +186,26 @@ const principleEs = {
 };
 
 const stackEs = {
-  Languages: "Lenguajes",
-  Product: "Producto",
-  "Data / backend": "Datos / backend",
-  Quality: "Calidad",
-  "AI-assisted engineering": "Ingeniería asistida por IA",
+  Languages: {
+    label: "Lenguajes",
+    value: "TypeScript · JavaScript · Python · SQL · HTML · CSS/SCSS",
+  },
+  Product: {
+    label: "Producto",
+    value: "React · Next.js · desarrollo web responsive",
+  },
+  "Data / backend": {
+    label: "Datos / backend",
+    value: "PostgreSQL · Supabase · modelado relacional · integraciones API",
+  },
+  Quality: {
+    label: "Calidad",
+    value: "Testing automatizado · Playwright · Vitest · Git/GitHub · workflows de CI/check",
+  },
+  "AI-assisted engineering": {
+    label: "Ingeniería asistida por IA",
+    value: "Orquestación de agentes/herramientas · workflows de evidencia y verificación",
+  },
 };
 
 const gradeEs = {
@@ -225,7 +236,7 @@ export function localizePrinciple(item, lang) {
 
 export function localizeStackGroup(item, lang) {
   if (lang !== "es") return item;
-  return { ...item, label: stackEs[item.label] || item.label };
+  return { ...item, ...(stackEs[item.label] || {}) };
 }
 
 export function localizeGrade(grade, lang) {
