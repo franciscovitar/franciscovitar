@@ -3,7 +3,9 @@
 **Software Engineer · Full-Stack Product Engineer**  
 TypeScript · React/Next.js · PostgreSQL/SQL · Python · Testing · AI-native engineering
 
-I’m a fourth-year Systems Engineering student at UTN building product systems across web, data and AI-assisted workflows.
+**Portfolio:** [franciscovitar.vercel.app](https://franciscovitar.vercel.app/)
+
+I’m a fourth-year Systems Engineering student at UTN building product systems across web, data and AI-assisted workflows. I’ve also built and delivered **40+ client websites/products** for real third-party clients.
 
 I care about explicit source boundaries, testable behavior, privacy, safe/reversible change and using AI with verification rather than treating generated output as automatically correct.
 
@@ -45,12 +47,12 @@ Client delivery example built with **Next.js, React, Sass and Vitest/Testing Lib
 ### Football Intelligence App — active / in progress
 Current football-intelligence product built with **Next.js, TypeScript and PostgreSQL**.
 
-The active implementation uses transactional publication, QA-gated research packages, deterministic public read models and a separate read-only web database role. The active repository is private while the product is still being built; a public case study is planned.
+The active implementation uses transactional publication, QA-gated research packages, deterministic public read models and a separate read-only web database role. The active repository is private while the product is still being built. [Read the public engineering case study](https://franciscovitar.vercel.app/work/football-intelligence).
 
 ### Personal AI System
 Private modular system for AI-assisted research, software work, learning and execution.
 
-It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. A sanitized public case study is planned rather than exposing the private repository.
+It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. [Read the sanitized public case study](https://franciscovitar.vercel.app/work/personal-ai-system) rather than exposing the private repository or private system state.
 
 ## Engineering stack
 
