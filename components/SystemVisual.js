@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./SystemVisual.module.scss";
 
 const visuals = {
@@ -107,6 +110,54 @@ const visuals = {
   },
 };
 
+const flowVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.16,
+      staggerChildren: 0.14,
+    },
+  },
+};
+
+const flowItemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.68,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+const connectorVariants = {
+  hidden: { opacity: 0, scaleY: 0 },
+  visible: {
+    opacity: 1,
+    scaleY: 1,
+    transition: {
+      delay: 0.16,
+      duration: 0.42,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+const footerVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.62,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 export default function SystemVisual({
   kind = "overview",
   compact = false,
@@ -138,27 +189,46 @@ export default function SystemVisual({
       </div>
 
       <div className={styles.canvas}>
-        <div className={styles.flow}>
+        <motion.div
+          className={styles.flow}
+          variants={flowVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.38 }}
+        >
           {visual.nodes.map(([key, value], index) => (
-            <div className={styles.flowItem} key={key + value}>
+            <motion.div
+              className={styles.flowItem}
+              variants={flowItemVariants}
+              key={key + value}
+            >
               <div className={styles.node}>
                 <span className={styles.nodeKey}>{key}</span>
                 <strong>{value}</strong>
               </div>
               {index < visual.nodes.length - 1 && (
                 <div className={styles.connector} aria-hidden="true">
-                  <span />
+                  <motion.span
+                    variants={connectorVariants}
+                    style={{ transformOrigin: "top" }}
+                  />
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      <div className={styles.footer}>
+      <motion.div
+        className={styles.footer}
+        variants={footerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+      >
         <span className={styles.pulse} aria-hidden="true" />
         {visual.footer}
-      </div>
+      </motion.div>
     </div>
   );
 }
