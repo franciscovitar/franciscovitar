@@ -1,1 +1,19 @@
 node_modules
+
+# Local environment files (never commit)
+.env*.local
+
+# Screenshots PENDING publication approval (authorized: false in data/home.js).
+# They stay on this machine for local review only. To release one: delete its
+# line here, set authorized: true in data/home.js, then `git add` the file.
+/public/images/clients/contexto-psi-faq-desktop.webp
+/public/images/clients/contexto-psi-hero-mobile.webp
+/public/images/clients/madi-bienestar-hero-desktop.webp
+/public/images/clients/madi-bienestar-hero-mobile.webp
+/public/images/clients/estudio-starik-hero-desktop.webp
+/public/images/clients/estudio-starik-hero-mobile.webp
+/public/images/clients/baterias-sur-hero-desktop.webp
+/public/images/clients/baterias-sur-hero-mobile.webp
+/public/images/genova/genova-site-hero-desktop.webp
+/public/images/projects/la-mediterranea-store-catalog-desktop.webp
+/public/images/projects/la-mediterranea-store-catalog-mobile.webp

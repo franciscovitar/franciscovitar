@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   clients,
   copy,
+  genovaShot,
   links,
   personalAiSystem,
   projects,
@@ -12,6 +13,9 @@ import {
 import {
   ExternalLink,
   Placeholder,
+  PairShot,
+  canShowShot,
+  Shot,
   SectionHead,
   hrefFor,
   withLang,
@@ -65,9 +69,21 @@ function ProjectMedia({ project, lang, c, index }) {
     return (
       <figure className={styles.figure}>
         <div className={styles.pair}>
-          <Placeholder label={main} ratio="4 / 3" />
-          <Placeholder label={side} />
+          {media.images && canShowShot(media.images) ? (
+            <>
+              <PairShot image={media.images.main} lang={lang} main />
+              <PairShot image={media.images.side} lang={lang} />
+            </>
+          ) : (
+            <>
+              <Placeholder label={main} ratio="4 / 3" />
+              <Placeholder label={side} />
+            </>
+          )}
         </div>
+        {media.images && canShowShot(media.images) && !media.images.authorized ? (
+          <span className={styles.shotTag}>{c.pending}</span>
+        ) : null}
         <figcaption className={styles.caption}>{fig}</figcaption>
       </figure>
     );
@@ -284,6 +300,12 @@ export default function Home({ searchParams }) {
                 <h3 className={styles.genova}>Genova</h3>
                 <p className={styles.genovaRole}>{c.genovaRole}</p>
                 <p className={styles.monoMeta}>{c.genovaDates}</p>
+                {canShowShot(genovaShot) ? (
+                  <figure className={styles.genovaFigure}>
+                    <Shot shot={genovaShot} lang={lang} pendingLabel={c.pending} />
+                    <figcaption className={styles.clientTag}>{c.genovaFig}</figcaption>
+                  </figure>
+                ) : null}
               </div>
               <div>
                 <p className={styles.genovaBody}>{c.genovaBody}</p>
@@ -312,7 +334,11 @@ export default function Home({ searchParams }) {
             <div className={styles.clients}>
               {clients.map((client) => (
                 <article key={client.title} className={styles.client}>
-                  <Placeholder label={c.clientPlaceholder} ratio="4 / 3" tone="deep" />
+                  {client.shot && canShowShot(client.shot) ? (
+                    <Shot shot={client.shot} lang={lang} pendingLabel={c.pending} />
+                  ) : (
+                    <Placeholder label={c.clientPlaceholder} ratio="4 / 3" tone="deep" />
+                  )}
                   <p className={styles.clientTag}>
                     {c.clientTag} · {t(client.sector, lang)}
                   </p>

@@ -50,6 +50,30 @@ export const projects = [
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
     media: {
       type: "pair",
+      // Captured from the project's own local build (fixture catalog, no Supabase
+      // credentials, no admin panel).
+      images: {
+        main: {
+          src: "/images/projects/la-mediterranea-store-catalog-desktop.webp",
+          width: 1200,
+          height: 900,
+          alt: {
+            en: "La Mediterránea Store, desktop: product catalog with category filters, prices and add-to-cart controls.",
+            es: "La Mediterránea Store en escritorio: catálogo de productos con filtros por categoría, precios y botón para agregar al carrito.",
+          },
+        },
+        side: {
+          src: "/images/projects/la-mediterranea-store-catalog-mobile.webp",
+          width: 520,
+          height: 1125,
+          alt: {
+            en: "La Mediterránea Store, mobile: product catalog in two columns.",
+            es: "La Mediterránea Store en mobile: catálogo de productos en dos columnas.",
+          },
+        },
+        capturedAt: "2026-11-19",
+        authorized: false,
+      },
       label: {
         en: ["REAL SCREENSHOT — Storefront · sample data", "REAL SCREENSHOT — Admin panel"],
         es: ["CAPTURA REAL — Tienda · datos de ejemplo", "CAPTURA REAL — Panel admin"],
@@ -97,6 +121,19 @@ export const personalAiSystem = {
   caseHref: "/work/personal-ai-system",
 };
 
+// Genova's own website (co-founded agency, not client work). Still pending approval.
+export const genovaShot = {
+  desktop: { src: "/images/genova/genova-site-hero-desktop.webp", width: 1200, height: 750 },
+  alt: {
+    en: "Screenshot of the Genova website: home page for the digital agency, Google Ads, web development and social media.",
+    es: "Captura del sitio de Genova: portada de la agencia digital, Google Ads, desarrollo web y redes.",
+  },
+  capturedAt: "2026-11-19",
+  // Pending until the owner confirms. Pending screenshots render only with
+  // SHOW_PENDING_SCREENSHOTS=1 (local) and are git-ignored (see .gitignore).
+  authorized: false,
+};
+
 export const clients = [
   {
     title: "Contexto.Psi",
@@ -106,6 +143,15 @@ export const clients = [
       es: "Plataforma de servicios: contenido, equipo y onboarding.",
     },
     live: "https://www.contextopsi.com.ar/",
+    shot: {
+      desktop: { src: "/images/clients/contexto-psi-faq-desktop.webp", width: 1200, height: 750 },
+      mobile: { src: "/images/clients/contexto-psi-hero-mobile.webp", width: 780, height: 1120 },
+      alt: { en: "Screenshot of the Contexto.Psi website: FAQ section on desktop, home page on mobile.", es: "Captura del sitio de Contexto.Psi: preguntas frecuentes en escritorio y portada en mobile." },
+      capturedAt: "2026-11-19",
+      // Client work: keep false until the client authorizes publishing the screenshot.
+      // While false the image is local-only: not rendered in production and git-ignored.
+      authorized: false,
+    },
   },
   {
     title: "Madí Bienestar",
@@ -115,6 +161,15 @@ export const clients = [
       es: "Sitio de clínica de bienestar con servicios, talleres y retiros.",
     },
     live: "https://www.madibienestar.com/",
+    shot: {
+      desktop: { src: "/images/clients/madi-bienestar-hero-desktop.webp", width: 1200, height: 750 },
+      mobile: { src: "/images/clients/madi-bienestar-hero-mobile.webp", width: 780, height: 1120 },
+      alt: { en: "Screenshot of the Madí Bienestar website: home page with a full-width photo and the title “Clínica de Bienestar”.", es: "Captura del sitio de Madí Bienestar: portada con foto a ancho completo y el título «Clínica de Bienestar»." },
+      capturedAt: "2026-11-19",
+      // Client work: keep false until the client authorizes publishing the screenshot.
+      // While false the image is local-only: not rendered in production and git-ignored.
+      authorized: false,
+    },
   },
   {
     title: "Estudio Starik",
@@ -124,6 +179,15 @@ export const clients = [
       es: "Sitio de estudio jurídico con áreas de práctica y contacto.",
     },
     live: "https://www.estudiostarik.com/",
+    shot: {
+      desktop: { src: "/images/clients/estudio-starik-hero-desktop.webp", width: 1200, height: 750 },
+      mobile: { src: "/images/clients/estudio-starik-hero-mobile.webp", width: 780, height: 1120 },
+      alt: { en: "Screenshot of the Estudio Starik website: home page with a library background and the title “Estudio Jurídico”.", es: "Captura del sitio de Estudio Starik: portada con fondo de biblioteca y el título «Estudio Jurídico»." },
+      capturedAt: "2026-11-19",
+      // Client work: keep false until the client authorizes publishing the screenshot.
+      // While false the image is local-only: not rendered in production and git-ignored.
+      authorized: false,
+    },
   },
   {
     title: "Baterías Sur",
@@ -133,6 +197,15 @@ export const clients = [
       es: "Diagnóstico y derivación validada a WhatsApp.",
     },
     live: "https://www.bateriasur.com.ar/",
+    shot: {
+      desktop: { src: "/images/clients/baterias-sur-hero-desktop.webp", width: 1200, height: 750 },
+      mobile: { src: "/images/clients/baterias-sur-hero-mobile.webp", width: 780, height: 1120 },
+      alt: { en: "Screenshot of the Baterías Sur website: home page with a mechanic checking a car battery.", es: "Captura del sitio de Baterías Sur: portada con un mecánico revisando la batería de un auto." },
+      capturedAt: "2026-11-19",
+      // Client work: keep false until the client authorizes publishing the screenshot.
+      // While false the image is local-only: not rendered in production and git-ignored.
+      authorized: false,
+    },
   },
 ];
 
@@ -197,7 +270,9 @@ export const copy = {
       "Maintenance and iteration without regressions",
     ],
     clientsLabel: "Client work · Genova",
-    clientsNote: "Screenshots only with each client's permission",
+    clientsNote: "Provisional screenshots · pending each client's permission",
+    pending: "Pending permission",
+    genovaFig: "Own site · genovasite.com",
     clientTag: "Client",
     clientPlaceholder: "SCREENSHOT — pending client permission",
     site: "Site ↗",
@@ -268,7 +343,9 @@ export const copy = {
       "Mantenimiento e iteración sin regresiones",
     ],
     clientsLabel: "Trabajo para clientes · Genova",
-    clientsNote: "Capturas solo con autorización de cada cliente",
+    clientsNote: "Capturas provisionales · pendientes de autorización de cada cliente",
+    pending: "Pendiente de autorización",
+    genovaFig: "Sitio propio · genovasite.com",
     clientTag: "Cliente",
     clientPlaceholder: "CAPTURA — pendiente de autorización",
     site: "Sitio ↗",
