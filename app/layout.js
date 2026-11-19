@@ -1,4 +1,15 @@
+import { Newsreader } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.scss";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-newsreader",
+});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
@@ -8,15 +19,15 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Francisco Vitar | Software Engineer",
+    default: "Francisco Vitar | Software Developer",
     template: "%s | Francisco Vitar",
   },
   description:
-    "Software Engineer and Full-Stack Product Engineer building reliable product systems across web, data and AI-assisted workflows.",
+    "Software Developer and Full-Stack Developer. 5th-year Information Systems Engineering student at UTN Córdoba and founder of Genova.",
   keywords: [
     "Francisco Vitar",
-    "Software Engineer",
-    "Full-Stack Product Engineer",
+    "Software Developer",
+    "Full-Stack Developer",
     "TypeScript",
     "Next.js",
     "React",
@@ -35,15 +46,15 @@ export const metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Francisco Vitar",
-    title: "Francisco Vitar | Software Engineer",
+    title: "Francisco Vitar | Software Developer",
     description:
-      "Software Engineer building reliable product systems across web, data and AI-assisted workflows.",
+      "Software Developer and Full-Stack Developer building complete web products, from the interface to the database.",
   },
   twitter: {
     card: "summary",
-    title: "Francisco Vitar | Software Engineer",
+    title: "Francisco Vitar | Software Developer",
     description:
-      "Software Engineer building reliable product systems across web, data and AI-assisted workflows.",
+      "Software Developer and Full-Stack Developer building complete web products, from the interface to the database.",
   },
   robots: {
     index: true,
@@ -70,7 +81,7 @@ const personJsonLd = {
     "https://www.linkedin.com/in/franciscovitar/",
     "https://github.com/franciscovitar",
   ],
-  jobTitle: "Software Engineer",
+  jobTitle: "Software Developer",
   worksFor: {
     "@type": "Organization",
     name: "Genova",
@@ -86,12 +97,15 @@ const personJsonLd = {
   },
   email: "mailto:franvitar15@gmail.com",
   description:
-    "Fourth-year Systems Engineering student and Software Engineer building full-stack products, data-backed applications and AI-assisted engineering workflows.",
+    "5th-year Information Systems Engineering student at UTN Córdoba and Software Developer building full-stack web products.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${newsreader.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
