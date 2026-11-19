@@ -164,7 +164,7 @@ export default function Projects() {
             whileHover={reduceMotion ? undefined : { scale: 1.05, y: -2 }}
             whileTap={reduceMotion ? undefined : { scale: 0.95 }}
           >
-            Let's Talk
+            Let&apos;s Talk
           </motion.a>
         </motion.div>
       </div>

@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { Newsreader } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -101,9 +102,11 @@ const personJsonLd = {
 };
 
 export default function RootLayout({ children }) {
+  const lang = headers().get("x-site-lang") === "es" ? "es" : "en";
+
   return (
     <html
-      lang="en"
+      lang={lang}
       className={`${newsreader.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <head>

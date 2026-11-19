@@ -121,7 +121,7 @@ Thank you!`;
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <p>
-              By requesting my CV, you'll also receive information about my
+              By requesting my CV, you&apos;ll also receive information about my
               current availability, project rates, and how we can work together
               to create something amazing.
             </p>

@@ -144,6 +144,7 @@ export const skills = [
 
 export const copy = {
   en: {
+    skip: "Skip to content",
     nav: { projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
     cv: "CV ↓",
     eyebrow: "Software Developer · Full-Stack — Córdoba, Argentina",
@@ -212,6 +213,7 @@ export const copy = {
     top: "Top ↑",
   },
   es: {
+    skip: "Saltar al contenido",
     nav: { projects: "Proyectos", experience: "Experiencia", about: "Sobre mí", contact: "Contacto" },
     cv: "CV ↓",
     eyebrow: "Software Developer · Full-Stack — Córdoba, Argentina",
