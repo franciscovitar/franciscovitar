@@ -287,6 +287,14 @@ export default function Home({ searchParams }) {
               </div>
               <div>
                 <p className={styles.genovaBody}>{c.genovaBody}</p>
+                <div className={styles.genovaLinks}>
+                  <ExternalLink href={links.genovaWebsite} className={styles.lnk}>
+                    {c.genovaWebsite}
+                  </ExternalLink>
+                  <ExternalLink href={links.genovaInstagram} className={styles.lnk}>
+                    {c.genovaInstagram}
+                  </ExternalLink>
+                </div>
                 <ul className={styles.genovaList}>
                   {c.genovaBullets.map((item, i) => (
                     <li key={item}>

@@ -24,7 +24,7 @@ export const metadata = {
     template: "%s | Francisco Vitar",
   },
   description:
-    "Software Developer and Full-Stack Developer. 5th-year Information Systems Engineering student at UTN Córdoba and founder of Genova.",
+    "Software Developer and Full-Stack Developer. 5th-year Information Systems Engineering student at UTN Córdoba and co-founder of Genova.",
   keywords: [
     "Francisco Vitar",
     "Software Developer",
@@ -86,8 +86,9 @@ const personJsonLd = {
   worksFor: {
     "@type": "Organization",
     name: "Genova",
+    url: "https://www.genovasite.com/",
   },
-  alumniOf: {
+  affiliation: {
     "@type": "CollegeOrUniversity",
     name: "Universidad Tecnológica Nacional",
   },
