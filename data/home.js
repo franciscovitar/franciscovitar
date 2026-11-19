@@ -72,7 +72,7 @@ export const projects = [
           },
         },
         capturedAt: "2026-11-19",
-        authorized: false,
+        authorized: true, // authorized by the owner on 2026-11-19
       },
       label: {
         en: ["REAL SCREENSHOT — Storefront · sample data", "REAL SCREENSHOT — Admin panel"],
@@ -121,7 +121,7 @@ export const personalAiSystem = {
   caseHref: "/work/personal-ai-system",
 };
 
-// Genova's own website (co-founded agency, not client work). Still pending approval.
+// Genova's own website (co-founded agency, not client work).
 export const genovaShot = {
   desktop: { src: "/images/genova/genova-site-hero-desktop.webp", width: 1200, height: 750 },
   alt: {
@@ -129,9 +129,9 @@ export const genovaShot = {
     es: "Captura del sitio de Genova: portada de la agencia digital, Google Ads, desarrollo web y redes.",
   },
   capturedAt: "2026-11-19",
-  // Pending until the owner confirms. Pending screenshots render only with
-  // SHOW_PENDING_SCREENSHOTS=1 (local) and are git-ignored (see .gitignore).
-  authorized: false,
+  // Authorized by the owner on 2026-11-19. Set to false to withdraw it: an
+  // unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
+  authorized: true,
 };
 
 export const clients = [
@@ -148,9 +148,9 @@ export const clients = [
       mobile: { src: "/images/clients/contexto-psi-hero-mobile.webp", width: 780, height: 1120 },
       alt: { en: "Screenshot of the Contexto.Psi website: FAQ section on desktop, home page on mobile.", es: "Captura del sitio de Contexto.Psi: preguntas frecuentes en escritorio y portada en mobile." },
       capturedAt: "2026-11-19",
-      // Client work: keep false until the client authorizes publishing the screenshot.
-      // While false the image is local-only: not rendered in production and git-ignored.
-      authorized: false,
+      // Publication authorized by the owner on 2026-11-19. Set to false to withdraw it:
+      // an unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
+      authorized: true,
     },
   },
   {
@@ -166,9 +166,9 @@ export const clients = [
       mobile: { src: "/images/clients/madi-bienestar-hero-mobile.webp", width: 780, height: 1120 },
       alt: { en: "Screenshot of the Madí Bienestar website: home page with a full-width photo and the title “Clínica de Bienestar”.", es: "Captura del sitio de Madí Bienestar: portada con foto a ancho completo y el título «Clínica de Bienestar»." },
       capturedAt: "2026-11-19",
-      // Client work: keep false until the client authorizes publishing the screenshot.
-      // While false the image is local-only: not rendered in production and git-ignored.
-      authorized: false,
+      // Publication authorized by the owner on 2026-11-19. Set to false to withdraw it:
+      // an unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
+      authorized: true,
     },
   },
   {
@@ -184,9 +184,9 @@ export const clients = [
       mobile: { src: "/images/clients/estudio-starik-hero-mobile.webp", width: 780, height: 1120 },
       alt: { en: "Screenshot of the Estudio Starik website: home page with a library background and the title “Estudio Jurídico”.", es: "Captura del sitio de Estudio Starik: portada con fondo de biblioteca y el título «Estudio Jurídico»." },
       capturedAt: "2026-11-19",
-      // Client work: keep false until the client authorizes publishing the screenshot.
-      // While false the image is local-only: not rendered in production and git-ignored.
-      authorized: false,
+      // Publication authorized by the owner on 2026-11-19. Set to false to withdraw it:
+      // an unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
+      authorized: true,
     },
   },
   {
@@ -202,9 +202,9 @@ export const clients = [
       mobile: { src: "/images/clients/baterias-sur-hero-mobile.webp", width: 780, height: 1120 },
       alt: { en: "Screenshot of the Baterías Sur website: home page with a mechanic checking a car battery.", es: "Captura del sitio de Baterías Sur: portada con un mecánico revisando la batería de un auto." },
       capturedAt: "2026-11-19",
-      // Client work: keep false until the client authorizes publishing the screenshot.
-      // While false the image is local-only: not rendered in production and git-ignored.
-      authorized: false,
+      // Publication authorized by the owner on 2026-11-19. Set to false to withdraw it:
+      // an unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
+      authorized: true,
     },
   },
 ];
@@ -270,7 +270,7 @@ export const copy = {
       "Maintenance and iteration without regressions",
     ],
     clientsLabel: "Client work · Genova",
-    clientsNote: "Provisional screenshots · pending each client's permission",
+    clientsNote: "Screenshots of the live sites · November 2026",
     pending: "Pending permission",
     genovaFig: "Own site · genovasite.com",
     clientTag: "Client",
@@ -343,7 +343,7 @@ export const copy = {
       "Mantenimiento e iteración sin regresiones",
     ],
     clientsLabel: "Trabajo para clientes · Genova",
-    clientsNote: "Capturas provisionales · pendientes de autorización de cada cliente",
+    clientsNote: "Capturas de los sitios en línea · noviembre 2026",
     pending: "Pendiente de autorización",
     genovaFig: "Sitio propio · genovasite.com",
     clientTag: "Cliente",
