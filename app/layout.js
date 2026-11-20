@@ -1,16 +1,9 @@
 import { headers } from "next/headers";
-import { Newsreader } from "next/font/google";
+import "@fontsource-variable/newsreader/index.css";
+import "@fontsource-variable/newsreader/wght-italic.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.scss";
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-newsreader",
-});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
@@ -24,7 +17,7 @@ export const metadata = {
     template: "%s | Francisco Vitar",
   },
   description:
-    "Software Developer and Full-Stack Developer. 5th-year Information Systems Engineering student at UTN Córdoba and co-founder of Genova.",
+    "Software Developer and Full-Stack Developer. 4th-year Information Systems Engineering student at UTN Córdoba and co-founder of Genova.",
   keywords: [
     "Francisco Vitar",
     "Software Developer",
@@ -99,16 +92,16 @@ const personJsonLd = {
   },
   email: "mailto:franvitar15@gmail.com",
   description:
-    "5th-year Information Systems Engineering student at UTN Córdoba and Software Developer building full-stack web products.",
+    "4th-year Information Systems Engineering student at UTN Córdoba and Software Developer building full-stack web products.",
 };
 
-export default function RootLayout({ children }) {
-  const lang = headers().get("x-site-lang") === "es" ? "es" : "en";
+export default async function RootLayout({ children }) {
+  const lang = (await headers()).get("x-site-lang") === "es" ? "es" : "en";
 
   return (
     <html
       lang={lang}
-      className={`${newsreader.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
       <head>
         <script

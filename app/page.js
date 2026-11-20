@@ -26,9 +26,43 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
+function DemoPanel({ c, compact = false }) {
+  return (
+    <ExternalLink
+      href={links.vidaDemo}
+      className={`${styles.demoPanel} ${compact ? styles.demoPanelCompact : ""}`}
+    >
+      <div className={styles.demoTop}>
+        <span className={styles.demoBrand}>vida<span>2.0</span></span>
+        <span className={styles.demoBadge}>DEMO</span>
+      </div>
+      <p className={styles.demoEyebrow}>{c.demoEyebrow}</p>
+      <p className={styles.demoIntro}>{c.demoIntro}</p>
+      <div className={styles.demoSections}>
+        {c.demoSections.map((section, index) => (
+          <div className={styles.demoSection} key={section}>
+            <span>0{index + 1}</span>
+            <strong>{section}</strong>
+          </div>
+        ))}
+      </div>
+      <span className={styles.demoCta}>{c.demoOpen}</span>
+    </ExternalLink>
+  );
+}
+
 function ProjectMedia({ project, lang, c, index }) {
   const { media } = project;
   const fig = `${c.fig} 0${index + 1} — ${project.title}`;
+
+  if (media.type === "demo") {
+    return (
+      <figure className={styles.figure}>
+        <DemoPanel c={c} compact />
+        <figcaption className={styles.caption}>{fig}</figcaption>
+      </figure>
+    );
+  }
 
   if (media.type === "transcript") {
     return (
@@ -97,8 +131,9 @@ function ProjectMedia({ project, lang, c, index }) {
   );
 }
 
-export default function Home({ searchParams }) {
-  const lang = searchParams?.lang === "es" ? "es" : "en";
+export default async function Home({ searchParams }) {
+  const params = await searchParams;
+  const lang = params?.lang === "es" ? "es" : "en";
   const c = copy[lang];
 
   return (
@@ -119,13 +154,13 @@ export default function Home({ searchParams }) {
           </nav>
           <div className={styles.headerTools}>
             <span className={styles.langSwitch}>
-              <a href="/?lang=es" aria-current={lang === "es" ? "page" : undefined}>
+              <Link href="/?lang=es" aria-current={lang === "es" ? "page" : undefined}>
                 ES
-              </a>
+              </Link>
               <span aria-hidden="true">/</span>
-              <a href="/" aria-current={lang === "en" ? "page" : undefined}>
+              <Link href="/" aria-current={lang === "en" ? "page" : undefined}>
                 EN
-              </a>
+              </Link>
             </span>
             <a href={links.cv} className={styles.lnk}>
               {c.cv}
@@ -171,13 +206,18 @@ export default function Home({ searchParams }) {
                 <span>Vida 2.0</span>
                 <span className={styles.frameDim}>{c.heroFrameRight}</span>
               </div>
-              <Placeholder label={c.heroPlaceholder} className={styles.heroShot} />
+              <DemoPanel c={c} />
             </div>
             <figcaption className={styles.heroCaption}>
               <span className={styles.caption}>{c.heroCaption}</span>
-              <Link href={withLang("/work/vida-2", lang)} className={`${styles.lnk} ${styles.accent}`}>
-                {c.heroCaseLink}
-              </Link>
+              <span className={styles.heroCaptionLinks}>
+                <ExternalLink href={links.vidaDemo} className={`${styles.lnk} ${styles.accent}`}>
+                  {c.heroDemoLink}
+                </ExternalLink>
+                <Link href={withLang("/work/vida-2", lang)} className={styles.lnk}>
+                  {c.heroCaseLink}
+                </Link>
+              </span>
             </figcaption>
           </figure>
         </section>
@@ -357,7 +397,10 @@ export default function Home({ searchParams }) {
           <div className={styles.wrap}>
             <SectionHead index="03" title={c.aboutTitle} />
             <div className={`${styles.split} ${styles.aboutSplit}`}>
-              <Placeholder label={c.photoPlaceholder} ratio="4 / 5" className={styles.photo} />
+              <div className={styles.portraitPanel}>
+                <span className={styles.portraitMonogram} aria-hidden="true">FV</span>
+                <span className={styles.portraitCaption}>{c.portraitLabel}</span>
+              </div>
               <div className={styles.aboutText}>
                 <p className={styles.aboutBody}>{c.aboutBody}</p>
                 <div className={styles.aboutFacts}>

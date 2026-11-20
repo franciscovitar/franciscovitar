@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./cv.module.scss";
 
 export const metadata = {
@@ -22,7 +23,7 @@ export default function CVPage() {
           <a href="/Francisco_Vitar_CV_ATS_V1.pdf" download>
             Download
           </a>
-          <a href="/">Back to portfolio</a>
+          <Link href="/">Back to portfolio</Link>
         </div>
       </div>
     </main>
