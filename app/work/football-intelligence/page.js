@@ -26,7 +26,8 @@ export const metadata = {
   },
 };
 
-export default function FootballCaseStudy({ searchParams }) {
-  const lang = searchParams?.lang === "es" ? "es" : "en";
+export default async function FootballCaseStudy({ searchParams }) {
+  const params = await searchParams;
+  const lang = params?.lang === "es" ? "es" : "en";
   return <CaseStudyPage study={getCaseStudy("football")} lang={lang} />;
 }

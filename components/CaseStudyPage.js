@@ -11,7 +11,7 @@ const visualBySlug = {
 };
 
 function localizedHomeHref(lang) {
-  return lang === "es" ? "/?lang=es#work" : "/#work";
+  return lang === "es" ? "/?lang=es#projects" : "/#projects";
 }
 
 export default function CaseStudyPage({ study, lang = "en" }) {

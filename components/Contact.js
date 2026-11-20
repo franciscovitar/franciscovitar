@@ -97,7 +97,7 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <motion.div className={styles.header} variants={itemVariants}>
-            <h2 className={styles.title}>Let's Work Together</h2>
+            <h2 className={styles.title}>Let&apos;s Work Together</h2>
             <p className={styles.subtitle}>
               Ready to create a premium web presence that drives results?
               Let&apos;s discuss your project and bring your vision to life.

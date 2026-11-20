@@ -1,312 +1,434 @@
 import Link from "next/link";
-import SystemVisual from "../components/SystemVisual";
 import {
-  clientWork,
-  engineeringPrinciples,
-  featuredProjects,
-  selectedGrades,
-  stackGroups,
-} from "../data/portfolio";
+  clients,
+  copy,
+  genovaShot,
+  links,
+  personalAiSystem,
+  projects,
+  skills,
+  t,
+  webhookLab,
+} from "../data/home";
 import {
-  homepageCopy,
-  localizeClient,
-  localizeGrade,
-  localizePrinciple,
-  localizeProject,
-  localizeStackGroup,
-} from "../data/i18n";
-import styles from "./page.module.scss";
+  ExternalLink,
+  Placeholder,
+  PairShot,
+  canShowShot,
+  Shot,
+  SectionHead,
+  hrefFor,
+  withLang,
+} from "../components/home/parts";
+import styles from "../components/home/Home.module.scss";
 
 export const metadata = {
   alternates: { canonical: "/" },
 };
 
-function languageHref(lang, target) {
-  if (lang === "es") {
-    return target ? `/?lang=es#${target}` : "/?lang=es";
-  }
-  return target ? `/#${target}` : "/";
+function DemoPanel({ c, compact = false }) {
+  return (
+    <ExternalLink
+      href={links.vidaDemo}
+      className={`${styles.demoPanel} ${compact ? styles.demoPanelCompact : ""}`}
+    >
+      <div className={styles.demoTop}>
+        <span className={styles.demoBrand}>vida<span>2.0</span></span>
+        <span className={styles.demoBadge}>DEMO</span>
+      </div>
+      <p className={styles.demoEyebrow}>{c.demoEyebrow}</p>
+      <p className={styles.demoIntro}>{c.demoIntro}</p>
+      <div className={styles.demoSections}>
+        {c.demoSections.map((section, index) => (
+          <div className={styles.demoSection} key={section}>
+            <span>0{index + 1}</span>
+            <strong>{section}</strong>
+          </div>
+        ))}
+      </div>
+      <span className={styles.demoCta}>{c.demoOpen}</span>
+    </ExternalLink>
+  );
 }
 
-export default function Home({ searchParams }) {
-  const lang = searchParams?.lang === "es" ? "es" : "en";
-  const copy = homepageCopy[lang];
-  const langSuffix = lang === "es" ? "?lang=es" : "";
+function ProjectMedia({ project, lang, c, index }) {
+  const { media } = project;
+  const fig = `${c.fig} 0${index + 1} — ${project.title}`;
 
-  const projects = featuredProjects.map((project) =>
-    localizeProject(project, lang),
-  );
-  const featured = projects[0];
-  const secondary = projects.slice(1);
-  const clients = clientWork.map((item) => localizeClient(item, lang));
-  const principles = engineeringPrinciples.map((item) =>
-    localizePrinciple(item, lang),
-  );
-  const stacks = stackGroups.map((item) => localizeStackGroup(item, lang));
-  const grades = selectedGrades.map((grade) => localizeGrade(grade, lang));
+  if (media.type === "demo") {
+    return (
+      <figure className={styles.figure}>
+        <DemoPanel c={c} compact />
+        <figcaption className={styles.caption}>{fig}</figcaption>
+      </figure>
+    );
+  }
+
+  if (media.type === "transcript") {
+    return (
+      <figure className={styles.figure}>
+        <div className={styles.transcript}>
+          <div className={styles.transcriptBar}>
+            <span>{project.slug}</span>
+            <span className={styles.transcriptDim}>{c.transcriptRight}</span>
+          </div>
+          <div className={styles.transcriptBody}>
+            {c.transcriptSteps.map(([step, lines]) => (
+              <div className={styles.transcriptRow} key={step}>
+                <span className={styles.transcriptDim}>{step}</span>
+                <div>
+                  {lines.map(([dir, text]) => (
+                    <div key={text}>
+                      <span className={dir === "→" ? styles.arrowOut : styles.arrowIn}>
+                        {dir}
+                      </span>{" "}
+                      <span className={styles.transcriptDim}>{text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={styles.transcriptFoot}>{c.transcriptFoot}</div>
+        </div>
+        <figcaption className={styles.caption}>
+          {c.fig} 0{index + 1} — {c.transcriptCaption}
+        </figcaption>
+      </figure>
+    );
+  }
+
+  if (media.type === "pair") {
+    const [main, side] = t(media.label, lang);
+    return (
+      <figure className={styles.figure}>
+        <div className={styles.pair}>
+          {media.images && canShowShot(media.images) ? (
+            <>
+              <PairShot image={media.images.main} lang={lang} main />
+              <PairShot image={media.images.side} lang={lang} />
+            </>
+          ) : (
+            <>
+              <Placeholder label={main} ratio="4 / 3" />
+              <Placeholder label={side} />
+            </>
+          )}
+        </div>
+        {media.images && canShowShot(media.images) && !media.images.authorized ? (
+          <span className={styles.shotTag}>{c.pending}</span>
+        ) : null}
+        <figcaption className={styles.caption}>{fig}</figcaption>
+      </figure>
+    );
+  }
 
   return (
-    <main>
-      <header className={styles.headerShell}>
-        <div className={styles.header}>
-          <a href={languageHref(lang, "top")} className={styles.wordmark}>
+    <figure className={styles.figure}>
+      <Placeholder label={t(media.label, lang)} ratio={media.ratio} />
+      <figcaption className={styles.caption}>{fig}</figcaption>
+    </figure>
+  );
+}
+
+export default async function Home({ searchParams }) {
+  const params = await searchParams;
+  const lang = params?.lang === "es" ? "es" : "en";
+  const c = copy[lang];
+
+  return (
+    <div className={styles.page}>
+      <a href="#content" className={styles.skip}>
+        {c.skip}
+      </a>
+      <header className={styles.header}>
+        <div className={`${styles.wrap} ${styles.headerInner}`}>
+          <a href={hrefFor(lang, "top")} className={styles.wordmark}>
             Francisco Vitar
           </a>
-
-          <nav className={styles.nav} aria-label="Primary navigation">
-            <a href={languageHref(lang, "work")}>{copy.nav.work}</a>
-            <a href={languageHref(lang, "background")}>
-              {copy.nav.background}
-            </a>
-            <a href={languageHref(lang, "approach")}>{copy.nav.approach}</a>
-            <a href={languageHref(lang, "contact")}>{copy.nav.contact}</a>
+          <nav aria-label={lang === "es" ? "Principal" : "Primary"} className={styles.nav}>
+            <a href={hrefFor(lang, "projects")}>{c.nav.projects}</a>
+            <a href={hrefFor(lang, "experience")}>{c.nav.experience}</a>
+            <a href={hrefFor(lang, "about")}>{c.nav.about}</a>
+            <a href={hrefFor(lang, "contact")}>{c.nav.contact}</a>
           </nav>
-
-          <div className={styles.headerRight}>
-            <span className={styles.availability}>
-              <span />
-              {copy.availability}
-            </span>
-
-            <div className={styles.languageSwitch} aria-label="Language">
-              <a
-                href="/"
-                className={lang === "en" ? styles.languageActive : undefined}
-                aria-current={lang === "en" ? "page" : undefined}
-              >
-                EN
-              </a>
-              <span>/</span>
-              <a
-                href="/?lang=es"
-                className={lang === "es" ? styles.languageActive : undefined}
-                aria-current={lang === "es" ? "page" : undefined}
-              >
+          <div className={styles.headerTools}>
+            <span className={styles.langSwitch}>
+              <Link href="/?lang=es" aria-current={lang === "es" ? "page" : undefined}>
                 ES
-              </a>
-            </div>
-
-            <a
-              href="/Francisco_Vitar_CV_ATS_V1.pdf"
-              className={styles.resumeLink}
-            >
-              {copy.resume}
+              </Link>
+              <span aria-hidden="true">/</span>
+              <Link href="/" aria-current={lang === "en" ? "page" : undefined}>
+                EN
+              </Link>
+            </span>
+            <a href={links.cv} className={styles.lnk}>
+              {c.cv}
             </a>
           </div>
         </div>
       </header>
 
-      <div className={styles.shell}>
-        <section id="top" className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>{copy.eyebrow}</p>
-            <h1>{copy.heroTitle}</h1>
-            <p className={styles.heroLead}>{copy.heroLead}</p>
-
-            <div className={styles.heroActions}>
-              <a
-                className={styles.primaryButton}
-                href={languageHref(lang, "work")}
-              >
-                {copy.primaryCta}
-              </a>
-              <a
-                className={styles.secondaryButton}
-                href="https://github.com/franciscovitar"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {copy.github}
-              </a>
+      <main id="content" tabIndex={-1} className={styles.main}>
+        <section id="top" className={`${styles.wrap} ${styles.hero}`}>
+          <p className={styles.eyebrow}>{c.eyebrow}</p>
+          <h1 className={styles.name}>Francisco Vitar</h1>
+          <div className={styles.heroRow}>
+            <div className={styles.heroLead}>
+              <p className={styles.statement}>
+                {c.statement} <em>{c.statementAccent}</em>
+              </p>
+              <div className={styles.ctas}>
+                <a href={hrefFor(lang, "projects")} className={styles.button}>
+                  {c.ctaPrimary}
+                </a>
+                <a href={hrefFor(lang, "contact")} className={styles.lnk}>
+                  {c.ctaContact}
+                </a>
+                <a href={links.cv} className={styles.lnk}>
+                  {c.ctaCv}
+                </a>
+              </div>
             </div>
-
-            <dl className={styles.proofStrip}>
-              {copy.proof.map(([value, label]) => (
-                <div key={value + label}>
-                  <dt>{value}</dt>
-                  <dd>{label}</dd>
+            <dl className={styles.heroMeta}>
+              {c.meta.map(([term, value]) => (
+                <div key={term}>
+                  <dt>{term}</dt>
+                  <dd>{value}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className={styles.heroVisual}>
-            <div className={styles.visualLabel}>
-              <span>{copy.visualLabel}</span>
-            </div>
-            <SystemVisual kind="overview" compact lang={lang} />
-          </div>
-        </section>
-
-        <section id="work" className={styles.section}>
-          <header className={styles.sectionHeader}>
-            <div>
-              <p className={styles.eyebrow}>{copy.selectedWorkEyebrow}</p>
-              <h2>{copy.selectedWorkTitle}</h2>
-            </div>
-            <p>{copy.selectedWorkIntro}</p>
-          </header>
-
-          <article className={styles.featuredProject}>
-            <div className={styles.featuredVisual}>
-              <SystemVisual kind={featured.visual} lang={lang} />
-            </div>
-
-            <div className={styles.featuredCopy}>
-              <div className={styles.projectMeta}>
-                <span>{featured.label}</span>
-                <span className={styles.status}>{featured.status}</span>
+          <figure className={styles.heroFigure}>
+            <div className={styles.frame}>
+              <div className={styles.frameBar}>
+                <span>Vida 2.0</span>
+                <span className={styles.frameDim}>{c.heroFrameRight}</span>
               </div>
-              <h3>{featured.title}</h3>
-              <p className={styles.projectHook}>{featured.hook}</p>
-
-              <ul className={styles.highlightList}>
-                {featured.highlights.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-
-              <div className={styles.techLine}>
-                {featured.stack.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-
-              <div className={styles.projectActions}>
-                <Link href={`${featured.href}${langSuffix}`}>
-                  {copy.openCaseStudy}
+              <DemoPanel c={c} />
+            </div>
+            <figcaption className={styles.heroCaption}>
+              <span className={styles.caption}>{c.heroCaption}</span>
+              <span className={styles.heroCaptionLinks}>
+                <ExternalLink href={links.vidaDemo} className={`${styles.lnk} ${styles.accent}`}>
+                  {c.heroDemoLink}
+                </ExternalLink>
+                <Link href={withLang("/work/vida-2", lang)} className={styles.lnk}>
+                  {c.heroCaseLink}
                 </Link>
-                <a href={featured.repo} target="_blank" rel="noreferrer">
-                  {copy.repository}
-                </a>
-              </div>
-            </div>
-          </article>
+              </span>
+            </figcaption>
+          </figure>
+        </section>
 
-          <div className={styles.secondaryGrid}>
-            {secondary.map((project, index) => (
-              <article className={styles.projectCard} key={project.title}>
-                <SystemVisual kind={project.visual} compact lang={lang} />
+        <section id="projects" className={styles.projects}>
+          <div className={styles.wrap}>
+            <SectionHead
+              index="01"
+              title={c.projectsTitle}
+              intro={
+                <>
+                  {c.projectsIntro}{" "}
+                  <a href={hrefFor(lang, "experience")} className={styles.lnk}>
+                    {c.projectsIntroLink}
+                  </a>
+                  .
+                </>
+              }
+            />
 
-                <div className={styles.cardBody}>
-                  <div className={styles.projectMeta}>
-                    <span>
-                      {String(index + 2).padStart(2, "0")} · {project.label}
-                    </span>
-                    <span className={styles.status}>{project.status}</span>
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.hook}</p>
-
-                  <div className={styles.techLine}>
-                    {project.stack.slice(0, 4).map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-
-                  <div className={styles.projectActions}>
-                    <Link href={`${project.href}${langSuffix}`}>
-                      {copy.caseStudy}
-                    </Link>
-                    {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noreferrer">
-                        {copy.repo}
-                      </a>
-                    )}
+            {projects.map((project, index) => (
+              <article
+                key={project.slug}
+                className={`${styles.feature} ${index % 2 === 1 ? styles.featureReverse : ""}`}
+              >
+                <ProjectMedia project={project} lang={lang} c={c} index={index} />
+                <div className={styles.featureText}>
+                  <p className={styles.eyebrow}>
+                    0{index + 1} · {c.personal} · {t(project.kind, lang)}
+                  </p>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectSummary}>{t(project.summary, lang)}</p>
+                  <dl className={styles.facts}>
+                    <dt>{c.stackLabel}</dt>
+                    <dd>{project.stack}</dd>
+                    <dt>{c.statusLabel}</dt>
+                    <dd>{t(project.status, lang)}</dd>
+                  </dl>
+                  <div className={styles.projectLinks}>
+                    {project.caseHref ? (
+                      <Link href={withLang(project.caseHref, lang)} className={`${styles.lnk} ${styles.accent}`}>
+                        {c.viewCase}
+                      </Link>
+                    ) : null}
+                    {project.repo ? (
+                      <ExternalLink href={project.repo} className={styles.lnk}>
+                        {c.code}
+                      </ExternalLink>
+                    ) : null}
                   </div>
                 </div>
               </article>
             ))}
-          </div>
-        </section>
 
-        <section id="background" className={styles.backgroundSection}>
-          <header className={styles.sectionHeader}>
-            <div>
-              <p className={styles.eyebrow}>{copy.backgroundEyebrow}</p>
-              <h2>{copy.backgroundTitle}</h2>
-            </div>
-          </header>
-
-          <div className={styles.backgroundGrid}>
-            <article className={styles.backgroundCard}>
-              <div className={styles.cardKicker}>{copy.experienceKicker}</div>
-              <h3>{copy.experienceTitle}</h3>
-              <p>{copy.experienceBody}</p>
-              <ul>
-                {copy.experienceBullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+            <article className={styles.flowProject}>
+              <div className={styles.flowHead}>
+                <div className={styles.flowText}>
+                  <p className={styles.eyebrow}>
+                    04 · {c.personal} · Backend · {c.privateRepo}
+                  </p>
+                  <h3 className={styles.projectTitle}>{webhookLab.title}</h3>
+                  <p className={styles.projectSummary}>{t(webhookLab.summary, lang)}</p>
+                </div>
+                <span className={styles.monoMeta}>{webhookLab.stack}</span>
+              </div>
+              <figure className={styles.figure}>
+                <ol className={styles.flow}>
+                  {webhookLab.steps.map((step, i) => (
+                    <li
+                      key={t(step.name, "en")}
+                      className={
+                        step.tone === "failure"
+                          ? styles.flowFailure
+                          : step.tone === "recovery"
+                            ? styles.flowRecovery
+                            : undefined
+                      }
+                    >
+                      <span className={styles.flowIndex}>
+                        0{i + 1}
+                        {step.tone === "recovery" ? " ↺" : ""}
+                      </span>
+                      <span className={styles.flowName}>{t(step.name, lang)}</span>
+                      <span className={styles.flowDetail}>{t(step.detail, lang)}</span>
+                    </li>
+                  ))}
+                </ol>
+                <figcaption className={styles.caption}>
+                  {c.fig} 04 — {c.flowCaption}
+                </figcaption>
+              </figure>
             </article>
 
-            <article className={styles.backgroundCard}>
-              <div className={styles.cardKicker}>{copy.educationKicker}</div>
-              <h3>{copy.educationTitle}</h3>
-              <p>{copy.educationBody}</p>
-              <div className={styles.gradeCloud}>
-                {grades.map((grade) => (
-                  <span key={grade}>{grade}</span>
-                ))}
+            <article className={styles.pasRow}>
+              <p className={styles.eyebrow}>
+                05 · {c.personal} · {c.pasMeta}
+              </p>
+              <div className={styles.pasText}>
+                <h3 className={styles.pasTitle}>{personalAiSystem.title}</h3>
+                <p>{t(personalAiSystem.summary, lang)}</p>
+              </div>
+              <div className={styles.pasLinks}>
+                <span className={styles.monoMeta}>{personalAiSystem.stack}</span>
+                <Link
+                  href={withLang(personalAiSystem.caseHref, lang)}
+                  className={`${styles.lnk} ${styles.accent}`}
+                >
+                  {c.viewCase}
+                </Link>
               </div>
             </article>
           </div>
         </section>
 
-        <section className={styles.clientSection}>
-          <div className={styles.clientHeading}>
-            <p className={styles.eyebrow}>{copy.clientEyebrow}</p>
-            <h2>{copy.clientTitle}</h2>
-          </div>
-
-          <div className={styles.clientGrid}>
-            {clients.map((item) => (
-              <article className={styles.clientCard} key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.detail}</p>
-                <div className={styles.clientActions}>
-                  {item.repo && (
-                    <a href={item.repo} target="_blank" rel="noreferrer">
-                      GitHub ↗
-                    </a>
-                  )}
-                  {item.live && (
-                    <a href={item.live} target="_blank" rel="noreferrer">
-                      {copy.live}
-                    </a>
-                  )}
+        <section id="experience" className={styles.experience}>
+          <div className={styles.wrap}>
+            <SectionHead index="02" title={c.experienceTitle} intro={c.experienceIntro} />
+            <div className={styles.split}>
+              <div>
+                <h3 className={styles.genova}>Genova</h3>
+                <p className={styles.genovaRole}>{c.genovaRole}</p>
+                <p className={styles.monoMeta}>{c.genovaDates}</p>
+                {canShowShot(genovaShot) ? (
+                  <figure className={styles.genovaFigure}>
+                    <Shot shot={genovaShot} lang={lang} pendingLabel={c.pending} />
+                    <figcaption className={styles.clientTag}>{c.genovaFig}</figcaption>
+                  </figure>
+                ) : null}
+              </div>
+              <div>
+                <p className={styles.genovaBody}>{c.genovaBody}</p>
+                <div className={styles.genovaLinks}>
+                  <ExternalLink href={links.genovaWebsite} className={styles.lnk}>
+                    {c.genovaWebsite}
+                  </ExternalLink>
+                  <ExternalLink href={links.genovaInstagram} className={styles.lnk}>
+                    {c.genovaInstagram}
+                  </ExternalLink>
                 </div>
-              </article>
-            ))}
+                <ul className={styles.genovaList}>
+                  {c.genovaBullets.map((item, i) => (
+                    <li key={item}>
+                      <span aria-hidden="true">{String.fromCharCode(97 + i)}.</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className={styles.clientsHead}>
+              <p className={styles.eyebrow}>{c.clientsLabel}</p>
+              <p className={styles.monoMeta}>{c.clientsNote}</p>
+            </div>
+            <div className={styles.clients}>
+              {clients.map((client) => (
+                <article key={client.title} className={styles.client}>
+                  {client.shot && canShowShot(client.shot) ? (
+                    <Shot shot={client.shot} lang={lang} pendingLabel={c.pending} />
+                  ) : (
+                    <Placeholder label={c.clientPlaceholder} ratio="4 / 3" tone="deep" />
+                  )}
+                  <p className={styles.clientTag}>
+                    {c.clientTag} · {t(client.sector, lang)}
+                  </p>
+                  <h3 className={styles.clientTitle}>{client.title}</h3>
+                  <p className={styles.clientDetail}>{t(client.detail, lang)}</p>
+                  <ExternalLink href={client.live} className={styles.lnk}>
+                    {c.site}
+                  </ExternalLink>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="approach" className={styles.approachSection}>
-          <div className={styles.approachIntro}>
-            <p className={styles.eyebrow}>{copy.approachEyebrow}</p>
-            <h2>{copy.approachTitle}</h2>
-            <p>{copy.approachBody}</p>
-          </div>
-
-          <div className={styles.principleList}>
-            {principles.map((principle) => (
-              <article key={principle.number}>
-                <span>{principle.number}</span>
-                <div>
-                  <h3>{principle.title}</h3>
-                  <p>{principle.body}</p>
+        <section id="about" className={styles.about}>
+          <div className={styles.wrap}>
+            <SectionHead index="03" title={c.aboutTitle} />
+            <div className={`${styles.split} ${styles.aboutSplit}`}>
+              <div className={styles.portraitPanel}>
+                <span className={styles.portraitMonogram} aria-hidden="true">FV</span>
+                <span className={styles.portraitCaption}>{c.portraitLabel}</span>
+              </div>
+              <div className={styles.aboutText}>
+                <p className={styles.aboutBody}>{c.aboutBody}</p>
+                <div className={styles.aboutFacts}>
+                  <div>
+                    <p className={styles.eyebrow}>{c.educationLabel}</p>
+                    <p className={styles.degree}>{c.educationDegree}</p>
+                    <p className={styles.muted}>
+                      {c.educationSchool}
+                      <br />
+                      {c.educationStatus}
+                    </p>
+                  </div>
+                  <div>
+                    <p className={styles.eyebrow}>{c.cvLabel}</p>
+                    <a href={links.cv} className={`${styles.lnk} ${styles.cvLink}`}>
+                      {c.cvLink}
+                    </a>
+                  </div>
                 </div>
-              </article>
-            ))}
-          </div>
-
-          <div className={styles.stackBlock}>
-            <p className={styles.stackLabel}>{copy.stackLabel}</p>
-            <div className={styles.stackList}>
-              {stacks.map((group) => (
-                <div key={group.label}>
-                  <span>{group.label}</span>
-                  <p>{group.value}</p>
+              </div>
+            </div>
+            <p className={styles.eyebrow}>{c.skillsLabel}</p>
+            <div className={styles.skills}>
+              {skills.map((skill) => (
+                <div key={t(skill.group, "en")} className={styles.skill}>
+                  <h3>{t(skill.group, lang)}</h3>
+                  <p>{t(skill.items, lang)}</p>
+                  <p className={styles.monoMeta}>{t(skill.usedIn, lang)}</p>
                 </div>
               ))}
             </div>
@@ -314,38 +436,33 @@ export default function Home({ searchParams }) {
         </section>
 
         <section id="contact" className={styles.contact}>
-          <div>
-            <p className={styles.eyebrow}>{copy.contactEyebrow}</p>
-            <h2>{copy.contactTitle}</h2>
-          </div>
-          <div className={styles.contactRight}>
-            <p>{copy.contactBody}</p>
+          <div className={styles.wrap}>
+            <p className={styles.contactLabel}>{c.contactLabel}</p>
+            <h2 className={styles.contactTitle}>
+              {c.contactTitle[0]}
+              <span className={styles.nowrap}>{c.contactTitle[1]}</span>
+              {c.contactTitle[2]}
+            </h2>
+            <a href={`mailto:${links.email}`} className={styles.email}>
+              {links.email}
+            </a>
             <div className={styles.contactLinks}>
-              <a href="mailto:franvitar15@gmail.com">{copy.email}</a>
-              <a
-                href="https://www.linkedin.com/in/franciscovitar/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {copy.linkedin}
-              </a>
-              <a
-                href="https://github.com/franciscovitar"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub ↗
-              </a>
-              <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{copy.resume}</a>
+              <ExternalLink href={links.linkedin}>LinkedIn ↗</ExternalLink>
+              <ExternalLink href={links.github}>GitHub ↗</ExternalLink>
+              <a href={links.cv}>CV ↓</a>
             </div>
+            <footer className={styles.footer}>
+              <span>{c.footerRole}</span>
+              <nav aria-label={lang === "es" ? "Pie" : "Footer"}>
+                <a href={hrefFor(lang, "projects")}>{c.nav.projects}</a>
+                <a href={hrefFor(lang, "experience")}>{c.nav.experience}</a>
+                <a href={hrefFor(lang, "about")}>{c.nav.about}</a>
+                <a href={hrefFor(lang, "top")}>{c.top}</a>
+              </nav>
+            </footer>
           </div>
         </section>
-
-        <footer className={styles.footer}>
-          <span>Francisco Vitar</span>
-          <span>{copy.footerRole}</span>
-        </footer>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
