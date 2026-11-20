@@ -110,8 +110,8 @@ export const webhookLab = {
 export const personalAiSystem = {
   title: "Personal AI System",
   summary: {
-    en: "Control layer for long-running AI work: canonical truth, bounded permissions, evidence and verification. Architecture case study, no public demo.",
-    es: "Capa de control para trabajo con IA de larga duración: verdad canónica, permisos acotados, evidencia y verificación. Caso de arquitectura, sin demo pública.",
+    en: "Turns an AI request into a scoped workflow with the right knowledge, permissions, tools and checks. A private system explained through its public architecture.",
+    es: "Convierte un pedido a la IA en un flujo de trabajo con contexto, permisos, herramientas y verificaciones. Un sistema privado explicado mediante su arquitectura pública.",
   },
   stack: "Python · Agents · Evals",
   caseHref: "/work/personal-ai-system",

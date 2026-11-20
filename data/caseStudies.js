@@ -107,7 +107,7 @@ export const caseStudies = {
     title: "Personal AI System",
     eyebrow: "Private flagship · Active",
     summary:
-      "A modular system for coordinating AI-assisted research, software work, learning, project execution and knowledge over time.",
+      "A private AI control layer that routes goals across learning, software and projects, using canonical sources, scoped tools and verifiable outcomes.",
     stack: ["Python", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
     links: [],
     problem:

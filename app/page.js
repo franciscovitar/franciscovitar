@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PASFlow from "../components/PASFlow";
 import {
   clients,
   copy,
@@ -327,6 +328,9 @@ export default async function Home({ searchParams }) {
                 >
                   {c.viewCase}
                 </Link>
+              </div>
+              <div className={styles.pasDiagram}>
+                <PASFlow lang={lang} />
               </div>
             </article>
           </div>

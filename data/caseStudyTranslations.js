@@ -183,7 +183,7 @@ const es = {
   "personal-ai-system": {
     eyebrow: "Principal privado · Activo",
     summary:
-      "Sistema modular para coordinar trabajo con IA, software, aprendizaje, proyectos y conocimiento sin perder estado ni control.",
+      "Capa privada de control que dirige objetivos de aprendizaje, software y proyectos hacia fuentes canónicas, herramientas con permisos acotados y resultados verificables.",
     problem:
       "El trabajo con IA se degrada cuando cada chat maneja su propia verdad, el contexto crece sin límite y las herramientas tienen más permisos de los necesarios.",
     constraints: [

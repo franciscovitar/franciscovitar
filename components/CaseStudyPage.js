@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SystemVisual from "./SystemVisual";
+import PASFlow from "./PASFlow";
 import { caseStudyUi, localizeCaseStudy } from "../data/caseStudyTranslations";
 import styles from "./CaseStudyPage.module.scss";
 
@@ -132,14 +133,18 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
           <div className={styles.sectionBody}>
             <h2>{ui.architectureTitle}</h2>
-            <div className={styles.architectureTrack}>
-              {localized.architecture.map((item, index) => (
-                <div className={styles.archStep} key={item}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{item}</strong>
-                </div>
-              ))}
-            </div>
+            {localized.slug === "personal-ai-system" ? (
+              <PASFlow lang={lang} theme="dark" />
+            ) : (
+              <div className={styles.architectureTrack}>
+                {localized.architecture.map((item, index) => (
+                  <div className={styles.archStep} key={item}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{item}</strong>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
