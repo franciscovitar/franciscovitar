@@ -88,9 +88,9 @@ export const featuredProjects = [
     label: "Personal commerce engineering",
     status: "Public simulator · integrations prepared",
     hook:
-      "A full-stack commerce codebase plus a public lab for pricing conflicts, stock races, permissions and safe payment state."
+      "A full-stack commerce codebase plus a public lab for pricing conflicts, stock races, permissions and safe payment state.",
     summary:
-      "Personal Next.js/Supabase engineering project with separate public synthetic demo; payment integration remains prepared, not live."
+      "Personal Next.js/Supabase engineering project with separate public synthetic demo; payment integration remains prepared, not live.",
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Testing"],
     evidence:
       "Idempotency, backup/export/validated restore and a prepared — not falsely live — payment boundary.",
