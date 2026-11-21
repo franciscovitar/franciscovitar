@@ -62,7 +62,7 @@ const es = {
     eyebrow: "Principal público · Activo",
     summary:
       "Un sistema operativo personal que reúne varias áreas en una sola interfaz sin perder la autoridad ni la privacidad de las fuentes reales.",
-    linkLabels: ["Repositorio público"],
+    linkLabels: ["Probar demo ficticia · recorrido 90 s", "Código de la aplicación original"],
     problem:
       "Los datos ya vivían en herramientas confiables. Vida tenía que unificarlos en una experiencia útil sin crear otra fuente de verdad.",
     constraints: [
@@ -108,6 +108,7 @@ const es = {
       "Checks de idempotencia y políticas.",
       "Preflight de Preview y Producción.",
       "Readiness explícita, sin fallback oculto.",
+      "Demo interactiva desplegada por separado, con datos ficticios, recorrido guiado, código propio y tests automatizados; no verifica integraciones reales.",
     ],
     safety: [
       "Sin fallback silencioso de DEV a Producción.",
@@ -116,10 +117,10 @@ const es = {
       "Los estados de runtime no exponen credenciales.",
     ],
     status:
-      "Vida 2.0 está activo y usa datos privados reales. El portfolio muestra la arquitectura y la evidencia técnica, no el dataset personal.",
+      "Vida 2.0 es un producto personal activo y autenticado. La demo pública independiente permite explorar flujos seleccionados con datos ficticios; ni la demo ni esta página exponen registros personales o prueban integraciones en vivo.",
     limitations: [
       "El portfolio no expone datos personales de salud, finanzas, nutrición o calendario.",
-      "Un demo sintético para recruiters es opcional, no necesario para demostrar la arquitectura.",
+      "La demo enlazada es una muestra estática independiente: sus acciones locales y métricas ficticias no equivalen a llamadas a ChatGPT ni a escrituras autenticadas en el sistema original.",
     ],
   },
   "library-network-api": {
