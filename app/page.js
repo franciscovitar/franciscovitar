@@ -263,6 +263,11 @@ export default async function Home({ searchParams }) {
                         {c.viewCase}
                       </Link>
                     ) : null}
+                    {project.live ? (
+                      <ExternalLink href={project.live} className={styles.lnk}>
+                        {lang === "es" ? "Probar simulador ↗" : "Try simulator ↗"}
+                      </ExternalLink>
+                    ) : null}
                     {project.repo ? (
                       <ExternalLink href={project.repo} className={styles.lnk}>
                         {c.code}
@@ -285,6 +290,9 @@ export default async function Home({ searchParams }) {
                     <Link href={withLang(webhookLab.caseHref, lang)} className={`${styles.lnk} ${styles.accent}`}>
                       {c.viewCase}
                     </Link>
+                    <ExternalLink href={webhookLab.live} className={styles.lnk}>
+                      {lang === "es" ? "Probar simulador ↗" : "Try simulator ↗"}
+                    </ExternalLink>
                   </div>
                 </div>
                 <span className={styles.monoMeta}>{webhookLab.stack}</span>
