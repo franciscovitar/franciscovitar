@@ -65,6 +65,42 @@ function ProjectMedia({ project, lang, c, index }) {
     );
   }
 
+  if (media.type === "commerce") {
+    return (
+      <figure className={styles.figure}>
+        <ExternalLink href={project.live} className={styles.commerceVisual}>
+          <div className={styles.commerceVisualTop}>
+            <strong>cauce<span>.</span></strong>
+            <small>COMMERCE ENGINEERING / SYNTHETIC</small>
+          </div>
+          <div className={styles.commerceVisualStage}>
+            <div className={styles.commerceVisualObject}>
+              <span className={styles.commerceBottle} aria-hidden="true" />
+              <small>C / 002</small>
+            </div>
+            <div className={styles.commerceVisualDetail}>
+              <span>CAUCE / OBJECTS</span>
+              <strong>Botella Nómada</strong>
+              <small>ARS 28.900</small>
+              <span className={styles.commerceVisualTag}>
+                {lang === "es" ? "PROBAR CHECKOUT" : "TRY CHECKOUT"} ↗
+              </span>
+            </div>
+          </div>
+          <div className={styles.commerceVisualFoot}>
+            <span>{lang === "es" ? "PRECIO CANÓNICO" : "CANONICAL PRICING"}</span>
+            <span>RLS</span>
+            <span>IDEMPOTENCY</span>
+            <span>PAYMENTS GATE</span>
+          </div>
+        </ExternalLink>
+        <figcaption className={styles.caption}>
+          {c.fig} 0{index + 1} — {t(media.label, lang)}
+        </figcaption>
+      </figure>
+    );
+  }
+
   if (media.type === "transcript") {
     return (
       <figure className={styles.figure}>

@@ -1598,3 +1598,133 @@
 .pair > .pairMain {
   aspect-ratio: 4 / 3;
 }
+
+
+// Original merchant imagery is no longer part of the renamed personal Cauce case.
+// This editorial CSS illustration links to the real, isolated public simulator.
+.commerceVisual {
+  display: block;
+  min-height: 370px;
+  color: #20352d;
+  background: #dce5da;
+  border: 1px solid #c6d5c5;
+  box-shadow: 0 20px 45px -35px rgba(30, 56, 44, 0.35);
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 42px -28px rgba(30, 56, 44, 0.32);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #b95837;
+    outline-offset: 4px;
+  }
+}
+
+.commerceVisualTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px 0;
+
+  strong {
+    font: 800 30px/1 var(--sans, system-ui, sans-serif);
+    letter-spacing: -0.08em;
+  }
+
+  strong span { color: #b95837; }
+  small { font: 700 10px var(--mono); letter-spacing: 0.06em; color: #6d8475; text-align: right; }
+}
+
+.commerceVisualStage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+  min-height: 240px;
+  padding: 22px 38px;
+}
+
+.commerceVisualObject {
+  height: 180px;
+  border-radius: 130px 130px 24px 24px;
+  background: radial-gradient(circle at 20% 20%, #e8eee4, #cbd7ca);
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  small {
+    position: absolute;
+    bottom: 12px;
+    left: 18px;
+    font: 700 10px var(--mono);
+    color: #64806b;
+  }
+}
+
+.commerceBottle {
+  position: relative;
+  width: 80px;
+  height: 128px;
+  background: #506d59;
+  border-radius: 27px 27px 17px 17px;
+  box-shadow: inset 8px 0 #718f75, 15px 12px 17px rgba(41, 64, 50, 0.2);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 24px;
+    width: 33px;
+    height: 24px;
+    background: #304b3b;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+.commerceVisualDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  > span:first-child { font: 700 10px var(--mono); color: #688570; letter-spacing: 0.08em; }
+  strong { font: 800 27px/1.2 var(--sans, system-ui, sans-serif); letter-spacing: -0.05em; margin: 12px 0; }
+  small { font: 700 13px var(--mono); color: #446b53; }
+}
+
+.commerceVisualTag {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 11px 13px;
+  background: #20352d;
+  color: #f9faf4;
+  font: 700 10px var(--mono);
+  white-space: nowrap;
+}
+
+.commerceVisualFoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 16px 27px;
+  background: #20352d;
+  color: #d1e3d2;
+  font: 700 9px var(--mono);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .commerceVisual { min-height: 315px; }
+  .commerceVisualTop { padding: 18px 18px 0; }
+  .commerceVisualTop strong { font-size: 25px; }
+  .commerceVisualTop small { font-size: 8px; }
+  .commerceVisualStage { padding: 18px; min-height: 205px; gap: 18px; }
+  .commerceVisualObject { height: 155px; }
+  .commerceBottle { transform: scale(0.85); }
+  .commerceVisualDetail strong { font-size: 20px; }
+  .commerceVisualTag { margin-top: 17px; font-size: 9px; }
+  .commerceVisualFoot { padding: 13px 18px; gap: 9px; font-size: 8px; }
+}

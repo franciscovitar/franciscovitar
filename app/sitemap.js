@@ -9,7 +9,7 @@ export default function sitemap() {
     "/work/library-network-api",
     "/work/webhook-recovery-lab",
     "/work/personal-ai-system",
-    "/work/la-mediterranea-store",
+    "/work/cauce-commerce-lab",
   ];
 
   return paths.map((path, index) => ({

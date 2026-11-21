@@ -301,19 +301,20 @@ const es = {
       "Esto respalda ingeniería AI-native y orquestación, no expertise en entrenamiento de modelos o investigación ML.",
     ],
   },
-  "la-mediterranea-store": {
-    eyebrow: "Full-stack de soporte · Listo para integrar",
+  "cauce-commerce-lab": {
+    eyebrow: "Full-stack personal · Simulador público de comercio",
     summary:
-      "Storefront en Next.js/TypeScript con Supabase, admin autenticado, checkout validado por servidor y límites claros para pagos.",
-    linkLabels: ["Repositorio público"],
+      "Proyecto personal full-stack con código Next.js/TypeScript y Supabase real, más una muestra pública independiente que simula checkout, stock, roles y callbacks idempotentes."
+    linkLabels: ["Probar Cauce Commerce Lab", "Repositorio público", "Arquitectura y verificaciones"],
     problem:
-      "Había que reconstruir una tienda real con catálogo, variantes, stock y pedidos persistentes sin relajar seguridad ni fingir una integración de pagos activa.",
+      "La meta es demostrar una arquitectura de e-commerce donde el navegador no decide precios, permisos ni pagos. El proyecto comercial anterior no se concretó ni se lanzó para el cliente; Cauce es una muestra personal independiente."
     constraints: [
       "Catálogo y pedidos deben persistirse fuera de la UI.",
       "El admin necesita autenticación y autorización de base.",
       "El total del checkout se valida en servidor.",
       "Sin credenciales reales, la UI no puede mostrar pagos como activos.",
       "Backup y restore deben poder validarse.",
+      "La web pública debe usar marca, productos y datos ficticios propios, sin reutilizar la identidad anterior."
     ],
     architecture: [
       "Storefront Next.js",
@@ -351,6 +352,7 @@ const es = {
       "Tests del checkout server-side.",
       "Tests de export / backup admin.",
       "Restore validado.",
+      "20 tests del modelo público (precio manipulado, stock obsoleto, idempotencia, callbacks y permisos), incluidos en CI junto a los checks del código real.",
     ],
     safety: [
       "Storage sólo escribible por admins.",
@@ -359,9 +361,10 @@ const es = {
       "Errores seguros y headers básicos.",
     ],
     status:
-      "La tienda está lista para integrar. Mercado Pago está preparado, pero no se presenta como pago live.",
+      "El código original sigue en estado de integración preparada: nació como propuesta comercial, pero no se vendió ni se lanzó al cliente. Cauce es una web pública ficticia e independiente. Mercado Pago no está activo y la simulación no llama a Supabase ni procesa pagos reales."
     limitations: [
-      "Credenciales de Producción y lanzamiento final todavía quedan fuera del claim público.",
+      "Credenciales, cobros reales y operación de clientes siguen fuera de lo que afirmamos.",
+      "El repositorio conserva materiales originales como procedencia histórica; la muestra Cauce no los utiliza ni representa una tienda comercial en actividad."
     ],
   },
 };

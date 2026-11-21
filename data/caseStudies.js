@@ -231,21 +231,26 @@ export const caseStudies = {
     ],
   },
   mediterranea: {
-    slug: "la-mediterranea-store",
-    title: "La Mediterránea Store",
-    eyebrow: "Supporting full-stack · Integration-ready",
+    slug: "cauce-commerce-lab",
+    title: "Cauce Commerce Lab",
+    eyebrow: "Personal full-stack · Public commerce simulator",
     summary:
-      "A Next.js/TypeScript storefront backed by Supabase with authenticated admin workflows, server-authoritative checkout validation and explicit payment-integration boundaries.",
+      "A personal full-stack commerce engineering project: real Next.js/TypeScript and Supabase code plus a separate public simulation of checkout, inventory, roles and idempotent payment callbacks."
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Storage", "Testing"],
-    links: [{ label: "Public repository", href: "https://github.com/franciscovitar/la-mediterranea-store" }],
+    links: [
+      { label: "Try Cauce Commerce Lab", href: "https://cauce-commerce-showcase-genova.vercel.app/" },
+      { label: "Public source repository", href: "https://github.com/franciscovitar/la-mediterranea-store" },
+      { label: "Architecture and verification", href: "https://github.com/franciscovitar/la-mediterranea-store/blob/main/docs/RECRUITER_ARCHITECTURE.md" },
+    ],
     problem:
-      "Rebuild a real merchandising storefront with persistent catalog, variants, stock and order boundaries while keeping administration and future payment integration safe.",
+      "Build a robust commerce architecture where cart prices, administrator access and payment outcomes are never trusted merely because the browser says so. The original proposed merchandising project was not purchased or launched by its prospective customer; Cauce is the independent personal showcase."
     constraints: [
       "Catalog/order state must be persisted rather than hardcoded into the UI.",
       "Admin access needs authentication plus database authorization.",
       "Checkout totals should be server-authoritative.",
       "Payment credentials are not available yet, so the UI must not imply that live payment is active.",
       "Backup/restore needs validation rather than best-effort copying.",
+      "Public showcase must use its own fictional brand, products and data rather than repurpose historical merchandise artwork."
     ],
     architecture: [
       "Next.js storefront",
@@ -267,6 +272,7 @@ export const caseStudies = {
       "Unit tests for server-side checkout validation.",
       "Admin export/backup helper tests.",
       "Validated restore workflow.",
+      "Twenty passing deterministic public-showcase model tests for tampering, inventory race, idempotent checkout, duplicate callbacks and permissions; CI checks both layers.",
     ],
     safety: [
       "Supabase Storage writes restricted to administrators.",
@@ -275,9 +281,10 @@ export const caseStudies = {
       "Safe 404/error behavior and basic security headers.",
     ],
     status:
-      "The storefront is integration-ready. Mercado Pago is prepared behind environment boundaries and is not represented as a live payment integration.",
+      "The real codebase is an integration-ready personal engineering project, originally proposed under another brand but never purchased or launched as a client store. Cauce is a separately hosted, fictional, browser-only interactive showcase. Mercado Pago code is prepared, not active; the showcase does not invoke real payments or Supabase."
     limitations: [
-      "Production payment credentials and final launch are outside the current public claim.",
+      "Production payment credentials, real checkout activity and customer operation are outside the public claim.",
+      "The source repository preserves historical store branding/assets for provenance; Cauce does not use those assets and is not a live retail business."
     ],
   },
 };

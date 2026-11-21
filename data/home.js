@@ -30,50 +30,24 @@ export const projects = [
     },
   },
   {
-    slug: "la-mediterranea-store",
-    title: "La Mediterránea Store",
+    slug: "cauce-commerce-lab",
+    title: "Cauce Commerce Lab",
     kind: { en: "E-commerce", es: "E-commerce" },
     summary: {
-      en: "Storefront with persistent catalog and order data, an admin panel protected by RLS and server-validated checkout.",
-      es: "Tienda con catálogo y pedidos persistentes, panel de administración protegido con RLS y checkout validado en el servidor.",
+      en: "Full-stack commerce case with Supabase, RLS and server-owned checkout; public synthetic scenarios expose failure boundaries.",
+      es: "Caso full-stack con Supabase, RLS y checkout del lado servidor; simulación pública de fallos y permisos.",
     },
     stack: "Next.js · Supabase · RLS",
     status: {
-      en: "Payments prepared, not live in production",
-      es: "Pagos preparados, no activos en producción",
+      en: "Public engineering demo · no live payments",
+      es: "Demo técnica pública · sin pagos reales",
     },
-    caseHref: "/work/la-mediterranea-store",
+    caseHref: "/work/cauce-commerce-lab",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
+    live: "https://cauce-commerce-showcase-genova.vercel.app/",
     media: {
-      type: "pair",
-      // Captured from the project's own local build (fixture catalog, no Supabase
-      // credentials, no admin panel).
-      images: {
-        main: {
-          src: "/images/projects/la-mediterranea-store-catalog-desktop.webp",
-          width: 1200,
-          height: 900,
-          alt: {
-            en: "La Mediterránea Store, desktop: product catalog with category filters, prices and add-to-cart controls.",
-            es: "La Mediterránea Store en escritorio: catálogo de productos con filtros por categoría, precios y botón para agregar al carrito.",
-          },
-        },
-        side: {
-          src: "/images/projects/la-mediterranea-store-catalog-mobile.webp",
-          width: 520,
-          height: 1125,
-          alt: {
-            en: "La Mediterránea Store, mobile: product catalog in two columns.",
-            es: "La Mediterránea Store en mobile: catálogo de productos en dos columnas.",
-          },
-        },
-        capturedAt: "2026-11-19",
-        authorized: true, // authorized by the owner on 2026-11-19
-      },
-      label: {
-        en: ["REAL SCREENSHOT — Storefront · sample data", "REAL SCREENSHOT — Admin panel"],
-        es: ["CAPTURA REAL — Tienda · datos de ejemplo", "CAPTURA REAL — Panel admin"],
-      },
+      type: "commerce",
+      label: { en: "CONCEPT ILLUSTRATION — interactive demo linked", es: "ILUSTRACIÓN — simulador público enlazado" },
     },
   },
   {
