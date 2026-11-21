@@ -22,14 +22,24 @@ const visuals = {
         ["04", "Safe-write policy boundaries"],
       ],
     },
-    football: {
-      label: "Football Intelligence · data path",
-      footer: "Public web path remains read-only",
+    library: {
+      label: "Library Network API · loan lifecycle",
+      footer: "One copy · one active loan",
       nodes: [
-        ["01", "Source research"],
-        ["02", "QA-approved package"],
-        ["03", "PostgreSQL publication"],
-        ["04", "Current / public read models"],
+        ["01", "Loan request + idempotency key"],
+        ["02", "Lock copy + validate state"],
+        ["03", "Transactional transfer records"],
+        ["04", "Receive · use · return · close"],
+      ],
+    },
+    webhook: {
+      label: "Webhook Recovery Lab · delivery path",
+      footer: "At-least-once transport · idempotent effect",
+      nodes: [
+        ["01", "Signed event + HMAC check"],
+        ["02", "Durable inbox + job"],
+        ["03", "Worker lease + delivery"],
+        ["04", "Retry · dead-letter · replay"],
       ],
     },
     pas: {
@@ -74,14 +84,24 @@ const visuals = {
         ["04", "Políticas para escrituras seguras"],
       ],
     },
-    football: {
-      label: "Football Intelligence · flujo de datos",
-      footer: "La web pública sigue read-only",
+    library: {
+      label: "Library Network API · ciclo de préstamo",
+      footer: "Un ejemplar · un préstamo activo",
       nodes: [
-        ["01", "Investigación"],
-        ["02", "Paquete aprobado por QA"],
-        ["03", "Publicación en PostgreSQL"],
-        ["04", "Read models públicos"],
+        ["01", "Solicitud + clave de idempotencia"],
+        ["02", "Lock del ejemplar + validación"],
+        ["03", "Transferencia transaccional"],
+        ["04", "Recibir · usar · devolver · cerrar"],
+      ],
+    },
+    webhook: {
+      label: "Webhook Recovery Lab · flujo de entrega",
+      footer: "Entrega al menos una vez · efecto idempotente",
+      nodes: [
+        ["01", "Evento firmado + verificación HMAC"],
+        ["02", "Inbox + job durables"],
+        ["03", "Lease de worker + entrega"],
+        ["04", "Reintento · dead-letter · replay"],
       ],
     },
     pas: {

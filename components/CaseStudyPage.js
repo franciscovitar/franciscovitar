@@ -6,7 +6,8 @@ import styles from "./CaseStudyPage.module.scss";
 
 const visualBySlug = {
   "vida-2": "vida",
-  "football-intelligence": "football",
+  "library-network-api": "library",
+  "webhook-recovery-lab": "webhook",
   "personal-ai-system": "pas",
   "la-mediterranea-store": "mediterranea",
 };

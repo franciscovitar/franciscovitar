@@ -281,6 +281,11 @@ export default async function Home({ searchParams }) {
                   </p>
                   <h3 className={styles.projectTitle}>{webhookLab.title}</h3>
                   <p className={styles.projectSummary}>{t(webhookLab.summary, lang)}</p>
+                  <div className={styles.projectLinks}>
+                    <Link href={withLang(webhookLab.caseHref, lang)} className={`${styles.lnk} ${styles.accent}`}>
+                      {c.viewCase}
+                    </Link>
+                  </div>
                 </div>
                 <span className={styles.monoMeta}>{webhookLab.stack}</span>
               </div>

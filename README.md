@@ -28,6 +28,14 @@ Full-stack storefront built with **Next.js, TypeScript and Supabase**.
 - Backup/export/validated restore and automated verification.
 - Mercado Pago integration boundary is prepared, not represented as live.
 
+### [Library Network API](https://github.com/franciscovitar/library-network-api)
+Public, locally reproducible backend lab built with **FastAPI, SQLAlchemy and PostgreSQL**.
+
+- Transactional interlibrary loans with a physical-copy lifecycle and explicit state transitions.
+- PostgreSQL row locking and constraints prevent concurrent double loans.
+- `Idempotency-Key` handling, atomic rollback and damaged-copy retirement.
+- [Technical case study](https://franciscovitar.vercel.app/work/library-network-api) with a public CI run (129 passing tests); no public hosted API is claimed.
+
 ### [Value Latam](https://github.com/franciscovitar/valuelatamnuevo3)
 Production-oriented frontend work with **Next.js, React, Playwright, Sass and GSAP**.
 
@@ -44,10 +52,10 @@ Client delivery example built with **Next.js, React, Sass and Vitest/Testing Lib
 
 ## Current private systems
 
-### Football Intelligence App — active / in progress
-Current football-intelligence product built with **Next.js, TypeScript and PostgreSQL**.
+### Webhook Recovery Lab — active / in progress
+Private reliability lab built with **TypeScript, Fastify and PostgreSQL**, using synthetic events.
 
-The active implementation uses transactional publication, QA-gated research packages, deterministic public read models and a separate read-only web database role. The active repository is private while the product is still being built. [Read the public engineering case study](https://franciscovitar.vercel.app/work/football-intelligence).
+It explores HMAC-signed ingress, a durable inbox, concurrent workers with leases, bounded retries, dead-letter and audited replay. Delivery is at least once; receiver-side idempotency prevents duplicate recorded effects. It is not publicly hosted or production-ready. [Read the sanitized engineering case study](https://franciscovitar.vercel.app/work/webhook-recovery-lab).
 
 ### Personal AI System
 Private modular system for AI-assisted research, software work, learning and execution.
