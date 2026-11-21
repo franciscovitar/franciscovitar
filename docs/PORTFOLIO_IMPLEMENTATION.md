@@ -14,9 +14,10 @@ The portfolio is intentionally evidence-first. It prioritizes a small number of 
 ## Current case studies
 
 - Vida 2.0
-- Football Intelligence App
-- Personal AI System
 - La Mediterránea Store
+- Library Network API
+- Webhook Recovery Lab
+- Personal AI System
 
 Client delivery remains visible but secondary.
 
@@ -30,7 +31,7 @@ Before considering a material change complete, run npm run lint and npm run buil
 
 Do not add unsupported exact performance/accessibility/business-impact metrics.
 
-Do not present the current private Football Intelligence App as a finished Production launch.
+Do not present the local-only Library Network API as a public hosted service or the private Webhook Recovery Lab as production-ready.
 
 Do not expose private Vida or Personal AI System data to make a case study look more detailed.
 

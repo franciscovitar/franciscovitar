@@ -21,24 +21,45 @@ export const featuredProjects = [
     repo: "https://github.com/franciscovitar/vida-2.0",
   },
   {
-    slug: "football-intelligence",
-    visual: "football",
-    title: "Football Intelligence",
-    label: "Private flagship",
-    status: "In progress",
+    slug: "library-network-api",
+    visual: "library",
+    title: "Library Network API",
+    label: "Public backend lab",
+    status: "Local demo · verified V1",
     hook:
-      "Research becomes product data only after QA, transactional publication and explicit provenance.",
+      "A physical library copy cannot be loaned twice, even under concurrent requests and retries.",
     summary:
-      "PostgreSQL-backed football intelligence product with historical publication state and read-only public surfaces.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "QA", "Read models"],
+      "Reproducible FastAPI/PostgreSQL lab with transactional loan states, concurrency controls and idempotency.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker"],
     evidence:
-      "Transactional publication, explicit missingness and a separate read-only database role for the web path.",
+      "129 passing tests in a linked public GitHub Actions run, including 117 PostgreSQL integration tests.",
     highlights: [
-      "Research and public truth are separated",
-      "The normal web path cannot write publication state",
-      "Missing data is not silently converted to zero",
+      "Concurrent claims serialize with row locks",
+      "Constraints protect against double loans",
+      "Idempotent retries and rollback are verified",
     ],
-    href: "/work/football-intelligence",
+    href: "/work/library-network-api",
+    repo: "https://github.com/franciscovitar/library-network-api",
+  },
+  {
+    slug: "webhook-recovery-lab",
+    visual: "webhook",
+    title: "Webhook Recovery Lab",
+    label: "Private reliability lab",
+    status: "In progress · synthetic",
+    hook:
+      "Recover signed webhook delivery through crashes, duplicate events and receiver timeouts.",
+    summary:
+      "Private TypeScript/Fastify/PostgreSQL experiment with a durable inbox, retries and replay.",
+    stack: ["TypeScript", "Fastify", "PostgreSQL", "Docker", "Vitest"],
+    evidence:
+      "Synthetic unit/integration tests and private CI; no public hosted service or public test run is claimed.",
+    highlights: [
+      "Ingress is acknowledged only after durable commit",
+      "Leases and fencing prevent stale worker acknowledgements",
+      "Receiver idempotency handles at-least-once delivery",
+    ],
+    href: "/work/webhook-recovery-lab",
   },
   {
     slug: "personal-ai-system",

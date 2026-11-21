@@ -123,11 +123,17 @@ const projectEs = {
       "Lecturas y escrituras tienen límites distintos",
     ],
   },
-  "football-intelligence": {
-    label: "Principal · Privado",
-    status: "En progreso",
+  "library-network-api": {
+    label: "Laboratorio backend · Público",
+    status: "Demo local · V1 verificada",
     hook:
-      "La investigación llega al producto sólo después de QA, publicación transaccional y trazabilidad.",
+      "Un ejemplar físico no puede prestarse dos veces, incluso ante solicitudes concurrentes y reintentos.",
+  },
+  "webhook-recovery-lab": {
+    label: "Laboratorio de confiabilidad · Privado",
+    status: "En progreso · Sintético",
+    hook:
+      "Recuperación de entregas de webhooks firmados ante caídas, duplicados y timeouts.",
   },
   "personal-ai-system": {
     label: "Principal · Privado",

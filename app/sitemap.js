@@ -6,7 +6,8 @@ export default function sitemap() {
     "",
     "/cv",
     "/work/vida-2",
-    "/work/football-intelligence",
+    "/work/library-network-api",
+    "/work/webhook-recovery-lab",
     "/work/personal-ai-system",
     "/work/la-mediterranea-store",
   ];

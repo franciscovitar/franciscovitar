@@ -116,68 +116,97 @@ const es = {
       "Un demo sintético para recruiters es opcional, no necesario para demostrar la arquitectura.",
     ],
   },
-  "football-intelligence": {
-    eyebrow: "Principal privado · En progreso",
+  "library-network-api": {
+    eyebrow: "Laboratorio backend público · V1 verificada",
     summary:
-      "Producto de inteligencia futbolística que separa investigación, QA, publicación en PostgreSQL y consumo público read-only.",
+      "Una API REST que administra el recorrido de un ejemplar físico entre sucursales, incluso con solicitudes concurrentes y reintentos.",
+    linkLabels: ["Repositorio público", "Caso técnico", "Evidencia de CI"],
     problem:
-      "La información pierde confiabilidad cuando fuentes, datos faltantes, historial y cálculos de UI se mezclan. La publicación debía ser un límite claro.",
+      "Si dos personas solicitan el mismo ejemplar al mismo tiempo, la red de bibliotecas debe aceptar como máximo un préstamo. El ejemplar permanece indisponible hasta que regresa a su sucursal de origen.",
     constraints: [
-      "Sólo investigación aprobada por QA puede llegar al producto público.",
-      "Dato faltante no puede convertirse en cero.",
-      "Procedencia y estado de publicación deben quedar visibles.",
-      "La publicación debe ser transaccional e idempotente cuando corresponde.",
-      "La web normal no debe tener permisos de escritura.",
-      "El producto sigue en progreso y no se presenta como terminado.",
+      "Un ejemplar físico no puede tener dos préstamos abiertos, incluso ante concurrencia.",
+      "Solicitud, transferencia, historial y clave de idempotencia se confirman juntos o se revierten juntos.",
+      "La ubicación cambia cuando la sucursal receptora confirma la llegada.",
+      "Un reintento con la misma clave no puede duplicar un préstamo.",
+      "Un ejemplar dañado se retira de circulación.",
+      "La demo es local, con datos sintéticos; no es un servicio público hospedado.",
     ],
     architecture: [
-      "Fuentes públicas / investigación",
-      "Paquete aprobado por QA",
-      "Publisher transaccional",
-      "Historial en PostgreSQL",
-      "Read models current / public",
-      "Rol web separado y read-only",
-      "Superficies en Next.js",
+      "Cliente HTTP / Swagger / script de demo reproducible",
+      "Endpoints FastAPI y esquemas validados",
+      "Comandos de aplicación: una transacción por operación",
+      "Estados de préstamos, ejemplares y transferencias",
+      "PostgreSQL: locks, restricciones e historial",
+      "Docker reproducible + verificación en CI",
     ],
     decisions: [
-      {
-        title: "Publicar es una frontera",
-        body:
-          "Investigar no alcanza: los datos sólo se vuelven públicos cuando cumplen el contrato de publicación.",
-      },
-      {
-        title: "Separar quien escribe de quien lee",
-        body:
-          "El publisher puede escribir; la web usa un rol distinto y read-only.",
-      },
-      {
-        title: "No inventar scoring en el cliente",
-        body:
-          "La UI muestra inteligencia persistida y revisada en vez de calcular reglas ocultas del lado cliente.",
-      },
-      {
-        title: "Preservar historial",
-        body:
-          "Las revisiones evitan que el último valor borre silenciosamente la evidencia anterior.",
-      },
+      { title: "Bloquear el ejemplar", body: "Los comandos toman locks de filas en un orden fijo y vuelven a validar el estado. Dos pedidos simultáneos no pueden reservar el mismo libro." },
+      { title: "Hacer que la base también proteja", body: "Un índice único parcial y restricciones explícitas rechazan estados inválidos aunque falle una comprobación de la aplicación." },
+      { title: "Reintentar sin duplicar", body: "Una Idempotency-Key repite una solicitud aceptada, pero rechaza usar la misma identidad con otro contenido." },
+      { title: "Mantener una arquitectura acotada", body: "Un monolito modular y PostgreSQL transaccional permiten reproducir el ciclo sin colas ni servicios innecesarios." },
     ],
     verification: [
-      "Validación de schema antes de publicar.",
-      "Modos validate-only y dry-run.",
-      "Integración contra PostgreSQL.",
-      "Checks que prueban que el rol web no puede escribir.",
-      "Lint, types y build sobre las superficies.",
+      "Ejecución enlazada de GitHub Actions: 129 tests aprobados (117 de integración PostgreSQL + 12 unitarios/HTTP), ninguno omitido.",
+      "Pedidos concurrentes del mismo ejemplar: uno aceptado, otro rechazado sin registros duplicados.",
+      "Rollback, replay idempotente, transiciones ilegales y devoluciones dañadas cubiertos con tests sobre base real.",
+      "Script HTTP local determinista que recorre el préstamo entre sucursales y la devolución completa.",
     ],
     safety: [
-      "Las escrituras de publicación son explícitas.",
-      "Lecturas públicas separadas del estado privado de investigación.",
-      "Missingness e historial se modelan de forma deliberada.",
+      "Los comandos rechazados no alteran préstamos, transferencias, ejemplares ni historial.",
+      "PostgreSQL no expone un puerto al host en el Compose de la demo.",
+      "La API no tiene autenticación ni rate limiting: no debe hospedarse públicamente tal cual está.",
     ],
     status:
-      "La implementación activa es privada y sigue en progreso. La base administrada final y el deployment de Producción todavía no se presentan como cerrados.",
+      "La V1 está en main del repositorio público, con demo local Docker y una ejecución de CI enlazada. Es un laboratorio de portfolio inspirado en un trabajo académico individual; la API nueva se construyó con asistencia de IA, no se operó como servicio de producción.",
     limitations: [
-      "Algunos leaderboards siguen bloqueados hasta certificar cobertura suficiente.",
-      "El repo público football-intelligence anterior es legacy, no la fuente actual.",
+      "No se afirma que exista una API pública hospedada, autenticación ni uso en producción.",
+      "La V1 excluye renovaciones, multas y cancelación de solicitudes abandonadas.",
+    ],
+  },
+  "webhook-recovery-lab": {
+    eyebrow: "Laboratorio privado de confiabilidad · En progreso",
+    summary:
+      "Backend sintético que recibe webhooks firmados, persiste entregas, reintenta fallos temporales y permite inspeccionar la recuperación.",
+    problem:
+      "Un proveedor puede reenviar un webhook, un worker puede caer después de que el receptor lo procesa, o un timeout puede ocultar el resultado. La dificultad es no perder eventos aceptados ni aplicar el mismo efecto dos veces.",
+    constraints: [
+      "Las firmas HMAC se comprueban contra el cuerpo original y una ventana temporal acotada.",
+      "Sólo se responde con éxito después de confirmar juntos el evento en inbox y su job.",
+      "Se deduplican reentregas idénticas y se rechaza reutilizar un ID con contenido distinto.",
+      "Los leases vencen; un worker viejo no puede confirmar sobre un nuevo propietario.",
+      "La entrega física es al menos una vez: el receptor deduplica el efecto por su cuenta.",
+      "Eventos, credenciales y destinos son sintéticos y locales.",
+    ],
+    architecture: [
+      "Proveedor sintético envía evento HTTP firmado",
+      "Fastify verifica firma y esquema",
+      "Transacción PostgreSQL: evento inbox + job de entrega",
+      "Worker reclama jobs con SKIP LOCKED y tokens de lease",
+      "Receptor HTTP registra un solo efecto en otra base",
+      "Reintentos, dead-letter, replay auditado y diagnósticos de lectura",
+    ],
+    decisions: [
+      { title: "Confirmar sólo eventos durables", body: "Inbox y job se insertan en una sola transacción PostgreSQL. No se devuelve 202 antes del commit." },
+      { title: "Recuperar sin duplicar propietarios", body: "Leases breves, locks y fencing tokens impiden que una confirmación vieja pise a un worker nuevo." },
+      { title: "Separar intentos de efectos", body: "Un worker que cae puede reenviar; el receptor registra un solo efecto mediante una identidad de entrega estable." },
+      { title: "Dejar las fallas a la vista", body: "Reintentos acotados, dead-letter, generaciones de replay y snapshots de cola muestran el estado y su recuperación." },
+    ],
+    verification: [
+      "Cobertura documentada de tests unitarios y de integración PostgreSQL para firmas, duplicados y rollback.",
+      "Claims concurrentes, reintentos por 503, recuperación de leases, ACK obsoletos y replay auditado con eventos sintéticos.",
+      "Escenario HTTP de recuperación y smoke Docker Compose registrados en evidencia de CI privada.",
+      "Repositorio y logs de CI privados: esta ficha no implica resultados inspeccionables por visitantes.",
+    ],
+    safety: [
+      "No se usan webhooks reales de clientes ni credenciales de producción.",
+      "No hay despliegue público ni destinos configurables por visitantes.",
+      "No se promete transporte exactly-once; la idempotencia del receptor protege el efecto registrado.",
+    ],
+    status:
+      "Laboratorio privado activo con entradas sintéticas, pruebas locales documentadas y CI privado. No es un servicio de webhooks en producción ni una demo pública hospedada.",
+    limitations: [
+      "Un despliegue real exigiría rotación de secretos, TLS, autenticación operativa, monitoreo, backups y validación de capacidad y seguridad.",
+      "El repositorio y la evidencia de CI no están disponibles para visitantes públicos.",
     ],
   },
   "personal-ai-system": {

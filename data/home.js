@@ -86,6 +86,7 @@ export const projects = [
     },
     stack: "FastAPI · PostgreSQL",
     status: { en: "Local demo · tests in the repository", es: "Demo local · tests en el repositorio" },
+    caseHref: "/work/library-network-api",
     repo: "https://github.com/franciscovitar/library-network-api",
     media: { type: "transcript" },
   },
@@ -93,6 +94,7 @@ export const projects = [
 
 export const webhookLab = {
   title: "Webhook Recovery Lab",
+  caseHref: "/work/webhook-recovery-lab",
   summary: {
     en: "Webhook intake with HMAC verification, inbox, retries, leases, dead-letter and replay.",
     es: "Recepción de webhooks con verificación HMAC, inbox, reintentos, leases, dead-letter y replay.",
