@@ -11,11 +11,14 @@ export const caseStudyUi = {
     constraintsTitle: "The boundaries that shape the design",
     architecture: "Architecture",
     architectureTitle: "System path",
+    architectureJump: "Explore the full architecture ↓",
     decisions: "Decisions",
     decisionsTitle: "Important engineering decisions",
     verification: "Verification",
     quality: "Quality",
     qualityTitle: "How the system is checked",
+    evidenceTitle: "Evidence and visibility",
+    evidenceIntro: "A clear distinction between documented internal mechanisms and what a public visitor can independently inspect.",
     failure: "Failure handling",
     failureTitle: "What happens when things go wrong",
     currentStatus: "Current status",
@@ -36,11 +39,14 @@ export const caseStudyUi = {
     constraintsTitle: "Restricciones que guiaron el diseño",
     architecture: "Arquitectura",
     architectureTitle: "Cómo fluye el sistema",
+    architectureJump: "Explorar la arquitectura completa ↓",
     decisions: "Decisiones",
     decisionsTitle: "Decisiones que marcaron la arquitectura",
     verification: "Verificación",
     quality: "Calidad",
     qualityTitle: "Cómo lo verifico",
+    evidenceTitle: "Evidencia que puedo mostrar",
+    evidenceIntro: "Separé los documentos internos de lo que realmente puede comprobar alguien que visita esta página.",
     failure: "Fallas",
     failureTitle: "Cómo responde cuando algo falla",
     currentStatus: "Estado actual",
@@ -212,7 +218,7 @@ const es = {
   "personal-ai-system": {
     eyebrow: "Principal privado · Activo",
     summary:
-      "Capa privada de control que dirige objetivos de aprendizaje, software y proyectos hacia fuentes canónicas, herramientas con permisos acotados y resultados verificables.",
+      "Cuando le pido a la IA estudiar para un parcial o trabajar en un proyecto, PAS selecciona conocimientos, reglas y herramientas permitidas, y distingue la respuesta de la evidencia de que el trabajo se hizo.",
     problem:
       "El trabajo con IA se degrada cuando cada chat maneja su propia verdad, el contexto crece sin límite y las herramientas tienen más permisos de los necesarios.",
     constraints: [
@@ -255,11 +261,28 @@ const es = {
       },
     ],
     verification: [
-      "Contratos de evidencia y procedencia.",
-      "Handoffs entre chats y herramientas.",
-      "Políticas explícitas de datos y ejecución.",
-      "Runtimes orientados a evals.",
-      "Read-back en mutaciones importantes.",
+      "START_HERE.md y AI/BOOTSTRAP.md definen el arranque y la recuperación de contexto en el main privado de PAS.",
+      "Las políticas de datos, seguridad y ejecución separan el contexto de una tarea del permiso para modificar sistemas externos.",
+      "El estudio usa material de cada materia y criterios de evaluación, no un prompt genérico.",
+      "Existen scripts de validación y métodos de evaluación documentados internamente; esta página no publica resultados de sus ejecuciones.",
+      "Los cambios importantes requieren autorización y lectura posterior para comprobar el estado; no alcanza con afirmar que se hicieron.",
+    ],
+    evidence: [
+      {
+        label: "Documentado · privado",
+        title: "Un punto de entrada concreto",
+        body: "START_HERE.md → AI/BOOTSTRAP.md define cómo se inicia el trabajo, qué contexto cargar y cómo elegir fuentes autoritativas. Esos archivos existen en el repositorio privado actual.",
+      },
+      {
+        label: "Documentado · privado",
+        title: "Límites de ejecución",
+        body: "DATA_POLICY, AGENT_SECURITY y EXECUTION_POLICY documentan reglas para acceso a datos, permisos y cambios. La documentación no equivale a una ejecución real observada.",
+      },
+      {
+        label: "Visible · público",
+        title: "Un recorrido sin datos sensibles",
+        body: "El ejemplo de preparación del parcial y el mapa de arquitectura son ilustrativos. No se expone el repo privado, información personal, logs de evaluación ni una demo conectada.",
+      },
     ],
     safety: [
       "Mínimo privilegio en herramientas.",

@@ -159,7 +159,7 @@ export const caseStudies = {
     title: "Personal AI System",
     eyebrow: "Private flagship · Active",
     summary:
-      "A private AI control layer that routes goals across learning, software and projects, using canonical sources, scoped tools and verifiable outcomes.",
+      "When I ask AI to study for an exam or work on a project, PAS selects the relevant knowledge, rules and permitted tools, then separates the answer from evidence that the work was done.",
     stack: ["Python", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
     links: [],
     problem:
@@ -188,11 +188,28 @@ export const caseStudies = {
       { title: "Permissions are capability-based", body: "Consequential writes, deployments and spending require stronger authorization than normal analysis." },
     ],
     verification: [
-      "Evidence/provenance contracts and validation scripts.",
-      "Project handoffs designed to survive across chats/tools.",
-      "Explicit execution and data policies.",
-      "Eval-oriented and continuous-improvement runtimes.",
-      "Read-back expectations for important mutations.",
+      "START_HERE.md and AI/BOOTSTRAP.md define the documented entrypoint and retrieval sequence in private PAS main.",
+      "Data, security and execution policies distinguish task context from permission to mutate external state.",
+      "Learning workflows reference subject-specific source material and evaluation blueprints rather than generic prompts.",
+      "Validation scripts and evaluation-oriented workflows are documented internally; this portfolio does not publish their run results.",
+      "Consequential mutations call for explicit authorization and a subsequent read-back, not an unverified completion claim.",
+    ],
+    evidence: [
+      {
+        label: "Documented · private",
+        title: "A concrete entrypoint",
+        body: "START_HERE.md → AI/BOOTSTRAP.md defines where work begins, what context to load and how authoritative sources are chosen. These files exist in the current private repository.",
+      },
+      {
+        label: "Documented · private",
+        title: "Execution boundaries",
+        body: "DATA_POLICY, AGENT_SECURITY and EXECUTION_POLICY define safeguards around data access, permissions and changes. Documents are not the same as a witnessed live run.",
+      },
+      {
+        label: "Visible · public",
+        title: "A sanitized walkthrough",
+        body: "The exam-preparation example and architecture map on this page are illustrative. No private repository, personal records, public evaluation logs or connected demo are exposed.",
+      },
     ],
     safety: [
       "Least-privilege tool permissions.",
