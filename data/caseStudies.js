@@ -6,7 +6,10 @@ export const caseStudies = {
     summary:
       "A personal operating system that brings multiple parts of daily life into one authenticated interface while preserving the authority and privacy of the underlying sources.",
     stack: ["Next.js", "React", "TypeScript", "Notion", "Google Sheets", "Google Calendar"],
-    links: [{ label: "Public repository", href: "https://github.com/franciscovitar/vida-2.0" }],
+    links: [
+      { label: "Try the synthetic demo · 90-second tour", href: "https://vida-2-0-demo-genova.vercel.app/" },
+      { label: "Original application source", href: "https://github.com/franciscovitar/vida-2.0" },
+    ],
     problem:
       "Personal information already lived in authoritative tools. The goal was not to copy everything into one new database, but to create a useful product layer without creating a second source of truth.",
     constraints: [
@@ -36,6 +39,7 @@ export const caseStudies = {
       "Idempotency and policy-engine verification.",
       "Environment/preflight validation for Preview and Production assumptions.",
       "Explicit runtime readiness instead of hidden fallback.",
+      "Separately deployed interactive demo with synthetic data, a guided walkthrough, independent source code and automated tests — not a live integration test.",
     ],
     safety: [
       "No silent DEV-to-Production source fallback.",
@@ -44,10 +48,10 @@ export const caseStudies = {
       "Runtime status surfaces are sanitized and do not expose credentials.",
     ],
     status:
-      "Vida 2.0 is an active personal product. The runtime data is private; this case study intentionally shows architecture and bounded evidence rather than the personal dataset.",
+      "Vida 2.0 is an active, authenticated personal product. Its separate, publicly accessible synthetic demo lets recruiters explore selected flows; neither the demo nor this case study exposes personal records or proves live integrations.",
     limitations: [
       "The public portfolio does not expose private health, finance, nutrition or calendar data.",
-      "A dedicated synthetic recruiter deployment is optional, not required to make the architecture evidence public.",
+      "The linked demo is a separate static JavaScript showcase: its local interactions, sample metrics and captured entries are not production data, ChatGPT calls or authenticated source writes.",
     ],
   },
   library: {
