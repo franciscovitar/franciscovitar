@@ -190,7 +190,7 @@ export const caseStudies = {
     verification: [
       "START_HERE.md and AI/BOOTSTRAP.md define the documented entrypoint and retrieval sequence in private PAS main.",
       "Data, security and execution policies distinguish task context from permission to mutate external state.",
-      "The public reference includes executable routing, source selection, synthetic write gates and negative-path tests.",
+      "The public reference includes executable routing, Skill contracts, scoped source retrieval, risk/permission gates, study and capture runtimes, project CAS/idempotency, improvement review and negative-path tests.",
       "Learning, capture, research, professional and project examples are synthetic; none claims a successful live integration.",
       "The reference separates planning, explicit approval and checked readback; the private system's full validation results are not published here.",
     ],
@@ -208,7 +208,7 @@ export const caseStudies = {
       {
         label: "Code · public",
         title: "A reviewable reference implementation",
-        body: "A separate public repository implements representative routing, scoped source selection and safe synthetic writes with automated tests. It contains no private PAS data or shared Git history.",
+        body: "A separate public repository now offers an inspectable multi-layer reference: 14 Skill contracts, source governance, domain examples, continuity, review gates and automated negative tests. It contains no private PAS data or shared Git history.",
       },
     ],
     safety: [
