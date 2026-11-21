@@ -154,6 +154,19 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                   </article>
                 ))}
               </div>
+              <div className={styles.pasDepth}>
+                <p className={styles.miniLabel}>{pas.depthLabel}</p>
+                <div className={styles.pasDepthGrid}>
+                  {pas.depthStats.map((stat) => (
+                    <div className={styles.pasDepthItem} key={stat.value}>
+                      <strong>{stat.value}</strong>
+                      <h3>{stat.title}</h3>
+                      <p>{stat.detail}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className={styles.pasDepthNote}>{pas.depthNote}</p>
+              </div>
               <div className={styles.pasCodeCallout}>
                 <div>
                   <p className={styles.miniLabel}>{pas.codeLabel}</p>

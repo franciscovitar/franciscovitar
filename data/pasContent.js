@@ -14,8 +14,16 @@ export const pasContent = {
     codeLabel: "Código revisable",
     codeTitle: "La arquitectura también se puede auditar.",
     codeBody:
-      "El repositorio público contiene un modelo independiente y sintético del router, la selección de fuentes, las autorizaciones, la idempotencia y las pruebas. No publica el sistema privado ni simula conexiones reales.",
+      "El repositorio público ya permite explorar contratos de Skills, recuperación por ámbito, permisos, evidencia, estudio, captura, continuidad y mejora, además de rutas y pruebas automatizadas. Es código de referencia sintético: no expone el PAS privado ni simula conectores reales.",
     codeAction: "Explorar código y pruebas ↗",
+    depthLabel: "Profundidad técnica / alcance arquitectónico",
+    depthNote: "Inventario y contratos del sistema, no cantidad de agentes instalados ni funcionalidades productivas. Los tests validan exclusivamente la referencia pública.",
+    depthStats: [
+      { value: "14", title: "Contratos de Skills", detail: "Capacidades transversales, aprendizaje y dominios especializados." },
+      { value: "4 + 1", title: "Niveles de contexto", detail: "Global, dominio, proyecto y materia; preferencias aisladas." },
+      { value: "12 × 7", title: "Taxonomía profesional", detail: "Servicios y tipos de intervención, con gates de investigación." },
+      { value: "35", title: "Familias diseñadas", detail: "Bibliotecas previstas, no 35 herramientas desplegadas." },
+    ],
     categories: [
       { number: "01", title: "Aprendizaje", short: "Materias y práctica", body: "Métodos según objetivos, temarios y evaluaciones; preguntas, revisión de errores y evidencia de dominio, en lugar de repasar sin criterio." },
       { number: "02", title: "Conocimiento", short: "Investigación y fuentes", body: "Búsqueda contextual, comparación de alternativas, trazabilidad de afirmaciones y promoción selectiva de conocimiento reutilizable." },
@@ -40,8 +48,16 @@ export const pasContent = {
     codeLabel: "Inspectable code",
     codeTitle: "The architecture can be reviewed in code.",
     codeBody:
-      "The public repository contains an independent, synthetic model of routing, source selection, approvals, idempotency and tests. It does not expose the private system or pretend that real connectors are active.",
+      "The public repository now covers Skill contracts, scoped retrieval, permissions, evidence, learning, capture, project continuity and improvement, alongside routing and automated tests. It is synthetic reference code, not the private PAS or a live connector.",
     codeAction: "Explore code and tests ↗",
+    depthLabel: "Engineering depth / architecture scope",
+    depthNote: "System inventory and contracts, not a count of running agents or production features. Tests verify this public reference only.",
+    depthStats: [
+      { value: "14", title: "Skill contracts", detail: "Cross-cutting capabilities, learning and domain methods." },
+      { value: "4 + 1", title: "Context layers", detail: "Global, domain, project and subject; preferences isolated." },
+      { value: "12 × 7", title: "Delivery taxonomy", detail: "Services and intervention types with research gates." },
+      { value: "35", title: "Designed families", detail: "Proposed libraries, not 35 deployed tools." },
+    ],
     categories: [
       { number: "01", title: "Learning", short: "Subjects and practice", body: "Assessment-aware methods, official scope, one-question practice, error review and evidence of mastery rather than undirected repetition." },
       { number: "02", title: "Knowledge", short: "Research and sources", body: "Scoped retrieval, comparison, claim provenance and selective promotion of reusable knowledge." },
