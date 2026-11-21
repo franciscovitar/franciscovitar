@@ -20,7 +20,34 @@ export default function CaseStudyPage({ study, lang = "en" }) {
   const localized = localizeCaseStudy(study, lang);
   const ui = caseStudyUi[lang] || caseStudyUi.en;
   const visual = visualBySlug[localized.slug] || "overview";
-  const languageSuffix = lang === "es" ? "?lang=es" : "";
+  const isPas = localized.slug === "personal-ai-system";
+
+  const architectureSection = (
+    <section
+      className={`${styles.section} ${isPas ? styles.pasArchitecture : ""}`}
+      id={isPas ? "pas-architecture" : undefined}
+    >
+      <div className={styles.sectionLabel}>
+        <span>{isPas ? "01" : "03"}</span>
+        {ui.architecture}
+      </div>
+      <div className={styles.sectionBody}>
+        <h2>{ui.architectureTitle}</h2>
+        {isPas ? (
+          <PASFlow lang={lang} />
+        ) : (
+          <div className={styles.architectureTrack}>
+            {localized.architecture.map((item, index) => (
+              <div className={styles.archStep} key={item}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item}</strong>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
 
   return (
     <main className={styles.page}>
@@ -77,6 +104,12 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               ))}
             </div>
 
+            {isPas && (
+              <a href="#pas-architecture" className={styles.jumpLink}>
+                {ui.architectureJump}
+              </a>
+            )}
+
             {localized.links.length > 0 && (
               <div className={styles.links}>
                 {localized.links.map((link) => (
@@ -98,9 +131,11 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </section>
 
+        {isPas && architectureSection}
+
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>01</span>
+            <span>{isPas ? "02" : "01"}</span>
             {ui.problem}
           </div>
           <div className={styles.sectionBody}>
@@ -111,7 +146,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>02</span>
+            <span>{isPas ? "03" : "02"}</span>
             {ui.constraints}
           </div>
           <div className={styles.sectionBody}>
@@ -127,27 +162,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </section>
 
-        <section className={styles.section}>
-          <div className={styles.sectionLabel}>
-            <span>03</span>
-            {ui.architecture}
-          </div>
-          <div className={styles.sectionBody}>
-            <h2>{ui.architectureTitle}</h2>
-            {localized.slug === "personal-ai-system" ? (
-              <PASFlow lang={lang} />
-            ) : (
-              <div className={styles.architectureTrack}>
-                {localized.architecture.map((item, index) => (
-                  <div className={styles.archStep} key={item}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{item}</strong>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
+        {!isPas && architectureSection}
 
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
@@ -193,6 +208,23 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                 </ul>
               </div>
             </div>
+            {localized.evidence?.length > 0 && (
+              <div className={styles.evidenceSection}>
+                <div className={styles.evidenceIntro}>
+                  <h3>{ui.evidenceTitle}</h3>
+                  <p>{ui.evidenceIntro}</p>
+                </div>
+                <div className={styles.evidenceGrid}>
+                  {localized.evidence.map((item) => (
+                    <article className={styles.evidenceCard} key={item.title}>
+                      <p className={styles.miniLabel}>{item.label}</p>
+                      <h4>{item.title}</h4>
+                      <p>{item.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 

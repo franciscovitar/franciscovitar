@@ -43,13 +43,13 @@ const visuals = {
       ],
     },
     pas: {
-      label: "Personal AI System · control path",
-      footer: "AI output is not treated as proof",
+      label: "PAS in action · exam preparation",
+      footer: "Illustrative workflow · not a live run",
       nodes: [
-        ["01", "User goal"],
-        ["02", "Routing + permissions"],
-        ["03", "Canonical evidence"],
-        ["04", "Verified state update"],
+        ["01", "Help me prepare for my Networks exam"],
+        ["02", "Select subject, syllabus and sources"],
+        ["03", "Ask one adaptive question at a time"],
+        ["04", "Review answers and identify gaps"],
       ],
     },
     mediterranea: {
@@ -105,13 +105,13 @@ const visuals = {
       ],
     },
     pas: {
-      label: "Personal AI System · flujo de control",
-      footer: "La salida de IA no cuenta como prueba",
+      label: "PAS en acción · preparar un parcial",
+      footer: "Recorrido ilustrativo · no es una ejecución en vivo",
       nodes: [
-        ["01", "Objetivo"],
-        ["02", "Routing + permisos"],
-        ["03", "Evidencia canónica"],
-        ["04", "Estado verificado"],
+        ["01", "Quiero preparar mi parcial de Redes"],
+        ["02", "Selecciona materia, temario y fuentes"],
+        ["03", "Practica una pregunta adaptativa por vez"],
+        ["04", "Revisa respuestas y detecta dudas"],
       ],
     },
     mediterranea: {
