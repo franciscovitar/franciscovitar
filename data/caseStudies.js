@@ -235,7 +235,7 @@ export const caseStudies = {
     title: "Cauce Commerce Lab",
     eyebrow: "Personal full-stack · Public commerce simulator",
     summary:
-      "A personal full-stack commerce engineering project: real Next.js/TypeScript and Supabase code plus a separate public simulation of checkout, inventory, roles and idempotent payment callbacks."
+      "A personal full-stack commerce engineering project: real Next.js/TypeScript and Supabase code plus a separate public simulation of checkout, inventory, roles and idempotent payment callbacks.",
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Storage", "Testing"],
     links: [
       { label: "Try Cauce Commerce Lab", href: "https://cauce-commerce-showcase-genova.vercel.app/" },
@@ -243,14 +243,14 @@ export const caseStudies = {
       { label: "Architecture and verification", href: "https://github.com/franciscovitar/la-mediterranea-store/blob/main/docs/RECRUITER_ARCHITECTURE.md" },
     ],
     problem:
-      "Build a robust commerce architecture where cart prices, administrator access and payment outcomes are never trusted merely because the browser says so. The original proposed merchandising project was not purchased or launched by its prospective customer; Cauce is the independent personal showcase."
+      "Build a robust commerce architecture where cart prices, administrator access and payment outcomes are never trusted merely because the browser says so. The original proposed merchandising project was not purchased or launched by its prospective customer; Cauce is the independent personal showcase.",
     constraints: [
       "Catalog/order state must be persisted rather than hardcoded into the UI.",
       "Admin access needs authentication plus database authorization.",
       "Checkout totals should be server-authoritative.",
       "Payment credentials are not available yet, so the UI must not imply that live payment is active.",
       "Backup/restore needs validation rather than best-effort copying.",
-      "Public showcase must use its own fictional brand, products and data rather than repurpose historical merchandise artwork."
+      "Public showcase must use its own fictional brand, products and data rather than repurpose historical merchandise artwork.",
     ],
     architecture: [
       "Next.js storefront",
@@ -281,10 +281,10 @@ export const caseStudies = {
       "Safe 404/error behavior and basic security headers.",
     ],
     status:
-      "The real codebase is an integration-ready personal engineering project, originally proposed under another brand but never purchased or launched as a client store. Cauce is a separately hosted, fictional, browser-only interactive showcase. Mercado Pago code is prepared, not active; the showcase does not invoke real payments or Supabase."
+      "The real codebase is an integration-ready personal engineering project, originally proposed under another brand but never purchased or launched as a client store. Cauce is a separately hosted, fictional, browser-only interactive showcase. Mercado Pago code is prepared, not active; the showcase does not invoke real payments or Supabase.",
     limitations: [
       "Production payment credentials, real checkout activity and customer operation are outside the public claim.",
-      "The source repository preserves historical store branding/assets for provenance; Cauce does not use those assets and is not a live retail business."
+      "The source repository preserves historical store branding/assets for provenance; Cauce does not use those assets and is not a live retail business.",
     ],
   },
 };
