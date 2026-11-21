@@ -216,9 +216,10 @@ const es = {
     ],
   },
   "personal-ai-system": {
-    eyebrow: "Principal privado · Activo",
+    eyebrow: "Sistema privado · Código de referencia público",
     summary:
-      "Cuando le pido a la IA estudiar para un parcial o trabajar en un proyecto, PAS selecciona conocimientos, reglas y herramientas permitidas, y distingue la respuesta de la evidencia de que el trabajo se hizo.",
+      "Una torre de control de IA personal para aprendizaje, investigación, proyectos y captura de datos cotidianos. Cada objetivo activa métodos, fuentes y permisos adecuados; un repositorio público permite revisar código y pruebas representativos.",
+    linkLabels: ["Repositorio público · Código y pruebas"],
     problem:
       "El trabajo con IA se degrada cuando cada chat maneja su propia verdad, el contexto crece sin límite y las herramientas tienen más permisos de los necesarios.",
     constraints: [
@@ -263,9 +264,9 @@ const es = {
     verification: [
       "START_HERE.md y AI/BOOTSTRAP.md definen el arranque y la recuperación de contexto en el main privado de PAS.",
       "Las políticas de datos, seguridad y ejecución separan el contexto de una tarea del permiso para modificar sistemas externos.",
-      "El estudio usa material de cada materia y criterios de evaluación, no un prompt genérico.",
-      "Existen scripts de validación y métodos de evaluación documentados internamente; esta página no publica resultados de sus ejecuciones.",
-      "Los cambios importantes requieren autorización y lectura posterior para comprobar el estado; no alcanza con afirmar que se hicieron.",
+      "La referencia pública incluye routing ejecutable, selección de fuentes, autorización de escrituras sintéticas y pruebas negativas.",
+      "Los casos de estudio, captura, investigación, proyectos y trabajo profesional usan datos ficticios; no se muestran integraciones reales como ejecutadas.",
+      "El ejemplo separa planificación, aprobación y comprobación posterior; no se publican los resultados íntegros de las validaciones privadas.",
     ],
     evidence: [
       {
@@ -279,9 +280,9 @@ const es = {
         body: "DATA_POLICY, AGENT_SECURITY y EXECUTION_POLICY documentan reglas para acceso a datos, permisos y cambios. La documentación no equivale a una ejecución real observada.",
       },
       {
-        label: "Visible · público",
-        title: "Un recorrido sin datos sensibles",
-        body: "El ejemplo de preparación del parcial y el mapa de arquitectura son ilustrativos. No se expone el repo privado, información personal, logs de evaluación ni una demo conectada.",
+        label: "Código · público",
+        title: "Una implementación que se puede revisar",
+        body: "El repositorio público implementa routing, selección acotada de fuentes y escrituras sintéticas seguras, con tests automatizados. No comparte datos privados de PAS ni su historial Git.",
       },
     ],
     safety: [
@@ -291,9 +292,9 @@ const es = {
       "Estado privado fuera del portfolio público.",
     ],
     status:
-      "PAS es un sistema privado activo. El portfolio sólo muestra una versión sanitizada de su arquitectura y ejemplos acotados.",
+      "PAS sigue siendo un sistema personal privado activo. Esta página explica su alcance y el repositorio público ofrece código y pruebas sintéticas auditables, sin demo conectada ni herramientas reales expuestas.",
     limitations: [
-      "El repositorio privado no se publica.",
+      "El repositorio original, las integraciones reales y los datos personales no se publican. El showcase es más pequeño y no reproduce el entorno completo.",
       "Esto respalda ingeniería AI-native y orquestación, no expertise en entrenamiento de modelos o investigación ML.",
     ],
   },
