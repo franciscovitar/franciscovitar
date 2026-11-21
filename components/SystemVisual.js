@@ -42,16 +42,6 @@ const visuals = {
         ["04", "Retry · dead-letter · replay"],
       ],
     },
-    pas: {
-      label: "PAS in action · exam preparation",
-      footer: "Illustrative workflow · not a live run",
-      nodes: [
-        ["01", "Help me prepare for my Networks exam"],
-        ["02", "Select subject, syllabus and sources"],
-        ["03", "Ask one adaptive question at a time"],
-        ["04", "Review answers and identify gaps"],
-      ],
-    },
     mediterranea: {
       label: "La Mediterránea · commerce path",
       footer: "Prepared payment boundary ≠ live payment",
@@ -102,16 +92,6 @@ const visuals = {
         ["02", "Inbox + job durables"],
         ["03", "Lease de worker + entrega"],
         ["04", "Reintento · dead-letter · replay"],
-      ],
-    },
-    pas: {
-      label: "PAS en acción · preparar un parcial",
-      footer: "Recorrido ilustrativo · no es una ejecución en vivo",
-      nodes: [
-        ["01", "Quiero preparar mi parcial de Redes"],
-        ["02", "Selecciona materia, temario y fuentes"],
-        ["03", "Practica una pregunta adaptativa por vez"],
-        ["04", "Revisa respuestas y detecta dudas"],
       ],
     },
     mediterranea: {
