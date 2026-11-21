@@ -1,0 +1,152 @@
+.frame {
+  margin: 0;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #d8d3c8;
+  border-radius: 10px;
+  background: #ede9e0;
+  color: #181914;
+  box-shadow: 0 14px 30px rgba(50, 43, 33, 0.045);
+}
+
+.topline,
+.areaHeading,
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.topline { color: #5f5a50; }
+
+.intro {
+  margin: 26px 0 24px;
+
+  h2 {
+    max-width: 13ch;
+    margin: 0 0 14px;
+    font-family: "Newsreader Variable", Georgia, serif;
+    font-size: clamp(29px, 3.3vw, 44px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    max-width: 40ch;
+    margin: 0;
+    color: #5b574f;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+}
+
+.control {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 13px;
+  align-items: center;
+  padding: 17px 19px;
+  border: 1px solid #2d3cc2;
+  background: #e1e5ff;
+
+  > div {
+    display: grid;
+    gap: 3px;
+
+    strong {
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    span {
+      color: #4d5372;
+      font-size: 11px;
+    }
+  }
+}
+
+.controlMark {
+  color: #2939ba;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.controlCode {
+  color: #2d3cc2;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.vertical {
+  width: 1px;
+  height: 22px;
+  margin: 0 auto;
+  background: #2d3cc2;
+}
+
+.areaHeading {
+  margin: 0 0 10px;
+  color: #514e46;
+}
+
+.areas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100px;
+  padding: 13px;
+  border: 1px solid #d4d0c6;
+  background: #faf8f3;
+
+  strong {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
+
+.areaNumber {
+  color: #2939ba;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+}
+
+.areaShort {
+  margin-top: 3px;
+  color: #676157;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.bottom {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid #d4d0c6;
+  color: #343a70;
+  font-size: 10px;
+}
+
+.arrow {
+  margin: 0 12px 0 0;
+  color: #89857a;
+}
+
+@media (max-width: 480px) {
+  .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .area { min-height: 96px; }
+  .intro h2 { font-size: 34px; }
+}

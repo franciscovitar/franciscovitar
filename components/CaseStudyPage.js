@@ -1,6 +1,8 @@
 import Link from "next/link";
 import SystemVisual from "./SystemVisual";
 import PASFlow from "./PASFlow";
+import PASOverview from "./PASOverview";
+import { pasContent } from "../data/pasContent";
 import { caseStudyUi, localizeCaseStudy } from "../data/caseStudyTranslations";
 import styles from "./CaseStudyPage.module.scss";
 
@@ -21,6 +23,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
   const ui = caseStudyUi[lang] || caseStudyUi.en;
   const visual = visualBySlug[localized.slug] || "overview";
   const isPas = localized.slug === "personal-ai-system";
+  const pas = pasContent[lang] || pasContent.en;
 
   const architectureSection = (
     <section
@@ -127,15 +130,47 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
 
           <div className={styles.heroVisual}>
-            <SystemVisual kind={visual} lang={lang} />
+            {isPas ? <PASOverview lang={lang} /> : <SystemVisual kind={visual} lang={lang} />}
           </div>
         </section>
 
         {isPas && architectureSection}
 
+        {isPas && (
+          <section className={styles.section} id="pas-domains">
+            <div className={styles.sectionLabel}>
+              <span>02</span>
+              {pas.scopeLabel}
+            </div>
+            <div className={styles.sectionBody}>
+              <h2>{pas.scopeTitle}</h2>
+              <p className={styles.largeCopy}>{pas.scopeIntro}</p>
+              <div className={styles.pasDomainGrid}>
+                {pas.categories.map((item) => (
+                  <article className={styles.pasDomainCard} key={item.number}>
+                    <span>{item.number} / 06</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </article>
+                ))}
+              </div>
+              <div className={styles.pasCodeCallout}>
+                <div>
+                  <p className={styles.miniLabel}>{pas.codeLabel}</p>
+                  <h3>{pas.codeTitle}</h3>
+                  <p>{pas.codeBody}</p>
+                </div>
+                <a href="https://github.com/franciscovitar/personal-ai-system-showcase" target="_blank" rel="noreferrer">
+                  {pas.codeAction}
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>{isPas ? "02" : "01"}</span>
+            <span>{isPas ? "03" : "01"}</span>
             {ui.problem}
           </div>
           <div className={styles.sectionBody}>
@@ -146,7 +181,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>{isPas ? "03" : "02"}</span>
+            <span>{isPas ? "04" : "02"}</span>
             {ui.constraints}
           </div>
           <div className={styles.sectionBody}>
@@ -166,7 +201,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>04</span>
+            <span>{isPas ? "05" : "04"}</span>
             {ui.decisions}
           </div>
           <div className={styles.sectionBody}>
@@ -184,7 +219,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
         <section className={styles.section}>
           <div className={styles.sectionLabel}>
-            <span>05</span>
+            <span>{isPas ? "06" : "05"}</span>
             {ui.verification}
           </div>
           <div className={styles.sectionBody}>
