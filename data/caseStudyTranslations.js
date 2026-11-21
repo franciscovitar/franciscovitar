@@ -304,17 +304,17 @@ const es = {
   "cauce-commerce-lab": {
     eyebrow: "Full-stack personal · Simulador público de comercio",
     summary:
-      "Proyecto personal full-stack con código Next.js/TypeScript y Supabase real, más una muestra pública independiente que simula checkout, stock, roles y callbacks idempotentes."
+      "Proyecto personal full-stack con código Next.js/TypeScript y Supabase real, más una muestra pública independiente que simula checkout, stock, roles y callbacks idempotentes.",
     linkLabels: ["Probar Cauce Commerce Lab", "Repositorio público", "Arquitectura y verificaciones"],
     problem:
-      "La meta es demostrar una arquitectura de e-commerce donde el navegador no decide precios, permisos ni pagos. El proyecto comercial anterior no se concretó ni se lanzó para el cliente; Cauce es una muestra personal independiente."
+      "La meta es demostrar una arquitectura de e-commerce donde el navegador no decide precios, permisos ni pagos. El proyecto comercial anterior no se concretó ni se lanzó para el cliente; Cauce es una muestra personal independiente.",
     constraints: [
       "Catálogo y pedidos deben persistirse fuera de la UI.",
       "El admin necesita autenticación y autorización de base.",
       "El total del checkout se valida en servidor.",
       "Sin credenciales reales, la UI no puede mostrar pagos como activos.",
       "Backup y restore deben poder validarse.",
-      "La web pública debe usar marca, productos y datos ficticios propios, sin reutilizar la identidad anterior."
+      "La web pública debe usar marca, productos y datos ficticios propios, sin reutilizar la identidad anterior.",
     ],
     architecture: [
       "Storefront Next.js",
@@ -361,10 +361,10 @@ const es = {
       "Errores seguros y headers básicos.",
     ],
     status:
-      "El código original sigue en estado de integración preparada: nació como propuesta comercial, pero no se vendió ni se lanzó al cliente. Cauce es una web pública ficticia e independiente. Mercado Pago no está activo y la simulación no llama a Supabase ni procesa pagos reales."
+      "El código original sigue en estado de integración preparada: nació como propuesta comercial, pero no se vendió ni se lanzó al cliente. Cauce es una web pública ficticia e independiente. Mercado Pago no está activo y la simulación no llama a Supabase ni procesa pagos reales.",
     limitations: [
       "Credenciales, cobros reales y operación de clientes siguen fuera de lo que afirmamos.",
-      "El repositorio conserva materiales originales como procedencia histórica; la muestra Cauce no los utiliza ni representa una tienda comercial en actividad."
+      "El repositorio conserva materiales originales como procedencia histórica; la muestra Cauce no los utiliza ni representa una tienda comercial en actividad.",
     ],
   },
 };
