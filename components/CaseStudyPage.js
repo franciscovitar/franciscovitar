@@ -134,7 +134,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           <div className={styles.sectionBody}>
             <h2>{ui.architectureTitle}</h2>
             {localized.slug === "personal-ai-system" ? (
-              <PASFlow lang={lang} theme="dark" />
+              <PASFlow lang={lang} />
             ) : (
               <div className={styles.architectureTrack}>
                 {localized.architecture.map((item, index) => (
