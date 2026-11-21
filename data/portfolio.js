@@ -82,15 +82,15 @@ export const featuredProjects = [
     href: "/work/personal-ai-system",
   },
   {
-    slug: "la-mediterranea-store",
+    slug: "cauce-commerce-lab",
     visual: "mediterranea",
-    title: "La Mediterránea Store",
-    label: "Supporting full-stack",
-    status: "Integration-ready",
+    title: "Cauce Commerce Lab",
+    label: "Personal commerce engineering",
+    status: "Public simulator · integrations prepared",
     hook:
-      "A real storefront with persistent catalog/order data, RLS-backed admin access and server-authoritative checkout.",
+      "A full-stack commerce codebase plus a public lab for pricing conflicts, stock races, permissions and safe payment state.",
     summary:
-      "Next.js/TypeScript merchandise storefront backed by Supabase with explicit payment-integration boundaries.",
+      "Personal Next.js/Supabase engineering project with separate public synthetic demo; payment integration remains prepared, not live.",
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Testing"],
     evidence:
       "Idempotency, backup/export/validated restore and a prepared — not falsely live — payment boundary.",
@@ -99,7 +99,7 @@ export const featuredProjects = [
       "Checkout totals validated server-side",
       "Payment integration is labeled honestly as prepared",
     ],
-    href: "/work/la-mediterranea-store",
+    href: "/work/cauce-commerce-lab",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
   },
 ];
