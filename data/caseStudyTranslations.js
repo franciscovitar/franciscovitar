@@ -264,7 +264,7 @@ const es = {
     verification: [
       "START_HERE.md y AI/BOOTSTRAP.md definen el arranque y la recuperación de contexto en el main privado de PAS.",
       "Las políticas de datos, seguridad y ejecución separan el contexto de una tarea del permiso para modificar sistemas externos.",
-      "La referencia pública incluye routing ejecutable, selección de fuentes, autorización de escrituras sintéticas y pruebas negativas.",
+      "La referencia pública incluye routing, contratos de Skills, recuperación por ámbito, permisos y evidencia, aprendizaje, captura, continuidad con CAS/idempotencia, mejora gobernada y pruebas negativas.",
       "Los casos de estudio, captura, investigación, proyectos y trabajo profesional usan datos ficticios; no se muestran integraciones reales como ejecutadas.",
       "El ejemplo separa planificación, aprobación y comprobación posterior; no se publican los resultados íntegros de las validaciones privadas.",
     ],
@@ -282,7 +282,7 @@ const es = {
       {
         label: "Código · público",
         title: "Una implementación que se puede revisar",
-        body: "El repositorio público implementa routing, selección acotada de fuentes y escrituras sintéticas seguras, con tests automatizados. No comparte datos privados de PAS ni su historial Git.",
+        body: "El repositorio público ofrece una referencia por capas: 14 contratos de Skills, fuentes y políticas, ejemplos por dominio, continuidad, controles de revisión y tests automatizados. No comparte datos privados de PAS ni su historial Git.",
       },
     ],
     safety: [
