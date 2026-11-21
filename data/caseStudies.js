@@ -157,11 +157,11 @@ export const caseStudies = {
   pas: {
     slug: "personal-ai-system",
     title: "Personal AI System",
-    eyebrow: "Private flagship · Active",
+    eyebrow: "Private system · Public engineering reference",
     summary:
-      "When I ask AI to study for an exam or work on a project, PAS selects the relevant knowledge, rules and permitted tools, then separates the answer from evidence that the work was done.",
-    stack: ["Python", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
-    links: [],
+      "A personal AI control tower spanning learning, research, project continuity and everyday data workflows. It routes each goal to the right methods, sources and permissions — with inspectable public reference code and tests.",
+    stack: ["Python", "JavaScript", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
+    links: [{ label: "Public reference code & tests", href: "https://github.com/franciscovitar/personal-ai-system-showcase" }],
     problem:
       "Long-running AI work becomes unreliable when every chat owns its own truth, context grows without bounds, tools have excessive permissions and generated output is treated as proof.",
     constraints: [
@@ -190,9 +190,9 @@ export const caseStudies = {
     verification: [
       "START_HERE.md and AI/BOOTSTRAP.md define the documented entrypoint and retrieval sequence in private PAS main.",
       "Data, security and execution policies distinguish task context from permission to mutate external state.",
-      "Learning workflows reference subject-specific source material and evaluation blueprints rather than generic prompts.",
-      "Validation scripts and evaluation-oriented workflows are documented internally; this portfolio does not publish their run results.",
-      "Consequential mutations call for explicit authorization and a subsequent read-back, not an unverified completion claim.",
+      "The public reference includes executable routing, source selection, synthetic write gates and negative-path tests.",
+      "Learning, capture, research, professional and project examples are synthetic; none claims a successful live integration.",
+      "The reference separates planning, explicit approval and checked readback; the private system's full validation results are not published here.",
     ],
     evidence: [
       {
@@ -206,9 +206,9 @@ export const caseStudies = {
         body: "DATA_POLICY, AGENT_SECURITY and EXECUTION_POLICY define safeguards around data access, permissions and changes. Documents are not the same as a witnessed live run.",
       },
       {
-        label: "Visible · public",
-        title: "A sanitized walkthrough",
-        body: "The exam-preparation example and architecture map on this page are illustrative. No private repository, personal records, public evaluation logs or connected demo are exposed.",
+        label: "Code · public",
+        title: "A reviewable reference implementation",
+        body: "A separate public repository implements representative routing, scoped source selection and safe synthetic writes with automated tests. It contains no private PAS data or shared Git history.",
       },
     ],
     safety: [
@@ -218,9 +218,9 @@ export const caseStudies = {
       "Private project/user state is not published as a portfolio artifact.",
     ],
     status:
-      "PAS is an active private system. The portfolio exposes only a sanitized architecture narrative and bounded examples.",
+      "PAS remains an active private personal system. This page explains its architectural scope, while a separate public repository offers independently inspectable synthetic reference code and tests — not a hosted demo or production connector.",
     limitations: [
-      "The private repository is intentionally not public.",
+      "The private PAS repository, real integrations and personal datasets are intentionally not public. The code showcase is smaller and does not reproduce the complete production environment.",
       "This work supports AI-native engineering/tool-orchestration claims, not model-training or ML-research expertise.",
     ],
   },
