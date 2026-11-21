@@ -124,10 +124,10 @@ const es = {
     ],
   },
   "library-network-api": {
-    eyebrow: "Laboratorio backend público · V1 verificada",
+    eyebrow: "Backend público · Muestra interactiva de ingeniería",
     summary:
       "Una API REST que administra el recorrido de un ejemplar físico entre sucursales, incluso con solicitudes concurrentes y reintentos.",
-    linkLabels: ["Repositorio público", "Caso técnico", "Evidencia de CI"],
+    linkLabels: ["Probar simulador interactivo", "Repositorio público", "Caso técnico", "Evidencia de CI"],
     problem:
       "Si dos personas solicitan el mismo ejemplar al mismo tiempo, la red de bibliotecas debe aceptar como máximo un préstamo. El ejemplar permanece indisponible hasta que regresa a su sucursal de origen.",
     constraints: [
@@ -136,7 +136,7 @@ const es = {
       "La ubicación cambia cuando la sucursal receptora confirma la llegada.",
       "Un reintento con la misma clave no puede duplicar un préstamo.",
       "Un ejemplar dañado se retira de circulación.",
-      "La demo es local, con datos sintéticos; no es un servicio público hospedado.",
+      "La simulación estática está hospedada con datos ficticios; FastAPI y PostgreSQL reales siguen ejecutándose localmente o en CI.",
     ],
     architecture: [
       "Cliente HTTP / Swagger / script de demo reproducible",
@@ -157,6 +157,7 @@ const es = {
       "Pedidos concurrentes del mismo ejemplar: uno aceptado, otro rechazado sin registros duplicados.",
       "Rollback, replay idempotente, transiciones ilegales y devoluciones dañadas cubiertos con tests sobre base real.",
       "Script HTTP local determinista que recorre el préstamo entre sucursales y la devolución completa.",
+      "El modelo interactivo hospedado tiene seis tests automatizados independientes; no equivalen a integración con PostgreSQL.",
     ],
     safety: [
       "Los comandos rechazados no alteran préstamos, transferencias, ejemplares ni historial.",
@@ -164,16 +165,17 @@ const es = {
       "La API no tiene autenticación ni rate limiting: no debe hospedarse públicamente tal cual está.",
     ],
     status:
-      "La V1 está en main del repositorio público, con demo local Docker y una ejecución de CI enlazada. Es un laboratorio de portfolio inspirado en un trabajo académico individual; la API nueva se construyó con asistencia de IA, no se operó como servicio de producción.",
+      "La API V1 y sus pruebas están en main público. También hay una muestra interactiva en Vercel, aislada y con datos ficticios. El backend real se reproduce con Docker local y CI, pero no se expone como servicio público. El proyecto surgió de un trabajo académico individual, ampliado con asistencia de IA; nunca se operó en producción.",
     limitations: [
       "No se afirma que exista una API pública hospedada, autenticación ni uso en producción.",
       "La V1 excluye renovaciones, multas y cancelación de solicitudes abandonadas.",
     ],
   },
   "webhook-recovery-lab": {
-    eyebrow: "Laboratorio privado de confiabilidad · En progreso",
+    eyebrow: "Backend privado · Simulador público de recuperación",
     summary:
       "Backend sintético que recibe webhooks firmados, persiste entregas, reintenta fallos temporales y permite inspeccionar la recuperación.",
+    linkLabels: ["Probar simulador de recuperación"],
     problem:
       "Un proveedor puede reenviar un webhook, un worker puede caer después de que el receptor lo procesa, o un timeout puede ocultar el resultado. La dificultad es no perder eventos aceptados ni aplicar el mismo efecto dos veces.",
     constraints: [
@@ -182,7 +184,7 @@ const es = {
       "Se deduplican reentregas idénticas y se rechaza reutilizar un ID con contenido distinto.",
       "Los leases vencen; un worker viejo no puede confirmar sobre un nuevo propietario.",
       "La entrega física es al menos una vez: el receptor deduplica el efecto por su cuenta.",
-      "Eventos, credenciales y destinos son sintéticos y locales.",
+      "Eventos, credenciales y destinos del backend son sintéticos y locales. La muestra pública no tiene red, criptografía real ni trabajadores.",
     ],
     architecture: [
       "Proveedor sintético envía evento HTTP firmado",
@@ -206,11 +208,11 @@ const es = {
     ],
     safety: [
       "No se usan webhooks reales de clientes ni credenciales de producción.",
-      "No hay despliegue público ni destinos configurables por visitantes.",
+      "No hay API webhook ni receptor públicos, ni destinos configurables por visitantes; solo se hospeda una interfaz de simulación ficticia.",
       "No se promete transporte exactly-once; la idempotencia del receptor protege el efecto registrado.",
     ],
     status:
-      "Laboratorio privado activo con entradas sintéticas, pruebas locales documentadas y CI privado. No es un servicio de webhooks en producción ni una demo pública hospedada.",
+      "El laboratorio real con TypeScript, Fastify y PostgreSQL y su CI permanecen privados. Ahora existe una consola pública en Vercel que simula HMAC, reintentos, crashes, recuperación de leases, deduplicación y replay con estados en memoria. No es un servicio de webhooks en producción ni el backend original expuesto.",
     limitations: [
       "Un despliegue real exigiría rotación de secretos, TLS, autenticación operativa, monitoreo, backups y validación de capacidad y seguridad.",
       "El repositorio y la evidencia de CI no están disponibles para visitantes públicos.",

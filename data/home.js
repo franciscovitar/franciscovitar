@@ -81,13 +81,14 @@ export const projects = [
     title: "Library Network API",
     kind: { en: "Backend", es: "Backend" },
     summary: {
-      en: "API for a library network focused on transactions, concurrency and idempotency, with a reproducible local demo.",
-      es: "API para una red de bibliotecas centrada en transacciones, concurrencia e idempotencia, con una demo local reproducible.",
+      en: "Transactional library API with PostgreSQL-backed concurrency tests and a public synthetic simulator.",
+      es: "API de bibliotecas con tests de concurrencia sobre PostgreSQL y un simulador público con datos ficticios.",
     },
     stack: "FastAPI · PostgreSQL",
-    status: { en: "Local demo · tests in the repository", es: "Demo local · tests en el repositorio" },
+    status: { en: "Public simulator · real backend tested in CI", es: "Simulador público · backend real probado en CI" },
     caseHref: "/work/library-network-api",
     repo: "https://github.com/franciscovitar/library-network-api",
+    live: "https://library-network-showcase-genova.vercel.app/",
     media: { type: "transcript" },
   },
 ];
@@ -95,6 +96,7 @@ export const projects = [
 export const webhookLab = {
   title: "Webhook Recovery Lab",
   caseHref: "/work/webhook-recovery-lab",
+  live: "https://webhook-recovery-showcase-genova.vercel.app/",
   summary: {
     en: "Webhook intake with HMAC verification, inbox, retries, leases, dead-letter and replay.",
     es: "Recepción de webhooks con verificación HMAC, inbox, reintentos, leases, dead-letter y replay.",

@@ -25,11 +25,11 @@ export const featuredProjects = [
     visual: "library",
     title: "Library Network API",
     label: "Public backend lab",
-    status: "Local demo · verified V1",
+    status: "Public simulator · verified backend V1",
     hook:
       "A physical library copy cannot be loaned twice, even under concurrent requests and retries.",
     summary:
-      "Reproducible FastAPI/PostgreSQL lab with transactional loan states, concurrency controls and idempotency.",
+      "FastAPI/PostgreSQL lab with tested concurrency and a separate public, synthetic loan simulator.",
     stack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker"],
     evidence:
       "129 passing tests in a linked public GitHub Actions run, including 117 PostgreSQL integration tests.",
@@ -46,14 +46,14 @@ export const featuredProjects = [
     visual: "webhook",
     title: "Webhook Recovery Lab",
     label: "Private reliability lab",
-    status: "In progress · synthetic",
+    status: "Public simulator · private backend",
     hook:
       "Recover signed webhook delivery through crashes, duplicate events and receiver timeouts.",
     summary:
       "Private TypeScript/Fastify/PostgreSQL experiment with a durable inbox, retries and replay.",
     stack: ["TypeScript", "Fastify", "PostgreSQL", "Docker", "Vitest"],
     evidence:
-      "Synthetic unit/integration tests and private CI; no public hosted service or public test run is claimed.",
+      "Private CI validates the real backend; a public browser-only failure simulator demonstrates its contracts, not the live API.",
     highlights: [
       "Ingress is acknowledged only after durable commit",
       "Leases and fencing prevent stale worker acknowledgements",

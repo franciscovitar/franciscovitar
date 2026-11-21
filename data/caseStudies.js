@@ -57,11 +57,12 @@ export const caseStudies = {
   library: {
     slug: "library-network-api",
     title: "Library Network API",
-    eyebrow: "Public backend lab · V1 verified",
+    eyebrow: "Public backend · Interactive engineering showcase",
     summary:
       "A REST API that manages the journey of a physical book between library branches, even when requests arrive at the same time or must be retried.",
     stack: ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Alembic", "Docker"],
     links: [
+      { label: "Try the interactive demo", href: "https://library-network-showcase-genova.vercel.app/" },
       { label: "Public repository", href: "https://github.com/franciscovitar/library-network-api" },
       { label: "Technical case study", href: "https://github.com/franciscovitar/library-network-api/blob/main/docs/case-study.md" },
       { label: "CI evidence", href: "https://github.com/franciscovitar/library-network-api/actions/runs/44441208480" },
@@ -74,7 +75,7 @@ export const caseStudies = {
       "The copy's location changes only when the receiving branch confirms arrival.",
       "Retries with the same request key must not create duplicate loans.",
       "A damaged copy must be retired rather than returned to circulation.",
-      "The local demo uses synthetic data and is not a public hosted service.",
+      "The hosted browser simulation uses synthetic data; the real FastAPI/PostgreSQL service remains a local/CI backend.",
     ],
     architecture: [
       "HTTP client / Swagger / deterministic demo script",
@@ -95,6 +96,7 @@ export const caseStudies = {
       "Concurrent requests for one copy: one accepted, the other rejected without duplicate records.",
       "Rollback, idempotent replay, illegal transitions and damaged returns covered by database-backed tests.",
       "A deterministic local HTTP script verifies the full interlibrary loan and return cycle.",
+      "The hosted interaction model has six separate automated tests; it is not a database-backed integration test.",
     ],
     safety: [
       "Rejected commands leave loan, transfer, copy and history state unchanged.",
@@ -102,7 +104,7 @@ export const caseStudies = {
       "The API has no authentication or rate limiting and must not be hosted publicly as-is.",
     ],
     status:
-      "V1 is on the public main branch with a reproducible local Docker demo and linked hosted CI evidence. This is a portfolio backend lab inspired by an individual academic project; the newer API was built with AI assistance, not operated as a production service.",
+      "The API V1 and its tests are on public main. Visitors can also explore a separate static, synthetic engineering showcase hosted on Vercel. The real backend is reproducible locally with Docker and CI evidence, not exposed as a hosted service. The API grew from an individual academic project with AI assistance; it has not operated in production.",
     limitations: [
       "No public hosted API, authentication or production usage is claimed.",
       "The V1 domain deliberately excludes renewals, fines and abandoned-request cancellation.",
@@ -111,11 +113,11 @@ export const caseStudies = {
   webhook: {
     slug: "webhook-recovery-lab",
     title: "Webhook Recovery Lab",
-    eyebrow: "Private reliability lab · In progress",
+    eyebrow: "Private backend · Public recovery simulator",
     summary:
       "A synthetic backend that safely receives signed webhooks, persists delivery jobs, retries temporary failures and makes recovery inspectable.",
     stack: ["TypeScript", "Fastify", "PostgreSQL", "Docker Compose", "Vitest", "CI"],
-    links: [],
+    links: [{ label: "Try the recovery simulator", href: "https://webhook-recovery-showcase-genova.vercel.app/" }],
     problem:
       "A provider can resend a webhook, a worker can crash after the receiver succeeds, and an HTTP timeout can hide the outcome. The challenge is to avoid losing accepted events or applying the same effect twice.",
     constraints: [
@@ -124,7 +126,7 @@ export const caseStudies = {
       "Identical redelivery is deduplicated; reusing an event ID with changed content is rejected.",
       "Worker claims expire and can be reclaimed without letting a stale worker overwrite the new owner.",
       "Physical delivery is at least once; the receiver must independently deduplicate effects.",
-      "All events, credentials and destinations are synthetic and local-only.",
+      "All backend events, credentials and destinations are synthetic and local-only; the public browser model has no network access or real cryptography.",
     ],
     architecture: [
       "Synthetic provider sends HMAC-signed HTTP event",
@@ -148,11 +150,11 @@ export const caseStudies = {
     ],
     safety: [
       "No customer/provider webhooks or production credentials are used.",
-      "No public deployment or user-configurable destination is exposed.",
+      "No webhook API, receiver or visitor-configurable delivery destination is publicly exposed. Only a synthetic frontend is hosted.",
       "Exactly-once transport is not claimed; downstream idempotency protects the recorded effect.",
     ],
     status:
-      "An active private engineering lab with synthetic inputs, documented local tests and private CI. It is not a production webhook service or a public hosted demo.",
+      "The real TypeScript/Fastify/PostgreSQL engineering lab and CI stay private. A public Vercel console now illustrates signed ingress, retries, crashes, lease recovery, deduplication and dead-letter replay with deterministic in-memory states. It is not a production webhook service or live backend.",
     limitations: [
       "Real deployment would still require secret rotation, TLS, operational authentication, monitoring, backups and capacity/security validation.",
       "Private repository and CI evidence are not accessible to public portfolio visitors.",
