@@ -4,7 +4,12 @@ import { getCaseStudy } from "../../../data/caseStudies";
 export const metadata = {
   title: "Cauce Commerce Lab · Full-stack Case Study",
   description:
-    "Isolated Next.js/Supabase ecommerce with Mercado Pago sandbox checkout, verified test payments, signed webhooks and stock consistency; preview access controlled by SSO.",
+    "Public Cauce storefront built with Next.js and Supabase: test-only Mercado Pago checkout, verified sandbox payments, signed webhooks and transactional inventory. No Vercel login required to browse.",
+  openGraph: {
+    title: "Cauce Commerce Lab · Full-stack Ecommerce Case Study",
+    description: "Explore a public fictional ecommerce backed by Next.js and Supabase, with verified test payments and transactional inventory.",
+    images: [{ url: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp", alt: "Cauce fictional storefront — home decor collection" }],
+  },
 };
 
 export default async function CauceCommerceCaseStudy({ searchParams }) {
