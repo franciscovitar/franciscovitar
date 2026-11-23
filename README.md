@@ -19,14 +19,14 @@ Personal operating system built with **Next.js, React and TypeScript**.
 - Includes product areas for health, nutrition, gym, finance, projects, tasks, learning and automations.
 - Uses automated checks and environment/preflight validation.
 
-### [La Mediterránea Store](https://github.com/franciscovitar/la-mediterranea-store)
-Full-stack storefront built with **Next.js, TypeScript and Supabase**.
+### [Cauce Commerce Lab](https://franvitar.genovasite.com/work/cauce-commerce-lab?lang=es)
+Personal fictional ecommerce storefront built with **Next.js, TypeScript, Supabase and Mercado Pago Checkout Pro (sandbox)**.
 
-- Relational product/variant/stock/order persistence.
-- Magic Link authentication and RLS-backed admin authorization.
-- Server-authoritative checkout quoting and idempotency.
-- Backup/export/validated restore and automated verification.
-- Mercado Pago integration boundary is prepared, not represented as live.
+- Database-backed catalog, orders, inventory reservations and RLS-authorized administration.
+- Server-authoritative checkout, signed provider webhooks, test payment reconciliation and idempotency.
+- Real sandbox payment approval and rejection were observed, alongside isolated SQL and CI checks.
+- [Protected sandbox storefront](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) requires Vercel access and a separate test-buyer account.
+- No real customer payments are enabled; the public repository also preserves the historic La Mediterránea work.
 
 ### [Library Network API](https://github.com/franciscovitar/library-network-api)
 Public, locally reproducible backend lab built with **FastAPI, SQLAlchemy and PostgreSQL**.

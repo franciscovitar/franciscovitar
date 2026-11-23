@@ -4,7 +4,7 @@ import { getCaseStudy } from "../../../data/caseStudies";
 export const metadata = {
   title: "Cauce Commerce Lab · Full-stack Case Study",
   description:
-    "Personal full-stack commerce engineering: Next.js/Supabase code, RLS admin, canonical checkout and public synthetic failure scenarios.",
+    "Isolated Next.js/Supabase ecommerce with Mercado Pago sandbox checkout, verified test payments, signed webhooks and stock consistency; preview access controlled by SSO.",
 };
 
 export default async function CauceCommerceCaseStudy({ searchParams }) {
