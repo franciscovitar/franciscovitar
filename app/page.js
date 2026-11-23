@@ -71,7 +71,7 @@ function ProjectMedia({ project, lang, c, index }) {
         <ExternalLink href={project.live} className={styles.commerceVisual}>
           <div className={styles.commerceVisualTop}>
             <strong>cauce<span>.</span></strong>
-            <small>COMMERCE ENGINEERING / SYNTHETIC</small>
+            <small>COMMERCE ENGINEERING / TEST SANDBOX</small>
           </div>
           <div className={styles.commerceVisualStage}>
             <div className={styles.commerceVisualObject}>
@@ -83,7 +83,7 @@ function ProjectMedia({ project, lang, c, index }) {
               <strong>Botella Nómada</strong>
               <small>ARS 28.900</small>
               <span className={styles.commerceVisualTag}>
-                {lang === "es" ? "PROBAR CHECKOUT" : "TRY CHECKOUT"} ↗
+                {lang === "es" ? "VER PREVIEW PROTEGIDO" : "VIEW PROTECTED PREVIEW"} ↗
               </span>
             </div>
           </div>
@@ -301,7 +301,7 @@ export default async function Home({ searchParams }) {
                     ) : null}
                     {project.live ? (
                       <ExternalLink href={project.live} className={styles.lnk}>
-                        {lang === "es" ? "Probar simulador ↗" : "Try simulator ↗"}
+                        {project.liveLabel ? t(project.liveLabel, lang) : (lang === "es" ? "Probar simulador ↗" : "Try simulator ↗")}
                       </ExternalLink>
                     ) : null}
                     {project.repo ? (

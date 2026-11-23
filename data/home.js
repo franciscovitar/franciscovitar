@@ -34,20 +34,27 @@ export const projects = [
     title: "Cauce Commerce Lab",
     kind: { en: "E-commerce", es: "E-commerce" },
     summary: {
-      en: "Full-stack commerce case with Supabase, RLS and server-owned checkout; public synthetic scenarios expose failure boundaries.",
-      es: "Caso full-stack con Supabase, RLS y checkout del lado servidor; simulación pública de fallos y permisos.",
+      en: "Full-stack storefront with Supabase inventory, server-authoritative checkout and real Mercado Pago sandbox payments and signed webhooks.",
+      es: "Tienda full-stack con inventario en Supabase, checkout validado en servidor y pagos ficticios reales mediante Mercado Pago y webhooks firmados.",
     },
-    stack: "Next.js · Supabase · RLS",
+    stack: "Next.js · TypeScript · Supabase · Mercado Pago",
     status: {
-      en: "Public engineering demo · no live payments",
-      es: "Demo técnica pública · sin pagos reales",
+      en: "Test payments verified · protected preview",
+      es: "Pagos de prueba verificados · Preview protegido",
     },
     caseHref: "/work/cauce-commerce-lab",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
-    live: "https://cauce-commerce-showcase-genova.vercel.app/",
+    live: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce",
+    liveLabel: {
+      en: "View protected storefront ↗",
+      es: "Ver tienda (acceso restringido) ↗",
+    },
     media: {
       type: "commerce",
-      label: { en: "CONCEPT ILLUSTRATION — interactive demo linked", es: "ILUSTRACIÓN — simulador público enlazado" },
+      label: {
+        en: "CONCEPT ILLUSTRATION — linked to real protected checkout",
+        es: "ILUSTRACIÓN — enlace a checkout real protegido",
+      },
     },
   },
   {
