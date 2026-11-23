@@ -83,7 +83,7 @@ function ProjectMedia({ project, lang, c, index }) {
               <strong>Botella Nómada</strong>
               <small>ARS 28.900</small>
               <span className={styles.commerceVisualTag}>
-                {lang === "es" ? "VER PREVIEW PROTEGIDO" : "VIEW PROTECTED PREVIEW"} ↗
+                {lang === "es" ? "EXPLORAR TIENDA" : "EXPLORE STOREFRONT"} ↗
               </span>
             </div>
           </div>
