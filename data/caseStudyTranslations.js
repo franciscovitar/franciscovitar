@@ -302,10 +302,10 @@ const es = {
     ],
   },
   "cauce-commerce-lab": {
-    eyebrow: "Full-stack personal · Integración real de prueba · Preview protegido",
+    eyebrow: "Full-stack personal · Integración real de prueba · Tienda pública",
     summary:
       "Tienda ficticia e independiente con Next.js y Supabase, checkout de prueba mediante Mercado Pago Checkout Pro, pagos verificados desde el servidor, webhooks firmados y manejo transaccional del stock.",
-    linkLabels: ["Abrir tienda de prueba (acceso restringido)", "Repositorio público", "Integración de pagos y QA"],
+    linkLabels: ["Visitar tienda de demostración", "Repositorio público", "Integración de pagos y QA"],
     problem:
       "Demostrar las partes difíciles de un ecommerce con un proyecto personal: consistencia del inventario, administración autorizada, precios controlados por el servidor y conciliación confiable de pagos de terceros. Cauce es ficticio; no cobra compras reales.",
     constraints: [
@@ -314,7 +314,7 @@ const es = {
       "Los importes, reservas y estados de pago nunca se confían al navegador.",
       "El panel requiere autenticación y autorización en la base.",
       "Checkout Pro se prueba con vendedor y comprador ficticios distintos, nunca con tarjetas reales.",
-      "El Preview de pagos permanece protegido con SSO; para ingresar hace falta acceso autorizado.",
+      "La tienda se puede visitar sin cuenta de Vercel; para completar un pago ficticio con Checkout Pro sigue siendo necesaria una cuenta compradora de prueba de Mercado Pago.",
     ],
     architecture: [
       "Tienda y carrito en Next.js",
@@ -344,12 +344,12 @@ const es = {
       "Administración con RLS y RPC restringidos al servidor.",
       "Notificaciones firmadas y verificación independiente del estado del pago.",
       "En La Mediterránea histórica el checkout Cauce permanece deshabilitado.",
-      "Preview protegido por SSO; no se publican contraseñas de comprador ni secretos de acceso.",
+      "La tienda es pública, pero el panel mantiene Magic Link/RLS; nunca se publican contraseñas de comprador ficticio ni secretos de acceso.",
     ],
     status:
-      "El código y las integraciones de prueba ya están fusionados a main en GitHub. La tienda ficticia y Checkout Pro funcionan en un Preview separado y protegido por Vercel SSO. Se comprobaron pagos ficticios aprobados y rechazados; no se aceptan pagos reales. El simulador público antiguo dejó de ser la demo enlazada.",
+      "El código y las integraciones de prueba ya están fusionados a main en GitHub. La tienda ficticia y Checkout Pro funcionan en un despliegue separado y accesible públicamente sin Vercel SSO. Se comprobaron pagos ficticios aprobados y rechazados; no se aceptan pagos reales. El simulador público antiguo dejó de ser la demo enlazada.",
     limitations: [
-      "El Preview requiere acceso autorizado por Vercel SSO y una cuenta compradora de prueba para completar Checkout Pro: todavía no es una demo pública sin login.",
+      "La tienda se puede recorrer públicamente sin iniciar sesión en Vercel. Para completar un pago de prueba en Mercado Pago todavía se necesita iniciar sesión con un comprador ficticio autorizado.",
       "No se repitió un pago CONT independiente de punta a punta después de la última corrección.",
       "El repositorio conserva La Mediterránea histórica como antecedente, pero esa Producción no ejecuta cobros ficticios de Cauce.",
     ],

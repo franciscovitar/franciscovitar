@@ -233,12 +233,12 @@ export const caseStudies = {
   mediterranea: {
     slug: "cauce-commerce-lab",
     title: "Cauce Commerce Lab",
-    eyebrow: "Personal full-stack · Real sandbox integration · Protected preview",
+    eyebrow: "Personal full-stack · Real sandbox integration · Public storefront",
     summary:
       "An independent fictional storefront backed by Next.js and Supabase, with test-only Mercado Pago Checkout Pro, server-verified payment outcomes, signed webhooks and transactional stock handling.",
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "RLS", "Mercado Pago", "CI"],
     links: [
-      { label: "Open protected test storefront", href: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce" },
+      { label: "Explore public test storefront", href: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce" },
       { label: "Public source repository", href: "https://github.com/franciscovitar/la-mediterranea-store" },
       { label: "Payment integration changes and QA", href: "https://github.com/franciscovitar/la-mediterranea-store/pull/20" },
     ],
@@ -250,7 +250,7 @@ export const caseStudies = {
       "Product prices, stock reservations and payment status cannot be trusted from the browser.",
       "Administration requires authentication and database authorization.",
       "Mercado Pago Checkout Pro is tested with separate seller and buyer test identities, not with real cards.",
-      "The payment-enabled preview remains behind Vercel SSO; external visitors need authorized access.",
+      "The storefront is public without Vercel login, but a dedicated Mercado Pago test-buyer account is still required to complete fictional Checkout Pro payments.",
     ],
     architecture: [
       "Next.js storefront and cart",
@@ -280,12 +280,12 @@ export const caseStudies = {
       "Role-based administration protected by RLS and service-only RPC permissions.",
       "Signed provider callbacks, authorization boundaries and server-authoritative payment status.",
       "Historical production has Cauce checkout disabled and never uses the isolated test seller.",
-      "Preview remains protected by SSO; buyer test-account credentials and bypass secrets are not published.",
+      "Public browsing does not expose administration: staff authorization remains protected by Magic Link/RLS, and test-buyer credentials and webhook bypass secrets are never published.",
     ],
     status:
-      "Code and test integrations are merged into the public main repository. The working fictional storefront and Mercado Pago test-payment flow run in an isolated, access-controlled Vercel Preview. An approved and a rejected sandbox payment were observed; no real money or customer orders are accepted. The former public browser-only simulator is no longer the linked demo.",
+      "Code and test integrations are merged into the public main repository. The working fictional storefront and Mercado Pago test-payment flow run in an isolated, publicly accessible Vercel deployment. An approved and a rejected sandbox payment were observed; no real money or customer orders are accepted. The former public browser-only simulator is no longer the linked demo.",
     limitations: [
-      "The linked Preview is not a public self-service demo: Vercel SSO requires authorized access, and a Mercado Pago test-buyer account is required for checkout.",
+      "Browsing the storefront is public, without Vercel SSO. Completing Mercado Pago Checkout Pro test payments still requires a separately authorized test-buyer login, so visitors cannot automatically test payment with only the displayed card.",
       "The independent CONT payment flow was not rerun end-to-end after the final non-approved payment-state fix.",
       "The repository intentionally retains historical La Mediterránea code for provenance. Its real production checkout is unaffected and does not expose Cauce test payments.",
     ],
