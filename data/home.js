@@ -52,8 +52,8 @@ export const projects = [
     media: {
       type: "commerce",
       label: {
-        en: "CONCEPT ILLUSTRATION — linked to real sandbox checkout",
-        es: "ILUSTRACIÓN — enlace a checkout real de prueba",
+        en: "STOREFRONT VISUAL — based on the public Cauce homepage",
+        es: "VISTA DE TIENDA — basada en la portada pública de Cauce",
       },
     },
   },

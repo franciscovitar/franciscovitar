@@ -86,18 +86,18 @@ export const featuredProjects = [
     visual: "mediterranea",
     title: "Cauce Commerce Lab",
     label: "Personal commerce engineering",
-    status: "Public simulator · integrations prepared",
+    status: "Public storefront · verified test payments",
     hook:
-      "A full-stack commerce codebase plus a public lab for pricing conflicts, stock races, permissions and safe payment state.",
+      "A public fictional storefront with secure checkout, server-verified test payments and transactional inventory.",
     summary:
-      "Personal Next.js/Supabase engineering project with separate public synthetic demo; payment integration remains prepared, not live.",
+      "Isolated Next.js/Supabase storefront with a public catalog, test-only Mercado Pago Checkout Pro, signed webhooks and real sandbox payment verification.",
     stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Testing"],
     evidence:
-      "Idempotency, backup/export/validated restore and a prepared — not falsely live — payment boundary.",
+      "Observed approved and rejected test payments, server-side reconciliation, idempotent stock movements and a dedicated protected merchant area; CONT E2E remains pending.",
     highlights: [
       "Admin access backed by database authorization",
       "Checkout totals validated server-side",
-      "Payment integration is labeled honestly as prepared",
+      "Test payments verified; public browsing requires no Vercel login",
     ],
     href: "/work/cauce-commerce-lab",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",

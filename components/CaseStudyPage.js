@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SystemVisual from "./SystemVisual";
+import CauceStorefrontPreview from "./CauceStorefrontPreview";
 import PASFlow from "./PASFlow";
 import PASOverview from "./PASOverview";
 import { pasContent } from "../data/pasContent";
@@ -23,6 +24,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
   const ui = caseStudyUi[lang] || caseStudyUi.en;
   const visual = visualBySlug[localized.slug] || "overview";
   const isPas = localized.slug === "personal-ai-system";
+  const isCauce = localized.slug === "cauce-commerce-lab";
   const pas = pasContent[lang] || pasContent.en;
 
   const architectureSection = (
@@ -130,7 +132,13 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
 
           <div className={styles.heroVisual}>
-            {isPas ? <PASOverview lang={lang} /> : <SystemVisual kind={visual} lang={lang} />}
+            {isPas ? (
+              <PASOverview lang={lang} />
+            ) : isCauce ? (
+              <CauceStorefrontPreview lang={lang} href={localized.links[0]?.href} />
+            ) : (
+              <SystemVisual kind={visual} lang={lang} />
+            )}
           </div>
         </section>
 
