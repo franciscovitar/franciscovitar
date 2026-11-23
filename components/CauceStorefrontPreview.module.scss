@@ -22,6 +22,7 @@
   min-height: 49px;
   padding: 0 20px;
   background: #f9f8f4;
+  color: #283027; // Keep Cauce brand ink on hover; the parent link uses a blue accent.
 
   > strong {
     font: 800 clamp(19px, 2.4vw, 26px)/1 Georgia, serif;
@@ -46,6 +47,7 @@
   aspect-ratio: 1.72;
   padding: 32px 6.5%;
   background-color: #e7d8c2;
+  color: #283027; // Explicit child color prevents blue link-hover inheritance.
   background-image: linear-gradient(90deg, rgba(245, 233, 211, .68), rgba(245, 233, 211, .19) 55%, transparent 78%),
     url("https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp");
   background-position: center center;
