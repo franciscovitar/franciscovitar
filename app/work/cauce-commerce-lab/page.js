@@ -1,16 +1,36 @@
 import CaseStudyPage from "../../../components/CaseStudyPage";
 import { getCaseStudy } from "../../../data/caseStudies";
 
-export const metadata = {
-  title: "Cauce Commerce Lab · Full-stack Case Study",
-  description:
-    "Public Cauce storefront built with Next.js and Supabase: test-only Mercado Pago checkout, verified sandbox payments, signed webhooks and transactional inventory. No Vercel login required to browse.",
-  openGraph: {
-    title: "Cauce Commerce Lab · Full-stack Ecommerce Case Study",
-    description: "Explore a public fictional ecommerce backed by Next.js and Supabase, with verified test payments and transactional inventory.",
-    images: [{ url: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp", alt: "Cauce fictional storefront — home decor collection" }],
-  },
-};
+const casePath = "/work/cauce-commerce-lab";
+const imageUrl = "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp";
+
+export async function generateMetadata({ searchParams }) {
+  const params = await searchParams;
+  const spanish = params?.lang === "es";
+  const title = spanish
+    ? "Cauce Commerce Lab · Caso de estudio ecommerce full-stack"
+    : "Cauce Commerce Lab · Full-stack Ecommerce Case Study";
+  const description = spanish
+    ? "Conocé Cauce: tienda ficticia pública con Next.js y Supabase, pagos de prueba verificados en Mercado Pago, webhooks firmados y control transaccional de stock. Sin acceso de Vercel para recorrerla."
+    : "Explore the public Cauce storefront: Next.js, Supabase, verified test-only Mercado Pago payments, signed webhooks and transactional inventory. No Vercel login required to browse.";
+  const canonical = spanish ? `${casePath}?lang=es` : casePath;
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: { "en-US": casePath, "es-AR": `${casePath}?lang=es` },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      locale: spanish ? "es_AR" : "en_US",
+      images: [{ url: imageUrl, alt: "Cauce fictional storefront — home decor collection" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [imageUrl] },
+  };
+}
 
 export default async function CauceCommerceCaseStudy({ searchParams }) {
   const params = await searchParams;
