@@ -39,21 +39,21 @@ export const projects = [
     },
     stack: "Next.js · TypeScript · Supabase · Mercado Pago",
     status: {
-      en: "Test payments verified · protected preview",
-      es: "Pagos de prueba verificados · Preview protegido",
+      en: "Test payments verified · public storefront",
+      es: "Pagos de prueba verificados · tienda pública",
     },
     caseHref: "/work/cauce-commerce-lab",
     repo: "https://github.com/franciscovitar/la-mediterranea-store",
     live: "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce",
     liveLabel: {
-      en: "View protected storefront ↗",
-      es: "Ver tienda (acceso restringido) ↗",
+      en: "Visit live sandbox storefront ↗",
+      es: "Visitar tienda de demostración ↗",
     },
     media: {
       type: "commerce",
       label: {
-        en: "CONCEPT ILLUSTRATION — linked to real protected checkout",
-        es: "ILUSTRACIÓN — enlace a checkout real protegido",
+        en: "CONCEPT ILLUSTRATION — linked to real sandbox checkout",
+        es: "ILUSTRACIÓN — enlace a checkout real de prueba",
       },
     },
   },

@@ -25,7 +25,7 @@ Personal fictional ecommerce storefront built with **Next.js, TypeScript, Supaba
 - Database-backed catalog, orders, inventory reservations and RLS-authorized administration.
 - Server-authoritative checkout, signed provider webhooks, test payment reconciliation and idempotency.
 - Real sandbox payment approval and rejection were observed, alongside isolated SQL and CI checks.
-- [Protected sandbox storefront](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) requires Vercel access and a separate test-buyer account.
+- [Public sandbox storefront](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) needs no Vercel login; a separate Mercado Pago test-buyer account is still required to run a fictional Checkout Pro payment.
 - No real customer payments are enabled; the public repository also preserves the historic La Mediterránea work.
 
 ### [Library Network API](https://github.com/franciscovitar/library-network-api)
