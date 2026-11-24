@@ -1,7 +1,7 @@
 export const pasEcosystem = {
   "es": {
     "kicker": "ECOSISTEMA · V4.3",
-    "title": "Una inteligencia compartida, cinco responsabilidades.",
+    "title": "Una inteligencia compartida, responsabilidades separadas.",
     "intro": "PAS conserva la metodología reutilizable. La torre de control coordina el trabajo. El ecosistema personal, Genova OS y Delivery OS consumen esa inteligencia sin duplicar fuentes ni crear sistemas que compiten.",
     "modules": [
       [
@@ -189,7 +189,7 @@ export const pasEcosystem = {
       ],
       [
         "PAS Explorer",
-        "Referencia pública ejecutable sobre fixtures; no es el runtime privado."
+        "Referencia pública ejecutable: 49 pruebas aprobadas, incluido Chromium. No es el runtime privado."
       ]
     ],
     "auditTitle": "Evidencia separada por entorno.",
@@ -403,7 +403,7 @@ export const pasEcosystem = {
       ],
       [
         "PAS Explorer",
-        "Executable public fixture reference; not the private runtime."
+        "Executable public reference: 49 tests passed, including Chromium. Not the private runtime."
       ]
     ],
     "auditTitle": "Evidence separated by environment.",

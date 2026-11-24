@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "npm run check:pas-explorer && next build --webpack",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:pas-explorer": "node scripts/check-pas-explorer.cjs"
   },
   "dependencies": {
     "@fontsource-variable/newsreader": "5.3.0",

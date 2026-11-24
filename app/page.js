@@ -267,6 +267,9 @@ export default async function Home({ searchParams }) {
                 >
                   {c.viewCase}
                 </Link>
+                <a href={`/pas-explorer/explorer/index.html?lang=${lang}`} className={`${styles.lnk} ${styles.accent}`}>
+                  {lang === "es" ? "Abrir PAS Explorer ↗" : "Open PAS Explorer ↗"}
+                </a>
                 <ExternalLink href={personalAiSystem.repo} className={styles.lnk}>
                   {lang === "es" ? "Código de referencia ↗" : "Reference code ↗"}
                 </ExternalLink>

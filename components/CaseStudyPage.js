@@ -124,7 +124,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                 {localized.links.map((link) => (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={isPas && link.href.startsWith("/pas-explorer/") ? `/pas-explorer/explorer/index.html?lang=${lang}` : link.href}
                     target="_blank"
                     rel="noreferrer"
                   >

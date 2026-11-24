@@ -38,7 +38,7 @@ export default function PASEcosystem({ lang = "en" }) {
       <h3 className={styles.subhead}>{c.auditTitle}</h3>
       <Inventory items={c.audit} />
       <p className={styles.note}>{c.auditNote}</p>
-      <div className={styles.links}><strong>{c.linksTitle}</strong><a href={repository} target="_blank" rel="noreferrer">{c.source}</a><a href={repository+"/actions/runs/45479412947"} target="_blank" rel="noreferrer">{c.ci}</a><a href={repository+"/blob/main/docs/system-map.md"} target="_blank" rel="noreferrer">{c.map}</a></div>
+      <div className={styles.links}><strong>{c.linksTitle}</strong><a href={`/pas-explorer/explorer/index.html?lang=${lang}`}>{lang === "es" ? "Probar PAS Explorer ↗" : "Try PAS Explorer ↗"}</a><a href={repository} target="_blank" rel="noreferrer">{c.source}</a><a href={repository+"/actions/runs/45485921797"} target="_blank" rel="noreferrer">{c.ci}</a><a href={repository+"/blob/eb1b7e8d4b37cd275d830ba7753b297d3601385c/docs/system-map.md"} target="_blank" rel="noreferrer">{c.map}</a></div>
     </div>
   );
 }

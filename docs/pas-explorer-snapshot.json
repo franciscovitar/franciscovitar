@@ -1,0 +1,102 @@
+{
+  "sourceRepository": "https://github.com/franciscovitar/personal-ai-system-showcase",
+  "sourceCommit": "eb1b7e8d4b37cd275d830ba7753b297d3601385c",
+  "sourceCI": "https://github.com/franciscovitar/personal-ai-system-showcase/actions/runs/45485921797",
+  "files": [
+    {
+      "path": "public/pas-explorer/explorer/app.mjs",
+      "gitBlob": "6be3638cb8c17cdae056dcc58922d861c1d80685",
+      "bytes": 30815
+    },
+    {
+      "path": "public/pas-explorer/explorer/fixtures.mjs",
+      "gitBlob": "84964c3684aceab9a1633e826ae6edc13adbf651",
+      "bytes": 5841
+    },
+    {
+      "path": "public/pas-explorer/explorer/index.html",
+      "gitBlob": "40268b6fb3ced927d3f37babf385d2592f7f4ff4",
+      "bytes": 1725
+    },
+    {
+      "path": "public/pas-explorer/explorer/styles.css",
+      "gitBlob": "075de34733affefbdc4353781629da5c77372396",
+      "bytes": 6228
+    },
+    {
+      "path": "public/pas-explorer/src/catalog.mjs",
+      "gitBlob": "d3add55fb07043a44d7db1db44d6779af13d3d2e",
+      "bytes": 2750
+    },
+    {
+      "path": "public/pas-explorer/src/reference/browser-trace.mjs",
+      "gitBlob": "e877cb21ced4e22a7af991b169a256b9791d8618",
+      "bytes": 2007
+    },
+    {
+      "path": "public/pas-explorer/src/reference/commercial-case.mjs",
+      "gitBlob": "95bb0159d3563d9fd18352b06c02af32c90dd4d0",
+      "bytes": 4147
+    },
+    {
+      "path": "public/pas-explorer/src/reference/delivery-selection.mjs",
+      "gitBlob": "9b439cfac4b3e11104a56045f6b9a26e17d28fff",
+      "bytes": 3365
+    },
+    {
+      "path": "public/pas-explorer/src/reference/evidence-runtime.mjs",
+      "gitBlob": "a36a0adc72c8a51e2bf3317b1ab1e784b533b8ca",
+      "bytes": 1800
+    },
+    {
+      "path": "public/pas-explorer/src/reference/execution-block.mjs",
+      "gitBlob": "3047de5b259c7825c2d66f52f51ea360e01829dc",
+      "bytes": 4629
+    },
+    {
+      "path": "public/pas-explorer/src/reference/improvement-runtime.mjs",
+      "gitBlob": "bd7887fae932a475a5fb7bccfe7d12947aece686",
+      "bytes": 1045
+    },
+    {
+      "path": "public/pas-explorer/src/reference/knowledge-runtime.mjs",
+      "gitBlob": "1a991ca7e1dc7d7dc22c78ebfec681903cf7c0f3",
+      "bytes": 5867
+    },
+    {
+      "path": "public/pas-explorer/src/reference/policy-engine.mjs",
+      "gitBlob": "63bc618ade68b080ba72983ba8829db9db27e895",
+      "bytes": 1718
+    },
+    {
+      "path": "public/pas-explorer/src/reference/professional-delivery.mjs",
+      "gitBlob": "91ca069f36b7f4b67e6773d79433c1c0bf6dea7d",
+      "bytes": 4121
+    },
+    {
+      "path": "public/pas-explorer/src/reference/research-review.mjs",
+      "gitBlob": "a5332c92d5647f7e93cde65179cea0e6acdd886e",
+      "bytes": 2712
+    },
+    {
+      "path": "public/pas-explorer/src/reference/skill-registry.mjs",
+      "gitBlob": "f085cbccfa7d79a006fe419c2f5f6c3ed10f07ca",
+      "bytes": 3170
+    },
+    {
+      "path": "public/pas-explorer/src/reference/study-runtime.mjs",
+      "gitBlob": "f0536bfd1fd2a8441138fc6ac3902c7eb87e5487",
+      "bytes": 2741
+    },
+    {
+      "path": "public/pas-explorer/src/reference/tool-comparison.mjs",
+      "gitBlob": "593391e671d77db0590b59801b5ffaf15d839a7d",
+      "bytes": 2719
+    },
+    {
+      "path": "public/pas-explorer/src/source-registry.mjs",
+      "gitBlob": "6c9a81f1dceccf11284c8f1040c79d4b73d4a491",
+      "bytes": 1620
+    }
+  ]
+}

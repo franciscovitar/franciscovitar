@@ -222,7 +222,7 @@ const es = {
     eyebrow: "Sistema privado · Código de referencia público",
     summary:
       "Una arquitectura de inteligencia compartida para aprendizaje, investigación, prestación profesional y operación de negocio. Una torre de control coordina conocimiento, métodos, ejecución y evidencia. Una referencia pública independiente permite inspeccionar y ejecutar decisiones representativas de ingeniería.",
-    linkLabels: ["Repositorio público · Código y pruebas"],
+    linkLabels: ["Abrir PAS Explorer", "Repositorio público · Código y pruebas", "QA de navegador y Node verificado"],
     problem:
       "El trabajo con IA se degrada cuando cada chat maneja su propia verdad, el contexto crece sin límite y las herramientas tienen más permisos de los necesarios.",
     constraints: [
@@ -295,7 +295,7 @@ const es = {
       "Estado privado fuera del portfolio público.",
     ],
     status:
-      "PAS sigue siendo un sistema personal privado activo. Esta página explica su alcance y el repositorio público ofrece código y pruebas sintéticas auditables, sin demo conectada ni herramientas reales expuestas.",
+      "PAS sigue siendo un sistema privado activo. PAS Explorer es una referencia independiente de nueve vistas que ejecuta código en el navegador sobre datos ficticios. El código público aprobó 49 pruebas de Node, incluido un recorrido real en Chromium sobre la revisión fijada. No expone agentes, conectores ni integraciones privadas.",
     limitations: [
       "El repositorio original, las integraciones reales y los datos personales no se publican. El showcase es más pequeño y no reproduce el entorno completo.",
       "Esto respalda ingeniería AI-native y orquestación, no expertise en entrenamiento de modelos o investigación ML.",

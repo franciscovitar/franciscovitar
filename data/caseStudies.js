@@ -171,7 +171,11 @@ export const caseStudies = {
     summary:
       "A shared intelligence architecture spanning personal learning, research, professional delivery and business operations. A control tower coordinates scoped knowledge, methods, execution and evidence. A separate public reference makes key engineering decisions inspectable and executable.",
     stack: ["Python", "JavaScript", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
-    links: [{ label: "Public reference code & tests", href: "https://github.com/franciscovitar/personal-ai-system-showcase" }],
+    links: [
+      { label: "Open PAS Explorer", href: "/pas-explorer/explorer/index.html?lang=en" },
+      { label: "Public reference code & tests", href: "https://github.com/franciscovitar/personal-ai-system-showcase" },
+      { label: "Verified browser and Node QA", href: "https://github.com/franciscovitar/personal-ai-system-showcase/actions/runs/45485921797" },
+    ],
     problem:
       "Long-running AI work becomes unreliable when every chat owns its own truth, context grows without bounds, tools have excessive permissions and generated output is treated as proof.",
     constraints: [
@@ -228,7 +232,7 @@ export const caseStudies = {
       "Private project/user state is not published as a portfolio artifact.",
     ],
     status:
-      "PAS remains an active private personal system. This page explains its architectural scope, while a separate public repository offers independently inspectable synthetic reference code and tests — not a hosted demo or production connector.",
+      "PAS remains an active private system. PAS Explorer is a separate, browser-only reference with nine views and fictional data. The public code passed 49 Node tests including an actual Chromium journey on the pinned reference revision. No live agent, private integration or production connector is exposed.",
     limitations: [
       "The private PAS repository, real integrations and personal datasets are intentionally not public. The code showcase is smaller and does not reproduce the complete production environment.",
       "This work supports AI-native engineering/tool-orchestration claims, not model-training or ML-research expertise.",
