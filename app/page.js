@@ -294,7 +294,7 @@ export default async function Home({ searchParams }) {
               <div className={styles.flowHead}>
                 <div className={styles.flowText}>
                   <p className={styles.eyebrow}>
-                    04 · {c.personal} · Backend · {c.privateRepo}
+                    04 · {c.personal} · Full-stack · {lang === "es" ? "Demo pública funcional" : "Live public sandbox"}
                   </p>
                   <h3 className={styles.projectTitle}>{webhookLab.title}</h3>
                   <p className={styles.projectSummary}>{t(webhookLab.summary, lang)}</p>
@@ -303,7 +303,7 @@ export default async function Home({ searchParams }) {
                       {c.viewCase}
                     </Link>
                     <ExternalLink href={webhookLab.live} className={styles.lnk}>
-                      {lang === "es" ? "Probar simulador ↗" : "Try simulator ↗"}
+                      {lang === "es" ? "Ver aplicación ↗" : "View app ↗"}
                     </ExternalLink>
                   </div>
                 </div>

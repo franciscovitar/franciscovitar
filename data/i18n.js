@@ -130,8 +130,8 @@ const projectEs = {
       "Un ejemplar físico no puede prestarse dos veces, incluso ante solicitudes concurrentes y reintentos.",
   },
   "webhook-recovery-lab": {
-    label: "Laboratorio de confiabilidad · Privado",
-    status: "En progreso · Sintético",
+    label: "Laboratorio de confiabilidad full-stack",
+    status: "Demo pública funcional · Código privado",
     hook:
       "Recuperación de entregas de webhooks firmados ante caídas, duplicados y timeouts.",
   },

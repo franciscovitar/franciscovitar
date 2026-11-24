@@ -52,10 +52,13 @@ Client delivery example built with **Next.js, React, Sass and Vitest/Testing Lib
 
 ## Current private systems
 
-### Webhook Recovery Lab — active / in progress
-Private reliability lab built with **TypeScript, Fastify and PostgreSQL**, using synthetic events.
+### [Webhook Recovery Lab](https://franciscovitar.vercel.app/work/webhook-recovery-lab)
+Functional reliability sandbox built with **React, TypeScript, Fastify and PostgreSQL**.
 
-It explores HMAC-signed ingress, a durable inbox, concurrent workers with leases, bounded retries, dead-letter and audited replay. Delivery is at least once; receiver-side idempotency prevents duplicate recorded effects. It is not publicly hosted or production-ready. [Read the sanitized engineering case study](https://franciscovitar.vercel.app/work/webhook-recovery-lab).
+- [Open the live application](https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com) — Spanish interface, no account, isolated temporary workspaces.
+- Signed HMAC ingress, transactional inbox, worker leases, bounded retries and audited replay.
+- Real PostgreSQL and HTTP verification of deduplication, controlled rejection and recovery; receiver-side idempotency protects the recorded effect.
+- Synthetic data only; free-tier cold starts and quotas apply. Source repository remains private.
 
 ### Personal AI System
 Private modular system for AI-assisted research, software work, learning and execution.

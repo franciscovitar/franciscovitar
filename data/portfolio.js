@@ -45,15 +45,15 @@ export const featuredProjects = [
     slug: "webhook-recovery-lab",
     visual: "webhook",
     title: "Webhook Recovery Lab",
-    label: "Private reliability lab",
-    status: "Public simulator · private backend",
+    label: "Full-stack reliability lab",
+    status: "Live public sandbox · private source",
     hook:
       "Recover signed webhook delivery through crashes, duplicate events and receiver timeouts.",
     summary:
-      "Private TypeScript/Fastify/PostgreSQL experiment with a durable inbox, retries and replay.",
+      "Live React/Fastify/PostgreSQL console with a durable inbox, retries, isolated workspaces and recovery.",
     stack: ["TypeScript", "Fastify", "PostgreSQL", "Docker", "Vitest"],
     evidence:
-      "Private CI validates the real backend; a public browser-only failure simulator demonstrates its contracts, not the live API.",
+      "Local and hosted QA documented real synthetic delivery, deduplication, rejection and recovery; the public app uses the actual backend.",
     highlights: [
       "Ingress is acknowledged only after durable commit",
       "Leases and fencing prevent stale worker acknowledgements",

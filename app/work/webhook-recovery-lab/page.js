@@ -3,7 +3,7 @@ import { getCaseStudy } from "../../../data/caseStudies";
 
 const title = "Webhook Recovery Lab — Engineering Case Study";
 const description =
-  "Private synthetic reliability lab: signed webhook ingress, durable inbox, concurrent workers, bounded retries, idempotent effects and audited replay.";
+  "Live public webhook operations sandbox with signed ingress, durable PostgreSQL delivery, isolated workspaces, bounded retries and audited recovery.";
 const canonicalUrl = "https://franciscovitar.vercel.app/work/webhook-recovery-lab";
 
 export const metadata = {
