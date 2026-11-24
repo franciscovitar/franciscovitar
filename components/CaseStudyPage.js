@@ -96,13 +96,13 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               </a>
             </div>
 
-            <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{ui.resume}</a>
+            <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{ui.resume.replace(/\s*↗\s*$/, "")} <Arrow/></a>
             <a
               href="https://github.com/franciscovitar"
               target="_blank"
               rel="noreferrer"
             >
-              {ui.github}
+              {ui.github.replace(/\s*↗\s*$/, "")} <Arrow/>
             </a>
           </nav>
         </div>
@@ -114,7 +114,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         {!editorial && <section className={styles.hero}>
           <div className={styles.heroCopy}>
             <Link href={localizedHomeHref(lang)} className={styles.backLink}>
-              {ui.back}
+              <Arrow direction="left"/> {ui.back.replace(/^←\s*/, "")}
             </Link>
             <p className={styles.eyebrow}>{localized.eyebrow}</p>
             <h1>{headingText(localized.title)}</h1>
@@ -128,7 +128,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
             {isPas && (
               <a href="#pas-architecture" className={styles.jumpLink}>
-                {ui.architectureJump}
+                {ui.architectureJump.replace(/\s*↓$/, "")} <Arrow direction="down"/>
               </a>
             )}
 
@@ -199,7 +199,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                   <p>{pas.codeBody}</p>
                 </div>
                 <a href="https://github.com/franciscovitar/personal-ai-system-showcase" target="_blank" rel="noreferrer">
-                  {pas.codeAction}
+                  {pas.codeAction.replace(/\s*↗\s*$/, "")} <Arrow/>
                 </a>
               </div>
             </div>
@@ -322,7 +322,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         </section>
 
         <footer className={styles.footer}>
-          <Link href={localizedHomeHref(lang)}>{ui.back}</Link>
+          <Link href={localizedHomeHref(lang)}><Arrow direction="left"/> {ui.back.replace(/^←\s*/, "")}</Link>
           <div>
             <a href="mailto:franvitar15@gmail.com">{ui.email}</a>
             <a
@@ -330,7 +330,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               target="_blank"
               rel="noreferrer"
             >
-              {ui.linkedin}
+              {ui.linkedin.replace(/\s*↗\s*$/, "")} <Arrow/>
             </a>
           </div>
         </footer>

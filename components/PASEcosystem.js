@@ -1,3 +1,4 @@
+import Arrow from "./editorial/Arrow";
 import { pasEcosystem } from "../data/pasEcosystem";
 import styles from "./PASEcosystem.module.scss";
 
@@ -10,7 +11,7 @@ export default function PASEcosystem({ lang = "en" }) {
   return (
     <div className={styles.explorer} id="pas-ecosystem">
       <p className={styles.kicker}>{c.kicker}</p>
-      <h3 className={styles.title}>{c.title}</h3>
+      <h3 className={styles.title}>{c.title.replace(/\.$/, "")}</h3>
       <p className={styles.intro}>{c.intro}</p>
       <Inventory items={c.metrics} />
       <p className={styles.note}>{c.metricNote}</p>
@@ -22,23 +23,23 @@ export default function PASEcosystem({ lang = "en" }) {
           </details>
         ))}
       </div>
-      <h3 className={styles.subhead}>{c.knowledgeTitle}</h3>
+      <h3 className={styles.subhead}>{c.knowledgeTitle.replace(/\.$/, "")}</h3>
       <div className={styles.layers}>{c.levels.map(([name, body]) => <div key={name}><strong>{name}</strong><p>{body}</p></div>)}</div>
       <p className={styles.note}>{c.library}</p>
-      <h3 className={styles.subhead}>{c.ownersTitle}</h3>
+      <h3 className={styles.subhead}>{c.ownersTitle.replace(/\.$/, "")}</h3>
       <dl className={styles.owners}>{c.owners.map(([owner, responsibility]) => <div key={owner}><dt>{owner}</dt><dd>{responsibility}</dd></div>)}</dl>
-      <h3 className={styles.subhead}>{c.journeyTitle}</h3>
+      <h3 className={styles.subhead}>{c.journeyTitle.replace(/\.$/, "")}</h3>
       <ol className={styles.journey}>{c.journey.map(([name, body], i) => <li key={name}><span>{String(i + 1).padStart(2,"0")}</span><strong>{name}</strong><p>{body}</p></li>)}</ol>
       <p className={styles.note}>{c.journeyNote}</p>
-      <h3 className={styles.subhead}>{c.blocksTitle}</h3>
+      <h3 className={styles.subhead}>{c.blocksTitle.replace(/\.$/, "")}</h3>
       <div className={styles.blocks}>{c.blocks.map(([number, name, body]) => <div key={number}><span>{number}</span><strong>{name}</strong><p>{body}</p></div>)}</div>
       <p className={styles.note}>{c.blockNote}</p>
-      <h3 className={styles.subhead}>{c.maturityTitle}</h3>
+      <h3 className={styles.subhead}>{c.maturityTitle.replace(/\.$/, "")}</h3>
       <dl className={styles.owners}>{c.maturity.map(([name, body]) => <div key={name}><dt>{name}</dt><dd>{body}</dd></div>)}</dl>
-      <h3 className={styles.subhead}>{c.auditTitle}</h3>
+      <h3 className={styles.subhead}>{c.auditTitle.replace(/\.$/, "")}</h3>
       <Inventory items={c.audit} />
       <p className={styles.note}>{c.auditNote}</p>
-      <div className={styles.links}><strong>{c.linksTitle}</strong><a href={`/pas-explorer/explorer/index.html?lang=${lang}`}>{lang === "es" ? "Probar PAS Explorer ↗" : "Try PAS Explorer ↗"}</a><a href={repository} target="_blank" rel="noreferrer">{c.source}</a><a href={repository+"/actions/runs/45485921797"} target="_blank" rel="noreferrer">{c.ci}</a><a href={repository+"/blob/eb1b7e8d4b37cd275d830ba7753b297d3601385c/docs/system-map.md"} target="_blank" rel="noreferrer">{c.map}</a></div>
+      <div className={styles.links}><strong>{c.linksTitle}</strong><a href={`/pas-explorer/explorer/index.html?lang=${lang}`}>{lang === "es" ? "Probar PAS Explorer" : "Try PAS Explorer"} <Arrow/></a><a href={repository} target="_blank" rel="noreferrer">{c.source.replace(/\s*↗\s*$/, "")} <Arrow/></a><a href={repository+"/actions/runs/45485921797"} target="_blank" rel="noreferrer">{c.ci.replace(/\s*↗\s*$/, "")} <Arrow/></a><a href={repository+"/blob/eb1b7e8d4b37cd275d830ba7753b297d3601385c/docs/system-map.md"} target="_blank" rel="noreferrer">{c.map.replace(/\s*↗\s*$/, "")} <Arrow/></a></div>
     </div>
   );
 }

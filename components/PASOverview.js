@@ -12,7 +12,7 @@ export default function PASOverview({ lang = "en" }) {
       </div>
 
       <div className={styles.intro}>
-        <h2>{content.visualTitle}</h2>
+        <h2>{content.visualTitle.replace(/\.$/, "")}</h2>
         <p>{content.visualSubtitle}</p>
       </div>
 
