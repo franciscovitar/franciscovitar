@@ -1,3 +1,4 @@
+import Arrow from "./editorial/Arrow";
 import styles from "./CauceStorefrontPreview.module.scss";
 
 /** Visual reconstruction of the public Cauce homepage using its actual hero photograph.
@@ -16,7 +17,7 @@ export default function CauceStorefrontPreview({ href, lang = "en" }) {
           <span className={styles.kicker}>NUEVA COLECCIÓN · CASA 2026</span>
           <strong>Hacé espacio<br />para lo <em>simple.</em></strong>
           <span className={styles.subline}>Objetos con intención, texturas que se sienten y detalles que vuelven especial lo cotidiano.</span>
-          <span className={styles.cta}>Descubrí la colección <span aria-hidden="true">↗</span></span>
+          <span className={styles.cta}>Descubrí la colección <Arrow/></span>
         </div>
         <span className={styles.index}>01 / 03</span>
       </div>
