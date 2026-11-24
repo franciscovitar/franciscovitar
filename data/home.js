@@ -18,11 +18,13 @@ export const projects = [
     title: "Vida 2.0",
     kind: { en: "Full-stack", es: "Full-stack" },
     summary: {
-      en: "A product layer over real data sources (Notion, Google Sheets and Google Calendar) without turning the web app into a second source of truth.",
-      es: "Una capa de producto sobre fuentes de datos reales (Notion, Google Sheets y Google Calendar) sin convertir la web en una segunda fuente de verdad.",
+      en: "A personal operating system for daily planning, habits and projects, integrating Notion, Google Sheets and Calendar while keeping private data in its original sources.",
+      es: "Un sistema operativo personal para organizar el día, los hábitos y los proyectos, integrando Notion, Google Sheets y Calendar sin duplicar los datos privados.",
     },
     stack: "Next.js · TypeScript · Notion API",
     status: { en: "Active · public repository", es: "Activo · repositorio público" },
+    live: links.vidaDemo,
+    liveLabel: { en: "Explore synthetic demo ↗", es: "Explorar demo con datos ficticios ↗" },
     caseHref: "/work/vida-2",
     repo: "https://github.com/franciscovitar/vida-2.0",
     media: {
@@ -34,8 +36,8 @@ export const projects = [
     title: "Cauce Commerce Lab",
     kind: { en: "E-commerce", es: "E-commerce" },
     summary: {
-      en: "Full-stack storefront with Supabase inventory, server-authoritative checkout and real Mercado Pago sandbox payments and signed webhooks.",
-      es: "Tienda full-stack con inventario en Supabase, checkout validado en servidor y pagos ficticios reales mediante Mercado Pago y webhooks firmados.",
+      en: "A fictional online store with a database-backed catalog and inventory. Checkout validates prices on the server and reconciles Mercado Pago test payments through signed webhooks.",
+      es: "Una tienda ficticia con catálogo e inventario persistentes. El checkout valida precios en el servidor y reconcilia pagos de prueba de Mercado Pago mediante webhooks firmados.",
     },
     stack: "Next.js · TypeScript · Supabase · Mercado Pago",
     status: {
@@ -59,17 +61,18 @@ export const projects = [
   },
   {
     slug: "library-network-api",
-    title: "Library Network API",
-    kind: { en: "Backend", es: "Backend" },
+    title: "Library Network",
+    kind: { en: "Full-stack · Backend", es: "Full-stack · Backend" },
     summary: {
-      en: "Transactional library API with PostgreSQL-backed concurrency tests and a public synthetic simulator.",
-      es: "API de bibliotecas con tests de concurrencia sobre PostgreSQL y un simulador público con datos ficticios.",
+      en: "A working library management app: lend and return books, transfer copies between branches and explore persistent records in your own temporary workspace. No account required.",
+      es: "Un sistema de bibliotecas funcional: registrá préstamos, devoluciones y traslados entre sucursales con datos persistentes en tu propio espacio temporal, sin crear una cuenta.",
     },
-    stack: "FastAPI · PostgreSQL",
-    status: { en: "Public simulator · real backend tested in CI", es: "Simulador público · backend real probado en CI" },
+    stack: "Next.js · TypeScript · Python · FastAPI · PostgreSQL",
+    status: { en: "Live application · public source", es: "Aplicación pública funcional · código público" },
     caseHref: "/work/library-network-api",
     repo: "https://github.com/franciscovitar/library-network-api",
-    live: "https://library-network-showcase-genova.vercel.app/",
+    live: "https://library-network-qa-web.onrender.com/",
+    liveLabel: { en: "Open live application ↗", es: "Abrir aplicación ↗" },
     media: { type: "transcript" },
   },
 ];
@@ -77,10 +80,11 @@ export const projects = [
 export const webhookLab = {
   title: "Webhook Recovery Lab",
   caseHref: "/work/webhook-recovery-lab",
+  repo: "https://github.com/franciscovitar/webhook-recovery-lab",
   live: "https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com",
   summary: {
-    en: "A live operations console for reliable webhook delivery. Send signed test orders, inspect real persisted attempts and recover failures without an account.",
-    es: "Consola funcional de entregas confiables. Enviá pedidos de prueba firmados, consultá intentos registrados y recuperá entregas fallidas sin crear una cuenta.",
+    en: "A working webhook delivery and recovery console. Send test orders, inspect persisted attempts, trigger a controlled failure and replay delivery without an account.",
+    es: "Consola de entrega y recuperación de webhooks. Enviá pedidos de prueba, observá cómo se procesan, provocá un fallo controlado y recuperá la entrega sin crear una cuenta.",
   },
   stack: "React · TypeScript · Fastify · PostgreSQL",
   steps: [
@@ -95,11 +99,12 @@ export const webhookLab = {
 export const personalAiSystem = {
   title: "Personal AI System",
   summary: {
-    en: "Turns an AI request into a scoped workflow with the right knowledge, permissions, tools and checks. A private system explained through its public architecture.",
-    es: "Convierte un pedido a la IA en un flujo de trabajo con contexto, permisos, herramientas y verificaciones. Un sistema privado explicado mediante su arquitectura pública.",
+    en: "Turns an AI request into a scoped workflow with the right knowledge, permissions, tools and checks. The private system is presented through a separate, runnable public reference implementation.",
+    es: "Convierte un pedido a la IA en un flujo de trabajo con contexto, permisos, herramientas y verificaciones. El sistema privado se explica mediante una implementación pública de referencia que se puede ejecutar e inspeccionar.",
   },
   stack: "Python · Agents · Evals",
   caseHref: "/work/personal-ai-system",
+  repo: "https://github.com/franciscovitar/personal-ai-system-showcase",
 };
 
 // Genova's own website (co-founded agency, not client work).
@@ -231,13 +236,13 @@ export const copy = {
     viewCase: "View case →",
     code: "Code ↗",
     fig: "Fig.",
-    transcriptRight: "transcript · public simulator",
+    transcriptRight: "transcript · illustrative example",
     transcriptSteps: [
       ["01 TRANSACTION", [["→", "Borrowing request"], ["←", "Atomic data update"]]],
       ["02 CONCURRENCY", [["→", "Two requests for one copy"], ["←", "Availability constraint"]]],
       ["03 IDEMPOTENCY", [["→", "Repeat a request"], ["←", "No duplicate operation"]]],
     ],
-    transcriptFoot: "Illustrative sequence, not a captured backend execution. Run the independent public simulator or inspect the repository tests.",
+    transcriptFoot: "Illustrative sequence, not a captured backend execution. Open the working library app or inspect the repository tests.",
     transcriptCaption: "Demo sequence in three steps",
     privateRepo: "Private repository",
     flowCaption: "Conceptual delivery lifecycle · try the real workflow in the public sandbox",
@@ -308,13 +313,13 @@ export const copy = {
     viewCase: "Ver caso →",
     code: "Código ↗",
     fig: "Fig.",
-    transcriptRight: "transcript · simulador público",
+    transcriptRight: "transcript · ejemplo ilustrativo",
     transcriptSteps: [
       ["01 TRANSACCIÓN", [["→", "Solicitud de préstamo"], ["←", "Actualización atómica"]]],
       ["02 CONCURRENCIA", [["→", "Dos solicitudes por un ejemplar"], ["←", "Restricción de disponibilidad"]]],
       ["03 IDEMPOTENCIA", [["→", "Repetición de una solicitud"], ["←", "Sin operación duplicada"]]],
     ],
-    transcriptFoot: "Secuencia ilustrativa, no una ejecución capturada del backend. Probá el simulador público independiente o revisá los tests del repositorio.",
+    transcriptFoot: "Secuencia ilustrativa, no una ejecución capturada del backend. Abrí la aplicación funcional o revisá los tests del repositorio.",
     transcriptCaption: "Secuencia de la demo, en tres pasos",
     privateRepo: "Repositorio privado",
     flowCaption: "Ciclo conceptual de entrega · probá el recorrido real en la aplicación",

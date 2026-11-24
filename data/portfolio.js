@@ -23,22 +23,23 @@ export const featuredProjects = [
   {
     slug: "library-network-api",
     visual: "library",
-    title: "Library Network API",
-    label: "Public backend lab",
-    status: "Public simulator · verified backend V1",
+    title: "Library Network",
+    label: "Full-stack library system",
+    status: "Live application · public source",
     hook:
       "A physical library copy cannot be loaned twice, even under concurrent requests and retries.",
     summary:
-      "FastAPI/PostgreSQL lab with tested concurrency and a separate public, synthetic loan simulator.",
-    stack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker"],
+      "Next.js/FastAPI/PostgreSQL application for real synthetic loans, returns and transfers in isolated guest workspaces.",
+    stack: ["Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Docker"],
     evidence:
-      "129 passing tests in a linked public GitHub Actions run, including 117 PostgreSQL integration tests.",
+      "Historical CI and hosted QA document transactional lending, concurrency and independent visitor workspaces.",
     highlights: [
       "Concurrent claims serialize with row locks",
       "Constraints protect against double loans",
       "Idempotent retries and rollback are verified",
     ],
     href: "/work/library-network-api",
+    live: "https://library-network-qa-web.onrender.com/",
     repo: "https://github.com/franciscovitar/library-network-api",
   },
   {
@@ -46,7 +47,7 @@ export const featuredProjects = [
     visual: "webhook",
     title: "Webhook Recovery Lab",
     label: "Full-stack reliability lab",
-    status: "Live public sandbox · private source",
+    status: "Live public sandbox · public source",
     hook:
       "Recover signed webhook delivery through crashes, duplicate events and receiver timeouts.",
     summary:
@@ -60,6 +61,8 @@ export const featuredProjects = [
       "Receiver idempotency handles at-least-once delivery",
     ],
     href: "/work/webhook-recovery-lab",
+    live: "https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com",
+    repo: "https://github.com/franciscovitar/webhook-recovery-lab",
   },
   {
     slug: "personal-ai-system",
@@ -80,6 +83,7 @@ export const featuredProjects = [
       "AI output remains separate from verification",
     ],
     href: "/work/personal-ai-system",
+    repo: "https://github.com/franciscovitar/personal-ai-system-showcase",
   },
   {
     slug: "cauce-commerce-lab",

@@ -61,7 +61,7 @@ const es = {
   "vida-2": {
     eyebrow: "Principal público · Activo",
     summary:
-      "Un sistema operativo personal que reúne varias áreas en una sola interfaz sin perder la autoridad ni la privacidad de las fuentes reales.",
+      "Un sistema operativo personal para organizar el día, los hábitos y los proyectos desde una interfaz que integra Notion, Google Sheets y Calendar. La demo pública independiente permite explorar el producto con datos ficticios.",
     linkLabels: ["Probar demo ficticia · recorrido 90 s", "Código de la aplicación original"],
     problem:
       "Los datos ya vivían en herramientas confiables. Vida tenía que unificarlos en una experiencia útil sin crear otra fuente de verdad.",
@@ -124,58 +124,56 @@ const es = {
     ],
   },
   "library-network-api": {
-    eyebrow: "Backend público · Muestra interactiva de ingeniería",
+    eyebrow: "Ingeniería full-stack · Aplicación pública funcional",
     summary:
-      "Una API REST que administra el recorrido de un ejemplar físico entre sucursales, incluso con solicitudes concurrentes y reintentos.",
-    linkLabels: ["Probar simulador interactivo", "Repositorio público", "Caso técnico", "Evidencia de CI"],
+      "Un sistema de gestión de bibliotecas que permite prestar y devolver libros ficticios y gestionar traslados entre sucursales. La aplicación pública usa Next.js, FastAPI y persistencia real en PostgreSQL, con espacios temporales independientes y sin registro.",
+    linkLabels: ["Abrir aplicación", "Repositorio público", "Alojamiento y verificación", "Evidencia de CI del backend original"],
     problem:
-      "Si dos personas solicitan el mismo ejemplar al mismo tiempo, la red de bibliotecas debe aceptar como máximo un préstamo. El ejemplar permanece indisponible hasta que regresa a su sucursal de origen.",
+      "Una red de bibliotecas tiene que controlar cada ejemplar: dos pedidos simultáneos no pueden reservarlo a la vez, y durante un traslado de regreso debe permanecer indisponible hasta llegar a su sucursal. El sistema convierte esas reglas en operaciones utilizables, no solo en un ejercicio de API.",
     constraints: [
-      "Un ejemplar físico no puede tener dos préstamos abiertos, incluso ante concurrencia.",
-      "Solicitud, transferencia, historial y clave de idempotencia se confirman juntos o se revierten juntos.",
-      "La ubicación cambia cuando la sucursal receptora confirma la llegada.",
-      "Un reintento con la misma clave no puede duplicar un préstamo.",
-      "Un ejemplar dañado se retira de circulación.",
-      "La simulación estática está hospedada con datos ficticios; FastAPI y PostgreSQL reales siguen ejecutándose localmente o en CI.",
+      "Un ejemplar no puede tener dos préstamos abiertos, incluso ante concurrencia.",
+      "Préstamo, traslado, historial e idempotencia se confirman juntos o se revierten juntos.",
+      "La ubicación cambia al recibir el ejemplar; los dañados se retiran de circulación.",
+      "Cada visitante utiliza un espacio temporal independiente con datos ficticios, sin registrarse.",
+      "La muestra histórica que funciona solo en el navegador es independiente de la aplicación real.",
     ],
     architecture: [
-      "Cliente HTTP / Swagger / script de demo reproducible",
-      "Endpoints FastAPI y esquemas validados",
-      "Comandos de aplicación: una transacción por operación",
-      "Estados de préstamos, ejemplares y transferencias",
-      "PostgreSQL: locks, restricciones e historial",
-      "Docker reproducible + verificación en CI",
+      "Interfaz Next.js y BFF del lado servidor",
+      "Sesión temporal y solicitudes autenticadas al backend",
+      "Endpoints FastAPI y comandos validados",
+      "PostgreSQL: transacciones, locks, restricciones e historial",
+      "Servicios Render Free y PostgreSQL Aiven Free",
     ],
     decisions: [
-      { title: "Bloquear el ejemplar", body: "Los comandos toman locks de filas en un orden fijo y vuelven a validar el estado. Dos pedidos simultáneos no pueden reservar el mismo libro." },
-      { title: "Hacer que la base también proteja", body: "Un índice único parcial y restricciones explícitas rechazan estados inválidos aunque falle una comprobación de la aplicación." },
-      { title: "Reintentar sin duplicar", body: "Una Idempotency-Key repite una solicitud aceptada, pero rechaza usar la misma identidad con otro contenido." },
-      { title: "Mantener una arquitectura acotada", body: "Un monolito modular y PostgreSQL transaccional permiten reproducir el ciclo sin colas ni servicios innecesarios." },
+      { title: "Evitar préstamos duplicados", body: "Los comandos bloquean filas y vuelven a validar el estado dentro de la transacción. Las restricciones de la base aportan una segunda protección." },
+      { title: "Reintentar sin duplicar", body: "Una Idempotency-Key permite repetir una operación aceptada y rechaza otro contenido con la misma identidad." },
+      { title: "Separar visitantes", body: "La interfaz pública crea un espacio sintético aislado y limita las operaciones a esa sesión, en lugar de compartir una biblioteca entre todos." },
+      { title: "Representar el negocio", body: "Los estados explícitos de préstamos y traslados mantienen consistentes el inventario y el historial." },
     ],
     verification: [
-      "Ejecución enlazada de GitHub Actions: 129 tests aprobados (117 de integración PostgreSQL + 12 unitarios/HTTP), ninguno omitido.",
-      "Pedidos concurrentes del mismo ejemplar: uno aceptado, otro rechazado sin registros duplicados.",
-      "Rollback, replay idempotente, transiciones ilegales y devoluciones dañadas cubiertos con tests sobre base real.",
-      "Script HTTP local determinista que recorre el préstamo entre sucursales y la devolución completa.",
-      "El modelo interactivo hospedado tiene seis tests automatizados independientes; no equivalen a integración con PostgreSQL.",
+      "La ejecución de CI original documentó 129 tests aprobados, incluidos 117 de integración PostgreSQL; es evidencia histórica, no el conteo de la última suite.",
+      "Las pruebas con base real cubren concurrencia, reintentos idempotentes, rollback, transiciones ilegales y devoluciones dañadas.",
+      "La aplicación alojada y la documentación de QA cubren préstamos reales y espacios independientes por visitante.",
+      "La muestra histórica de navegador es ilustrativa y no demuestra integración con PostgreSQL.",
     ],
     safety: [
-      "Los comandos rechazados no alteran préstamos, transferencias, ejemplares ni historial.",
-      "PostgreSQL no expone un puerto al host en el Compose de la demo.",
-      "La API no tiene autenticación ni rate limiting: no debe hospedarse públicamente tal cual está.",
+      "Los comandos rechazados no alteran el estado del dominio.",
+      "Los espacios temporales contienen datos ficticios y se aíslan por sesión.",
+      "La API local de desarrollo sin autenticación no es la interfaz pública de invitados.",
     ],
     status:
-      "La API V1 y sus pruebas están en main público. También hay una muestra interactiva en Vercel, aislada y con datos ficticios. El backend real se reproduce con Docker local y CI, pero no se expone como servicio público. El proyecto surgió de un trabajo académico individual, ampliado con asistencia de IA; nunca se operó en producción.",
+      "La aplicación funcional está alojada en Render con PostgreSQL de Aiven y su código es público en GitHub. Surgió de un proyecto académico de backend ampliado a un sandbox de portfolio, no a un servicio para bibliotecas reales.",
     limitations: [
-      "No se afirma que exista una API pública hospedada, autenticación ni uso en producción.",
-      "La V1 excluye renovaciones, multas y cancelación de solicitudes abandonadas.",
+      "El alojamiento gratuito puede dormir o alcanzar cuotas; el primer acceso puede requerir esperar y reintentar.",
+      "Solo datos ficticios temporales, sin uso en bibliotecas reales ni garantía de disponibilidad.",
+      "La V1 original excluye renovaciones, multas y cancelación de solicitudes abandonadas.",
     ],
   },
   "webhook-recovery-lab": {
     eyebrow: "Ingeniería full-stack · Demo pública funcional",
     summary:
       "Consola real de recepción, entrega y recuperación de webhooks. Enviá pedidos de prueba, consultá sus intentos y recuperá fallos desde una interfaz en español, sin registrarte.",
-    linkLabels: ["Abrir aplicación", "Explorar simulador conceptual independiente"],
+    linkLabels: ["Abrir aplicación", "Repositorio público", "QA alojado y limitaciones"],
     problem:
       "Un proveedor puede reenviar un aviso, un proceso puede caer después de que el receptor lo acepta y una respuesta perdida puede ocultar el resultado. El desafío es conservar los eventos recibidos y recuperar su entrega sin duplicar efectos.",
     constraints: [
@@ -213,11 +211,11 @@ const es = {
       "Espacios temporales, cuotas y limpieza; no es una certificación de seguridad o capacidad productiva.",
     ],
     status:
-      "La aplicación funcional en español es pública en Render y persiste en PostgreSQL de Neon. El simulador de Vercel se conserva como referencia conceptual independiente. El repositorio del código sigue privado.",
+      "La aplicación funcional en español es pública en Render y persiste en PostgreSQL de Neon. El simulador de Vercel se conserva como referencia conceptual independiente. El repositorio de código y su documentación técnica son públicos.",
     limitations: [
       "El alojamiento gratuito puede tardar en despertar; hay cuotas y vencimiento del espacio temporal.",
       "No se declara tráfico real, integración externa arbitraria, SLA ni transporte exactamente una vez.",
-      "El repositorio y los registros privados de CI no están disponibles públicamente.",
+      "El QA funcional documentado corresponde a las revisiones probadas; los cambios posteriores de presentación compilaron y se desplegaron sin repetir toda la suite.",
     ],
   },
   "personal-ai-system": {
@@ -306,7 +304,7 @@ const es = {
   "cauce-commerce-lab": {
     eyebrow: "Full-stack personal · Integración real de prueba · Tienda pública",
     summary:
-      "Tienda ficticia e independiente con Next.js y Supabase, checkout de prueba mediante Mercado Pago Checkout Pro, pagos verificados desde el servidor, webhooks firmados y manejo transaccional del stock.",
+      "Una tienda ficticia donde se puede recorrer un catálogo persistente y armar un pedido. Next.js y Supabase gestionan inventario y checkout; Mercado Pago se integra exclusivamente en modo de prueba, con webhooks firmados y conciliación de pagos.",
     linkLabels: ["Visitar tienda de demostración", "Repositorio público", "Integración de pagos y QA"],
     problem:
       "Demostrar las partes difíciles de un ecommerce con un proyecto personal: consistencia del inventario, administración autorizada, precios controlados por el servidor y conciliación confiable de pagos de terceros. Cauce es ficticio; no cobra compras reales.",

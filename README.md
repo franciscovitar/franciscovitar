@@ -18,6 +18,7 @@ Personal operating system built with **Next.js, React and TypeScript**.
 - Uses authenticated/private surfaces, fail-closed behavior, feature flags and safe-write/idempotency rules.
 - Includes product areas for health, nutrition, gym, finance, projects, tasks, learning and automations.
 - Uses automated checks and environment/preflight validation.
+- [Explore the independent synthetic demo](https://vida-2-0-demo-genova.vercel.app/) · [Read the case study](https://franciscovitar.vercel.app/work/vida-2).
 
 ### [Cauce Commerce Lab](https://franvitar.genovasite.com/work/cauce-commerce-lab?lang=es)
 Personal fictional ecommerce storefront built with **Next.js, TypeScript, Supabase and Mercado Pago Checkout Pro (sandbox)**.
@@ -28,13 +29,14 @@ Personal fictional ecommerce storefront built with **Next.js, TypeScript, Supaba
 - [Public sandbox storefront](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) needs no Vercel login; a separate Mercado Pago test-buyer account is still required to run a fictional Checkout Pro payment.
 - No real customer payments are enabled; the public repository also preserves the historic La Mediterránea work.
 
-### [Library Network API](https://github.com/franciscovitar/library-network-api)
-Public, locally reproducible backend lab built with **FastAPI, SQLAlchemy and PostgreSQL**.
+### [Library Network](https://github.com/franciscovitar/library-network-api)
+Working library management app built with **Next.js, FastAPI, SQLAlchemy and PostgreSQL**.
 
 - Transactional interlibrary loans with a physical-copy lifecycle and explicit state transitions.
 - PostgreSQL row locking and constraints prevent concurrent double loans.
 - `Idempotency-Key` handling, atomic rollback and damaged-copy retirement.
-- [Technical case study](https://franciscovitar.vercel.app/work/library-network-api) with a public CI run (129 passing tests); no public hosted API is claimed.
+- [Open the live application](https://library-network-qa-web.onrender.com/) — synthetic records, no account and independent temporary workspaces.
+- [Technical case study](https://franciscovitar.vercel.app/work/library-network-api) and [hosted QA](https://github.com/franciscovitar/library-network-api/blob/main/docs/ops/ZERO_COST_HOSTED_QA_20261123.md). The original 129-test CI run is historical evidence.
 
 ### [Value Latam](https://github.com/franciscovitar/valuelatamnuevo3)
 Production-oriented frontend work with **Next.js, React, Playwright, Sass and GSAP**.
@@ -50,20 +52,20 @@ Client delivery example built with **Next.js, React, Sass and Vitest/Testing Lib
 - Data-driven services and reusable components.
 - Tests around form behavior, service data and navigation.
 
-## Current private systems
-
-### [Webhook Recovery Lab](https://franciscovitar.vercel.app/work/webhook-recovery-lab)
+### [Webhook Recovery Lab](https://github.com/franciscovitar/webhook-recovery-lab)
 Functional reliability sandbox built with **React, TypeScript, Fastify and PostgreSQL**.
 
 - [Open the live application](https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com) — Spanish interface, no account, isolated temporary workspaces.
 - Signed HMAC ingress, transactional inbox, worker leases, bounded retries and audited replay.
 - Real PostgreSQL and HTTP verification of deduplication, controlled rejection and recovery; receiver-side idempotency protects the recorded effect.
-- Synthetic data only; free-tier cold starts and quotas apply. Source repository remains private.
+- Synthetic data only; free-tier cold starts and quotas apply. Source code and engineering documentation are public. [Read the case study](https://franciscovitar.vercel.app/work/webhook-recovery-lab).
+
+## Current private system with public reference code
 
 ### Personal AI System
 Private modular system for AI-assisted research, software work, learning and execution.
 
-It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. [Read the sanitized public case study](https://franciscovitar.vercel.app/work/personal-ai-system) rather than exposing the private repository or private system state.
+It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. [Read the sanitized public case study](https://franciscovitar.vercel.app/work/personal-ai-system) and [inspect the runnable reference implementation](https://github.com/franciscovitar/personal-ai-system-showcase). The canonical system and personal data remain private.
 
 ## Engineering stack
 

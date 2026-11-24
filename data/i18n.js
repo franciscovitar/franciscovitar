@@ -124,14 +124,14 @@ const projectEs = {
     ],
   },
   "library-network-api": {
-    label: "Laboratorio backend · Público",
-    status: "Demo local · V1 verificada",
+    label: "Sistema de bibliotecas full-stack",
+    status: "Aplicación pública funcional · código público",
     hook:
       "Un ejemplar físico no puede prestarse dos veces, incluso ante solicitudes concurrentes y reintentos.",
   },
   "webhook-recovery-lab": {
     label: "Laboratorio de confiabilidad full-stack",
-    status: "Demo pública funcional · Código privado",
+    status: "Demo pública funcional · Código público",
     hook:
       "Recuperación de entregas de webhooks firmados ante caídas, duplicados y timeouts.",
   },

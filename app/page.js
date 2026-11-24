@@ -303,7 +303,10 @@ export default async function Home({ searchParams }) {
                       {c.viewCase}
                     </Link>
                     <ExternalLink href={webhookLab.live} className={styles.lnk}>
-                      {lang === "es" ? "Ver aplicación ↗" : "View app ↗"}
+                      {lang === "es" ? "Abrir aplicación ↗" : "Open application ↗"}
+                    </ExternalLink>
+                    <ExternalLink href={webhookLab.repo} className={styles.lnk}>
+                      {c.code}
                     </ExternalLink>
                   </div>
                 </div>
@@ -353,6 +356,9 @@ export default async function Home({ searchParams }) {
                 >
                   {c.viewCase}
                 </Link>
+                <ExternalLink href={personalAiSystem.repo} className={styles.lnk}>
+                  {lang === "es" ? "Código de referencia ↗" : "Reference code ↗"}
+                </ExternalLink>
               </div>
               <div className={styles.pasDiagram}>
                 <PASFlow lang={lang} />
