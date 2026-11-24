@@ -49,7 +49,7 @@
   background-color: #e7d8c2;
   color: #283027; // Explicit child color prevents blue link-hover inheritance.
   background-image: linear-gradient(90deg, rgba(245, 233, 211, .68), rgba(245, 233, 211, .19) 55%, transparent 78%),
-    url("https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp");
+    url("/images/projects/cauce-hero.webp");
   background-position: center center;
   background-size: cover;
 }
@@ -86,3 +86,7 @@
   .cta { margin-top: 16px; font-size: 9px; padding: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .preview { transition: none; } }
+
+/* Constrain aspect-ratio transfer in narrow portfolio grids. */
+.preview,.cover {min-width:0;max-width:100%;}
+.cover {width:100%;}

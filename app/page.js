@@ -1,10 +1,13 @@
 import Link from "next/link";
+import EditorialHero, { PasArtwork } from "../components/home/EditorialHero";
+import EditorialHeader from "../components/home/EditorialHeader";
+import EditorialMotion from "../components/home/EditorialMotion";
+import EngineeringPhilosophy from "../components/home/EngineeringPhilosophy";
+import GenovaExperience from "../components/home/GenovaExperience";
 import PASFlow from "../components/PASFlow";
 import CauceStorefrontPreview from "../components/CauceStorefrontPreview";
 import {
-  clients,
   copy,
-  genovaShot,
   links,
   personalAiSystem,
   projects,
@@ -17,7 +20,6 @@ import {
   Placeholder,
   PairShot,
   canShowShot,
-  Shot,
   SectionHead,
   hrefFor,
   withLang,
@@ -42,7 +44,7 @@ function DemoPanel({ c, compact = false }) {
       <p className={styles.demoIntro}>{c.demoIntro}</p>
       <div className={styles.demoSections}>
         {c.demoSections.map((section, index) => (
-          <div className={styles.demoSection} key={section}>
+          <div className={styles.demoSection} key={section} style={{"--i":index}}>
             <span>0{index + 1}</span>
             <strong>{section}</strong>
           </div>
@@ -86,8 +88,8 @@ function ProjectMedia({ project, lang, c, index }) {
             <span className={styles.transcriptDim}>{c.transcriptRight}</span>
           </div>
           <div className={styles.transcriptBody}>
-            {c.transcriptSteps.map(([step, lines]) => (
-              <div className={styles.transcriptRow} key={step}>
+            {c.transcriptSteps.map(([step, lines], index) => (
+              <div className={styles.transcriptRow} key={step} style={{"--i":index}}>
                 <span className={styles.transcriptDim}>{step}</span>
                 <div>
                   {lines.map(([dir, text]) => (
@@ -109,6 +111,20 @@ function ProjectMedia({ project, lang, c, index }) {
         </figcaption>
       </figure>
     );
+  }
+
+  if (media.type === "webhook") {
+    return <figure className={styles.figure}>
+      <div className={styles.recoveryVisual}>
+        <div className={styles.recoveryHeader}><strong>WEBHOOK / RECOVERY</strong><span>{lang==="es"?"Flujo conceptual":"Conceptual flow"}</span></div>
+        <ol className={styles.flow}>
+          {webhookLab.steps.map((step,i)=><li key={t(step.name,"en")} style={{"--i":i}} className={step.tone==="failure"?styles.flowFailure:step.tone==="recovery"?styles.flowRecovery:undefined}>
+            <span className={styles.flowIndex}>0{i+1}{step.tone==="recovery"?" ↺":""}</span><span className={styles.flowName}>{t(step.name,lang)}</span><span className={styles.flowDetail}>{t(step.detail,lang)}</span>
+          </li>)}
+        </ol>
+      </div>
+      <figcaption className={styles.caption}>{fig} — {c.flowCaption}</figcaption>
+    </figure>;
   }
 
   if (media.type === "pair") {
@@ -148,110 +164,29 @@ export default async function Home({ searchParams }) {
   const params = await searchParams;
   const lang = params?.lang === "es" ? "es" : "en";
   const c = copy[lang];
+  const recoveryProject = {
+    ...webhookLab, slug:"webhook-recovery-lab", kind:{en:"Full-stack",es:"Full-stack"},
+    status:{en:"Live public sandbox",es:"Demo pública funcional"},
+    liveLabel:{en:"Open application ↗",es:"Abrir aplicación ↗"}, media:{type:"webhook"}
+  };
+  const gallery = [...projects.slice(0,2),recoveryProject,...projects.slice(2)];
 
   return (
     <div className={styles.page}>
       <a href="#content" className={styles.skip}>
         {c.skip}
       </a>
-      <header className={styles.header}>
-        <div className={`${styles.wrap} ${styles.headerInner}`}>
-          <a href={hrefFor(lang, "top")} className={styles.wordmark}>
-            Francisco Vitar
-          </a>
-          <nav aria-label={lang === "es" ? "Principal" : "Primary"} className={styles.nav}>
-            <a href={hrefFor(lang, "projects")}>{c.nav.projects}</a>
-            <a href={hrefFor(lang, "experience")}>{c.nav.experience}</a>
-            <a href={hrefFor(lang, "about")}>{c.nav.about}</a>
-            <a href={hrefFor(lang, "contact")}>{c.nav.contact}</a>
-          </nav>
-          <div className={styles.headerTools}>
-            <span className={styles.langSwitch}>
-              <Link href="/?lang=es" aria-current={lang === "es" ? "page" : undefined}>
-                ES
-              </Link>
-              <span aria-hidden="true">/</span>
-              <Link href="/" aria-current={lang === "en" ? "page" : undefined}>
-                EN
-              </Link>
-            </span>
-            <a href={links.cv} className={styles.lnk}>
-              {c.cv}
-            </a>
-          </div>
-        </div>
-      </header>
+      <EditorialHeader lang={lang} />
+      <EditorialMotion />
 
       <main id="content" tabIndex={-1} className={styles.main}>
-        <section id="top" className={`${styles.wrap} ${styles.hero}`}>
-          <p className={styles.eyebrow}>{c.eyebrow}</p>
-          <h1 className={styles.name}>Francisco Vitar</h1>
-          <div className={styles.heroRow}>
-            <div className={styles.heroLead}>
-              <p className={styles.statement}>
-                {c.statement} <em>{c.statementAccent}</em>
-              </p>
-              <div className={styles.ctas}>
-                <a href={hrefFor(lang, "projects")} className={styles.button}>
-                  {c.ctaPrimary}
-                </a>
-                <a href={hrefFor(lang, "contact")} className={styles.lnk}>
-                  {c.ctaContact}
-                </a>
-                <a href={links.cv} className={styles.lnk}>
-                  {c.ctaCv}
-                </a>
-              </div>
-            </div>
-            <dl className={styles.heroMeta}>
-              {c.meta.map(([term, value]) => (
-                <div key={term}>
-                  <dt>{term}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <figure className={styles.heroFigure}>
-            <div className={styles.frame}>
-              <div className={styles.frameBar}>
-                <span>Vida 2.0</span>
-                <span className={styles.frameDim}>{c.heroFrameRight}</span>
-              </div>
-              <DemoPanel c={c} />
-            </div>
-            <figcaption className={styles.heroCaption}>
-              <span className={styles.caption}>{c.heroCaption}</span>
-              <span className={styles.heroCaptionLinks}>
-                <ExternalLink href={links.vidaDemo} className={`${styles.lnk} ${styles.accent}`}>
-                  {c.heroDemoLink}
-                </ExternalLink>
-                <Link href={withLang("/work/vida-2", lang)} className={styles.lnk}>
-                  {c.heroCaseLink}
-                </Link>
-              </span>
-            </figcaption>
-          </figure>
-        </section>
+        <EditorialHero lang={lang} />
 
         <section id="projects" className={styles.projects}>
           <div className={styles.wrap}>
-            <SectionHead
-              index="01"
-              title={c.projectsTitle}
-              intro={
-                <>
-                  {c.projectsIntro}{" "}
-                  <a href={hrefFor(lang, "experience")} className={styles.lnk}>
-                    {c.projectsIntroLink}
-                  </a>
-                  .
-                </>
-              }
-            />
+            <SectionHead index={lang==="es"?"01 / PROYECTO INSIGNIA":"01 / FLAGSHIP PROJECT"} title={lang==="es"?<>Inteligencia, <em>por diseño.</em></>:<>Intelligence, <em>by design.</em></>}/>
 
-            <article className={styles.pasRow}>
+            <article className={styles.pasRow} data-editorial-reveal="pas">
               <p className={styles.eyebrow}>
                 01 · {c.personal} · {lang === "es" ? "Proyecto insignia · Ingeniería de IA" : "Flagship · AI systems engineering"}
               </p>
@@ -274,15 +209,26 @@ export default async function Home({ searchParams }) {
                   {lang === "es" ? "Código de referencia ↗" : "Reference code ↗"}
                 </ExternalLink>
               </div>
-              <div className={styles.pasDiagram}>
-                <PASFlow lang={lang} />
+              <div className={styles.pasMetrics}>
+                {[[12,lang==="es"?"Servicios":"Services"],[45,lang==="es"?"Rutas compatibles":"Compatible routes"],[35,lang==="es"?"Familias diseñadas":"Designed families"]].map(([n,label])=><div key={n}><strong>{n}</strong><span>{label}</span></div>)}
+                <p>{lang==="es"?"Dimensiones del catálogo, no certificaciones de campo. Referencia pública con escenarios sintéticos.":"Catalog dimensions, not field certifications. Public reference uses synthetic scenarios."}</p>
               </div>
+              <Link href={withLang(personalAiSystem.caseHref,lang)} className={styles.flagshipArt} aria-label={personalAiSystem.title}>
+                <PasArtwork lang={lang}/>
+                <span className={styles.caption}>{lang==="es"?"Visualización conceptual":"Conceptual visualization"}</span>
+              </Link>
+              <details className={styles.pasArchitectureMore}>
+                <summary>{lang==="es"?"Explorar el recorrido completo de la arquitectura":"Explore the full architecture flow"}</summary>
+                <div className={styles.pasDiagram}><PASFlow lang={lang} theme="dark"/></div>
+              </details>
             </article>
 
-            {projects.map((project, index) => (
+            <SectionHead index={lang==="es"?"02 / PROYECTOS SELECCIONADOS":"02 / SELECTED WORK"} title={lang==="es"?<>Ingeniería <em>en práctica.</em></>:<>Engineering <em>in practice.</em></>} intro={<>{c.projectsIntro} <a href={hrefFor(lang,"experience")} className={styles.lnk}>{c.projectsIntroLink}</a>.</>}/>
+            {gallery.map((project, index) => (
               <article
                 key={project.slug}
-                className={`${styles.feature} ${index % 2 === 1 ? styles.featureReverse : ""}`}
+                data-editorial-reveal={project.media.type}
+                className={styles.feature}
               >
                 <ProjectMedia project={project} lang={lang} c={c} index={index + 1} />
                 <div className={styles.featureText}>
@@ -318,124 +264,30 @@ export default async function Home({ searchParams }) {
               </article>
             ))}
 
-            <article className={styles.flowProject}>
-              <div className={styles.flowHead}>
-                <div className={styles.flowText}>
-                  <p className={styles.eyebrow}>
-                    05 · {c.personal} · Full-stack · {lang === "es" ? "Demo pública funcional" : "Live public sandbox"}
-                  </p>
-                  <h3 className={styles.projectTitle}>{webhookLab.title}</h3>
-                  <p className={styles.projectSummary}>{t(webhookLab.summary, lang)}</p>
-                  <div className={styles.projectLinks}>
-                    <Link href={withLang(webhookLab.caseHref, lang)} className={`${styles.lnk} ${styles.accent}`}>
-                      {c.viewCase}
-                    </Link>
-                    <ExternalLink href={webhookLab.live} className={styles.lnk}>
-                      {lang === "es" ? "Abrir aplicación ↗" : "Open application ↗"}
-                    </ExternalLink>
-                    <ExternalLink href={webhookLab.repo} className={styles.lnk}>
-                      {c.code}
-                    </ExternalLink>
-                  </div>
-                </div>
-                <span className={styles.monoMeta}>{webhookLab.stack}</span>
-              </div>
-              <figure className={styles.figure}>
-                <ol className={styles.flow}>
-                  {webhookLab.steps.map((step, i) => (
-                    <li
-                      key={t(step.name, "en")}
-                      className={
-                        step.tone === "failure"
-                          ? styles.flowFailure
-                          : step.tone === "recovery"
-                            ? styles.flowRecovery
-                            : undefined
-                      }
-                    >
-                      <span className={styles.flowIndex}>
-                        0{i + 1}
-                        {step.tone === "recovery" ? " ↺" : ""}
-                      </span>
-                      <span className={styles.flowName}>{t(step.name, lang)}</span>
-                      <span className={styles.flowDetail}>{t(step.detail, lang)}</span>
-                    </li>
-                  ))}
-                </ol>
-                <figcaption className={styles.caption}>
-                  {c.fig} 05 — {c.flowCaption}
-                </figcaption>
-              </figure>
-            </article>
-
-
           </div>
         </section>
 
-        <section id="experience" className={styles.experience}>
+        <GenovaExperience lang={lang} />
+        <EngineeringPhilosophy lang={lang} />
+
+        <section id="capabilities" className={styles.capabilities} data-editorial-reveal="capabilities">
           <div className={styles.wrap}>
-            <SectionHead index="02" title={c.experienceTitle} intro={c.experienceIntro} />
-            <div className={styles.split}>
-              <div>
-                <h3 className={styles.genova}>Genova</h3>
-                <p className={styles.genovaRole}>{c.genovaRole}</p>
-                <p className={styles.monoMeta}>{c.genovaDates}</p>
-                {canShowShot(genovaShot) ? (
-                  <figure className={styles.genovaFigure}>
-                    <Shot shot={genovaShot} lang={lang} pendingLabel={c.pending} />
-                    <figcaption className={styles.clientTag}>{c.genovaFig}</figcaption>
-                  </figure>
-                ) : null}
-              </div>
-              <div>
-                <p className={styles.genovaBody}>{c.genovaBody}</p>
-                <div className={styles.genovaLinks}>
-                  <ExternalLink href={links.genovaWebsite} className={styles.lnk}>
-                    {c.genovaWebsite}
-                  </ExternalLink>
-                  <ExternalLink href={links.genovaInstagram} className={styles.lnk}>
-                    {c.genovaInstagram}
-                  </ExternalLink>
+            <SectionHead index={lang==="es"?"05 / CAPACIDADES TÉCNICAS":"05 / TECHNICAL CAPABILITIES"} title={lang==="es"?<>Herramientas con <em>propósito.</em></>:<>Tools with <em>purpose.</em></>}/>
+            <div className={styles.skills}>
+              {skills.map((skill,index) => (
+                <div key={t(skill.group, "en")} className={styles.skill} style={{"--i":index}}>
+                  <h3>{t(skill.group, lang)}</h3>
+                  <p>{t(skill.items, lang)}</p>
+                  <p className={styles.monoMeta}>{t(skill.usedIn, lang)}</p>
                 </div>
-                <ul className={styles.genovaList}>
-                  {c.genovaBullets.map((item, i) => (
-                    <li key={item}>
-                      <span aria-hidden="true">{String.fromCharCode(97 + i)}.</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className={styles.clientsHead}>
-              <p className={styles.eyebrow}>{c.clientsLabel}</p>
-              <p className={styles.monoMeta}>{c.clientsNote}</p>
-            </div>
-            <div className={styles.clients}>
-              {clients.map((client) => (
-                <article key={client.title} className={styles.client}>
-                  {client.shot && canShowShot(client.shot) ? (
-                    <Shot shot={client.shot} lang={lang} pendingLabel={c.pending} />
-                  ) : (
-                    <Placeholder label={c.clientPlaceholder} ratio="4 / 3" tone="deep" />
-                  )}
-                  <p className={styles.clientTag}>
-                    {c.clientTag} · {t(client.sector, lang)}
-                  </p>
-                  <h3 className={styles.clientTitle}>{client.title}</h3>
-                  <p className={styles.clientDetail}>{t(client.detail, lang)}</p>
-                  <ExternalLink href={client.live} className={styles.lnk}>
-                    {c.site}
-                  </ExternalLink>
-                </article>
               ))}
             </div>
+
           </div>
         </section>
-
-        <section id="about" className={styles.about}>
+        <section id="about" className={styles.about} data-editorial-reveal="about">
           <div className={styles.wrap}>
-            <SectionHead index="03" title={c.aboutTitle} />
+            <SectionHead index={lang==="es"?"06 / PERFIL Y EXPERIENCIA":"06 / ABOUT & EXPERIENCE"} title={lang==="es"?<>La persona <em>detrás de los sistemas.</em></>:<>The person <em>behind the systems.</em></>}/>
             <div className={`${styles.split} ${styles.aboutSplit}`}>
               <div className={styles.portraitPanel}>
                 <span className={styles.portraitMonogram} aria-hidden="true">FV</span>
@@ -462,27 +314,16 @@ export default async function Home({ searchParams }) {
                 </div>
               </div>
             </div>
-            <p className={styles.eyebrow}>{c.skillsLabel}</p>
-            <div className={styles.skills}>
-              {skills.map((skill) => (
-                <div key={t(skill.group, "en")} className={styles.skill}>
-                  <h3>{t(skill.group, lang)}</h3>
-                  <p>{t(skill.items, lang)}</p>
-                  <p className={styles.monoMeta}>{t(skill.usedIn, lang)}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
-        <section id="contact" className={styles.contact}>
+        <section id="contact" className={styles.contact} data-editorial-reveal="contact">
           <div className={styles.wrap}>
-            <p className={styles.contactLabel}>{c.contactLabel}</p>
+            <p className={styles.contactLabel}>{lang==="es"?"07 / CONTACTO":"07 / CONTACT"}</p>
             <h2 className={styles.contactTitle}>
-              {c.contactTitle[0]}
-              <span className={styles.nowrap}>{c.contactTitle[1]}</span>
-              {c.contactTitle[2]}
+              {lang==="es"?<>Construyamos <em>algo.</em></>:<>Let&apos;s build <em>something.</em></>}
             </h2>
+            <p className={styles.contactSub}>{c.contactTitle.join("")}</p>
             <a href={`mailto:${links.email}`} className={styles.email}>
               {links.email}
             </a>

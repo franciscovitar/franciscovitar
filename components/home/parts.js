@@ -35,7 +35,7 @@ export function Placeholder({ label, ratio, className = "", tone }) {
 
 export function SectionHead({ index, title, intro }) {
   return (
-    <div className={styles.sectionHead}>
+    <div className={styles.sectionHead} data-editorial-reveal="chapter">
       <p className={styles.sectionIndex}>{index}</p>
       <div className={styles.sectionHeadRow}>
         <h2 className={styles.sectionTitle}>{title}</h2>

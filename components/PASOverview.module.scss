@@ -150,3 +150,16 @@
   .area { min-height: 96px; }
   .intro h2 { font-size: 34px; }
 }
+
+/* The public PAS overview retains its distinct blue technical palette. */
+.frame {background:#172638;color:#e5edf6;border-color:#465e79;box-shadow:0 20px 45px #0004;}
+.topline,.areaHeading,.intro p {color:#b8c8da;}
+.control {background:#263c55;border-color:#718cab;}
+.controlMark,.controlCode,.areaNumber {color:#bcd1e9;}
+.control>div span {color:#becde0;}
+.vertical {background:#86a0be;}
+.area {background:#203249;border-color:#455e79;}
+.areaShort {color:#b9c8da;}
+.bottom {color:#c2d2e5;border-color:#455e79;}
+.arrow {color:#a4b7cd;}
+.topline,.areaHeading {flex-wrap:wrap;}
