@@ -747,3 +747,6 @@
 @media(prefers-reduced-motion:reduce){.page *,.page *::before,.page *::after{animation:none!important;transition:none!important;}}
 
 .page {--sans:"Manrope Variable",var(--font-geist-sans),Arial,sans-serif;--serif:"Instrument Serif","Newsreader Variable",Georgia,serif;}
+
+:global(.ep) .page {--sans:Inter,Arial,sans-serif;--serif:Georgia,"Times New Roman",serif;font-family:var(--sans);background:#080808}
+:global(.ep) .article {padding-top:0}

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import PrototypeShell from "./editorial/PrototypeShell";
+import PrototypeCaseIntro from "./editorial/PrototypeCaseIntro";
 import EditorialMotion from "./home/EditorialMotion";
 import SystemVisual from "./SystemVisual";
 import CauceStorefrontPreview from "./CauceStorefrontPreview";
@@ -27,6 +29,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
   const visual = visualBySlug[localized.slug] || "overview";
   const isPas = localized.slug === "personal-ai-system";
   const isCauce = localized.slug === "cauce-commerce-lab";
+  const editorial = ["personal-ai-system","vida-2","cauce-commerce-lab","webhook-recovery-lab","library-network-api"].includes(localized.slug);
   const pas = pasContent[lang] || pasContent.en;
 
   const architectureSection = (
@@ -60,10 +63,10 @@ export default function CaseStudyPage({ study, lang = "en" }) {
     </section>
   );
 
-  return (
-    <main className={styles.page}>
+  const content = (
+    <div className={styles.page}>
       <EditorialMotion />
-      <header className={styles.topbarShell}>
+      {!editorial && <header className={styles.topbarShell}>
         <div className={styles.topbar}>
           <Link href={lang === "es" ? "/?lang=es" : "/"} className={styles.wordmark}>
             Francisco Vitar
@@ -100,10 +103,12 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             </a>
           </nav>
         </div>
-      </header>
+      </header>}
+      {editorial && <PrototypeCaseIntro lang={lang} slug={localized.slug}/>}
 
       <article className={styles.article}>
-        <section className={styles.hero}>
+        {editorial && <details className="wrap case-detail"><summary>{lang==="es"?"Ver presentación técnica, stack y enlaces completos":"View full technical overview, stack and links"}</summary><div className={styles.heroVisual}>{isPas?<PASOverview lang={lang}/>:isCauce?<CauceStorefrontPreview lang={lang} href={localized.links[0]?.href}/>:<SystemVisual kind={visual} lang={lang}/>}</div><p>{localized.summary}</p><div className={styles.stack}>{localized.stack.map(item=><span key={item}>{item}</span>)}</div><div className={styles.links}>{localized.links.map(link=><a key={link.href} href={isPas&&link.href.startsWith("/pas-explorer/")?"/pas-explorer/explorer/index.html?lang="+lang:link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div></details>}
+        {!editorial && <section className={styles.hero}>
           <div className={styles.heroCopy}>
             <Link href={localizedHomeHref(lang)} className={styles.backLink}>
               {ui.back}
@@ -149,7 +154,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               <SystemVisual kind={visual} lang={lang} />
             )}
           </div>
-        </section>
+        </section>}
 
         {isPas && architectureSection}
 
@@ -327,6 +332,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </footer>
       </article>
-    </main>
+    </div>
   );
+  return editorial ? <PrototypeShell lang={lang} path={"/work/"+localized.slug}>{content}</PrototypeShell> : <main>{content}</main>;
 }
