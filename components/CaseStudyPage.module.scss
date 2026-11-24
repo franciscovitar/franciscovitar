@@ -754,3 +754,9 @@
 :global(.ep) .sectionBody>h2 {line-height:1.14;overflow:visible}
 :global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation-duration:1.35s}
 @media(prefers-reduced-motion:reduce){:global(.ep) .page *{animation:none!important;transition:none!important}}
+
+:global(.ep) .page{--case-ease:cubic-bezier(.42,.08,.25,1)}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2{animation-duration:2.1s}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .largeCopy{animation-duration:1.75s}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .decisionGrid{animation-duration:2s}
+:global(.ep) .page .sectionBody{min-width:0}

@@ -1,3 +1,4 @@
+import Arrow from "../../components/editorial/Arrow";
 import Link from "next/link";
 import styles from "./cv.module.scss";
 
@@ -11,7 +12,7 @@ const content = {
   es: {
     projects: "Proyectos",
     eyebrow: "Documento · CV en PDF",
-    title: "Experiencia, proyectos y formación.",
+    title: "Experiencia, proyectos y formación",
     summary:
       "Un resumen de mi trabajo en desarrollo web, los sistemas que construyo y mi formación en Ingeniería en Sistemas en UTN Córdoba.",
     view: "Abrir CV",
@@ -26,7 +27,7 @@ const content = {
   en: {
     projects: "Projects",
     eyebrow: "Document · PDF résumé",
-    title: "Experience, projects and education.",
+    title: "Experience, projects and education",
     summary:
       "An overview of my web development work, the systems I build and my Systems Engineering studies at UTN Córdoba.",
     view: "Open résumé",
@@ -51,7 +52,7 @@ export default async function CVPage({ searchParams }) {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href={home} className={styles.wordmark}>Francisco Vitar</Link>
-          <nav className={styles.nav} aria-label="CV navigation">
+          <nav className={styles.nav} aria-label={lang==="es"?"Navegación del CV":"CV navigation"}>
             <Link href={`${home}#projects`}>{c.projects}</Link>
             <div className={styles.langSwitch} aria-label="Language">
               <Link href="/cv" aria-current={lang === "en" ? "page" : undefined}>EN</Link>
@@ -63,17 +64,17 @@ export default async function CVPage({ searchParams }) {
       </header>
 
       <article className={styles.content}>
-        <Link href={home} className={styles.back}>← {c.back}</Link>
+        <Link href={home} className={styles.back}><Arrow direction="left"/> {c.back}</Link>
         <p className={styles.eyebrow}>{c.eyebrow}</p>
         <h1>{c.title}</h1>
         <p className={styles.summary}>{c.summary}</p>
 
         <div className={styles.actions}>
           <a href="/Francisco_Vitar_CV_ATS_V1.pdf" target="_blank" rel="noreferrer" className={styles.primary}>
-            {c.view} ↗
+            {c.view} <Arrow/>
           </a>
           <a href="/Francisco_Vitar_CV_ATS_V1.pdf" download className={styles.secondary}>
-            {c.download} ↓
+            {c.download} <Arrow direction="down"/>
           </a>
         </div>
 
@@ -84,9 +85,9 @@ export default async function CVPage({ searchParams }) {
             <p>{c.note}</p>
           </div>
           <div>
-            <span className={styles.index}>02 / CONTACTO</span>
+            <span className={styles.index}>02 / {lang === "es" ? "CONTACTO" : "CONTACT"}</span>
             <h2>{c.contact}</h2>
-            <a href="mailto:franvitar15@gmail.com" className={styles.email}>{c.email} ↗</a>
+            <a href="mailto:franvitar15@gmail.com" className={styles.email}>{c.email} <Arrow/></a>
           </div>
         </div>
       </article>

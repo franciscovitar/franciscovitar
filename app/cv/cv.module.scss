@@ -210,3 +210,6 @@
     grid-template-columns: 1fr;
   }
 }
+
+.page :global(.ui-arrow){width:1em;height:1em;vertical-align:-.12em;display:inline-block}
+@media(max-width:420px){.headerInner{flex-wrap:wrap;gap:8px 16px;padding:12px 0}.nav{gap:14px}.content h1{overflow-wrap:break-word;line-height:1.12}.details>div{min-width:0;overflow-wrap:anywhere}}

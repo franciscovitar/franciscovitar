@@ -270,7 +270,7 @@
 .ep .stage-tile .visual.small{min-height:147px}
 .ep .stage-label{font-size:10px;padding:3px 3px 8px}
 .ep .stage-footer{font-size:8px;gap:5px}
-.ep .stage-footer span:last-child{display:none}
+.ep .stage-footer>span:last-child{display:none}
 .ep .section{padding:58px 0}
 .ep .section-head{margin-bottom:23px}
 .ep .section-head h2{font-size:clamp(36px,8vw,56px)}
@@ -426,47 +426,47 @@
 .ep .section-head.reveal.visible .eyebrow{animation:dissolve .82s .04s var(--scene) backwards}
 .ep .section-head.reveal.visible h2{animation:cut-left 1.3s .1s var(--soft-scene) backwards}
 .ep .feature.reveal.visible>*,.ep .project-row.reveal.visible>*,.ep .genova-feature.reveal.visible>*,.ep .method-grid.reveal.visible>*{animation:none}
-.ep .feature.reveal.visible .feature-copy{animation:dissolve 1.18s .05s var(--scene) backwards}
-.ep .feature.reveal.visible .feature-visual{animation:curtain 1.42s .18s var(--scene) backwards}
-.ep .project-row.reveal.visible .project-meta{animation:dissolve 1.08s .14s var(--scene) backwards}
-.ep .project-row.reveal.visible:has(.visual.vida) .project-visual{animation:cut-right 1.34s .06s var(--soft-scene) backwards}
-.ep .project-row.reveal.visible:has(.visual.cauce) .project-visual{animation:unfold-top 1.36s .06s var(--soft-scene) backwards}
-.ep .project-row.reveal.visible:has(.visual.webhook) .project-visual{animation:emerge 1.28s .05s var(--scene) backwards}
-.ep .project-row.reveal.visible:has(.visual.library) .project-visual{animation:cut-left 1.34s .06s var(--soft-scene) backwards}
+.ep .feature .feature-copy.part-visible{animation:dissolve 1.18s .05s var(--scene) backwards}
+.ep .feature .feature-visual.part-visible{animation:curtain 1.42s .18s var(--scene) backwards}
+.ep .project-row .project-meta.part-visible{animation:dissolve 1.08s .14s var(--scene) backwards}
+.ep .project-row:has(.visual.vida) .project-visual.part-visible{animation:cut-right 1.34s .06s var(--soft-scene) backwards}
+.ep .project-row:has(.visual.cauce) .project-visual.part-visible{animation:unfold-top 1.36s .06s var(--soft-scene) backwards}
+.ep .project-row:has(.visual.webhook) .project-visual.part-visible{animation:emerge 1.28s .05s var(--scene) backwards}
+.ep .project-row:has(.visual.library) .project-visual.part-visible{animation:cut-left 1.34s .06s var(--soft-scene) backwards}
 .ep .wire{stroke-dasharray:1;stroke-dashoffset:0}
 .ep .stage-tile.pas .wire{animation:line-draw 1.8s 1.22s var(--soft-scene) backwards}
-.ep .feature.reveal.visible .wire,.ep .case-art.reveal.visible .wire,.ep .reveal.visible .method-diagram .wire{animation:line-draw 1.9s .56s var(--soft-scene) backwards}
+.ep .feature-visual.part-visible .wire,.ep .case-art.reveal.visible .wire,.ep .reveal.visible .method-diagram .wire{animation:line-draw 1.9s .56s var(--soft-scene) backwards}
 .ep .stage-tile:hover .wire,.ep .project-visual:hover .wire{animation:line-draw 1.45s var(--scene) backwards}
-.ep :is(.stage-tile.vida,.project-row.visible,.case-art.visible) .vida-app .mini-cards>div{animation:emerge .8s .48s var(--scene) backwards}
-.ep :is(.stage-tile.vida,.project-row.visible,.case-art.visible) .vida-app .mini-cards>div:nth-child(2){animation-delay:.62s}
-.ep :is(.stage-tile.vida,.project-row.visible,.case-art.visible) .vida-app .mini-list>div{animation:slide-inside .7s calc(.66s + var(--i,0)*.13s) var(--scene) backwards}
-.ep :is(.stage-tile.vida,.project-row.visible,.case-art.visible) .vida-app .mini-progress i{animation:progress 1s 1.04s var(--scene) backwards}
+.ep :is(.stage-tile.vida,.project-visual.part-visible,.case-art.visible) .vida-app .mini-cards>div{animation:emerge .8s .48s var(--scene) backwards}
+.ep :is(.stage-tile.vida,.project-visual.part-visible,.case-art.visible) .vida-app .mini-cards>div:nth-child(2){animation-delay:.62s}
+.ep :is(.stage-tile.vida,.project-visual.part-visible,.case-art.visible) .vida-app .mini-list>div{animation:slide-inside .7s calc(.66s + var(--i,0)*.13s) var(--scene) backwards}
+.ep :is(.stage-tile.vida,.project-visual.part-visible,.case-art.visible) .vida-app .mini-progress i{animation:progress 1s 1.04s var(--scene) backwards}
 .ep .stage-tile.vida .vida-app .mini-list>div{animation-delay:calc(1.35s + var(--i,0)*.11s)}
 .ep .stage-tile.vida .vida-app .mini-cards>div{animation-delay:calc(1.16s + var(--i,0)*.12s)}
 .ep .stage-tile.vida .vida-app .mini-progress i{animation-delay:1.72s}
-.ep :is(.stage-tile.cauce,.project-row.visible,.case-art.visible) .store-items>div{animation:emerge .9s calc(.48s + var(--i,0)*.16s) var(--scene) backwards}
+.ep :is(.stage-tile.cauce,.project-visual.part-visible,.case-art.visible) .store-items>div{animation:emerge .9s calc(.48s + var(--i,0)*.16s) var(--scene) backwards}
 .ep .stage-tile.cauce .store-items>div{animation-delay:calc(1.38s + var(--i,0)*.15s)}
-.ep :is(.stage-tile.cauce,.project-row.visible,.case-art.visible) .checkout{animation:dissolve .8s 1.15s var(--scene) backwards}
+.ep :is(.stage-tile.cauce,.project-visual.part-visible,.case-art.visible) .checkout{animation:dissolve .8s 1.15s var(--scene) backwards}
 .ep .stage-tile.cauce .checkout{animation-delay:1.95s}
-.ep :is(.project-row.visible,.case-art.visible) .event-flow::before{transform-origin:left;animation:line-open 1.3s .35s var(--scene) backwards}
-.ep :is(.project-row.visible,.case-art.visible) .event-flow>div i{animation:node-on .65s calc(.45s + var(--i,0)*.19s) var(--scene) backwards}
-.ep :is(.project-row.visible,.case-art.visible) .event-log>div{animation:slide-inside .7s calc(.8s + var(--i,0)*.25s) var(--scene) backwards}
-.ep :is(.project-row.visible,.case-art.visible) .book-list>div{animation:slide-inside-right .8s calc(.48s + var(--i,0)*.2s) var(--scene) backwards}
-.ep :is(.project-row.visible,.case-art.visible) .library-app .mini-progress i{animation:progress 1s 1.12s var(--scene) backwards}
-.ep .genova-feature.reveal.visible .genova-word{animation:cut-left 1.38s .14s var(--soft-scene) backwards}
-.ep .genova-feature.reveal.visible>div:first-child p{animation:dissolve 1.02s .54s var(--scene) backwards}
-.ep .genova-feature.reveal.visible .genova-services>div{animation:slide-inside-right 1.02s calc(.28s + var(--i,0)*.18s) var(--scene) backwards}
-.ep .client-line.reveal.visible a{animation:dissolve .92s calc(.05s + var(--i,0)*.15s) var(--scene) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-flow::before{transform-origin:left;animation:line-open 1.3s .35s var(--scene) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-flow>div i{animation:node-on .65s calc(.45s + var(--i,0)*.19s) var(--scene) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-log>div{animation:slide-inside .7s calc(.8s + var(--i,0)*.25s) var(--scene) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .book-list>div{animation:slide-inside-right .8s calc(.48s + var(--i,0)*.2s) var(--scene) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .library-app .mini-progress i{animation:progress 1s 1.12s var(--scene) backwards}
+.ep .genova-feature .genova-word.part-visible{animation:cut-left 1.38s .14s var(--soft-scene) backwards}
+.ep .genova-feature>div:first-child p.part-visible{animation:dissolve 1.02s .54s var(--scene) backwards}
+.ep .genova-feature .genova-services>div.part-visible{animation:slide-inside-right 1.02s calc(.28s + var(--i,0)*.18s) var(--scene) backwards}
+.ep .client-line a.part-visible{animation:dissolve .92s calc(.05s + var(--i,0)*.15s) var(--scene) backwards}
 .ep .client.reveal.visible .client-art{animation:cut-left 1.3s .04s var(--soft-scene) backwards}
 .ep .client.reveal.visible:nth-child(even) .client-art{animation-name:cut-right}
 .ep .client.reveal.visible .client-body{animation:dissolve 1s .28s var(--scene) backwards}
 .ep .three.reveal.visible>article,.ep .draft-cases.reveal.visible>div{animation:dissolve 1.08s calc(.06s + var(--i,0)*.14s) var(--scene) backwards}
-.ep .method-grid.reveal.visible .method-diagram{animation:emerge 1.16s .04s var(--scene) backwards}
-.ep .method-grid.visible .method-diagram svg>rect,.ep .method-grid.visible .method-diagram svg>text{animation:dissolve .72s calc(.32s + var(--i,0)*.09s) var(--scene) backwards}
-.ep .reveal.visible .principles>div{animation:slide-inside-right 1.02s calc(.28s + var(--i,0)*.18s) var(--scene) backwards}
-.ep .skill-table.reveal.visible>div{animation:cut-left 1.02s calc(.04s + var(--i,0)*.13s) var(--scene) backwards}
-.ep .about-grid.reveal.visible>*{animation:dissolve 1.12s .04s var(--scene) backwards}
-.ep .about-grid.reveal.visible>*:nth-child(2){animation-delay:.18s}
+.ep .method-grid .method-diagram.part-visible{animation:emerge 1.16s .04s var(--scene) backwards}
+.ep .method-grid .method-diagram.part-visible svg>rect,.ep .method-grid .method-diagram.part-visible svg>text{animation:dissolve .72s calc(.32s + var(--i,0)*.09s) var(--scene) backwards}
+.ep .principles>div.part-visible{animation:slide-inside-right 1.02s calc(.28s + var(--i,0)*.18s) var(--scene) backwards}
+.ep .skill-table>div.part-visible{animation:cut-left 1.02s calc(.04s + var(--i,0)*.13s) var(--scene) backwards}
+.ep .about-grid>.part-visible{animation:dissolve 1.12s .04s var(--scene) backwards}
+.ep .about-grid>.part-visible:nth-child(2){animation-delay:.18s}
 .ep footer.reveal.visible h2{animation:curtain 1.38s .05s var(--soft-scene) backwards}
 .ep .view-enter{animation:dissolve .68s var(--scene) backwards}
 .ep .view-enter .inner-hero h1{animation:cut-left 1.28s .1s var(--soft-scene) backwards}
@@ -482,8 +482,8 @@
 }
 @media(max-width:760px){.ep .stage-tile.vida,.ep .stage-tile.cauce{animation-name:emerge;animation-duration:1s}
 .ep .hero .mask>span,.ep .hero .mask>em{animation-duration:1.05s}
-.ep .genova-feature.reveal.visible .genova-services>div,.ep .reveal.visible .principles>div{animation-name:dissolve}
-.ep .project-row.reveal.visible .project-visual{animation-duration:1s}
+.ep .genova-feature .genova-services>div.part-visible,.ep .principles>div.part-visible{animation-name:dissolve}
+.ep .project-row .project-visual.part-visible{animation-duration:1s}
 }
 .ep :focus-visible,.ep .reveal:focus-within,.ep .reveal:focus-within *,.ep .stage-tile:focus-within,.ep .stage-tile:focus-within *,.ep .hero-actions:focus-within{animation:none!important}
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}
@@ -531,12 +531,12 @@
 .ep .stage-tile.pas {animation-duration:1.68s}
 .ep .stage-tile.vida,.ep .stage-tile.cauce {animation-duration:1.82s}
 .ep .section-head.reveal.visible h2 {animation-duration:1.56s}
-.ep .feature.reveal.visible .feature-visual {animation-duration:1.68s}
-.ep .project-row.reveal.visible .project-visual {animation-duration:1.62s}
-.ep .project-row.reveal.visible .project-meta {animation-duration:1.28s}
-.ep .genova-feature.reveal.visible .genova-word {animation-duration:1.65s}
-.ep .reveal.visible .principles>div {animation-duration:1.22s}
-.ep .skill-table.reveal.visible>div {animation-duration:1.18s}
+.ep .feature .feature-visual.part-visible {animation-duration:1.68s}
+.ep .project-row .project-visual.part-visible {animation-duration:1.62s}
+.ep .project-row .project-meta.part-visible {animation-duration:1.28s}
+.ep .genova-feature .genova-word.part-visible {animation-duration:1.65s}
+.ep .principles>div.part-visible {animation-duration:1.22s}
+.ep .skill-table>div.part-visible {animation-duration:1.18s}
 .ep footer.reveal.visible h2 {animation-duration:1.62s}
 .ep .view-enter .inner-hero h1,.ep .view-enter .genova-hero h1 {animation-duration:1.62s}
 .ep .view-enter {animation-duration:.8s}
@@ -554,14 +554,100 @@
 .ep .method-steps small {display:block;font-size:11px;color:#a3a3a3;line-height:1.4;margin-top:3px}
 .ep .method-bottom {border-top:1px solid #383838;padding-top:15px;margin-top:16px;display:flex;align-items:center;gap:10px;font-size:11px;color:#bbb}
 .ep .method-bottom svg {width:17px;height:17px;flex:none}
-.ep .method-grid.visible .method-steps li {animation:dissolve 1.05s calc(.18s + var(--i)*.13s) var(--scene) backwards}
-.ep .method-grid.visible .method-steps::before {transform-origin:top;animation:method-line 1.7s .2s var(--scene) backwards}
+.ep .method-steps li.part-visible {animation:dissolve 1.05s calc(.18s + var(--i)*.13s) var(--scene) backwards}
+.ep .method-diagram.part-visible .method-steps::before {transform-origin:top;animation:method-line 1.7s .2s var(--scene) backwards}
 @keyframes method-line {from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @media(max-width:760px){
  .ep .hero .mask>span,.ep .hero .mask>em {animation-duration:1.42s}
  .ep .stage-tile.vida,.ep .stage-tile.cauce {animation-duration:1.28s}
- .ep .project-row.reveal.visible .project-visual {animation-duration:1.32s}
+ .ep .project-row .project-visual.part-visible {animation-duration:1.32s}
  .ep .method-loop {padding:20px}
  .ep .genova-word {font-size:clamp(54px,19vw,74px)}
 }
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}}
+
+/* Final motion pass: hero keyframes and timings above are intentionally unchanged.
+   Each scroll part animates once, when it approaches the actual viewport. */
+.ep{--scroll-ease:cubic-bezier(.42,.08,.25,1);--scroll-soft:cubic-bezier(.40,.10,.22,1)}
+.ep .section-head.reveal.visible .eyebrow{animation:dissolve 1.35s .06s var(--scroll-ease) backwards}
+.ep .section-head.reveal.visible h2{animation:cut-left 2.45s .12s var(--scroll-soft) backwards}
+.ep .feature .feature-copy.part-visible{animation:dissolve 1.9s .08s var(--scroll-ease) backwards}
+.ep .feature .feature-visual.part-visible{animation:curtain 2.55s .18s var(--scroll-soft) backwards}
+.ep .project-row .project-meta.part-visible{animation:dissolve 1.85s .10s var(--scroll-ease) backwards}
+.ep .project-row:has(.visual.vida) .project-visual.part-visible{animation:cut-right 2.45s .15s var(--scroll-soft) backwards}
+.ep .project-row:has(.visual.cauce) .project-visual.part-visible{animation:unfold-top 2.5s .15s var(--scroll-soft) backwards}
+.ep .project-row:has(.visual.webhook) .project-visual.part-visible{animation:emerge 2.3s .12s var(--scroll-soft) backwards}
+.ep .project-row:has(.visual.library) .project-visual.part-visible{animation:cut-left 2.45s .15s var(--scroll-soft) backwards}
+.ep :is(.feature-visual.part-visible,.case-art.visible) .wire{animation:line-draw 2.8s .65s var(--scroll-soft) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .vida-app .mini-cards>div{animation:emerge 1.5s calc(.55s + var(--i,0)*.25s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .vida-app .mini-list>div{animation:slide-inside 1.45s calc(.85s + var(--i,0)*.25s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .vida-app .mini-progress i{animation:progress 1.75s 1.35s var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .store-items>div{animation:emerge 1.55s calc(.65s + var(--i,0)*.27s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .checkout{animation:dissolve 1.35s 1.65s var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-flow::before{animation:line-open 2.1s .4s var(--scroll-soft) backwards;transform-origin:left}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-flow>div i{animation:node-on 1.15s calc(.55s + var(--i,0)*.3s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .event-log>div{animation:slide-inside 1.5s calc(1s + var(--i,0)*.3s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .book-list>div{animation:slide-inside-right 1.6s calc(.6s + var(--i,0)*.3s) var(--scroll-ease) backwards}
+.ep :is(.project-visual.part-visible,.case-art.visible) .library-app .mini-progress i{animation:progress 1.8s 1.45s var(--scroll-ease) backwards}
+.ep .genova-feature .genova-word.part-visible{animation:cut-left 2.5s .12s var(--scroll-soft) backwards}
+.ep .genova-feature>div:first-child p.part-visible{animation:dissolve 1.8s .22s var(--scroll-ease) backwards}
+.ep .genova-feature .genova-services>div.part-visible{animation:slide-inside-right 1.7s calc(.18s + var(--i,0)*.16s) var(--scroll-ease) backwards}
+.ep .client-line a.part-visible{animation:dissolve 1.65s calc(.06s + var(--i,0)*.12s) var(--scroll-ease) backwards}
+.ep .client.reveal.visible .client-art{animation-duration:2.2s;animation-timing-function:var(--scroll-soft)}
+.ep .client.reveal.visible .client-body{animation-duration:1.7s;animation-timing-function:var(--scroll-ease)}
+.ep .three.reveal.visible>article{animation-duration:1.85s;animation-timing-function:var(--scroll-ease)}
+.ep .method-grid .method-diagram.part-visible{animation:emerge 2.05s .06s var(--scroll-soft) backwards}
+.ep .method-steps li.part-visible{animation:dissolve 1.65s calc(.12s + var(--i,0)*.19s) var(--scroll-ease) backwards}
+.ep .method-diagram.part-visible .method-steps::before{animation:method-line 2.5s .24s var(--scroll-soft) backwards}
+.ep .principles>div.part-visible{animation:slide-inside-right 1.85s calc(.12s + var(--i,0)*.17s) var(--scroll-ease) backwards}
+.ep .skill-table>div.part-visible{animation:cut-left 1.95s calc(.06s + var(--i,0)*.12s) var(--scroll-soft) backwards}
+.ep .about-grid>.part-visible{animation:dissolve 1.95s .06s var(--scroll-ease) backwards}
+.ep .about-grid>.part-visible:nth-child(2){animation-delay:.22s}
+.ep footer.reveal.visible h2{animation:curtain 2.55s .08s var(--scroll-soft) backwards}
+.ep .view-enter{animation-duration:1.1s;animation-timing-function:var(--scroll-ease)}
+.ep .view-enter .inner-hero h1,.ep .view-enter .genova-hero h1{animation-duration:2.3s;animation-timing-function:var(--scroll-soft)}
+.ep .view-enter .inner-hero h2,.ep .view-enter .inner-hero p{animation-duration:1.75s;animation-timing-function:var(--scroll-ease)}
+.ep .view-enter .inner-hero .actions{animation-duration:1.5s;animation-timing-function:var(--scroll-ease)}
+.ep .case-art.reveal.visible>.visual{animation:curtain 2.35s .08s var(--scroll-soft) backwards}
+.ep .part-visible:focus-within,.ep .part-visible:focus-within *{animation:none!important}
+/* Reflow and small-screen usability. Avoid masking overflow on whole sections. */
+.ep .feature>*,.ep .project-row>*,.ep .genova-feature>*,.ep .method-grid>*,.ep .about-grid>*,.ep .case-meta>*,.ep .client-grid>*{min-width:0}
+.ep .feature h3{line-height:1.12}
+.ep .section-head>div{min-width:0}
+.ep :is(h1,h2,h3){overflow-wrap:break-word}
+.ep .method-steps::before{left:46px}
+.ep .back{align-items:center}
+.ep .ep-link-label{overflow-wrap:anywhere}
+.ep .mobile-details summary:focus-visible{outline:2px solid #eee;outline-offset:4px}
+.ep .nav-right a,.ep .mobile-details summary{min-height:24px;display:inline-flex;align-items:center;justify-content:center}
+.ep .nav-right .cv{display:inline-flex;gap:4px}
+.ep .mobile-details #mobile-menu{max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain}
+.ep .client-line a{overflow-wrap:anywhere}
+.ep .stage-footer>span:last-child{white-space:nowrap}
+.ep .stage-footer a{display:inline-flex;align-items:center;gap:4px}
+.ep .stage-footer a>span{display:inline}
+.ep .stage-footer>span:first-child>span{display:inline}
+.ep .nav-right{flex-shrink:0}
+@media(max-width:760px){
+ .ep .stage-footer>span:last-child{display:none}
+ .ep .genova-feature .genova-services>div.part-visible,.ep .principles>div.part-visible{animation-name:dissolve}
+ .ep .section-head.reveal.visible h2{animation-duration:2.2s}
+ .ep .project-row .project-visual.part-visible{animation-duration:2.15s}
+ .ep .method-steps li.part-visible,.ep .skill-table>div.part-visible,.ep .genova-feature .genova-services>div.part-visible,.ep .principles>div.part-visible{animation-delay:.08s}
+ .ep .nav-right a,.ep .mobile-details summary{min-height:36px}
+ .ep .nav-right .cv{padding:6px 10px}
+ .ep .nav{gap:10px}
+}
+@media(max-width:360px){
+ .ep .nav:not(.compact) .brand-long{display:none}
+ .ep .nav:not(.compact) .brand-short{display:block}
+ .ep .nav-right{gap:7px}
+ .ep .compact .nav{padding:0 12px}
+ .ep .genova-services div{grid-template-columns:22px minmax(0,1fr) minmax(0,1fr)}
+ .ep .genova-services div small{text-align:right;overflow-wrap:anywhere}
+ .ep .client-art strong{overflow-wrap:anywhere}
+ .ep .store-items{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .ep .small .checkout{flex-wrap:wrap}
+}
+@media(hover:none),(pointer:coarse){.ep .stage-tile:hover,.ep .project-visual:hover,.ep .project-visual:hover .mini-app,.ep .project-visual:hover .pas-system,.ep a:hover .arrow{transform:none}}
+@media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
