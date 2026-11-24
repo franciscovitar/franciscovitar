@@ -17,6 +17,10 @@ export default async function GenovaPage({searchParams}) {
         <p className={styles.eyebrow}>{es?"EMPRENDIMIENTO / EXPERIENCIA PROFESIONAL":"ENTREPRENEURSHIP / PROFESSIONAL EXPERIENCE"}</p>
         <h1>genova.</h1><p><em>{es?"Más allá del código.":"Beyond the code."}</em></p>
         <p>{es?"Tecnología, estrategia y desafíos reales de negocio.":"Technology, strategy and real business challenges."}</p>
+        <a href="https://www.genovasite.com/" target="_blank" rel="noreferrer" className={styles.button}>{es?"Visitar Genova ↗":"Visit Genova ↗"}</a>
+        <div className={styles.genovaServiceGrid}>
+          {(es?[["Tecnología","Desarrollo web y soluciones digitales."],["Estrategia","Marketing digital y campañas."],["Creatividad","Contenido y comunicación de marca."]]:[["Technology","Web development and digital solutions."],["Strategy","Digital marketing and campaigns."],["Creative","Content and brand communication."]]).map(([title,description],i)=><article key={title} style={{"--i":i}}><span className={styles.eyebrow}>0{i+1}</span><h2>{title}</h2><p>{description}</p></article>)}
+        </div>
       </section>
       <GenovaExperience lang={lang} standalone/>
     </main>

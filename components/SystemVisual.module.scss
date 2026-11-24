@@ -200,7 +200,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .pulse {
-    animation: pulse 2.6s ease-in-out infinite;
+    animation: pulse 2.6s ease-in-out 1;
   }
 }
 
@@ -230,3 +230,6 @@
     grid-template-columns: max-content minmax(0, 1fr);
   }
 }
+
+.frame {border-radius:10px;}
+.windowBar,.footer {overflow-wrap:anywhere;}

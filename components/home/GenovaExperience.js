@@ -47,8 +47,8 @@ export default function GenovaExperience({ lang = "en", standalone = false }) {
               <p className={styles.monoMeta}>{c.clientsNote}</p>
             </div>
             <div className={styles.clients}>
-              {clients.map((client) => (
-                <article key={client.title} className={styles.client}>
+              {clients.map((client,index) => (
+                <article key={client.title} className={styles.client} style={{"--i":index}}>
                   {client.shot && canShowShot(client.shot) ? (
                     <Shot shot={client.shot} lang={lang} pendingLabel={c.pending} />
                   ) : (

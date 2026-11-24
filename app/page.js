@@ -44,7 +44,7 @@ function DemoPanel({ c, compact = false }) {
       <p className={styles.demoIntro}>{c.demoIntro}</p>
       <div className={styles.demoSections}>
         {c.demoSections.map((section, index) => (
-          <div className={styles.demoSection} key={section}>
+          <div className={styles.demoSection} key={section} style={{"--i":index}}>
             <span>0{index + 1}</span>
             <strong>{section}</strong>
           </div>
@@ -88,8 +88,8 @@ function ProjectMedia({ project, lang, c, index }) {
             <span className={styles.transcriptDim}>{c.transcriptRight}</span>
           </div>
           <div className={styles.transcriptBody}>
-            {c.transcriptSteps.map(([step, lines]) => (
-              <div className={styles.transcriptRow} key={step}>
+            {c.transcriptSteps.map(([step, lines], index) => (
+              <div className={styles.transcriptRow} key={step} style={{"--i":index}}>
                 <span className={styles.transcriptDim}>{step}</span>
                 <div>
                   {lines.map(([dir, text]) => (
@@ -273,6 +273,7 @@ export default async function Home({ searchParams }) {
                   {webhookLab.steps.map((step, i) => (
                     <li
                       key={t(step.name, "en")}
+                      style={{"--i":i}}
                       className={
                         step.tone === "failure"
                           ? styles.flowFailure

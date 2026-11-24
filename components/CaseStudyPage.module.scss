@@ -705,3 +705,43 @@
     padding-bottom: 36px;
   }
 }
+
+/* Pure Obsidian — keep all technical evidence and disclosure components. */
+.page {
+  --ivory:#080808; --paper:#121212; --ink:#f5f5f5; --graphite:#b3b3b3; --meta:#a3a3a3;
+  --rule:#303030; --accent:#e2e2e2; --case-ease:cubic-bezier(.24,.68,.18,1);
+  color-scheme:dark;
+}
+.topbarShell {background:#080808f5;}
+.wordmark {font-family:var(--sans);font-weight:650;letter-spacing:-.055em;}
+.hero {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}
+.heroCopy h1 {font-family:var(--sans);font-weight:650;letter-spacing:-.065em;font-size:clamp(48px,5.6vw,84px);}
+.heroCopy .links {align-items:center;}
+.heroCopy .links a:first-child {padding:10px 14px;border:1px solid #f5f5f5;border-radius:5px;background:#f5f5f5;color:#080808;}
+.pasCodeCallout {background:#172638;border-left-color:#89a7ca;}
+.pasCodeCallout > a {white-space:normal;overflow-wrap:anywhere;}
+.statusSection {background:#121212;border:1px solid var(--rule);color:var(--ink);}
+.statusSection .eyebrow,.statusSection .miniLabel {color:var(--meta);}
+.limitations {border-color:var(--rule);}
+.pasDomainCard,.pasDepthItem,.decision,.evidenceCard,.constraintGrid>div,.verificationGrid>div {border-radius:6px;min-width:0;}
+.architectureTrack {border-radius:6px;overflow:hidden;}
+.heroCopy h1 {animation:caseCut 1.28s .1s var(--case-ease) backwards;}
+.heroVisual {animation:caseCurtain 1.42s .2s var(--case-ease) backwards;}
+.heroCopy .lead {animation:caseDissolve 1s .32s var(--case-ease) backwards;}
+[data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation:caseCut 1.08s .04s var(--case-ease) backwards;}
+[data-editorial-reveal="case"][data-editorial-visible] .largeCopy {animation:caseDissolve .98s .2s var(--case-ease) backwards;}
+[data-editorial-reveal="case"][data-editorial-visible] .decisionGrid {animation:caseCurtain 1.15s .1s var(--case-ease) backwards;}
+.heroVisual:focus-within,.heroCopy:focus-within *,[data-editorial-reveal]:focus-within,[data-editorial-reveal]:focus-within * {animation:none!important;}
+@keyframes caseCut {from{clip-path:inset(0 100% 0 0);opacity:.35}to{clip-path:inset(0);opacity:1}}
+@keyframes caseCurtain {from{clip-path:inset(0 50% 0 50%);opacity:.45}to{clip-path:inset(0);opacity:1}}
+@keyframes caseDissolve {from{opacity:.2}to{opacity:1}}
+@media(max-width:960px){.hero {grid-template-columns:minmax(0,1fr);}}
+@media(max-width:700px){
+ .topbar {flex-wrap:wrap;gap:8px 12px;padding:10px 0;}
+ .wordmark {font-size:18px;}
+ .heroCopy h1 {font-size:clamp(40px,11vw,64px);}
+ .section,.constraintGrid,.decisionGrid,.verificationGrid,.statusSection,.evidenceGrid,.evidenceIntro {grid-template-columns:minmax(0,1fr);}
+ .heroVisual,.sectionBody,.statusSection>div {min-width:0;}
+ .footer a,.links a,.stack span {overflow-wrap:anywhere;}
+}
+@media(prefers-reduced-motion:reduce){.page *,.page *::before,.page *::after{animation:none!important;transition:none!important;}}

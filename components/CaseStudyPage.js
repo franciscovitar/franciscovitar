@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditorialMotion from "./home/EditorialMotion";
 import SystemVisual from "./SystemVisual";
 import CauceStorefrontPreview from "./CauceStorefrontPreview";
 import PASFlow from "./PASFlow";
@@ -31,6 +32,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
   const architectureSection = (
     <section
       className={`${styles.section} ${isPas ? styles.pasArchitecture : ""}`}
+      data-editorial-reveal="case"
       id={isPas ? "pas-architecture" : undefined}
     >
       <div className={styles.sectionLabel}>
@@ -41,7 +43,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         <h2>{ui.architectureTitle}</h2>
         {isPas ? (
           <>
-            <PASFlow lang={lang} />
+            <PASFlow lang={lang} theme="dark" />
             <PASEcosystem lang={lang} />
           </>
         ) : (
@@ -60,18 +62,20 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
   return (
     <main className={styles.page}>
+      <EditorialMotion />
       <header className={styles.topbarShell}>
         <div className={styles.topbar}>
           <Link href={lang === "es" ? "/?lang=es" : "/"} className={styles.wordmark}>
             Francisco Vitar
           </Link>
 
-          <nav className={styles.nav} aria-label="Case study navigation">
+          <nav className={styles.nav} aria-label={lang === "es" ? "Navegación del caso" : "Case study navigation"}>
             <Link href={localizedHomeHref(lang)}>{ui.selectedWork}</Link>
 
             <div className={styles.languageSwitch} aria-label="Language">
               <a
                 href={`/work/${localized.slug}`}
+                aria-current={lang === "en" ? "page" : undefined}
                 className={lang === "en" ? styles.languageActive : undefined}
               >
                 EN
@@ -79,6 +83,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               <span>/</span>
               <a
                 href={`/work/${localized.slug}?lang=es`}
+                aria-current={lang === "es" ? "page" : undefined}
                 className={lang === "es" ? styles.languageActive : undefined}
               >
                 ES
@@ -149,7 +154,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         {isPas && architectureSection}
 
         {isPas && (
-          <section className={styles.section} id="pas-domains">
+          <section className={styles.section} id="pas-domains" data-editorial-reveal="case">
             <div className={styles.sectionLabel}>
               <span>02</span>
               {pas.scopeLabel}
@@ -193,7 +198,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </section>
         )}
 
-        <section className={styles.section}>
+        <section className={styles.section} data-editorial-reveal="case">
           <div className={styles.sectionLabel}>
             <span>{isPas ? "03" : "01"}</span>
             {ui.problem}
@@ -204,7 +209,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </section>
 
-        <section className={styles.section}>
+        <section className={styles.section} data-editorial-reveal="case">
           <div className={styles.sectionLabel}>
             <span>{isPas ? "04" : "02"}</span>
             {ui.constraints}
@@ -224,7 +229,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
 
         {!isPas && architectureSection}
 
-        <section className={styles.section}>
+        <section className={styles.section} data-editorial-reveal="case">
           <div className={styles.sectionLabel}>
             <span>{isPas ? "05" : "04"}</span>
             {ui.decisions}
@@ -242,7 +247,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </section>
 
-        <section className={styles.section}>
+        <section className={styles.section} data-editorial-reveal="case">
           <div className={styles.sectionLabel}>
             <span>{isPas ? "06" : "05"}</span>
             {ui.verification}
@@ -288,7 +293,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
           </div>
         </section>
 
-        <section className={styles.statusSection}>
+        <section className={styles.statusSection} data-editorial-reveal="case">
           <div>
             <p className={styles.eyebrow}>{ui.currentStatus}</p>
             <h2>{ui.currentStatusTitle}</h2>

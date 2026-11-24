@@ -10,6 +10,18 @@ export default function EditorialMotion() {
     };
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
+    const menu = header?.querySelector("[data-editorial-menu]");
+    const closeMenu = event => {
+      if (!menu?.open) return;
+      if (event.type === "keydown" && event.key === "Escape") {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      } else if (event.type === "click" && (!menu.contains(event.target) || event.target.closest("a"))) {
+        menu.open = false;
+      }
+    };
+    document.addEventListener("keydown", closeMenu);
+    document.addEventListener("click", closeMenu);
     // All content is visible by default. Only animate newly intersecting sections.
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     let io;
@@ -31,6 +43,8 @@ export default function EditorialMotion() {
       io?.disconnect();
       mq.removeEventListener("change", start);
       window.removeEventListener("scroll", updateHeader);
+      document.removeEventListener("keydown", closeMenu);
+      document.removeEventListener("click", closeMenu);
     };
   }, []);
   return null;
