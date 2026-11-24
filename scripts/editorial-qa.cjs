@@ -3,6 +3,7 @@ const {chromium}=require("/tmp/editorial-qa/node_modules/playwright");
 const fs=require("node:fs");
 fs.mkdirSync("qa-evidence",{recursive:true});
 const BASE="http://127.0.0.1:3000";
+const errorsFound=[];
 const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauce-commerce-lab","/work/library-network-api","/work/webhook-recovery-lab"];
 (async()=>{
  const browser=await chromium.launch({headless:true});
@@ -13,7 +14,12 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
     await ctx.route("**/*",route=>route.request().url().startsWith(BASE)||route.request().url().startsWith("data:")?route.continue():route.abort());
     const page=await ctx.newPage(),errors=[];
     page.on("pageerror",e=>errors.push(String(e)));
+    const imageResponses=new Map();
+    page.on("response",res=>{if(res.request().resourceType()==="image")imageResponses.set(res.url(),{status:res.status(),type:res.headers()["content-type"]})});
+    page.on("requestfailed",req=>{if(req.resourceType()==="image"&&req.url().startsWith(BASE))console.log("IMAGE_REQUEST_FAILED",req.url(),req.failure())});
     for(const path of paths){
+      errors.length=0;
+      try{
       const resp=await page.goto(BASE+path+"?lang="+lang);
       assert.equal(resp.status(),200,path);
       assert.equal(await page.locator("html").getAttribute("lang"),lang);
@@ -53,12 +59,36 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
       }
       assert.equal(errors.length,0,errors.join("\n"));
       if(path==="/"||path==="/genova") {
-        for(const img of await page.locator("img").all()){await img.scrollIntoViewIfNeeded();await img.evaluate(async e=>{await e.decode();if(!e.naturalWidth)throw Error("Image missing: "+e.currentSrc)});}
+        const imgs=await page.locator("img").all();
+        assert.equal(imgs.length,5,"Genova authorized screenshot count");
+        const failures=[];
+        for(const img of imgs){
+          await img.scrollIntoViewIfNeeded();
+          const result=await img.evaluate(async e=>{
+            // A lazy image may not yet have currentSrc at the instant it enters the viewport.
+            const deadline=performance.now()+8000;
+            while((!e.currentSrc||!e.complete)&&performance.now()<deadline)await new Promise(r=>requestAnimationFrame(r));
+            let decoded=false,reason="";
+            try{await e.decode();decoded=e.naturalWidth>0;}catch(err){reason=String(err)}
+            return {src:e.getAttribute("src"),currentSrc:e.currentSrc,width:e.naturalWidth,complete:e.complete,loading:e.loading,decoded,reason};
+          });
+          const url=result.currentSrc||new URL(result.src,BASE).href;
+          const direct=await page.request.get(url);
+          const bytes=await direct.body();
+          const valid=direct.ok()&&bytes.subarray(0,4).toString()==="RIFF"&&bytes.subarray(8,12).toString()==="WEBP";
+          console.log("IMAGE",JSON.stringify({path,width,lang,...result,response:imageResponses.get(url),directStatus:direct.status(),bytes:bytes.length,valid}));
+          if(!result.decoded||!valid)failures.push({url,result,valid});
+        }
+        if(failures.length){errorsFound.push({path,width,lang,imageFailures:failures});}
+        const cauce=await page.request.get(BASE+"/images/projects/cauce-hero.webp");
+        assert.equal(cauce.status(),200);
+        assert.equal((await cauce.body()).length,135072);
         await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
         if(path==="/") await page.waitForFunction(()=>!document.querySelector("[data-editorial-header]").hasAttribute("data-compact"));
       }
-      if([390,1440].includes(width)&&lang==="en") await page.screenshot({path:"qa-evidence/"+width+"-"+(path==="/"?"home":path.split("/").pop())+".png",fullPage:path==="/"});
-      console.log("PASS",width,lang,path);
+      if([390,1440].includes(width)&&lang==="en") await page.screenshot({path:"qa-evidence/"+width+"-"+(path==="/"?"home":path.split("/").pop())+".png",fullPage:path==="/"||path==="/genova"});
+      console.log("PASS_LAYOUT",width,lang,path);
+      }catch(e){errorsFound.push({path,width,lang,error:String(e)});console.error("FAIL",width,lang,path,String(e));await page.screenshot({path:"qa-evidence/fail-"+width+"-"+lang+"-"+(path==="/"?"home":path.split("/").pop())+".png",fullPage:true}).catch(()=>{});}
     }
     await ctx.close();
    }
@@ -77,7 +107,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
   await page.locator('[data-editorial-header] a[href="/?lang=es"]').first().click();
   await page.waitForFunction(()=>document.documentElement.lang==="es");
   assert.match(await page.locator("h1").textContent(),/Construyo software/);
-  await page.locator('[data-editorial-header] a[href="/genova?lang=es"]').first().click();
+  await page.locator('[data-editorial-header] nav:visible a[href="/genova?lang=es"]').first().click();
   await page.waitForURL("**/genova?lang=es");
   assert.equal(await page.locator("html").getAttribute("lang"),"es");
   const explorer=await page.request.get(BASE+"/pas-explorer/explorer/index.html?lang=es");
@@ -85,6 +115,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
   const cv=await page.request.get(BASE+"/Francisco_Vitar_CV_ATS_V1.pdf");
   assert.equal(cv.status(),200);
   await ctx.close();
+  assert.equal(errorsFound.length,0,JSON.stringify(errorsFound));
   console.log("EDITORIAL_V13_BROWSER_PASS");
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

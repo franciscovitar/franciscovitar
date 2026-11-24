@@ -2043,3 +2043,9 @@
  .about {padding-top:48px;}
 }
 @media(prefers-reduced-motion:reduce){.page *,.page *::before,.page *::after{animation:none!important;transition:none!important;}}
+
+/* Keep anchors visible under the adaptive header; use neutral screenshot backing. */
+.page :is([id="projects"],[id="experience"],[id="about"],[id="approach"],[id="capabilities"],[id="contact"]) {scroll-margin-top:98px;}
+.shot {background:#191919;border-radius:6px;}
+.pasRow > .eyebrow {grid-column:1;}
+@media(max-width:980px){.page :is([id="projects"],[id="experience"],[id="about"],[id="approach"],[id="capabilities"],[id="contact"]){scroll-margin-top:78px;}}
