@@ -1869,21 +1869,21 @@
 .stageProgress i {animation:editorialProgress 1s 1.72s var(--scene) backwards;}
 .stageProducts svg {animation:editorialEmerge .9s calc(1.38s + var(--i)*.15s) var(--scene) backwards;}
 .stageFooter {animation:editorialDissolve 1s 1.62s var(--scene) backwards;}
-[data-editorial-reveal="pas"][data-editorial-visible] .pasText {animation:editorialDissolve 1.18s .05s var(--scene) backwards;}
-[data-editorial-reveal="pas"][data-editorial-visible] .pasDiagram {animation:editorialCurtain 1.42s .18s var(--scene) backwards;}
-[data-editorial-reveal="demo"][data-editorial-visible] .figure {animation:editorialCutRight 1.34s .06s var(--soft-scene) backwards;}
-[data-editorial-reveal="commerce"][data-editorial-visible] .figure {animation:editorialUnfold 1.36s .06s var(--soft-scene) backwards;}
-[data-editorial-reveal="transcript"][data-editorial-visible] .figure {animation:editorialCutLeft 1.34s .06s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="pas"][data-editorial-visible] .pasText {animation:editorialDissolve 1.18s .05s var(--scene) backwards;}
+.page [data-editorial-reveal="pas"][data-editorial-visible] .pasDiagram {animation:editorialCurtain 1.42s .18s var(--scene) backwards;}
+.page [data-editorial-reveal="demo"][data-editorial-visible] .figure {animation:editorialCutRight 1.34s .06s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="commerce"][data-editorial-visible] .figure {animation:editorialUnfold 1.36s .06s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="transcript"][data-editorial-visible] .figure {animation:editorialCutLeft 1.34s .06s var(--soft-scene) backwards;}
 [data-editorial-visible] .featureText {animation:editorialDissolve 1.08s .14s var(--scene) backwards;}
-[data-editorial-reveal="webhook"][data-editorial-visible] .flow {animation:editorialEmerge 1.28s .05s var(--scene) backwards;}
-[data-editorial-reveal="method"][data-editorial-visible] .methodArt {animation:editorialEmerge 1.16s .04s var(--scene) backwards;}
-[data-editorial-reveal="method"][data-editorial-visible] [data-method-wire] {animation:editorialDraw 1.9s .56s var(--soft-scene) backwards;}
-[data-editorial-reveal="method"][data-editorial-visible] .principles article {animation:editorialRight 1.02s calc(.28s + var(--i)*.18s) var(--scene) backwards;}
-[data-editorial-reveal="genova"][data-editorial-visible] .genova {animation:editorialCutLeft 1.38s .14s var(--soft-scene) backwards;}
-[data-editorial-reveal="genova"][data-editorial-visible] .genovaFigure {animation:editorialUnfold 1.3s .04s var(--soft-scene) backwards;}
-[data-editorial-reveal="contact"][data-editorial-visible] .contactTitle {animation:editorialCurtain 1.38s .05s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="webhook"][data-editorial-visible] .flow {animation:editorialEmerge 1.28s .05s var(--scene) backwards;}
+.page [data-editorial-reveal="method"][data-editorial-visible] .methodArt {animation:editorialEmerge 1.16s .04s var(--scene) backwards;}
+.page [data-editorial-reveal="method"][data-editorial-visible] [data-method-wire] {animation:editorialDraw 1.9s .56s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="method"][data-editorial-visible] .principles article {animation:editorialRight 1.02s calc(.28s + var(--i)*.18s) var(--scene) backwards;}
+.page [data-editorial-reveal="genova"][data-editorial-visible] .genova {animation:editorialCutLeft 1.38s .14s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="genova"][data-editorial-visible] .genovaFigure {animation:editorialUnfold 1.3s .04s var(--soft-scene) backwards;}
+.page [data-editorial-reveal="contact"][data-editorial-visible] .contactTitle {animation:editorialCurtain 1.38s .05s var(--soft-scene) backwards;}
 .genovaHero h1 {animation:editorialCurtain 1.42s .1s var(--soft-scene) backwards;}
-.editorialActions:focus-within,.stageTile:focus-within,.stageTile:focus-within *,[data-editorial-reveal]:focus-within,[data-editorial-reveal]:focus-within * {animation:none!important;}
+.editorialActions:focus-within,.stageTile:focus-within,.stageTile:focus-within *,.page [data-editorial-reveal]:focus-within,.page [data-editorial-reveal]:focus-within * {animation:none!important;}
 @media(max-width:980px) {
  .feature,.featureReverse,.pasRow,.methodGrid {grid-template-columns:minmax(0,1fr);}
  .pasRow {padding:24px;gap:20px;}
@@ -1945,10 +1945,10 @@
 }
 @media(max-width:360px){.headerInner{gap:5px;padding-inline:12px}.mobileNav summary{padding-inline:8px}.langSwitch a{min-width:20px}}
 /* More natural differentiated choreography on content already in the site. */
-[data-editorial-reveal="demo"][data-editorial-visible] .demoSection {animation:editorialEmerge .8s calc(.48s + var(--i,0)*.14s) var(--scene) backwards;}
-[data-editorial-reveal="transcript"][data-editorial-visible] .transcriptRow {animation:editorialRight .8s calc(.48s + var(--i,0)*.2s) var(--scene) backwards;}
-[data-editorial-reveal="webhook"][data-editorial-visible] .flow li {animation:editorialEmerge .65s calc(.45s + var(--i,0)*.19s) var(--scene) backwards;}
-[data-editorial-reveal="genova"][data-editorial-visible] .client {animation:editorialDissolve .92s calc(.05s + var(--i,0)*.15s) var(--scene) backwards;}
+.page [data-editorial-reveal="demo"][data-editorial-visible] .demoSection {animation:editorialEmerge .8s calc(.48s + var(--i,0)*.14s) var(--scene) backwards;}
+.page [data-editorial-reveal="transcript"][data-editorial-visible] .transcriptRow {animation:editorialRight .8s calc(.48s + var(--i,0)*.2s) var(--scene) backwards;}
+.page [data-editorial-reveal="webhook"][data-editorial-visible] .flow li {animation:editorialEmerge .65s calc(.45s + var(--i,0)*.19s) var(--scene) backwards;}
+.page [data-editorial-reveal="genova"][data-editorial-visible] .client {animation:editorialDissolve .92s calc(.05s + var(--i,0)*.15s) var(--scene) backwards;}
 .genovaServiceGrid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:30px 0 44px;}
 .genovaServiceGrid article {background:#121212;border:1px solid #303030;border-radius:6px;padding:20px;min-width:0;}
 .genovaServiceGrid h2 {font-size:20px;margin:12px 0 8px;font-weight:550;}

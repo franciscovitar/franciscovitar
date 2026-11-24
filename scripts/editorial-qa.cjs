@@ -1,5 +1,7 @@
 const assert=require("node:assert/strict");
 const {chromium}=require("/tmp/editorial-qa/node_modules/playwright");
+const fs=require("node:fs");
+fs.mkdirSync("qa-evidence",{recursive:true});
 const BASE="http://127.0.0.1:3000";
 const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauce-commerce-lab","/work/library-network-api","/work/webhook-recovery-lab"];
 (async()=>{
@@ -31,7 +33,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
           await menu.locator("summary").click();
           assert.equal(await menu.evaluate(e=>e.open),true);
           await page.keyboard.press("Escape");
-          assert.equal(await menu.evaluate(e=>e.open),false);
+          await page.waitForFunction(()=>!document.querySelector("[data-editorial-menu]").open);
         }
       }
       if(path==="/genova"){
@@ -45,6 +47,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
         assert.equal(await details.evaluate(e=>e.open),true);
       }
       assert.equal(errors.length,0,errors.join("\n"));
+      if([390,1440].includes(width)&&lang==="en") await page.screenshot({path:"qa-evidence/"+width+"-"+(path==="/"?"home":path.split("/").pop())+".png",fullPage:path==="/"});
       console.log("PASS",width,lang,path);
     }
     await ctx.close();
@@ -56,7 +59,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
   await page.goto(BASE+"/");
   const anim=await page.locator('[data-stage-tone="pas"]').evaluate(el=>getComputedStyle(el).animationName);
   assert.notEqual(anim,"none");
-  await page.waitForTimeout(3200);
+  await page.locator('[data-stage-tone="pas"]').evaluate(async el=>{await Promise.allSettled(el.getAnimations({subtree:true}).map(a=>a.finished))});
   await page.evaluate(()=>window.scrollTo({top:500,behavior:"instant"}));
   await page.waitForFunction(()=>document.querySelector("[data-editorial-header]").hasAttribute("data-compact"));
   await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));

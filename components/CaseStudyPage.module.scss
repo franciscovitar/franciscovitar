@@ -728,10 +728,10 @@
 .heroCopy h1 {animation:caseCut 1.28s .1s var(--case-ease) backwards;}
 .heroVisual {animation:caseCurtain 1.42s .2s var(--case-ease) backwards;}
 .heroCopy .lead {animation:caseDissolve 1s .32s var(--case-ease) backwards;}
-[data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation:caseCut 1.08s .04s var(--case-ease) backwards;}
-[data-editorial-reveal="case"][data-editorial-visible] .largeCopy {animation:caseDissolve .98s .2s var(--case-ease) backwards;}
-[data-editorial-reveal="case"][data-editorial-visible] .decisionGrid {animation:caseCurtain 1.15s .1s var(--case-ease) backwards;}
-.heroVisual:focus-within,.heroCopy:focus-within *,[data-editorial-reveal]:focus-within,[data-editorial-reveal]:focus-within * {animation:none!important;}
+.page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation:caseCut 1.08s .04s var(--case-ease) backwards;}
+.page [data-editorial-reveal="case"][data-editorial-visible] .largeCopy {animation:caseDissolve .98s .2s var(--case-ease) backwards;}
+.page [data-editorial-reveal="case"][data-editorial-visible] .decisionGrid {animation:caseCurtain 1.15s .1s var(--case-ease) backwards;}
+.heroVisual:focus-within,.heroCopy:focus-within *,.page [data-editorial-reveal]:focus-within,.page [data-editorial-reveal]:focus-within * {animation:none!important;}
 @keyframes caseCut {from{clip-path:inset(0 100% 0 0);opacity:.35}to{clip-path:inset(0);opacity:1}}
 @keyframes caseCurtain {from{clip-path:inset(0 50% 0 50%);opacity:.45}to{clip-path:inset(0);opacity:1}}
 @keyframes caseDissolve {from{opacity:.2}to{opacity:1}}
