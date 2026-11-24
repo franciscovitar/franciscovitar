@@ -86,3 +86,7 @@
   .cta { margin-top: 16px; font-size: 9px; padding: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .preview { transition: none; } }
+
+/* Constrain aspect-ratio transfer in narrow portfolio grids. */
+.preview,.cover {min-width:0;max-width:100%;}
+.cover {width:100%;}

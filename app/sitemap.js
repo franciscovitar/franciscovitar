@@ -5,6 +5,7 @@ export default function sitemap() {
   const paths = [
     "",
     "/cv",
+    "/genova",
     "/work/vida-2",
     "/work/library-network-api",
     "/work/webhook-recovery-lab",

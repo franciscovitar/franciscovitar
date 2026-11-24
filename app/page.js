@@ -1,10 +1,13 @@
 import Link from "next/link";
+import EditorialHero from "../components/home/EditorialHero";
+import EditorialHeader from "../components/home/EditorialHeader";
+import EditorialMotion from "../components/home/EditorialMotion";
+import EngineeringPhilosophy from "../components/home/EngineeringPhilosophy";
+import GenovaExperience from "../components/home/GenovaExperience";
 import PASFlow from "../components/PASFlow";
 import CauceStorefrontPreview from "../components/CauceStorefrontPreview";
 import {
-  clients,
   copy,
-  genovaShot,
   links,
   personalAiSystem,
   projects,
@@ -17,7 +20,6 @@ import {
   Placeholder,
   PairShot,
   canShowShot,
-  Shot,
   SectionHead,
   hrefFor,
   withLang,
@@ -154,86 +156,11 @@ export default async function Home({ searchParams }) {
       <a href="#content" className={styles.skip}>
         {c.skip}
       </a>
-      <header className={styles.header}>
-        <div className={`${styles.wrap} ${styles.headerInner}`}>
-          <a href={hrefFor(lang, "top")} className={styles.wordmark}>
-            Francisco Vitar
-          </a>
-          <nav aria-label={lang === "es" ? "Principal" : "Primary"} className={styles.nav}>
-            <a href={hrefFor(lang, "projects")}>{c.nav.projects}</a>
-            <a href={hrefFor(lang, "experience")}>{c.nav.experience}</a>
-            <a href={hrefFor(lang, "about")}>{c.nav.about}</a>
-            <a href={hrefFor(lang, "contact")}>{c.nav.contact}</a>
-          </nav>
-          <div className={styles.headerTools}>
-            <span className={styles.langSwitch}>
-              <Link href="/?lang=es" aria-current={lang === "es" ? "page" : undefined}>
-                ES
-              </Link>
-              <span aria-hidden="true">/</span>
-              <Link href="/" aria-current={lang === "en" ? "page" : undefined}>
-                EN
-              </Link>
-            </span>
-            <a href={links.cv} className={styles.lnk}>
-              {c.cv}
-            </a>
-          </div>
-        </div>
-      </header>
+      <EditorialHeader lang={lang} />
+      <EditorialMotion />
 
       <main id="content" tabIndex={-1} className={styles.main}>
-        <section id="top" className={`${styles.wrap} ${styles.hero}`}>
-          <p className={styles.eyebrow}>{c.eyebrow}</p>
-          <h1 className={styles.name}>Francisco Vitar</h1>
-          <div className={styles.heroRow}>
-            <div className={styles.heroLead}>
-              <p className={styles.statement}>
-                {c.statement} <em>{c.statementAccent}</em>
-              </p>
-              <div className={styles.ctas}>
-                <a href={hrefFor(lang, "projects")} className={styles.button}>
-                  {c.ctaPrimary}
-                </a>
-                <a href={hrefFor(lang, "contact")} className={styles.lnk}>
-                  {c.ctaContact}
-                </a>
-                <a href={links.cv} className={styles.lnk}>
-                  {c.ctaCv}
-                </a>
-              </div>
-            </div>
-            <dl className={styles.heroMeta}>
-              {c.meta.map(([term, value]) => (
-                <div key={term}>
-                  <dt>{term}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <figure className={styles.heroFigure}>
-            <div className={styles.frame}>
-              <div className={styles.frameBar}>
-                <span>Vida 2.0</span>
-                <span className={styles.frameDim}>{c.heroFrameRight}</span>
-              </div>
-              <DemoPanel c={c} />
-            </div>
-            <figcaption className={styles.heroCaption}>
-              <span className={styles.caption}>{c.heroCaption}</span>
-              <span className={styles.heroCaptionLinks}>
-                <ExternalLink href={links.vidaDemo} className={`${styles.lnk} ${styles.accent}`}>
-                  {c.heroDemoLink}
-                </ExternalLink>
-                <Link href={withLang("/work/vida-2", lang)} className={styles.lnk}>
-                  {c.heroCaseLink}
-                </Link>
-              </span>
-            </figcaption>
-          </figure>
-        </section>
+        <EditorialHero lang={lang} />
 
         <section id="projects" className={styles.projects}>
           <div className={styles.wrap}>
@@ -251,7 +178,7 @@ export default async function Home({ searchParams }) {
               }
             />
 
-            <article className={styles.pasRow}>
+            <article className={styles.pasRow} data-editorial-reveal="pas">
               <p className={styles.eyebrow}>
                 01 · {c.personal} · {lang === "es" ? "Proyecto insignia · Ingeniería de IA" : "Flagship · AI systems engineering"}
               </p>
@@ -275,13 +202,14 @@ export default async function Home({ searchParams }) {
                 </ExternalLink>
               </div>
               <div className={styles.pasDiagram}>
-                <PASFlow lang={lang} />
+                <PASFlow lang={lang} theme="dark" />
               </div>
             </article>
 
             {projects.map((project, index) => (
               <article
                 key={project.slug}
+                data-editorial-reveal={project.media.type}
                 className={`${styles.feature} ${index % 2 === 1 ? styles.featureReverse : ""}`}
               >
                 <ProjectMedia project={project} lang={lang} c={c} index={index + 1} />
@@ -318,7 +246,7 @@ export default async function Home({ searchParams }) {
               </article>
             ))}
 
-            <article className={styles.flowProject}>
+            <article className={styles.flowProject} data-editorial-reveal="webhook">
               <div className={styles.flowHead}>
                 <div className={styles.flowText}>
                   <p className={styles.eyebrow}>
@@ -372,70 +300,12 @@ export default async function Home({ searchParams }) {
           </div>
         </section>
 
-        <section id="experience" className={styles.experience}>
-          <div className={styles.wrap}>
-            <SectionHead index="02" title={c.experienceTitle} intro={c.experienceIntro} />
-            <div className={styles.split}>
-              <div>
-                <h3 className={styles.genova}>Genova</h3>
-                <p className={styles.genovaRole}>{c.genovaRole}</p>
-                <p className={styles.monoMeta}>{c.genovaDates}</p>
-                {canShowShot(genovaShot) ? (
-                  <figure className={styles.genovaFigure}>
-                    <Shot shot={genovaShot} lang={lang} pendingLabel={c.pending} />
-                    <figcaption className={styles.clientTag}>{c.genovaFig}</figcaption>
-                  </figure>
-                ) : null}
-              </div>
-              <div>
-                <p className={styles.genovaBody}>{c.genovaBody}</p>
-                <div className={styles.genovaLinks}>
-                  <ExternalLink href={links.genovaWebsite} className={styles.lnk}>
-                    {c.genovaWebsite}
-                  </ExternalLink>
-                  <ExternalLink href={links.genovaInstagram} className={styles.lnk}>
-                    {c.genovaInstagram}
-                  </ExternalLink>
-                </div>
-                <ul className={styles.genovaList}>
-                  {c.genovaBullets.map((item, i) => (
-                    <li key={item}>
-                      <span aria-hidden="true">{String.fromCharCode(97 + i)}.</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className={styles.clientsHead}>
-              <p className={styles.eyebrow}>{c.clientsLabel}</p>
-              <p className={styles.monoMeta}>{c.clientsNote}</p>
-            </div>
-            <div className={styles.clients}>
-              {clients.map((client) => (
-                <article key={client.title} className={styles.client}>
-                  {client.shot && canShowShot(client.shot) ? (
-                    <Shot shot={client.shot} lang={lang} pendingLabel={c.pending} />
-                  ) : (
-                    <Placeholder label={c.clientPlaceholder} ratio="4 / 3" tone="deep" />
-                  )}
-                  <p className={styles.clientTag}>
-                    {c.clientTag} · {t(client.sector, lang)}
-                  </p>
-                  <h3 className={styles.clientTitle}>{client.title}</h3>
-                  <p className={styles.clientDetail}>{t(client.detail, lang)}</p>
-                  <ExternalLink href={client.live} className={styles.lnk}>
-                    {c.site}
-                  </ExternalLink>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <GenovaExperience lang={lang} />
+        <EngineeringPhilosophy lang={lang} />
 
-        <section id="about" className={styles.about}>
+        <section id="about" className={styles.about} data-editorial-reveal="about">
           <div className={styles.wrap}>
-            <SectionHead index="03" title={c.aboutTitle} />
+            <SectionHead index="05" title={c.aboutTitle} />
             <div className={`${styles.split} ${styles.aboutSplit}`}>
               <div className={styles.portraitPanel}>
                 <span className={styles.portraitMonogram} aria-hidden="true">FV</span>
@@ -475,7 +345,7 @@ export default async function Home({ searchParams }) {
           </div>
         </section>
 
-        <section id="contact" className={styles.contact}>
+        <section id="contact" className={styles.contact} data-editorial-reveal="contact">
           <div className={styles.wrap}>
             <p className={styles.contactLabel}>{c.contactLabel}</p>
             <h2 className={styles.contactTitle}>
