@@ -1,3 +1,4 @@
+import Arrow from "./editorial/Arrow";
 import Link from "next/link";
 import PrototypeShell from "./editorial/PrototypeShell";
 import PrototypeCaseIntro from "./editorial/PrototypeCaseIntro";
@@ -18,6 +19,8 @@ const visualBySlug = {
   "personal-ai-system": "pas",
   "la-mediterranea-store": "mediterranea",
 };
+
+function headingText(value) { return typeof value === "string" ? value.replace(/\.$/, "") : value; }
 
 function localizedHomeHref(lang) {
   return lang === "es" ? "/?lang=es#projects" : "/#projects";
@@ -43,7 +46,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         {ui.architecture}
       </div>
       <div className={styles.sectionBody}>
-        <h2>{ui.architectureTitle}</h2>
+        <h2>{headingText(ui.architectureTitle)}</h2>
         {isPas ? (
           <>
             <PASFlow lang={lang} theme="dark" />
@@ -107,14 +110,14 @@ export default function CaseStudyPage({ study, lang = "en" }) {
       {editorial && <PrototypeCaseIntro lang={lang} slug={localized.slug}/>}
 
       <article className={styles.article}>
-        {editorial && <details className="wrap case-detail"><summary>{lang==="es"?"Ver presentación técnica, stack y enlaces completos":"View full technical overview, stack and links"}</summary><div className={styles.heroVisual}>{isPas?<PASOverview lang={lang}/>:isCauce?<CauceStorefrontPreview lang={lang} href={localized.links[0]?.href}/>:<SystemVisual kind={visual} lang={lang}/>}</div><p>{localized.summary}</p><div className={styles.stack}>{localized.stack.map(item=><span key={item}>{item}</span>)}</div><div className={styles.links}>{localized.links.map(link=><a key={link.href} href={isPas&&link.href.startsWith("/pas-explorer/")?"/pas-explorer/explorer/index.html?lang="+lang:link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div></details>}
+        {editorial && <details className="wrap case-detail"><summary>{lang==="es"?"Ver presentación técnica, stack y enlaces completos":"View full technical overview, stack and links"}</summary><div className={styles.heroVisual}>{isPas?<PASOverview lang={lang}/>:isCauce?<CauceStorefrontPreview lang={lang} href={localized.links[0]?.href}/>:<SystemVisual kind={visual} lang={lang}/>}</div><p>{localized.summary}</p><div className={styles.stack}>{localized.stack.map(item=><span key={item}>{item}</span>)}</div><div className={styles.links}>{localized.links.map(link=><a key={link.href} href={isPas&&link.href.startsWith("/pas-explorer/")?"/pas-explorer/explorer/index.html?lang="+lang:link.href} target="_blank" rel="noreferrer">{link.label} <Arrow/></a>)}</div></details>}
         {!editorial && <section className={styles.hero}>
           <div className={styles.heroCopy}>
             <Link href={localizedHomeHref(lang)} className={styles.backLink}>
               {ui.back}
             </Link>
             <p className={styles.eyebrow}>{localized.eyebrow}</p>
-            <h1>{localized.title}</h1>
+            <h1>{headingText(localized.title)}</h1>
             <p className={styles.lead}>{localized.summary}</p>
 
             <div className={styles.stack} aria-label={ui.technologyStack}>
@@ -138,7 +141,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {link.label} ↗
+                    {link.label} <Arrow/>
                   </a>
                 ))}
               </div>
@@ -165,13 +168,13 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               {pas.scopeLabel}
             </div>
             <div className={styles.sectionBody}>
-              <h2>{pas.scopeTitle}</h2>
+              <h2>{headingText(pas.scopeTitle)}</h2>
               <p className={styles.largeCopy}>{pas.scopeIntro}</p>
               <div className={styles.pasDomainGrid}>
                 {pas.categories.map((item) => (
                   <article className={styles.pasDomainCard} key={item.number}>
                     <span>{item.number} / 06</span>
-                    <h3>{item.title}</h3>
+                    <h3>{headingText(item.title)}</h3>
                     <p>{item.body}</p>
                   </article>
                 ))}
@@ -182,7 +185,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
                   {pas.depthStats.map((stat) => (
                     <div className={styles.pasDepthItem} key={stat.value}>
                       <strong>{stat.value}</strong>
-                      <h3>{stat.title}</h3>
+                      <h3>{headingText(stat.title)}</h3>
                       <p>{stat.detail}</p>
                     </div>
                   ))}
@@ -192,7 +195,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               <div className={styles.pasCodeCallout}>
                 <div>
                   <p className={styles.miniLabel}>{pas.codeLabel}</p>
-                  <h3>{pas.codeTitle}</h3>
+                  <h3>{headingText(pas.codeTitle)}</h3>
                   <p>{pas.codeBody}</p>
                 </div>
                 <a href="https://github.com/franciscovitar/personal-ai-system-showcase" target="_blank" rel="noreferrer">
@@ -209,7 +212,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             {ui.problem}
           </div>
           <div className={styles.sectionBody}>
-            <h2>{ui.problemTitle}</h2>
+            <h2>{headingText(ui.problemTitle)}</h2>
             <p className={styles.largeCopy}>{localized.problem}</p>
           </div>
         </section>
@@ -220,7 +223,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             {ui.constraints}
           </div>
           <div className={styles.sectionBody}>
-            <h2>{ui.constraintsTitle}</h2>
+            <h2>{headingText(ui.constraintsTitle)}</h2>
             <div className={styles.constraintGrid}>
               {localized.constraints.map((item, index) => (
                 <div key={item}>
@@ -240,11 +243,11 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             {ui.decisions}
           </div>
           <div className={styles.sectionBody}>
-            <h2>{ui.decisionsTitle}</h2>
+            <h2>{headingText(ui.decisionsTitle)}</h2>
             <div className={styles.decisionGrid}>
               {localized.decisions.map((decision) => (
                 <article className={styles.decision} key={decision.title}>
-                  <h3>{decision.title}</h3>
+                  <h3>{headingText(decision.title)}</h3>
                   <p>{decision.body}</p>
                 </article>
               ))}
@@ -261,7 +264,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             <div className={styles.verificationGrid}>
               <div>
                 <p className={styles.miniLabel}>{ui.quality}</p>
-                <h2>{ui.qualityTitle}</h2>
+                <h2>{headingText(ui.qualityTitle)}</h2>
                 <ul className={styles.list}>
                   {localized.verification.map((item) => (
                     <li key={item}>{item}</li>
@@ -270,7 +273,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               </div>
               <div>
                 <p className={styles.miniLabel}>{ui.failure}</p>
-                <h2>{ui.failureTitle}</h2>
+                <h2>{headingText(ui.failureTitle)}</h2>
                 <ul className={styles.list}>
                   {localized.safety.map((item) => (
                     <li key={item}>{item}</li>
@@ -281,14 +284,14 @@ export default function CaseStudyPage({ study, lang = "en" }) {
             {localized.evidence?.length > 0 && (
               <div className={styles.evidenceSection}>
                 <div className={styles.evidenceIntro}>
-                  <h3>{ui.evidenceTitle}</h3>
+                  <h3>{headingText(ui.evidenceTitle)}</h3>
                   <p>{ui.evidenceIntro}</p>
                 </div>
                 <div className={styles.evidenceGrid}>
                   {localized.evidence.map((item) => (
                     <article className={styles.evidenceCard} key={item.title}>
                       <p className={styles.miniLabel}>{item.label}</p>
-                      <h4>{item.title}</h4>
+                      <h4>{headingText(item.title)}</h4>
                       <p>{item.body}</p>
                     </article>
                   ))}
@@ -301,7 +304,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
         <section className={styles.statusSection} data-editorial-reveal="case">
           <div>
             <p className={styles.eyebrow}>{ui.currentStatus}</p>
-            <h2>{ui.currentStatusTitle}</h2>
+            <h2>{headingText(ui.currentStatusTitle)}</h2>
           </div>
           <div>
             <p>{localized.status}</p>
