@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "24"
       - run: npm ci
-      - run: npx --no-install eslint components/editorial/*.js components/CaseStudyPage.js
+      - run: npx --no-install eslint components/editorial/*.js components/CaseStudyPage.js components/PASEcosystem.js components/PASOverview.js
       - run: npm run build
       - run: |
           npm install --prefix /tmp/editorial-qa --no-audit --no-fund playwright@1.58.2

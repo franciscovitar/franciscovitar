@@ -562,6 +562,6 @@
  .ep .stage-tile.vida,.ep .stage-tile.cauce {animation-duration:1.28s}
  .ep .project-row.reveal.visible .project-visual {animation-duration:1.32s}
  .ep .method-loop {padding:20px}
- .ep .genova-word {font-size:clamp(54px,13vw,74px)}
+ .ep .genova-word {font-size:clamp(54px,19vw,74px)}
 }
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}}
