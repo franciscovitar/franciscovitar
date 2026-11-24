@@ -29,13 +29,13 @@ export default function EditorialHeader({ lang = "en", standalone = false }) {
           </details>
           <div className={styles.headerTools}>
             <span className={styles.langSwitch}>
-              <Link href={standalone ? "/genova?lang=es" : "/?lang=es"} aria-current={lang === "es" ? "page" : undefined}>
+              <a href={standalone ? "/genova?lang=es" : "/?lang=es"} aria-current={lang === "es" ? "page" : undefined}>
                 ES
-              </Link>
+              </a>
               <span aria-hidden="true">/</span>
-              <Link href={standalone ? "/genova" : "/"} aria-current={lang === "en" ? "page" : undefined}>
+              <a href={standalone ? "/genova" : "/"} aria-current={lang === "en" ? "page" : undefined}>
                 EN
-              </Link>
+              </a>
             </span>
             <a href={links.cv} className={styles.lnk}>
               {c.cv}

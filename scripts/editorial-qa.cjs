@@ -23,6 +23,11 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
       assert.ok(await page.locator("h1").first().textContent());
       if(path==="/"){
         assert.equal(await page.locator("[data-stage-tone]").count(),3);
+        await page.evaluate(()=>document.fonts.ready);
+        assert.ok(await page.evaluate(()=>document.fonts.check('650 48px "Manrope Variable"')&&document.fonts.check('italic 400 48px "Instrument Serif"')));
+        assert.equal(await page.locator('[data-stage-tone="pas"]').evaluate(e=>getComputedStyle(e).animationName),"none");
+        if(width===1440){const box=await page.locator('[data-stage-tone="pas"]').boundingBox();assert.ok(box.y+box.height<=900,JSON.stringify(box));}
+        assert.ok(await page.locator("#capabilities").count());
         assert.ok(await page.locator('a[href*="/pas-explorer/explorer/index.html"]').count());
         assert.ok(await page.locator('a[href*="/genova"]').count());
         assert.equal(await page.locator("[data-method-wire]").count(),5);
@@ -47,6 +52,11 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
         assert.equal(await details.evaluate(e=>e.open),true);
       }
       assert.equal(errors.length,0,errors.join("\n"));
+      if(path==="/"||path==="/genova") {
+        for(const img of await page.locator("img").all()){await img.scrollIntoViewIfNeeded();await img.evaluate(async e=>{await e.decode();if(!e.naturalWidth)throw Error("Image missing: "+e.currentSrc)});}
+        await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
+        if(path==="/") await page.waitForFunction(()=>!document.querySelector("[data-editorial-header]").hasAttribute("data-compact"));
+      }
       if([390,1440].includes(width)&&lang==="en") await page.screenshot({path:"qa-evidence/"+width+"-"+(path==="/"?"home":path.split("/").pop())+".png",fullPage:path==="/"});
       console.log("PASS",width,lang,path);
     }
@@ -64,6 +74,12 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
   await page.waitForFunction(()=>document.querySelector("[data-editorial-header]").hasAttribute("data-compact"));
   await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
   await page.waitForFunction(()=>!document.querySelector("[data-editorial-header]").hasAttribute("data-compact"));
+  await page.locator('[data-editorial-header] a[href="/?lang=es"]').first().click();
+  await page.waitForFunction(()=>document.documentElement.lang==="es");
+  assert.match(await page.locator("h1").textContent(),/Construyo software/);
+  await page.locator('[data-editorial-header] a[href="/genova?lang=es"]').first().click();
+  await page.waitForURL("**/genova?lang=es");
+  assert.equal(await page.locator("html").getAttribute("lang"),"es");
   const explorer=await page.request.get(BASE+"/pas-explorer/explorer/index.html?lang=es");
   assert.equal(explorer.status(),200);
   const cv=await page.request.get(BASE+"/Francisco_Vitar_CV_ATS_V1.pdf");

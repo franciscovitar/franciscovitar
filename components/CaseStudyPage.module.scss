@@ -745,3 +745,5 @@
  .footer a,.links a,.stack span {overflow-wrap:anywhere;}
 }
 @media(prefers-reduced-motion:reduce){.page *,.page *::before,.page *::after{animation:none!important;transition:none!important;}}
+
+.page {--sans:"Manrope Variable",var(--font-geist-sans),Arial,sans-serif;--serif:"Instrument Serif","Newsreader Variable",Georgia,serif;}

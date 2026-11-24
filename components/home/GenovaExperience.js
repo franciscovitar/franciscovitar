@@ -8,7 +8,7 @@ export default function GenovaExperience({ lang = "en", standalone = false }) {
   return (
         <section id="experience" className={styles.experience} data-editorial-reveal="genova">
           <div className={styles.wrap}>
-            <SectionHead index="03" title={lang === "es" ? "Más allá del código." : "Beyond the code."} intro={c.experienceIntro} />
+            <SectionHead index={lang==="es"?"03 / EXPERIENCIA PROFESIONAL":"03 / PROFESSIONAL EXPERIENCE"} title={lang === "es" ? <>Más allá <em>del código.</em></> : <>Beyond <em>the code.</em></>} intro={c.experienceIntro} />
             <div className={styles.split}>
               <div>
                 <h3 className={styles.genova}>genova.</h3>

@@ -10,8 +10,8 @@ function Tile({ href, title, tone, lang, children }) {
   </Link>;
 }
 
-function PasMap({ es }) {
-  const domains = es ? ["Personal", "Genova OS", "Delivery OS"] : ["Personal", "Genova OS", "Delivery OS"];
+export function PasMap({ es }) {
+  const domains = ["Personal", "Genova OS", "Delivery OS"];
   return <svg className={styles.stageMap} viewBox="0 0 500 226" role="img" aria-label={es ? "Esquema conceptual de inteligencia compartida, control y dominios" : "Conceptual map of shared intelligence, control and domains"}>
     <g fill="none" stroke="#86a0be" strokeWidth="1.4">
       <path data-stage-wire="" pathLength="1" d="M250 38 V65 M250 103 V124 H83 V147 M250 124 V147 M250 124 H417 V147 M83 183 V197 H417 V183 M250 183 V197"/>
@@ -29,6 +29,14 @@ function PasMap({ es }) {
   </svg>;
 }
 
+export function PasArtwork({lang}) {
+  return <div className={styles.stagePas}>
+    <div className={styles.stageScreenHeader}>PAS / ARCHITECTURE <span>V4.3</span></div>
+    <PasMap es={lang==="es"}/>
+    <div className={styles.stageScreenFooter}><span>{lang==="es"?"CONOCIMIENTO · RUTAS · EVIDENCIA":"KNOWLEDGE · ROUTING · EVIDENCE"}</span><i aria-hidden="true"/></div>
+  </div>;
+}
+
 export default function EditorialHero({lang}) {
   const es=lang==="es", c=copy[lang];
   return <section id="top" className={styles.wrap+" "+styles.editorialHero}>
@@ -40,7 +48,7 @@ export default function EditorialHero({lang}) {
     </div>
     <div className={styles.editorialStage}>
       <Tile href="/work/vida-2" title="Vida 2.0" tone="vida" lang={lang}><div className={styles.stageVida}><strong>vida.</strong><span>{es?"Organización personal":"Personal OS"}</span><div className={styles.stageCells}>{c.demoSections.map((s,i)=><span key={s} style={{"--i":i}}>{s}</span>)}</div><div className={styles.stageProgress}><i/></div></div></Tile>
-      <Tile href="/work/personal-ai-system" title="Personal AI System" tone="pas" lang={lang}><div className={styles.stagePas}><div className={styles.stageScreenHeader}>PAS / ARCHITECTURE <span>V4.3</span></div><PasMap es={es}/></div></Tile>
+      <Tile href="/work/personal-ai-system" title="Personal AI System" tone="pas" lang={lang}><PasArtwork lang={lang}/></Tile>
       <Tile href="/work/cauce-commerce-lab" title="Cauce Commerce Lab" tone="cauce" lang={lang}><div className={styles.stageStore}><strong>cauce.</strong><span>{es?"Tienda de demostración":"Sandbox storefront"}</span><div className={styles.stageProducts}>{["#809077","#d9d7c8","#9d8065"].map((fill,i)=><svg key={fill} viewBox="0 0 70 76" aria-hidden="true" style={{"--i":i}}><rect width="70" height="76" rx="4" fill="#d2c3aa"/><path d={["M25 16 H45 L49 28 V63 H21 V28Z","M28 22 H42 Q63 47 49 65 H21 Q7 47 28 22Z","M15 30 Q35 13 55 30 L49 63 H21Z"][i]} fill={fill}/></svg>)}</div><small>{es?"Catálogo · Checkout de prueba":"Catalog · Test checkout"}</small></div></Tile>
     </div>
     <div className={styles.stageFooter}><span>01—03 / {es?"Sistemas seleccionados":"Selected systems"}</span><a href={hrefFor(lang,"projects")}>{es?"Explorar":"Scroll to explore"} ↓</a><span>2026 / PORTFOLIO</span></div>

@@ -1,6 +1,9 @@
 import { headers } from "next/headers";
 import "@fontsource-variable/newsreader/index.css";
 import "@fontsource-variable/newsreader/wght-italic.css";
+import "@fontsource-variable/manrope/index.css";
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.scss";
