@@ -24,7 +24,7 @@ const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauc
       if(path==="/"){
         assert.equal(await page.locator("[data-stage-tone]").count(),3);
         await page.evaluate(()=>document.fonts.ready);
-        assert.ok(await page.evaluate(()=>document.fonts.check('650 48px "Manrope Variable"')&&document.fonts.check('italic 400 48px "Instrument Serif"')));
+        assert.ok(await page.evaluate(()=>[...document.fonts].some(f=>f.family.replace(/"/g,"")==="Manrope Variable"&&f.status==="loaded")&&[...document.fonts].some(f=>f.family.replace(/"/g,"")==="Instrument Serif"&&f.status==="loaded")));
         assert.equal(await page.locator('[data-stage-tone="pas"]').evaluate(e=>getComputedStyle(e).animationName),"none");
         if(width===1440){const box=await page.locator('[data-stage-tone="pas"]').boundingBox();assert.ok(box.y+box.height<=900,JSON.stringify(box));}
         assert.ok(await page.locator("#capabilities").count());

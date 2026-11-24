@@ -223,7 +223,7 @@ export default async function Home({ searchParams }) {
               </details>
             </article>
 
-            <SectionHead index={lang==="es"?"02 / PROYECTOS SELECCIONADOS":"02 / SELECTED WORK"} title={lang==="es"?<>Ingeniería <em>en práctica.</em></>:<>Engineering <em>in practice.</em></>} intro={c.projectsIntro}/>
+            <SectionHead index={lang==="es"?"02 / PROYECTOS SELECCIONADOS":"02 / SELECTED WORK"} title={lang==="es"?<>Ingeniería <em>en práctica.</em></>:<>Engineering <em>in practice.</em></>} intro={<>{c.projectsIntro} <a href={hrefFor(lang,"experience")} className={styles.lnk}>{c.projectsIntroLink}</a>.</>}/>
             {gallery.map((project, index) => (
               <article
                 key={project.slug}
@@ -321,7 +321,7 @@ export default async function Home({ searchParams }) {
           <div className={styles.wrap}>
             <p className={styles.contactLabel}>{lang==="es"?"07 / CONTACTO":"07 / CONTACT"}</p>
             <h2 className={styles.contactTitle}>
-              {lang==="es"?<>Construyamos <em>algo.</em></>:<>Let's build <em>something.</em></>}
+              {lang==="es"?<>Construyamos <em>algo.</em></>:<>Let&apos;s build <em>something.</em></>}
             </h2>
             <p className={styles.contactSub}>{c.contactTitle.join("")}</p>
             <a href={`mailto:${links.email}`} className={styles.email}>
