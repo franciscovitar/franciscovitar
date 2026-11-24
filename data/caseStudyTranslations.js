@@ -221,7 +221,7 @@ const es = {
   "personal-ai-system": {
     eyebrow: "Sistema privado · Código de referencia público",
     summary:
-      "Una torre de control de IA personal para aprendizaje, investigación, proyectos y captura de datos cotidianos. Cada objetivo activa métodos, fuentes y permisos adecuados; un repositorio público permite revisar código y pruebas representativos.",
+      "Una arquitectura de inteligencia compartida para aprendizaje, investigación, prestación profesional y operación de negocio. Una torre de control coordina conocimiento, métodos, ejecución y evidencia. Una referencia pública independiente permite inspeccionar y ejecutar decisiones representativas de ingeniería.",
     linkLabels: ["Repositorio público · Código y pruebas"],
     problem:
       "El trabajo con IA se degrada cuando cada chat maneja su propia verdad, el contexto crece sin límite y las herramientas tienen más permisos de los necesarios.",

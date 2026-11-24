@@ -21,7 +21,7 @@ export const pasContent = {
     depthStats: [
       { value: "14", title: "Contratos de Skills", detail: "Capacidades transversales, aprendizaje y dominios especializados." },
       { value: "4 + 1", title: "Niveles de contexto", detail: "Global, dominio, proyecto y materia; preferencias aisladas." },
-      { value: "12 × 7", title: "Taxonomía profesional", detail: "Servicios y tipos de intervención, con gates de investigación." },
+      { value: "45", title: "Rutas compatibles", detail: "12 servicios y 7 intervenciones, con gates de investigación." },
       { value: "35", title: "Familias diseñadas", detail: "Bibliotecas previstas, no 35 herramientas desplegadas." },
     ],
     categories: [
@@ -55,7 +55,7 @@ export const pasContent = {
     depthStats: [
       { value: "14", title: "Skill contracts", detail: "Cross-cutting capabilities, learning and domain methods." },
       { value: "4 + 1", title: "Context layers", detail: "Global, domain, project and subject; preferences isolated." },
-      { value: "12 × 7", title: "Delivery taxonomy", detail: "Services and intervention types with research gates." },
+      { value: "45", title: "Compatible routes", detail: "12 services and 7 intervention types with research gates." },
       { value: "35", title: "Designed families", detail: "Proposed libraries, not 35 deployed tools." },
     ],
     categories: [

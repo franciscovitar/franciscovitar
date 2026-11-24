@@ -3,6 +3,7 @@ import SystemVisual from "./SystemVisual";
 import CauceStorefrontPreview from "./CauceStorefrontPreview";
 import PASFlow from "./PASFlow";
 import PASOverview from "./PASOverview";
+import PASEcosystem from "./PASEcosystem";
 import { pasContent } from "../data/pasContent";
 import { caseStudyUi, localizeCaseStudy } from "../data/caseStudyTranslations";
 import styles from "./CaseStudyPage.module.scss";
@@ -39,7 +40,10 @@ export default function CaseStudyPage({ study, lang = "en" }) {
       <div className={styles.sectionBody}>
         <h2>{ui.architectureTitle}</h2>
         {isPas ? (
-          <PASFlow lang={lang} />
+          <>
+            <PASFlow lang={lang} />
+            <PASEcosystem lang={lang} />
+          </>
         ) : (
           <div className={styles.architectureTrack}>
             {localized.architecture.map((item, index) => (

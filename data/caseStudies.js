@@ -169,7 +169,7 @@ export const caseStudies = {
     title: "Personal AI System",
     eyebrow: "Private system · Public engineering reference",
     summary:
-      "A personal AI control tower spanning learning, research, project continuity and everyday data workflows. It routes each goal to the right methods, sources and permissions — with inspectable public reference code and tests.",
+      "A shared intelligence architecture spanning personal learning, research, professional delivery and business operations. A control tower coordinates scoped knowledge, methods, execution and evidence. A separate public reference makes key engineering decisions inspectable and executable.",
     stack: ["Python", "JavaScript", "GitHub", "Agents", "Evals", "Governance", "Knowledge systems"],
     links: [{ label: "Public reference code & tests", href: "https://github.com/franciscovitar/personal-ai-system-showcase" }],
     problem:

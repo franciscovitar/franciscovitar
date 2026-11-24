@@ -99,10 +99,10 @@ export const webhookLab = {
 export const personalAiSystem = {
   title: "Personal AI System",
   summary: {
-    en: "Turns an AI request into a scoped workflow with the right knowledge, permissions, tools and checks. The private system is presented through a separate, runnable public reference implementation.",
-    es: "Convierte un pedido a la IA en un flujo de trabajo con contexto, permisos, herramientas y verificaciones. El sistema privado se explica mediante una implementación pública de referencia que se puede ejecutar e inspeccionar.",
+    en: "Shared AI intelligence for personal learning, research, professional delivery and business operations. A control tower routes goals through scoped knowledge, permission gates, execution and verifiable evidence. The independent public reference includes executable code and tests.",
+    es: "Inteligencia compartida para aprendizaje, investigación, prestación profesional y operación de negocio. Una torre de control conecta objetivos, conocimiento, permisos, ejecución y evidencia. La referencia pública independiente permite inspeccionar código y pruebas.",
   },
-  stack: "Python · Agents · Evals",
+  stack: "Python · JavaScript · Knowledge systems · Evals",
   caseHref: "/work/personal-ai-system",
   repo: "https://github.com/franciscovitar/personal-ai-system-showcase",
 };

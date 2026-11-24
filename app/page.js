@@ -251,15 +251,40 @@ export default async function Home({ searchParams }) {
               }
             />
 
+            <article className={styles.pasRow}>
+              <p className={styles.eyebrow}>
+                01 · {c.personal} · {lang === "es" ? "Proyecto insignia · Ingeniería de IA" : "Flagship · AI systems engineering"}
+              </p>
+              <div className={styles.pasText}>
+                <h3 className={styles.pasTitle}>{personalAiSystem.title}</h3>
+                <p>{t(personalAiSystem.summary, lang)}</p>
+              </div>
+              <div className={styles.pasLinks}>
+                <span className={styles.monoMeta}>{personalAiSystem.stack}</span>
+                <Link
+                  href={withLang(personalAiSystem.caseHref, lang)}
+                  className={`${styles.lnk} ${styles.accent}`}
+                >
+                  {c.viewCase}
+                </Link>
+                <ExternalLink href={personalAiSystem.repo} className={styles.lnk}>
+                  {lang === "es" ? "Código de referencia ↗" : "Reference code ↗"}
+                </ExternalLink>
+              </div>
+              <div className={styles.pasDiagram}>
+                <PASFlow lang={lang} />
+              </div>
+            </article>
+
             {projects.map((project, index) => (
               <article
                 key={project.slug}
                 className={`${styles.feature} ${index % 2 === 1 ? styles.featureReverse : ""}`}
               >
-                <ProjectMedia project={project} lang={lang} c={c} index={index} />
+                <ProjectMedia project={project} lang={lang} c={c} index={index + 1} />
                 <div className={styles.featureText}>
                   <p className={styles.eyebrow}>
-                    0{index + 1} · {c.personal} · {t(project.kind, lang)}
+                    0{index + 2} · {c.personal} · {t(project.kind, lang)}
                   </p>
                   <h3 className={styles.projectTitle}>{project.title}</h3>
                   <p className={styles.projectSummary}>{t(project.summary, lang)}</p>
@@ -294,7 +319,7 @@ export default async function Home({ searchParams }) {
               <div className={styles.flowHead}>
                 <div className={styles.flowText}>
                   <p className={styles.eyebrow}>
-                    04 · {c.personal} · Full-stack · {lang === "es" ? "Demo pública funcional" : "Live public sandbox"}
+                    05 · {c.personal} · Full-stack · {lang === "es" ? "Demo pública funcional" : "Live public sandbox"}
                   </p>
                   <h3 className={styles.projectTitle}>{webhookLab.title}</h3>
                   <p className={styles.projectSummary}>{t(webhookLab.summary, lang)}</p>
@@ -335,35 +360,12 @@ export default async function Home({ searchParams }) {
                   ))}
                 </ol>
                 <figcaption className={styles.caption}>
-                  {c.fig} 04 — {c.flowCaption}
+                  {c.fig} 05 — {c.flowCaption}
                 </figcaption>
               </figure>
             </article>
 
-            <article className={styles.pasRow}>
-              <p className={styles.eyebrow}>
-                05 · {c.personal} · {c.pasMeta}
-              </p>
-              <div className={styles.pasText}>
-                <h3 className={styles.pasTitle}>{personalAiSystem.title}</h3>
-                <p>{t(personalAiSystem.summary, lang)}</p>
-              </div>
-              <div className={styles.pasLinks}>
-                <span className={styles.monoMeta}>{personalAiSystem.stack}</span>
-                <Link
-                  href={withLang(personalAiSystem.caseHref, lang)}
-                  className={`${styles.lnk} ${styles.accent}`}
-                >
-                  {c.viewCase}
-                </Link>
-                <ExternalLink href={personalAiSystem.repo} className={styles.lnk}>
-                  {lang === "es" ? "Código de referencia ↗" : "Reference code ↗"}
-                </ExternalLink>
-              </div>
-              <div className={styles.pasDiagram}>
-                <PASFlow lang={lang} />
-              </div>
-            </article>
+
           </div>
         </section>
 
