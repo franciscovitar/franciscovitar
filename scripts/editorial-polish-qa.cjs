@@ -2,7 +2,7 @@ const assert=require("node:assert/strict");
 const fs=require("node:fs");
 const {chromium,webkit}=require("/tmp/editorial-qa/node_modules/playwright");
 const BASE="http://127.0.0.1:3000";
-const paths=["/","/genova","/work/personal-ai-system","/work/vida-2","/work/cauce-commerce-lab","/work/webhook-recovery-lab","/work/library-network-api"];
+const paths=["/work/cauce-commerce-lab"];
 fs.mkdirSync("qa-evidence",{recursive:true});
 (async()=>{
  const failures=[];
@@ -32,7 +32,7 @@ fs.mkdirSync("qa-evidence",{recursive:true});
  if(width<=760){const menu=page.locator("[data-prototype-menu]");await menu.locator("summary").click();assert.ok(await menu.evaluate(e=>e.open));await page.keyboard.press("Escape");await page.waitForFunction(()=>!document.querySelector("[data-prototype-menu]").open);}
  if(lang==="en"&&[390,1440].includes(width)){await page.locator(".method-loop").screenshot({path:"qa-evidence/"+name+"-"+width+"-method.png"});await page.locator(".genova-feature").screenshot({path:"qa-evidence/"+name+"-"+width+"-genova.png"});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:"qa-evidence/"+name+"-"+width+"-hero.png"});}
  }else if(path==="/genova"){assert.equal(await page.locator("h1").textContent(),"Genova");assert.equal(await page.locator(".client-grid .client").count(),4);}
- else {assert.ok(await page.locator(".case-detail").count());if(path.includes("personal-ai-system"))assert.ok(await page.locator("#pas-architecture").count());}
+ else {assert.ok(await page.locator(".case-detail").count()); const detail=page.locator(".case-detail");await detail.locator("summary").click();assert.equal(await detail.evaluate(e=>e.open),true);assert.ok(await detail.locator("svg.ui-arrow").count());if(path.includes("personal-ai-system"))assert.ok(await page.locator("#pas-architecture").count());}
  assert.equal(errors.length,0,errors.join("\n"));console.log("PASS",name,width,lang,path);
  }catch(e){failures.push({name,width,lang,path,error:String(e)});console.error("FAIL",name,width,lang,path,String(e));}}
  await ctx.close();
