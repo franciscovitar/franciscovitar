@@ -398,10 +398,10 @@
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}
 }
 .ep.low-motion *,.ep.low-motion *::before,.ep.low-motion *::after{animation:none!important;transition:none!important}
-.ep{--scene:cubic-bezier(.23,.74,.2,1);--soft-scene:cubic-bezier(.24,.68,.18,1)}
-@keyframes cut-left{from{clip-path:inset(0 100% 0 0);opacity:.35}to{clip-path:inset(0);opacity:1}}
-@keyframes cut-right{from{clip-path:inset(0 0 0 100%);opacity:.35}to{clip-path:inset(0);opacity:1}}
-@keyframes curtain{from{clip-path:inset(0 50% 0 50%);opacity:.45}to{clip-path:inset(0);opacity:1}}
+.ep{--scene:cubic-bezier(.25,.72,.2,1);--soft-scene:cubic-bezier(.25,.65,.18,1)}
+@keyframes cut-left{from{clip-path:inset(-.22em 100% -.28em -.12em);opacity:.35}to{clip-path:inset(-.22em -.12em -.28em -.12em);opacity:1}}
+@keyframes cut-right{from{clip-path:inset(-.22em -.12em -.28em 100%);opacity:.35}to{clip-path:inset(-.22em -.12em -.28em -.12em);opacity:1}}
+@keyframes curtain{from{clip-path:inset(-.22em 50% -.28em 50%);opacity:.45}to{clip-path:inset(-.22em -.12em -.28em -.12em);opacity:1}}
 @keyframes dissolve{from{opacity:.20}to{opacity:1}}
 @keyframes emerge{from{opacity:.22;transform:scale(.94)}to{opacity:1;transform:none}}
 @keyframes drift-left{from{opacity:.22;transform:translateX(-24px)}to{opacity:1;transform:none}}
@@ -514,3 +514,54 @@
 @media(max-width:760px){.ep .mobile-details{display:block}.ep .mobile-details #mobile-menu{top:calc(100% + 8px);left:0;right:0}.ep .compact .nav{transform:translateY(5px)}.ep .screen-top,.ep .screen-foot{overflow-wrap:anywhere}}
 @media(max-width:360px){.ep .brand{font-size:16px}.ep .nav{gap:7px}.ep .nav-right{gap:7px}}
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* V1.3 finishing pass: safe type bounds and platform-independent vector arrows. */
+.ep .ui-arrow {display:inline-block;width:1em;height:1em;flex:0 0 auto;vertical-align:-.12em}
+.ep .arrow .ui-arrow,.ep .round-arrow .ui-arrow {display:block}
+.ep .stage-label .ui-arrow {width:12px;height:12px}
+.ep .hero h1 {line-height:1.04}
+.ep .mask {overflow:visible;padding:.04em .08em .14em;margin-bottom:-.08em}
+.ep .section-head h2,.ep .section>h2,.ep footer h2 {line-height:1.12;overflow:visible}
+.ep .genova-word,.ep .inner-hero h1 {line-height:1.12;overflow:visible}
+.ep .genova-hero h1 {line-height:1.12}
+.ep .hero .mask>span {animation-duration:1.72s}
+.ep .hero .mask>em {animation-duration:1.86s;animation-delay:.56s}
+.ep .hero-description {animation-duration:1.22s}
+.ep .hero-actions {animation-duration:1.14s}
+.ep .stage-tile.pas {animation-duration:1.68s}
+.ep .stage-tile.vida,.ep .stage-tile.cauce {animation-duration:1.82s}
+.ep .section-head.reveal.visible h2 {animation-duration:1.56s}
+.ep .feature.reveal.visible .feature-visual {animation-duration:1.68s}
+.ep .project-row.reveal.visible .project-visual {animation-duration:1.62s}
+.ep .project-row.reveal.visible .project-meta {animation-duration:1.28s}
+.ep .genova-feature.reveal.visible .genova-word {animation-duration:1.65s}
+.ep .reveal.visible .principles>div {animation-duration:1.22s}
+.ep .skill-table.reveal.visible>div {animation-duration:1.18s}
+.ep footer.reveal.visible h2 {animation-duration:1.62s}
+.ep .view-enter .inner-hero h1,.ep .view-enter .genova-hero h1 {animation-duration:1.62s}
+.ep .view-enter {animation-duration:.8s}
+.ep .method-loop {margin:0;padding:24px;min-width:0;background:linear-gradient(145deg,#181818,#101010 75%);border-color:#333}
+.ep .method-top {display:flex;justify-content:space-between;gap:8px;color:#a3a3a3;font:10px/1.4 ui-monospace,monospace;letter-spacing:.08em;padding-bottom:14px;border-bottom:1px solid #383838}
+.ep .method-loop-title {font-size:clamp(25px,3vw,40px);line-height:1.14;letter-spacing:-.045em;margin:20px 0}
+.ep .method-steps {list-style:none;padding:0;margin:0;position:relative;display:grid;gap:7px}
+.ep .method-steps::before {content:"";position:absolute;top:22px;bottom:22px;left:44px;width:1px;background:linear-gradient(#888,#444)}
+.ep .method-steps li {position:relative;display:grid;grid-template-columns:22px 35px minmax(0,1fr);align-items:center;gap:9px;padding:8px 10px 8px 0}
+.ep .method-number {font:10px ui-monospace,monospace;color:#999}
+.ep .method-icon {display:grid;place-items:center;width:30px;height:30px;background:#222;border:1px solid #555;border-radius:7px;color:#ddd;z-index:1}
+.ep .method-icon svg {width:17px;height:17px}
+.ep .method-steps li>div {padding:0 0 0 5px;min-width:0}
+.ep .method-steps strong {display:block;font-size:15px;line-height:1.3;font-weight:600}
+.ep .method-steps small {display:block;font-size:11px;color:#a3a3a3;line-height:1.4;margin-top:3px}
+.ep .method-bottom {border-top:1px solid #383838;padding-top:15px;margin-top:16px;display:flex;align-items:center;gap:10px;font-size:11px;color:#bbb}
+.ep .method-bottom svg {width:17px;height:17px;flex:none}
+.ep .method-grid.visible .method-steps li {animation:dissolve 1.05s calc(.18s + var(--i)*.13s) var(--scene) backwards}
+.ep .method-grid.visible .method-steps::before {transform-origin:top;animation:method-line 1.7s .2s var(--scene) backwards}
+@keyframes method-line {from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media(max-width:760px){
+ .ep .hero .mask>span,.ep .hero .mask>em {animation-duration:1.42s}
+ .ep .stage-tile.vida,.ep .stage-tile.cauce {animation-duration:1.28s}
+ .ep .project-row.reveal.visible .project-visual {animation-duration:1.32s}
+ .ep .method-loop {padding:20px}
+ .ep .genova-word {font-size:clamp(54px,19vw,74px)}
+}
+@media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}}
