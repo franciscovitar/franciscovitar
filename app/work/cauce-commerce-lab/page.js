@@ -3,7 +3,7 @@ import { getCaseStudy } from "../../../data/caseStudies";
 import { localizedAlternates, localizedUrl } from "../../../lib/site-metadata";
 
 const casePath = "/work/cauce-commerce-lab";
-const imageUrl = "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp";
+const imageUrl = "/images/projects/cauce-hero.webp";
 
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;

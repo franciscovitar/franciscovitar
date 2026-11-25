@@ -3,7 +3,7 @@ export const featuredProjects = [
     slug: "vida-2",
     visual: "vida",
     title: "Vida 2.0",
-    label: "Public flagship",
+    label: "Personal product · Public demo",
     status: "Active",
     hook:
       "One product layer over multiple real data authorities — without pretending the web app is the source of truth.",
@@ -18,7 +18,7 @@ export const featuredProjects = [
       "Reads and writes have different safety boundaries",
     ],
     href: "/work/vida-2",
-    repo: "https://github.com/franciscovitar/vida-2.0",
+    repo: "https://github.com/franciscovitar/vida-2-0-demo",
   },
   {
     slug: "library-network-api",

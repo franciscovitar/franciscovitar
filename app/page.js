@@ -6,10 +6,10 @@ export async function generateMetadata({ searchParams }) {
   const lang = (await searchParams)?.lang === "es" ? "es" : "en";
   const title = lang === "es"
     ? "Francisco Vitar | Desarrollador de software"
-    : "Francisco Vitar | Software Developer";
+    : "Francisco Vitar | Software Engineer";
   const description = lang === "es"
     ? "Desarrollador de software y full-stack. Estudiante de Ingeniería en Sistemas en UTN Córdoba y cofundador de Genova."
-    : "Software Developer and Full-Stack Developer. Information Systems Engineering student at UTN Córdoba and co-founder of Genova.";
+    : "Software Engineer and Full-Stack Developer. Information Systems Engineering student at UTN Córdoba and co-founder of Genova.";
 
   return {
     title: { absolute: title },
