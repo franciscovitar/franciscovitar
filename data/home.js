@@ -122,6 +122,15 @@ export const genovaShot = {
 
 export const clients = [
   {
+    title: "Pimp",
+    sector: { en: "Beauty and wellness", es: "Belleza y bienestar" },
+    detail: {
+      en: "Aesthetics center website with treatment information, online booking and locations.",
+      es: "Sitio de centro de estética con información de tratamientos, agenda online y sucursales.",
+    },
+    live: "https://pimp-genova.vercel.app/",
+  },
+  {
     title: "Contexto.Psi",
     sector: { en: "Mental health", es: "Salud mental" },
     detail: {
@@ -138,6 +147,15 @@ export const clients = [
       // an unauthorized screenshot renders only with SHOW_PENDING_SCREENSHOTS=1 (local).
       authorized: true,
     },
+  },
+  {
+    title: "Value Latam",
+    sector: { en: "Financial services", es: "Servicios financieros" },
+    detail: {
+      en: "Corporate site for a financial services group, presenting its five business units and consultation paths.",
+      es: "Sitio institucional de un grupo de servicios financieros, con sus cinco unidades y vías de consulta.",
+    },
+    live: "https://www.valuelatam.com/",
   },
   {
     title: "Madí Bienestar",
