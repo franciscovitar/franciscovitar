@@ -27,8 +27,8 @@ Co-founder & Software Engineer · Córdoba, Argentina · 2022–present.
 
 Client websites and web products, including requirements, implementation, integrations, deployment and maintenance. [Selected client work](https://franvitar.genovasite.com/genova) · [Genova](https://www.genovasite.com/)
 
-- [Pimp](https://github.com/franciscovitar/pimp): Next.js, React and Sass; form behavior and regression tests with Vitest/Testing Library.
-- [Value Latam — historical engineering snapshot](https://github.com/franciscovitar/valuelatamnuevo3/tree/22c03ca194bb9fe78111a2be1a89d2468f6ed77b): Next.js, React, Sass, GSAP and Playwright. The linked revision preserves the earlier implementation; the repository's current main contains a different static-site distribution. This is historical code evidence, not a claim about the current deployed stack.
+
+Client websites, including Pimp, Contexto.Psi and Value Latam, are linked through [Genova’s selected client work](https://franvitar.genovasite.com/genova). This profile links to the commercial sites and public project demos; it does not link to private client source repositories.
 
 ## Technical skills
 
