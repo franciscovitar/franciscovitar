@@ -1,12 +1,11 @@
-export default function robots() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
+import { siteUrl } from "../lib/site-metadata";
 
+export default function robots() {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: baseUrl + "/sitemap.xml",
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

@@ -1,11 +1,22 @@
 import Link from "next/link";
 import styles from "./cv.module.scss";
+import { localizedAlternates, localizedUrl } from "../../lib/site-metadata";
 
-export const metadata = {
-  title: "CV · Francisco Vitar",
-  description:
-    "Francisco Vitar — Software Developer / Full-Stack Developer. CV en PDF.",
-};
+export async function generateMetadata({ searchParams }) {
+  const lang = (await searchParams)?.lang === "es" ? "es" : "en";
+  const title = lang === "es" ? "CV" : "Résumé";
+  const description = lang === "es"
+    ? "Experiencia, proyectos y formación de Francisco Vitar, desarrollador de software y estudiante de Ingeniería en Sistemas en UTN Córdoba."
+    : "Experience, projects and education for Francisco Vitar, software developer and Information Systems Engineering student at UTN Córdoba.";
+
+  return {
+    title,
+    description,
+    alternates: localizedAlternates("/cv", lang),
+    openGraph: { type: "website", locale: lang === "es" ? "es_AR" : "en_US", url: localizedUrl("/cv", lang), title, description },
+    twitter: { card: "summary", title, description },
+  };
+}
 
 const content = {
   es: {

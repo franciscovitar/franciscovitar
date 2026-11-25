@@ -6,10 +6,8 @@ import "@fontsource/instrument-serif/400.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { siteUrl } from "../lib/site-metadata";
 import "./globals.scss";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
