@@ -1,15 +1,29 @@
 const assert = require("node:assert/strict");
 const crypto = require("node:crypto");
+const fs = require("node:fs/promises");
 const { chromium, firefox, webkit } = require("/tmp/final-portfolio-qa/node_modules/playwright");
 const base = "http://127.0.0.1:3000";
 const site = "https://franvitar.genovasite.com";
 const pdf = "/Francisco_Vitar_CV_ATS_V2.pdf";
 const routes = ["/","/cv","/genova","/work/personal-ai-system","/work/vida-2","/work/cauce-commerce-lab","/work/webhook-recovery-lab","/work/library-network-api"];
+const expectedPdfHash = "6823e5900905fb66930a9bb563cfd93c8ee68021dc6c06ac78f0fecefddb578a";
+
+function canonicalUrlForComparison(value) {
+  // URL serialization normalizes the equivalent host forms `https://host`
+  // and `https://host/`, while preserving different hosts, paths and queries.
+  return new URL(value).href;
+}
+
+assert.equal(canonicalUrlForComparison(site), canonicalUrlForComparison(`${site}/`));
+assert.notEqual(canonicalUrlForComparison(site), canonicalUrlForComparison("https://example.com/"));
+assert.notEqual(canonicalUrlForComparison(site), canonicalUrlForComparison(`${site}/genova`));
+assert.notEqual(canonicalUrlForComparison(site), canonicalUrlForComparison(`${site}?lang=es`));
+
 (async () => {
  const response=await fetch(base+pdf);
  assert.equal(response.status,200);
  assert.match(response.headers.get("content-type"),/application\/pdf/);
- assert.equal(crypto.createHash("sha256").update(Buffer.from(await response.arrayBuffer())).digest("hex"),"6823e5900905fb66930a9bb563cfd93c8ee68021dc6c06ac78f0fecefddb578a");
+ assert.equal(crypto.createHash("sha256").update(Buffer.from(await response.arrayBuffer())).digest("hex"),expectedPdfHash);
  assert.equal((await fetch(base+"/Francisco_Vitar_CV_ATS_V1.pdf")).status,200);
  const robots=await (await fetch(base+"/robots.txt")).text();
  assert.ok(robots.includes(site+"/sitemap.xml"));
@@ -36,7 +50,11 @@ const routes = ["/","/cv","/genova","/work/personal-ai-system","/work/vida-2","/
     await page.locator("h1").first().waitFor({state:"visible",timeout:10000});
     await page.locator('link[rel="canonical"]').first().waitFor({state:"attached",timeout:10000});
     assert.equal(await page.locator("html").getAttribute("lang"),lang);
-    assert.equal(await page.locator('link[rel="canonical"]').last().getAttribute("href"),site+path+suffix);
+    assert.equal(
+      canonicalUrlForComparison(await page.locator('link[rel="canonical"]').last().getAttribute("href")),
+      canonicalUrlForComparison(site+path+suffix),
+      `Canonical URL mismatch for ${path}${suffix}`
+    );
     const checks=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth,links:[...document.querySelectorAll("a[href]")].map(a=>a.getAttribute("href"))}));
     assert.ok(checks.scroll<=checks.client+1,JSON.stringify(checks));
     assert.ok(checks.links.includes("/Francisco_Vitar_CV_ATS_V2.pdf"),"Missing CV V2 link");
@@ -46,8 +64,13 @@ const routes = ["/","/cv","/genova","/work/personal-ai-system","/work/vida-2","/
      assert.ok(!checks.links.includes("https://github.com/franciscovitar/vida-2.0"),"Original source link still present");
     }
     if(path==="/cv"){
-      assert.equal(await page.locator('a[download][href="/Francisco_Vitar_CV_ATS_V2.pdf"]').count(),1);
+      const downloadLink=page.locator('a[download][href="/Francisco_Vitar_CV_ATS_V2.pdf"]');
+      assert.equal(await downloadLink.count(),1);
       assert.equal(await page.locator("h1").textContent().then(t=>t.endsWith(".")),false);
+      const [download]=await Promise.all([page.waitForEvent("download"),downloadLink.click()]);
+      assert.equal(download.suggestedFilename(),"Francisco_Vitar_CV_ATS_V2.pdf");
+      const downloadedPdf=await fs.readFile(await download.path());
+      assert.equal(crypto.createHash("sha256").update(downloadedPdf).digest("hex"),expectedPdfHash);
     }
     if(path==="/"&&width===390){
       const menu=page.locator("[data-prototype-menu]");
@@ -56,6 +79,27 @@ const routes = ["/","/cv","/genova","/work/personal-ai-system","/work/vida-2","/
       await page.keyboard.press("Escape");
       await page.waitForFunction(()=>!document.querySelector("[data-prototype-menu]").open,{},{timeout:5000});
     }
+
+    // Next.js can have an in-flight Link prefetch when the next route starts.
+    // Let those requests settle per route; do not hide resulting page errors.
+    await page.waitForLoadState("networkidle",{timeout:10000});
+
+    if(name==="webkit"&&path==="/genova"&&lang==="es"){
+      const toEnglish=page.locator('a[aria-label="Switch language"]');
+      assert.equal(await toEnglish.getAttribute("href"),"/genova");
+      await Promise.all([page.waitForNavigation({waitUntil:"domcontentloaded"}),toEnglish.click()]);
+      assert.equal(await page.locator("html").getAttribute("lang"),"en");
+      assert.equal(canonicalUrlForComparison(await page.locator('link[rel="canonical"]').last().getAttribute("href")),canonicalUrlForComparison(site+"/genova"));
+      await page.waitForLoadState("networkidle",{timeout:10000});
+
+      const toSpanish=page.locator('a[aria-label="Cambiar idioma"]');
+      assert.equal(await toSpanish.getAttribute("href"),"/genova?lang=es");
+      await Promise.all([page.waitForNavigation({waitUntil:"domcontentloaded"}),toSpanish.click()]);
+      assert.equal(await page.locator("html").getAttribute("lang"),"es");
+      assert.equal(canonicalUrlForComparison(await page.locator('link[rel="canonical"]').last().getAttribute("href")),canonicalUrlForComparison(site+"/genova?lang=es"));
+      await page.waitForLoadState("networkidle",{timeout:10000});
+    }
+
     assert.equal(errors.length,0,errors.join("\n"));
     passed++;console.log("PASS",name,width,lang,path);
    }catch(e){failures.push({name,width,lang,path,error:String(e)});console.error("FAIL",name,width,lang,path,String(e));}}
