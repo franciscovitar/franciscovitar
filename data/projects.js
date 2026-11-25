@@ -14,7 +14,7 @@ export const projects = [
       "Responsive, mobile-first UI",
       "Baseline performance optimization",
     ],
-    url: "https://www.pimpestetica.com/",
+    url: "https://pimp-genova.vercel.app/",
     technologies: ["Next.js", "SCSS", "JavaScript"],
     image: "/projects/pimp-estetica.jpg",
     featured: true,
