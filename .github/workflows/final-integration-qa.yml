@@ -36,3 +36,4 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3000/ > /dev/null
           node scripts/final-integration-qa.cjs
+          node scripts/scroll-reveal-qa.cjs
