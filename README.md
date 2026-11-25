@@ -28,8 +28,6 @@ Co-founder & Software Engineer · Córdoba, Argentina · 2022–present.
 Client websites and web products, including requirements, implementation, integrations, deployment and maintenance. [Selected client work](https://franvitar.genovasite.com/genova) · [Genova](https://www.genovasite.com/)
 
 
-Client websites, including Pimp, Contexto.Psi and Value Latam, are linked through [Genova’s selected client work](https://franvitar.genovasite.com/genova). This profile links to the commercial sites and public project demos; it does not link to private client source repositories.
-
 ## Technical skills
 
 - Languages: TypeScript, JavaScript, Python, SQL, HTML, CSS/SCSS.
