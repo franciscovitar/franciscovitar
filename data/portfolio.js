@@ -139,22 +139,19 @@ export const clientWork = [
   {
     title: "Pimp",
     detail:
-      "Next.js service website with controlled form behavior, data-driven sections and Vitest/Testing Library coverage.",
-    repo: "https://github.com/franciscovitar/pimp",
-    live: "https://www.pimpestetica.com/",
+      "Aesthetics center website with treatment information, online booking and locations.",
+    live: "https://pimp-genova.vercel.app/",
   },
   {
     title: "Contexto.Psi",
     detail:
-      "Mental-health service platform delivered and maintained around real content, team and onboarding constraints.",
-    repo: "https://github.com/franciscovitar/contextopsi",
+      "Mental-health service website with care information, team profiles, training and contact paths.",
     live: "https://www.contextopsi.com.ar/",
   },
   {
     title: "Value Latam",
     detail:
-      "Client website built with Next.js/React, Playwright E2E, Resend and a documented motion/maintainability system.",
-    repo: "https://github.com/franciscovitar/valuelatamnuevo3",
+      "Corporate site for a financial services group, presenting its business units and consultation paths.",
     live: "https://www.valuelatam.com/",
   },
   {

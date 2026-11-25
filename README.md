@@ -27,6 +27,8 @@ Co-founder & Software Engineer · Córdoba, Argentina · 2022–present.
 
 Client websites and web products, including requirements, implementation, integrations, deployment and maintenance. [Selected client work](https://franvitar.genovasite.com/genova) · [Genova](https://www.genovasite.com/)
 
+Selected published client sites: [Pimp](https://pimp-genova.vercel.app/) · [Contexto.Psi](https://www.contextopsi.com.ar/) · [Value Latam](https://www.valuelatam.com/).
+
 
 ## Technical skills
 
