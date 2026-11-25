@@ -210,3 +210,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+.page :global(.ui-arrow) { display:inline-block; vertical-align:-.12em; }

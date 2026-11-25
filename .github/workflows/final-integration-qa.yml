@@ -1,0 +1,38 @@
+name: Final portfolio integration QA
+on:
+  push:
+    branches: ["audit/final-polish-20261124"]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_SITE_URL: https://franvitar.genovasite.com
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - name: Install complementary browser engines
+        run: |
+          npm install --prefix /tmp/final-portfolio-qa --no-audit --no-fund playwright@1.58.2
+          /tmp/final-portfolio-qa/node_modules/.bin/playwright install --with-deps chromium firefox webkit
+      - name: Verify final CV, localized metadata and browser journeys
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 3000 > /tmp/final-portfolio-next.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true; tail -40 /tmp/final-portfolio-next.log' EXIT
+          for i in $(seq 1 40); do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3000/ > /dev/null
+          node scripts/final-integration-qa.cjs

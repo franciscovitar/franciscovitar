@@ -62,7 +62,7 @@ const es = {
     eyebrow: "Principal público · Activo",
     summary:
       "Un sistema operativo personal para organizar el día, los hábitos y los proyectos desde una interfaz que integra Notion, Google Sheets y Calendar. La demo pública independiente permite explorar el producto con datos ficticios.",
-    linkLabels: ["Probar demo ficticia · recorrido 90 s", "Código de la aplicación original"],
+    linkLabels: ["Probar demo ficticia · recorrido 90 s", "Código de la demo independiente"],
     problem:
       "Los datos ya vivían en herramientas confiables. Vida tenía que unificarlos en una experiencia útil sin crear otra fuente de verdad.",
     constraints: [

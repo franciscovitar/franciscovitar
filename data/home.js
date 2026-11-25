@@ -8,7 +8,7 @@ export const links = {
   linkedin: "https://www.linkedin.com/in/franciscovitar/",
   genovaWebsite: "https://www.genovasite.com/",
   genovaInstagram: "https://www.instagram.com/genova.marketing/",
-  cv: "/Francisco_Vitar_CV_ATS_V1.pdf",
+  cv: "/Francisco_Vitar_CV_ATS_V2.pdf",
   vidaDemo: "https://vida-2-0-demo-genova.vercel.app/",
 };
 
@@ -22,11 +22,11 @@ export const projects = [
       es: "Un sistema operativo personal para organizar el día, los hábitos y los proyectos, integrando Notion, Google Sheets y Calendar sin duplicar los datos privados.",
     },
     stack: "Next.js · TypeScript · Notion API",
-    status: { en: "Active · public repository", es: "Activo · repositorio público" },
+    status: { en: "Active · public demo", es: "Activo · demo pública" },
     live: links.vidaDemo,
     liveLabel: { en: "Explore synthetic demo ↗", es: "Explorar demo con datos ficticios ↗" },
     caseHref: "/work/vida-2",
-    repo: "https://github.com/franciscovitar/vida-2.0",
+    repo: "https://github.com/franciscovitar/vida-2-0-demo",
     media: {
       type: "demo",
     },

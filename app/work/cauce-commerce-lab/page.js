@@ -1,8 +1,9 @@
 import CaseStudyPage from "../../../components/CaseStudyPage";
 import { getCaseStudy } from "../../../data/caseStudies";
+import { localizedAlternates, localizedUrl } from "../../../lib/site-metadata";
 
 const casePath = "/work/cauce-commerce-lab";
-const imageUrl = "https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce/hero.webp";
+const imageUrl = "/images/projects/cauce-hero.webp";
 
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
@@ -13,13 +14,13 @@ export async function generateMetadata({ searchParams }) {
   const description = spanish
     ? "Conocé Cauce: tienda ficticia pública con Next.js y Supabase, pagos de prueba verificados en Mercado Pago, webhooks firmados y control transaccional de stock. Sin acceso de Vercel para recorrerla."
     : "Explore the public Cauce storefront: Next.js, Supabase, verified test-only Mercado Pago payments, signed webhooks and transactional inventory. No Vercel login required to browse.";
-  const canonical = spanish ? `${casePath}?lang=es` : casePath;
+  const canonical = localizedUrl(casePath, spanish ? "es" : "en");
   return {
     title,
     description,
     alternates: {
       canonical,
-      languages: { "en-US": casePath, "es-AR": `${casePath}?lang=es` },
+      languages: localizedAlternates(casePath, spanish ? "es" : "en").languages,
     },
     openGraph: {
       title,

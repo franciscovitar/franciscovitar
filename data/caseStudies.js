@@ -2,13 +2,13 @@ export const caseStudies = {
   vida: {
     slug: "vida-2",
     title: "Vida 2.0",
-    eyebrow: "Public flagship · Active",
+    eyebrow: "Personal product · Public demo",
     summary:
       "A personal operating system for planning, habits and projects, bringing Notion, Google Sheets and Calendar into one authenticated interface while keeping each source authoritative. Explore a separate public demo with fictional data.",
     stack: ["Next.js", "React", "TypeScript", "Notion", "Google Sheets", "Google Calendar"],
     links: [
       { label: "Try the synthetic demo · 90-second tour", href: "https://vida-2-0-demo-genova.vercel.app/" },
-      { label: "Original application source", href: "https://github.com/franciscovitar/vida-2.0" },
+      { label: "Independent demo source", href: "https://github.com/franciscovitar/vida-2-0-demo" },
     ],
     problem:
       "Personal information already lived in authoritative tools. The goal was not to copy everything into one new database, but to create a useful product layer without creating a second source of truth.",

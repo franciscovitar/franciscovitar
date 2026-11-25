@@ -754,3 +754,11 @@
 :global(.ep) .sectionBody>h2 {line-height:1.14;overflow:visible}
 :global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation-duration:1.35s}
 @media(prefers-reduced-motion:reduce){:global(.ep) .page *{animation:none!important;transition:none!important}}
+
+/* Case page entrances share the slower editorial rhythm; control responses stay quick. */
+:global(.ep) .heroCopy h1 {animation-duration:2.3s;}
+:global(.ep) .heroVisual {animation-duration:2.25s;}
+:global(.ep) .heroCopy .lead {animation-duration:1.7s;}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation-duration:2.25s;}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .largeCopy {animation-duration:1.7s;}
+:global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .decisionGrid {animation-duration:2.2s;}

@@ -6,24 +6,22 @@ import "@fontsource/instrument-serif/400.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { siteUrl } from "../lib/site-metadata";
 import "./globals.scss";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Francisco Vitar | Software Developer",
+    default: "Francisco Vitar | Software Engineer",
     template: "%s | Francisco Vitar",
   },
   description:
-    "Software Developer and Full-Stack Developer. 4th-year Information Systems Engineering student at UTN Córdoba and co-founder of Genova.",
+    "Software Engineer and Full-Stack Developer. 4th-year Information Systems Engineering student at UTN Córdoba and co-founder of Genova.",
   keywords: [
     "Francisco Vitar",
-    "Software Developer",
+    "Software Engineer",
     "Full-Stack Developer",
     "TypeScript",
     "Next.js",
@@ -43,15 +41,15 @@ export const metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Francisco Vitar",
-    title: "Francisco Vitar | Software Developer",
+    title: "Francisco Vitar | Software Engineer",
     description:
-      "Software Developer and Full-Stack Developer building complete web products, from the interface to the database.",
+      "Software Engineer and Full-Stack Developer building complete web products, from the interface to the database.",
   },
   twitter: {
     card: "summary",
-    title: "Francisco Vitar | Software Developer",
+    title: "Francisco Vitar | Software Engineer",
     description:
-      "Software Developer and Full-Stack Developer building complete web products, from the interface to the database.",
+      "Software Engineer and Full-Stack Developer building complete web products, from the interface to the database.",
   },
   robots: {
     index: true,
@@ -78,7 +76,7 @@ const personJsonLd = {
     "https://www.linkedin.com/in/franciscovitar/",
     "https://github.com/franciscovitar",
   ],
-  jobTitle: "Software Developer",
+  jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",
     name: "Genova",
@@ -95,7 +93,7 @@ const personJsonLd = {
   },
   email: "mailto:franvitar15@gmail.com",
   description:
-    "4th-year Information Systems Engineering student at UTN Córdoba and Software Developer building full-stack web products.",
+    "4th-year Information Systems Engineering student at UTN Córdoba and Software Engineer building full-stack web products.",
 };
 
 export default async function RootLayout({ children }) {

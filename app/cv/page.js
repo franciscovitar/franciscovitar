@@ -1,17 +1,29 @@
 import Link from "next/link";
 import styles from "./cv.module.scss";
+import Arrow from "../../components/editorial/Arrow";
+import { localizedAlternates, localizedUrl } from "../../lib/site-metadata";
 
-export const metadata = {
-  title: "CV · Francisco Vitar",
-  description:
-    "Francisco Vitar — Software Developer / Full-Stack Developer. CV en PDF.",
-};
+export async function generateMetadata({ searchParams }) {
+  const lang = (await searchParams)?.lang === "es" ? "es" : "en";
+  const title = lang === "es" ? "CV" : "Résumé";
+  const description = lang === "es"
+    ? "Experiencia, proyectos y formación de Francisco Vitar, desarrollador de software y estudiante de Ingeniería en Sistemas en UTN Córdoba."
+    : "Experience, projects and education for Francisco Vitar, software developer and Information Systems Engineering student at UTN Córdoba.";
+
+  return {
+    title,
+    description,
+    alternates: localizedAlternates("/cv", lang),
+    openGraph: { type: "website", locale: lang === "es" ? "es_AR" : "en_US", url: localizedUrl("/cv", lang), title, description },
+    twitter: { card: "summary", title, description },
+  };
+}
 
 const content = {
   es: {
     projects: "Proyectos",
     eyebrow: "Documento · CV en PDF",
-    title: "Experiencia, proyectos y formación.",
+    title: "Experiencia, proyectos y formación",
     summary:
       "Un resumen de mi trabajo en desarrollo web, los sistemas que construyo y mi formación en Ingeniería en Sistemas en UTN Córdoba.",
     view: "Abrir CV",
@@ -26,7 +38,7 @@ const content = {
   en: {
     projects: "Projects",
     eyebrow: "Document · PDF résumé",
-    title: "Experience, projects and education.",
+    title: "Experience, projects and education",
     summary:
       "An overview of my web development work, the systems I build and my Systems Engineering studies at UTN Córdoba.",
     view: "Open résumé",
@@ -63,17 +75,17 @@ export default async function CVPage({ searchParams }) {
       </header>
 
       <article className={styles.content}>
-        <Link href={home} className={styles.back}>← {c.back}</Link>
+        <Link href={home} className={styles.back}><Arrow direction="left"/> {c.back}</Link>
         <p className={styles.eyebrow}>{c.eyebrow}</p>
         <h1>{c.title}</h1>
         <p className={styles.summary}>{c.summary}</p>
 
         <div className={styles.actions}>
-          <a href="/Francisco_Vitar_CV_ATS_V1.pdf" target="_blank" rel="noreferrer" className={styles.primary}>
-            {c.view} ↗
+          <a href="/Francisco_Vitar_CV_ATS_V2.pdf" target="_blank" rel="noreferrer" className={styles.primary}>
+            {c.view} <Arrow/>
           </a>
-          <a href="/Francisco_Vitar_CV_ATS_V1.pdf" download className={styles.secondary}>
-            {c.download} ↓
+          <a href="/Francisco_Vitar_CV_ATS_V2.pdf" download className={styles.secondary}>
+            {c.download} <Arrow direction="down"/>
           </a>
         </div>
 
@@ -86,7 +98,7 @@ export default async function CVPage({ searchParams }) {
           <div>
             <span className={styles.index}>02 / CONTACTO</span>
             <h2>{c.contact}</h2>
-            <a href="mailto:franvitar15@gmail.com" className={styles.email}>{c.email} ↗</a>
+            <a href="mailto:franvitar15@gmail.com" className={styles.email}>{c.email} <Arrow/></a>
           </div>
         </div>
       </article>

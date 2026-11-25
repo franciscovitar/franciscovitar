@@ -1,7 +1,6 @@
-export default function sitemap() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://franciscovitar.vercel.app";
+import { localizedUrl } from "../lib/site-metadata";
 
+export default function sitemap() {
   const paths = [
     "",
     "/cv",
@@ -13,10 +12,30 @@ export default function sitemap() {
     "/work/cauce-commerce-lab",
   ];
 
-  return paths.map((path, index) => ({
-    url: baseUrl + path,
-    lastModified: new Date(),
-    changeFrequency: path === "" ? "monthly" : "quarterly",
-    priority: index === 0 ? 1 : 0.8,
-  }));
+  return paths.flatMap((path, index) => [
+    {
+      url: localizedUrl(path, "en"),
+      lastModified: new Date(),
+      changeFrequency: path === "" ? "monthly" : "quarterly",
+      priority: index === 0 ? 1 : 0.8,
+      alternates: {
+        languages: {
+          "en-US": localizedUrl(path, "en"),
+          "es-AR": localizedUrl(path, "es"),
+        },
+      },
+    },
+    {
+      url: localizedUrl(path, "es"),
+      lastModified: new Date(),
+      changeFrequency: path === "" ? "monthly" : "quarterly",
+      priority: index === 0 ? 1 : 0.8,
+      alternates: {
+        languages: {
+          "en-US": localizedUrl(path, "en"),
+          "es-AR": localizedUrl(path, "es"),
+        },
+      },
+    },
+  ]);
 }

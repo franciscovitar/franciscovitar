@@ -1,18 +1,23 @@
 import CaseStudyPage from "../../../components/CaseStudyPage";
 import { getCaseStudy } from "../../../data/caseStudies";
+import { localizedAlternates, localizedUrl } from "../../../lib/site-metadata";
 
-const title = "Library Network — Engineering Case Study";
-const description =
-  "Live library management app with Next.js, FastAPI and PostgreSQL: independent guest workspaces, transactional lending, transfers, concurrency control and idempotency.";
-const canonicalUrl = "https://franciscovitar.vercel.app/work/library-network-api";
+export async function generateMetadata({ searchParams }) {
+  const lang = (await searchParams)?.lang === "es" ? "es" : "en";
+  const title = lang === "es" ? "Library Network — Caso de ingeniería" : "Library Network — Engineering Case Study";
+  const description = lang === "es"
+    ? "Aplicación de gestión bibliotecaria con Next.js, FastAPI y PostgreSQL: espacios de invitados aislados, préstamos transaccionales, transferencias, control de concurrencia e idempotencia."
+    : "Library management app with Next.js, FastAPI and PostgreSQL: independent guest workspaces, transactional lending, transfers, concurrency control and idempotency.";
+  const canonicalUrl = localizedUrl("/work/library-network-api", lang);
 
-export const metadata = {
-  title,
-  description,
-  alternates: { canonical: canonicalUrl },
-  openGraph: { type: "website", url: canonicalUrl, title, description },
-  twitter: { card: "summary", title, description },
-};
+  return {
+    title,
+    description,
+    alternates: localizedAlternates("/work/library-network-api", lang),
+    openGraph: { type: "website", locale: lang === "es" ? "es_AR" : "en_US", url: canonicalUrl, title, description },
+    twitter: { card: "summary", title, description },
+  };
+}
 
 export default async function LibraryNetworkCaseStudy({ searchParams }) {
   const params = await searchParams;

@@ -565,3 +565,35 @@
  .ep .genova-word {font-size:clamp(54px,19vw,74px)}
 }
 @media(prefers-reduced-motion:reduce){.ep *,.ep *::before,.ep *::after{animation:none!important;transition:none!important}}
+
+/* Final motion calibration outside the approved home hero and its mosaic. */
+.ep .button,.ep .arrow{transition:transform .22s var(--motion-ease),background .22s,color .22s,border-color .22s}
+.ep .view-enter{animation-duration:1.5s}
+.ep .view-enter .inner-hero h1,.ep .view-enter .genova-hero h1{animation-duration:2.3s}
+.ep .view-enter .inner-hero h2,.ep .view-enter .inner-hero p{animation-duration:1.7s}
+.ep .view-enter .inner-hero .actions{animation-duration:1.5s}
+.ep .reveal.visible{animation-duration:1.6s}
+.ep .section-head.reveal.visible{animation-duration:1.6s}
+.ep .section-head.reveal.visible h2,.ep footer.reveal.visible h2{animation-duration:2.3s}
+.ep .section-head.reveal.visible .eyebrow{animation-duration:1.6s}
+.ep .feature.reveal.visible>*,.ep .project-row.reveal.visible>*,.ep .genova-feature.reveal.visible>*,.ep .method-grid.reveal.visible>*{animation-duration:1.9s}
+.ep .feature.reveal.visible>*:nth-child(2),.ep .project-row.reveal.visible>*:nth-child(2),.ep .genova-feature.reveal.visible>*:nth-child(2),.ep .method-grid.reveal.visible>*:nth-child(2){animation-delay:.24s}
+.ep .feature.reveal.visible .feature-visual,.ep .project-row.reveal.visible .project-visual,.ep .case-art.reveal.visible>.visual{animation-duration:2.25s}
+.ep .project-row.reveal.visible .project-meta{animation-duration:1.7s}
+.ep .feature.reveal.visible .feature-copy,.ep .project-row.reveal.visible .project-copy{animation-duration:1.7s}
+.ep .genova-feature.reveal.visible .genova-word,.ep .client.reveal.visible .client-art{animation-duration:2.2s}
+.ep .genova-feature.reveal.visible>div:first-child p,.ep .client.reveal.visible .client-body{animation-duration:1.7s}
+.ep .genova-feature.reveal.visible .genova-services>div{animation-duration:1.65s;animation-delay:calc(.28s + var(--i,0)*.2s)}
+.ep .three.reveal.visible>article,.ep .draft-cases.reveal.visible>div{animation-duration:1.65s;animation-delay:calc(.06s + var(--i,0)*.2s)}
+.ep .reveal.visible .principles>div{animation-duration:1.65s;animation-delay:calc(.28s + var(--i,0)*.2s)}
+.ep .skill-table.reveal.visible>div{animation-duration:1.65s;animation-delay:calc(.04s + var(--i,0)*.18s)}
+.ep .method-grid.reveal.visible .method-diagram{animation-duration:2.2s}
+.ep .method-grid.visible .method-diagram svg>rect,.ep .method-grid.visible .method-diagram svg>text{animation-duration:1.55s;animation-delay:calc(.32s + var(--i,0)*.18s)}
+.ep .method-grid.visible .method-steps li{animation-duration:1.55s;animation-delay:calc(.18s + var(--i,0)*.18s)}
+.ep .method-grid.visible .method-steps::before{animation-duration:2s}
+.ep .about-grid.reveal.visible>*{animation-duration:1.7s}
+.ep .about-grid.reveal.visible>*:nth-child(2){animation-delay:.24s}
+.ep .case-content .section.reveal.visible>h2{animation-duration:2.25s}
+.ep .case-content .section.reveal.visible>p{animation-duration:1.7s}
+.ep .client.reveal.visible .client-body{animation-delay:.24s}
+.ep .client-grid .client.reveal.visible:nth-child(even){animation-delay:.2s}

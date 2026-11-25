@@ -1,90 +1,47 @@
 # Francisco Vitar
 
-**Software Engineer · Full-Stack Product Engineer**  
-TypeScript · React/Next.js · PostgreSQL/SQL · Python · Testing · AI-native engineering
+**Software Engineer | Full-Stack Developer**  
+TypeScript · React · Next.js · Node.js · Python · PostgreSQL · Automated testing
 
-**Portfolio:** [franciscovitar.vercel.app](https://franciscovitar.vercel.app/)
+[Portfolio](https://franvitar.genovasite.com/) · [Résumé (PDF)](https://franvitar.genovasite.com/Francisco_Vitar_CV_ATS_V2.pdf) · [LinkedIn](https://www.linkedin.com/in/franciscovitar/) · [Contact](mailto:franvitar15@gmail.com)
 
-I’m a fourth-year Systems Engineering student at UTN building product systems across web, data and AI-assisted workflows. I’ve also built and delivered **40+ client websites/products** for real third-party clients.
+I build web applications, APIs and data-backed systems. I am a co-founder of Genova, where I work on client websites and web products from requirements through deployment, and a fourth-year Information Systems Engineering student at UTN Córdoba.
 
-I care about explicit source boundaries, testable behavior, privacy, safe/reversible change and using AI with verification rather than treating generated output as automatically correct.
+My interests include backend reliability, automated testing, data integrity and AI-assisted engineering with explicit verification.
 
-## Selected engineering work
+## Selected engineering projects
 
-### [Vida 2.0](https://github.com/franciscovitar/vida-2.0)
-Personal operating system built with **Next.js, React and TypeScript**.
+| Project | Engineering focus | Explore |
+| --- | --- | --- |
+| Personal AI System | Source-aware context, permission boundaries and evidence-based workflows; runnable synthetic reference | [Case study](https://franvitar.genovasite.com/work/personal-ai-system) · [Explorer](https://franvitar.genovasite.com/pas-explorer/explorer/index.html?lang=en) · [Source](https://github.com/franciscovitar/personal-ai-system-showcase) |
+| Cauce Commerce Lab | Database-backed storefront, server-side checkout, inventory and signed Mercado Pago test-payment webhooks | [Case study](https://franvitar.genovasite.com/work/cauce-commerce-lab) · [Sandbox](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) · [Source](https://github.com/franciscovitar/la-mediterranea-store) |
+| Webhook Recovery Lab | TypeScript/Fastify, PostgreSQL, durable inbox, worker leases, retries and audited recovery | [Case study](https://franvitar.genovasite.com/work/webhook-recovery-lab) · [Sandbox](https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com/) · [Source](https://github.com/franciscovitar/webhook-recovery-lab) |
+| Library Network | FastAPI, PostgreSQL, transactional lending, row locking and idempotency | [Case study](https://franvitar.genovasite.com/work/library-network-api) · [Sandbox](https://library-network-qa-web.onrender.com/) · [Source](https://github.com/franciscovitar/library-network-api) |
+| Vida 2.0 | Next.js, TypeScript and integration boundaries across Notion, Sheets and Calendar | [Case study](https://franvitar.genovasite.com/work/vida-2) · [Independent demo](https://vida-2-0-demo-genova.vercel.app/) · [Demo source](https://github.com/franciscovitar/vida-2-0-demo) |
 
-- Integrates Notion, Google Sheets and Google Calendar with explicit source-of-truth boundaries.
-- Uses authenticated/private surfaces, fail-closed behavior, feature flags and safe-write/idempotency rules.
-- Includes product areas for health, nutrition, gym, finance, projects, tasks, learning and automations.
-- Uses automated checks and environment/preflight validation.
-- [Explore the independent synthetic demo](https://vida-2-0-demo-genova.vercel.app/) · [Read the case study](https://franciscovitar.vercel.app/work/vida-2).
+The public showcases use synthetic data. Cauce uses test payments only; completing a provider test checkout may require an authorized test buyer. Free-hosted services may have cold starts. PAS Explorer is a reference, not the private operational system. Vida's standalone demo does not connect to private accounts.
 
-### [Cauce Commerce Lab](https://franvitar.genovasite.com/work/cauce-commerce-lab?lang=es)
-Personal fictional ecommerce storefront built with **Next.js, TypeScript, Supabase and Mercado Pago Checkout Pro (sandbox)**.
+## Professional work — Genova
 
-- Database-backed catalog, orders, inventory reservations and RLS-authorized administration.
-- Server-authoritative checkout, signed provider webhooks, test payment reconciliation and idempotency.
-- Real sandbox payment approval and rejection were observed, alongside isolated SQL and CI checks.
-- [Public sandbox storefront](https://cauce-retail-preview-git-feat-cauce-portfolio-tes-76f96e-genova.vercel.app/cauce) needs no Vercel login; a separate Mercado Pago test-buyer account is still required to run a fictional Checkout Pro payment.
-- No real customer payments are enabled; the public repository also preserves the historic La Mediterránea work.
+Co-founder & Software Engineer · Córdoba, Argentina · 2022–present.
 
-### [Library Network](https://github.com/franciscovitar/library-network-api)
-Working library management app built with **Next.js, FastAPI, SQLAlchemy and PostgreSQL**.
+Client websites and web products, including requirements, implementation, integrations, deployment and maintenance. [Selected client work](https://franvitar.genovasite.com/genova) · [Genova](https://www.genovasite.com/)
 
-- Transactional interlibrary loans with a physical-copy lifecycle and explicit state transitions.
-- PostgreSQL row locking and constraints prevent concurrent double loans.
-- `Idempotency-Key` handling, atomic rollback and damaged-copy retirement.
-- [Open the live application](https://library-network-qa-web.onrender.com/) — synthetic records, no account and independent temporary workspaces.
-- [Technical case study](https://franciscovitar.vercel.app/work/library-network-api) and [hosted QA](https://github.com/franciscovitar/library-network-api/blob/main/docs/ops/ZERO_COST_HOSTED_QA_20261123.md). The original 129-test CI run is historical evidence.
+- [Pimp](https://github.com/franciscovitar/pimp): Next.js, React and Sass; form behavior and regression tests with Vitest/Testing Library.
+- [Value Latam — historical engineering snapshot](https://github.com/franciscovitar/valuelatamnuevo3/tree/22c03ca194bb9fe78111a2be1a89d2468f6ed77b): Next.js, React, Sass, GSAP and Playwright. The linked revision preserves the earlier implementation; the repository's current main contains a different static-site distribution. This is historical code evidence, not a claim about the current deployed stack.
 
-### [Value Latam](https://github.com/franciscovitar/valuelatamnuevo3)
-Production-oriented frontend work with **Next.js, React, Playwright, Sass and GSAP**.
+## Technical skills
 
-- End-to-end regression coverage for navigation, forms, internal pages and reduced-motion behavior.
-- Explicit visual-parity and maintainability constraints.
-- Deliberate technical-debt decisions when refactoring risk is higher than expected value.
-
-### [Pimp](https://github.com/franciscovitar/pimp)
-Client delivery example built with **Next.js, React, Sass and Vitest/Testing Library**.
-
-- Controlled form validation/submission and truthful success/error states.
-- Data-driven services and reusable components.
-- Tests around form behavior, service data and navigation.
-
-### [Webhook Recovery Lab](https://github.com/franciscovitar/webhook-recovery-lab)
-Functional reliability sandbox built with **React, TypeScript, Fastify and PostgreSQL**.
-
-- [Open the live application](https://webhook-recovery-lab-v3-qa-franv-20261124.onrender.com) — Spanish interface, no account, isolated temporary workspaces.
-- Signed HMAC ingress, transactional inbox, worker leases, bounded retries and audited replay.
-- Real PostgreSQL and HTTP verification of deduplication, controlled rejection and recovery; receiver-side idempotency protects the recorded effect.
-- Synthetic data only; free-tier cold starts and quotas apply. Source code and engineering documentation are public. [Read the case study](https://franciscovitar.vercel.app/work/webhook-recovery-lab).
-
-## Current private system with public reference code
-
-### Personal AI System
-Private modular system for AI-assisted research, software work, learning and execution.
-
-It includes capability-based tool routing, canonical-source rules, evidence/provenance models, eval-oriented workflows, least-privilege execution policy and agent-security boundaries. [Read the sanitized public case study](https://franciscovitar.vercel.app/work/personal-ai-system) and [inspect the runnable reference implementation](https://github.com/franciscovitar/personal-ai-system-showcase). The canonical system and personal data remain private.
-
-## Engineering stack
-
-**Languages:** TypeScript, JavaScript, Python, SQL, HTML, CSS/SCSS  
-**Frontend / product:** React, Next.js  
-**Data / backend:** PostgreSQL, Supabase, API integrations  
-**Quality:** automated testing, Playwright, Vitest, Git/GitHub, CI/check workflows  
-**AI-assisted engineering:** agent/tool orchestration, evidence and verification workflows
+- Languages: TypeScript, JavaScript, Python, SQL, HTML, CSS/SCSS.
+- Frontend: React, Next.js, Vite.
+- Backend and data: Node.js, Fastify, FastAPI, PostgreSQL, Supabase, REST APIs.
+- Quality and delivery: Vitest, Playwright, Testing Library, Git, CI and Docker.
+- Applied AI: context engineering, agent/tool orchestration and verification workflows.
 
 ## Education
 
-**Universidad Tecnológica Nacional (UTN)** — Systems Engineering  
-2023–Present · fourth academic year in 2026
+Universidad Tecnológica Nacional (UTN), Córdoba — Information Systems Engineering, 2023–present. Fourth-year student (2026).
 
-Selected technical results include **9/10 in Software Development, Databases, Backend Applications and Programming Paradigms**, plus **8/10 in Operating Systems, Algorithms & Data Structures, Computer Architecture and Data Communications**.
+Selected course grades: Software Development, Databases, Backend Applications and Programming Paradigms (9/10 each); Operating Systems, Algorithms and Data Structures, Computer Architecture and Data Communications (8/10 each).
 
-## Contact
-
-- [LinkedIn](https://www.linkedin.com/in/franciscovitar/)
-- [Email](mailto:franvitar15@gmail.com)
-
-Interested in **Software Engineer** and **Full-Stack / Product Engineer** roles.
+Open to Software Engineer and Full-Stack Developer opportunities.
