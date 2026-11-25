@@ -96,7 +96,7 @@ export default function CaseStudyPage({ study, lang = "en" }) {
               </a>
             </div>
 
-            <a href="/Francisco_Vitar_CV_ATS_V1.pdf">{ui.resume.replace(/\s*↗\s*$/, "")} <Arrow/></a>
+            <a href="/Francisco_Vitar_CV_ATS_V2.pdf">{ui.resume.replace(/\s*↗\s*$/, "")} <Arrow/></a>
             <a
               href="https://github.com/franciscovitar"
               target="_blank"

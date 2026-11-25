@@ -8,7 +8,7 @@ export const links = {
   linkedin: "https://www.linkedin.com/in/franciscovitar/",
   genovaWebsite: "https://www.genovasite.com/",
   genovaInstagram: "https://www.instagram.com/genova.marketing/",
-  cv: "/Francisco_Vitar_CV_ATS_V1.pdf",
+  cv: "/Francisco_Vitar_CV_ATS_V2.pdf",
   vidaDemo: "https://vida-2-0-demo-genova.vercel.app/",
 };
 

@@ -81,10 +81,10 @@ export default async function CVPage({ searchParams }) {
         <p className={styles.summary}>{c.summary}</p>
 
         <div className={styles.actions}>
-          <a href="/Francisco_Vitar_CV_ATS_V1.pdf" target="_blank" rel="noreferrer" className={styles.primary}>
+          <a href="/Francisco_Vitar_CV_ATS_V2.pdf" target="_blank" rel="noreferrer" className={styles.primary}>
             {c.view} <Arrow/>
           </a>
-          <a href="/Francisco_Vitar_CV_ATS_V1.pdf" download className={styles.secondary}>
+          <a href="/Francisco_Vitar_CV_ATS_V2.pdf" download className={styles.secondary}>
             {c.download} <Arrow direction="down"/>
           </a>
         </div>

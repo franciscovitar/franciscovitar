@@ -3,7 +3,7 @@
 **Software Engineer | Full-Stack Developer**  
 TypeScript · React · Next.js · Node.js · Python · PostgreSQL · Automated testing
 
-[Portfolio](https://franvitar.genovasite.com/) · [LinkedIn](https://www.linkedin.com/in/franciscovitar/) · [Contact](mailto:franvitar15@gmail.com)
+[Portfolio](https://franvitar.genovasite.com/) · [Résumé (PDF)](https://franvitar.genovasite.com/Francisco_Vitar_CV_ATS_V2.pdf) · [LinkedIn](https://www.linkedin.com/in/franciscovitar/) · [Contact](mailto:franvitar15@gmail.com)
 
 I build web applications, APIs and data-backed systems. I am a co-founder of Genova, where I work on client websites and web products from requirements through deployment, and a fourth-year Information Systems Engineering student at UTN Córdoba.
 
