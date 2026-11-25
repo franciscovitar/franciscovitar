@@ -597,3 +597,9 @@
 .ep .case-content .section.reveal.visible>p{animation-duration:1.7s}
 .ep .client.reveal.visible .client-body{animation-delay:.24s}
 .ep .client-grid .client.reveal.visible:nth-child(even){animation-delay:.2s}
+
+/* Arm offscreen reveals before their first visible frame; never hide server HTML. */
+@media (prefers-reduced-motion: no-preference) {
+ .ep:not(.low-motion) [data-scroll-reveal-pending]:not(:focus-within) { opacity:0; }
+ .ep .low-motion [data-scroll-reveal-pending] { opacity:1; }
+}

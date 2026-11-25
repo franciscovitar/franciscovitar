@@ -762,3 +762,8 @@
 :global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .sectionBody>h2 {animation-duration:2.25s;}
 :global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .largeCopy {animation-duration:1.7s;}
 :global(.ep) .page [data-editorial-reveal="case"][data-editorial-visible] .decisionGrid {animation-duration:2.2s;}
+
+@media (prefers-reduced-motion: no-preference) {
+ .page [data-scroll-reveal-pending]:not(:focus-within) { opacity:0; }
+ :global(.low-motion) .page [data-scroll-reveal-pending] { opacity:1; }
+}
